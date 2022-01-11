@@ -1,8 +1,9 @@
 const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
 const TaiKhoan = require('../models/taiKhoanModel');
-const NhaTuyenDung = require('../models/nhaTuyenDungModel');
 const AppError = require('../utils/appError');
+const sendEmail = require('../utils/email');
+const crypto = require('crypto');
 
 const createToken = id => {
     return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -89,7 +90,7 @@ class AuthController {
                 return next(new AppError('Bạn nhập sai mật khẩu hiện tại', 401));
             }
 
-            if((await taiKhoan.kiemTraMatKhau(req.body.matKhau, taiKhoan.matKhau))){
+            if ((await taiKhoan.kiemTraMatKhau(req.body.matKhau, taiKhoan.matKhau))) {
                 return next(new AppError('Mật khẩu trùng với mật khẩu hiện tại', 401));
             }
 
@@ -107,6 +108,67 @@ class AuthController {
             next(error)
         }
 
+    }
+
+    async quenMatKhau(req, res, next) {
+        const taiKhoan = await TaiKhoan.findOne({ 'email': req.body.email });
+        try {
+            if (!taiKhoan) {
+                return next(new AppError('Email không tồn tại'));
+            }
+
+            // Tạo random token
+            const randomToken = taiKhoan.randomToken();
+            await taiKhoan.save({ validateBeforeSave: false });
+
+            // Gửi email 
+            const formURL = `${req.protocol}://${req.get('host')}/auth/showFormQuenMatKhau/${randomToken}`;
+            const message = `Click vào đây để đặt lại mật khẩu: ${formURL}`;
+
+            await sendEmail({
+                email: taiKhoan.email,
+                subject: 'Tạo mới mật khẩu',
+                message,
+            });
+            res.status(200).json({
+                status: 'success',
+                message: 'Vui lòng kiểm tra email để đặt lại mật khẩu',
+            });
+        } catch (error) {
+            taiKhoan.matKhauRandomToken = undefined;
+            taiKhoan.matKhauHetHan = undefined;
+            return next(new AppError('Lỗi. Vui lòng thử lại sau'), 500);
+        }
+    }
+
+    showFormQuenMatKhau(req, res, next) {
+        res.status(201).json({
+            status: 'success',
+            token: req.params.token
+        })
+    }
+
+    async datLaiMatKhau(req, res, next) {
+        const hashedToken = crypto.createHash('sha256').update(req.params.token).digest('hex');
+        const taiKhoan = await TaiKhoan.findOne({
+            matKhauRandomToken: hashedToken,
+            matKhauHetHan: { $gt: Date.now() }
+        });
+        if (!taiKhoan) {
+            return next(new AppError('Token đã hết hạn', 400));
+        }
+        taiKhoan.matKhau = req.body.matKhau;
+        taiKhoan.xacNhanMatKhau = req.body.xacNhanMatKhau;
+        taiKhoan.matKhauRandomToken = undefined;
+        taiKhoan.matKhauHetHan = undefined;
+        await taiKhoan.save();
+
+        const token = createToken(taiKhoan._id);
+        res.status(201).json({
+            status: 'success',
+            token,
+            taiKhoan
+        })
     }
 
     kiemTraLoaiTaiKhoan(loaiTaiKhoan) {

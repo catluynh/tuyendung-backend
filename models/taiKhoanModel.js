@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const { default: validator } = require('validator');
 const bcrypt = require('bcrypt');
+const crypto = require('crypto');
 
 const TaiKhoan = new Schema({
     email: {
@@ -46,10 +47,9 @@ const TaiKhoan = new Schema({
         type: Date,
         default: Date.now()
     },
-    // nhaTuyenDung: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'nhaTuyenDung'
-    // }
+    matKhauThayDoi: Date,
+    matKhauRandomToken: String,
+    matKhauHetHan: Date,
 })
 
 TaiKhoan.pre('save', async function (next) {
@@ -60,8 +60,17 @@ TaiKhoan.pre('save', async function (next) {
     next();
 })
 
-TaiKhoan.methods.kiemTraMatKhau = async function (mk_1, mk_2) {
-    return await bcrypt.compare(mk_1, mk_2);
+TaiKhoan.methods.randomToken = function () {
+    const randomToken = crypto.randomBytes(32).toString('hex');
+    this.matKhauRandomToken = crypto.createHash('sha256').update(randomToken).digest('hex');
+    this.matKhauHetHan = Date.now() + 10 * 60 * 1000; //10 phút 
+    return randomToken;
 }
+
+TaiKhoan.methods.kiemTraMatKhau = async function (matKhauHienTai, matKhau) {
+    return await bcrypt.compare(matKhauHienTai, matKhau);
+}
+
+
 
 module.exports = mongoose.model('taiKhoan', TaiKhoan)
