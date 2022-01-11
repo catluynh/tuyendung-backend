@@ -64,19 +64,16 @@ const ChungChi = new Schema({
 
 const UngTuyenVien = new Schema({
     ten: {
-        type: String,
-        required: 'Tên ứng tuyển viên không được để trống'
+        type: String
     },
     sdt: {
         type: String
     },
     gioiTinh: {
-        type: String,
-        required: 'Giới tính ứng tuyển viên không được để trống'
+        type: String
     },
     diaChi: {
-        type: String,
-        reqired: 'Địa chỉ ứng tuyển viên không được để trống'
+        type: String
     },
     loiGioiThieu: {
         type: String,

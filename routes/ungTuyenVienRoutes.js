@@ -3,8 +3,8 @@ const router = express.Router();
 const authController = require('../controllers/authControler');
 const ungTuyenVienController = require('../controllers/ungTuyenVienController')
 
-router.use(authController.protect);
-router.use(authController.kiemTraLoaiTaiKhoan('ứng tuyển viên'));
+// router.use(authController.protect);
+// router.use(authController.kiemTraLoaiTaiKhoan('ứng tuyển viên', 'quản trị viên'));
 
 router.route('/')
     .get(ungTuyenVienController.getAll)

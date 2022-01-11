@@ -1,8 +1,8 @@
-const UngTuyenVien = require('../models/ungTuyenVienModel')
+const NganhNghe = require('../models/nganhNgheModel')
 
-class UngTuyenVienController {
+class NganhNgheController {
     async getAll(req, res, next) {
-        await UngTuyenVien.find().populate('taiKhoan')
+        await NganhNghe.find().populate('linhVuc')
             .then(data => {
                 res.status(200).json({
                     status: 'success',
@@ -14,9 +14,8 @@ class UngTuyenVienController {
     }
 
     async postAPI(req, res, next) {
-        const ungTuyenVienMoi = new UngTuyenVien(req.body);
-        ungTuyenVienMoi._id = req.taiKhoan._id;
-        await ungTuyenVienMoi.save()
+        const nganhNgheMoi = new NganhNghe(req.body);
+        await nganhNgheMoi.save()
             .then((data) => {
                 res.status(201).json({
                     status: 'success',
@@ -27,7 +26,7 @@ class UngTuyenVienController {
     };
 
     async getAPIById(req, res, next) {
-        await UngTuyenVien.findById(req.params.id).populate('taiKhoan')
+        await NganhNghe.findById(req.params.id).populate('linhVuc')
             .then(data => {
                 if (!data) {
                     return next(new AppError('Không tìm thấy', 404))
@@ -42,7 +41,7 @@ class UngTuyenVienController {
 
     async updateAPI(req, res, next) {
         const data = req.body;
-        await UngTuyenVien.findByIdAndUpdate(req.params.id, data)
+        await NganhNghe.findByIdAndUpdate(req.params.id, data)
             .then(data => {
                 res.status(201).json({
                     status: 'success',
@@ -53,7 +52,7 @@ class UngTuyenVienController {
     };
 
     async deleteAPI(req, res, next) {
-        await UngTuyenVien.findByIdAndRemove(req.params.id)
+        await NganhNghe.findByIdAndRemove(req.params.id)
             .then(data => {
                 if (!data) {
                     return next(new AppError('Không tìm thấy', 404))
@@ -66,5 +65,4 @@ class UngTuyenVienController {
             .catch(next);
     };
 }
-
-module.exports = new UngTuyenVienController;
+module.exports = new NganhNgheController;

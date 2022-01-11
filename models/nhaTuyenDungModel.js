@@ -8,8 +8,7 @@ const NhaTuyenDung = new Schema({
         default: 'ntd-avatar-default.png',
     },
     tenCongty: {
-        type: String,
-        required: 'Tên công ty không được để trống'
+        type: String
     },
     namThanhLap: {
         type: Date,
@@ -19,25 +18,16 @@ const NhaTuyenDung = new Schema({
         type: String,
     },
     moTa: {
-        type: String,
-        minlength: [50, 'Tối thiểu 50 kí tự'],
-        // required: [true, 'Mô tả không được để trống']
+        type: String
     },
     website: {
-        type: String,
-        //minlength: [50, 'Tối thiểu 50 kí tự'],
-        required: 'website không được để trống'
+        type: String
     },
     sdt: {
         type: String
     },
     email: {
-        type: String,
-        trim: true,
-        lowercase: true,
-        unique: [true, 'Email đã tồn tại'],
-        required: 'Email không được để trống',
-        validate: [validator.isEmail, 'Email không hợp lệ']
+        type: String
     },
     taiKhoan: {
         type: Schema.Types.ObjectId,
