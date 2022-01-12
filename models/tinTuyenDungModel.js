@@ -63,4 +63,9 @@ const TinTuyenDung = new Schema({
     }
 })
 
+TinTuyenDung.pre(/^find/, function (next) {
+    this.populate(['nganhNghe', 'nhaTuyenDung'])
+    next()
+})
+
 module.exports = mongoose.model('tinTuyenDung', TinTuyenDung)

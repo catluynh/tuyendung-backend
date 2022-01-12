@@ -2,7 +2,7 @@ const NganhNghe = require('../models/nganhNgheModel')
 
 class NganhNgheController {
     async getAll(req, res, next) {
-        await NganhNghe.find().populate('linhVuc')
+        await NganhNghe.find()
             .then(data => {
                 res.status(200).json({
                     status: 'success',
@@ -26,7 +26,7 @@ class NganhNgheController {
     };
 
     async getAPIById(req, res, next) {
-        await NganhNghe.findById(req.params.id).populate('linhVuc')
+        await NganhNghe.findById(req.params.id)
             .then(data => {
                 if (!data) {
                     return next(new AppError('Không tìm thấy', 404))

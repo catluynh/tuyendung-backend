@@ -9,4 +9,9 @@ const NganhNghe = new Schema({
     },
 })
 
+NganhNghe.pre(/^find/, function (next) {
+    this.populate('linhVuc')
+    next()
+})
+
 module.exports = mongoose.model('nganhNghe', NganhNghe)
