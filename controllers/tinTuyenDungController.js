@@ -1,6 +1,7 @@
 const TinTuyenDung = require('../models/tinTuyenDungModel')
 const NganhNghe = require('../models/nganhNgheModel')
 const LinhVuc = require('../models/linhVucModel')
+const NhaTuyenDung = require('../models/nhaTuyenDungModel')
 
 class TinTuyenDungController {
     async getAll(req, res, next) {
@@ -87,6 +88,39 @@ class TinTuyenDungController {
         })
 
         await TinTuyenDung.find({
+            nganhNghe,
+            "diaDiem.tinhThanhPho": { $regex: new RegExp(req.query.diaDiem, "i") },
+            "viTri": { $regex: new RegExp(req.query.viTri, "i") },
+            "soNamKinhNghiem": { $regex: new RegExp(req.query.soNamKinhNghiem, "i") },
+            "loaiCongViec": { $regex: new RegExp(req.query.loaiCongViec, "i") },
+        }).limit(limit).skip(skip).exec()
+            .then(data => {
+                res.status(200).json({
+                    status: 'success',
+                    results: data.length,
+                    data
+                })
+            })
+            .catch(next);
+    }
+
+    async timKiemTheoNhaTuyenDung(req, res, next) {
+        console.log(req.query);
+        const page = req.query.page * 1 || 1
+        const limit = 2;
+        const skip = (page - 1) * limit;
+        const linhVuc = await LinhVuc.find({
+            "tenLinhVuc": { $regex: new RegExp(req.query.linhVuc, "i") },
+        })
+
+        const nganhNghe = await NganhNghe.find({
+            linhVuc,
+            "tenNganhNghe": { $regex: new RegExp(req.query.nganhNghe, "i") },
+        })
+
+        const nhaTuyenDung = await NhaTuyenDung.findById(req.taiKhoan._id);
+        await TinTuyenDung.find({
+            nhaTuyenDung,
             nganhNghe,
             "diaDiem.tinhThanhPho": { $regex: new RegExp(req.query.diaDiem, "i") },
             "viTri": { $regex: new RegExp(req.query.viTri, "i") },

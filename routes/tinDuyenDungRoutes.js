@@ -3,11 +3,13 @@ const router = express.Router();
 const authController = require('../controllers/authControler');
 const tinTuyenDungController = require('../controllers/tinTuyenDungController')
 
-// router.use(authController.protect);
+//router.use(authController.protect);
 // router.use(authController.kiemTraLoaiTaiKhoan('nhà tuyển dụng'));
 
 router.route('/timKiemTheoNhieuTieuChi')
     .get(tinTuyenDungController.timKiemTheoNhieuTieuChi)
+router.route('/timKiemTheoNhaTuyenDung')
+    .get(authController.protect, tinTuyenDungController.timKiemTheoNhaTuyenDung)
 
 router.route('/')
     .get(tinTuyenDungController.getAll)
