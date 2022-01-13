@@ -62,8 +62,8 @@ const TRANG_THAI_TIN = {
 }
 
 const TRANG_THAI_DON = {
-  DA_UNG_TUYEN: 'Đã ứng tuyển',
-  HUY_BO: 'Hủy bỏ ứng tuyển'
+  DANG_UNG_TUYEN: 'Đang ứng tuyển',
+  DA_UNG_TUYEN: 'Đã ứng tuyển'
 }
 
 module.exports = {

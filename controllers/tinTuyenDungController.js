@@ -86,7 +86,7 @@ class TinTuyenDungController {
             linhVuc,
             "tenNganhNghe": { $regex: new RegExp(req.query.nganhNghe, "i") },
         })
-
+        const Enum = require('../utils/enum')
         await TinTuyenDung.find({
             nganhNghe,
             "diaDiem.tinhThanhPho": { $regex: new RegExp(req.query.diaDiem, "i") },

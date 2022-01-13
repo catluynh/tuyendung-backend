@@ -1,8 +1,8 @@
-const DanhGia = require('../models/danhGiaModel')
+const TinTuc = require('../models/tinTucModel')
 
-class DanhGiaController {
+class TinTucController {
     async getAll(req, res, next) {
-        await DanhGia.find()
+        await TinTuc.find()
             .then(data => {
                 res.status(200).json({
                     status: 'success',
@@ -14,8 +14,8 @@ class DanhGiaController {
     }
 
     async postAPI(req, res, next) {
-        const danhGiaMoi = new DanhGia(req.body);
-        await danhGiaMoi.save()
+        const tinTucMoi = new TinTuc(req.body);
+        await tinTucMoi.save()
             .then((data) => {
                 res.status(201).json({
                     status: 'success',
@@ -26,7 +26,7 @@ class DanhGiaController {
     };
 
     async getAPIById(req, res, next) {
-        await DanhGia.findById(req.params.id)
+        await TinTuc.findById(req.params.id)
             .then(data => {
                 if (!data) {
                     return next(new AppError('Không tìm thấy', 404))
@@ -41,7 +41,7 @@ class DanhGiaController {
 
     async updateAPI(req, res, next) {
         const data = req.body;
-        await DanhGia.findByIdAndUpdate(req.params.id, data)
+        await TinTuc.findByIdAndUpdate(req.params.id, data)
             .then(data => {
                 res.status(201).json({
                     status: 'success',
@@ -52,7 +52,7 @@ class DanhGiaController {
     };
 
     async deleteAPI(req, res, next) {
-        await DanhGia.findByIdAndRemove(req.params.id)
+        await TinTuc.findByIdAndRemove(req.params.id)
             .then(data => {
                 if (!data) {
                     return next(new AppError('Không tìm thấy', 404))
@@ -65,4 +65,4 @@ class DanhGiaController {
             .catch(next);
     };
 }
-module.exports = new DanhGiaController;
+module.exports = new TinTucController;

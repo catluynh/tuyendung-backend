@@ -21,9 +21,9 @@ const DonUngTuyen = new Schema({
     }
 })
 
-DonUngTuyen.pre(/^find/, function (next) {
-    this.populate(['ungTuyenVien', 'tinTuyenDung'])
-    next()
-})
+// DonUngTuyen.pre(/^find/, function (next) {
+//     this.populate(['ungTuyenVien', 'tinTuyenDung'])
+//     next()
+// })
 
 module.exports = mongoose.model('donUngTuyen', DonUngTuyen)
