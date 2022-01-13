@@ -2,16 +2,19 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Enum = require('../utils/enum');
 
-const DonUngTuyen = new Schema({
-    trangThai: {
-        type: String,
-        enum: Enum.TRANG_THAI_DON
+const DanhGia = new Schema({
+    noiDung: {
+        type: String
     },
-    ngayUngTuyen: {
+    xepLoai: {
+        type: String,
+        enum: Enum.XEP_LOAI
+    },
+    ngay: {
         type: Date,
         default: Date.now()
     },
-    ungTuyenVien: {
+    danhGiaBoi: {
         type: Schema.Types.ObjectId,
         ref: 'ungTuyenVien'
     },
@@ -21,9 +24,10 @@ const DonUngTuyen = new Schema({
     }
 })
 
-DonUngTuyen.pre(/^find/, function (next) {
-    this.populate(['ungTuyenVien', 'tinTuyenDung'])
+DanhGia.pre(/^find/, function (next) {
+    this.populate({ path: 'danhGiaBoi', select: 'taiKhoan'})
+    //.populate({ path: 'tinTuyenDung', select: 'nganhNghe'})
     next()
 })
 
-module.exports = mongoose.model('donUngTuyen', DonUngTuyen)
+module.exports = mongoose.model('danhGia', DanhGia)

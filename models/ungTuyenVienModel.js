@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const Enum = require('../utils/enum');
 
 const KyNangChuyenMon = new Schema({
     tenKyNang: {
@@ -13,7 +14,7 @@ const HocVan = new Schema({
     },
     bangCap: {
         type: String,
-        enum: ['Trung học', 'Trung cấp', 'Cao Đẳng', 'Đại học', 'Sau đại học', 'Nghề', 'Chưa tốt nghiệp', 'Khác']
+        enum: Enum.BANG_CAP
     },
     moTa: {
         type: String
@@ -32,7 +33,7 @@ const KinhNghiemLamViec = new Schema({
     },
     viTri: {
         type: String,
-        enum: ['Sinh viên/Thực tập', 'Mới tốt nghiệp', 'Nhân viên', 'Trưởng phòng', 'Giám sát', 'Quản lý', 'Phó giám đốc', 'Khác']
+        enum: Enum.VI_TRI
     },
     moTa: {
         type: String
@@ -80,7 +81,7 @@ const UngTuyenVien = new Schema({
     },
     soNamKinhNghiem: {
         type: String,
-        enum: ['Chưa có kinh nghiệm', 'Dưới 1 năm', '1 năm', '2 năm', '3 năm', '4 năm', '5 năm', 'Trên 5 năm']
+        enum: Enum.SO_NAM_KINH_NGHIEM
     },
     avatar: {
         type: String,
@@ -102,6 +103,11 @@ const UngTuyenVien = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'taiKhoan'
     }
+})
+
+UngTuyenVien.pre(/^find/, function (next) {
+    this.populate('taiKhoan')
+    next()
 })
 
 module.exports = mongoose.model('ungTuyenVien', UngTuyenVien)

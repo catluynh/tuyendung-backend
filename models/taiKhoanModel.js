@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const Enum = require('../utils/enum');
 const { default: validator } = require('validator');
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
+
 
 const TaiKhoan = new Schema({
     email: {
@@ -41,7 +43,7 @@ const TaiKhoan = new Schema({
     },
     loaiTaiKhoan: {
         type: String,
-        enum: ['ứng tuyển viên', 'nhà tuyển dụng', 'quản trị viên']
+        enum: Enum.LOAI_TAI_KHOAN
     },
     ngayTao: {
         type: Date,

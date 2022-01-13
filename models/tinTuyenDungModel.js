@@ -1,21 +1,22 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const Enum = require('../utils/enum');
 
 const TinTuyenDung = new Schema({
     tieuDe: String,
     viTri: {
         type: String,
-        enum: ['Sinh viên/Thực tập', 'Mới tốt nghiệp', 'Nhân viên', 'Trưởng phòng', 'Giám sát', 'Quản lý', 'Phó giám đốc', 'Khác']
+        enum: Enum.VI_TRI
     },
     soLuongTuyen: Number,
     loaiCongViec: {
         type: String,
-        enum: ['Toàn thời gian', 'Bán thời gian', 'Thực tập sinh', 'Khác']
+        enum: Enum.LOAI_CONG_VIEC
     },
     ngayHetHan: Date,
     soNamKinhNghiem: {
         type: String,
-        enum: ['Chưa có kinh nghiệm', 'Dưới 1 năm', '1 năm', '2 năm', '3 năm', '4 năm', '5 năm', 'Trên 5 năm']
+        enum: Enum.SO_NAM_KINH_NGHIEM
     },
     gioiTinh: {
         type: String,
@@ -27,7 +28,7 @@ const TinTuyenDung = new Schema({
     },
     bangCap: {
         type: String,
-        enum: ['Trung học', 'Trung cấp', 'Cao Đẳng', 'Đại học', 'Sau đại học', 'Nghề', 'Chưa tốt nghiệp', 'Không yêu cầu']
+        enum: Enum.BANG_CAP
     },
     tuoiTu: {
         type: Number,
@@ -54,7 +55,7 @@ const TinTuyenDung = new Schema({
     yeuCau: String,
     trangThai: {
         type: String,
-        enum: ['Đã duyệt', 'Chờ duyệt', 'Dừng tuyển']
+        enum: Enum.TRANG_THAI_TIN
     },
     ngayTao: {
         type: Date,
