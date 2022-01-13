@@ -56,7 +56,10 @@ const TinTuyenDung = new Schema({
         type: String,
         enum: ['Đã duyệt', 'Chờ duyệt', 'Dừng tuyển']
     },
-    ngayTao: Date,
+    ngayTao: {
+        type: Date,
+        default: Date.now()
+    },
     nhaTuyenDung: {
         type: Schema.Types.ObjectId,
         ref: 'nhaTuyenDung'
