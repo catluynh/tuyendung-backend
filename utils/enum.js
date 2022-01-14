@@ -58,7 +58,8 @@ const BANG_CAP = {
 const TRANG_THAI_TIN = {
   DA_DUYET: 'Đã duyệt',
   CHO_DUYET: 'Chờ duyệt',
-  DUNG_TUYEN: 'Dừng tuyển'
+  DUNG_TUYEN: 'Dừng tuyển',
+  KHOA: 'Khóa'
 }
 
 const TRANG_THAI_DON = {

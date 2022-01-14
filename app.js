@@ -6,6 +6,15 @@ dotenv.config({ path: './config.env' })
 const mongoose = require('mongoose');
 const port = process.env.PORT;
 const route = require("./routes");
+const http = require('http');
+const socketIo = require('socket.io');
+const socketioJwt = require('socketio-jwt');
+const jwtAuth = require('socketio-jwt-auth');
+const initSockets = require('./sockets/index');
+const jwt = require('jsonwebtoken');
+
+const server = http.createServer(app);
+const io = socketIo(server);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -20,8 +29,31 @@ mongoose.connect(process.env.DATABASE_LOCAL, {
 
 route(app);
 
+io.use(async (socket, next) => {
+    try {
+        let token;
+        // Kiểm tra token và lấy token
+        if (socket.handshake.headers.authorization && socket.handshake.headers.authorization.startsWith('Bearer')) {
+            token = socket.handshake.headers.authorization.split(' ')[1];
+        }
+        if (!token) {
+            return next(new AppError('Vui lòng đăng nhập 😫', 401));
+        }
+
+        // Xác minh token
+        const decoded = await jwt.verify(token, process.env.JWT_SECRET);
+        //Lưu vào socket
+        socket.taiKhoanId = decoded.id;
+        next();
+    } catch (err) {
+        next(err);
+    }
+});
+
+initSockets(io);
+
 //Lắng nghe port
-app.listen(port, () => {
+server.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);
 });
 
