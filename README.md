@@ -26,6 +26,7 @@ To get the Node server running locally:
 - [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) - For generating JWTs used by authentication
 - [mongoose](https://github.com/Automattic/mongoose) - For modeling and mapping MongoDB data to javascript 
 - [mongoose-unique-validator](https://github.com/blakehaswell/mongoose-unique-validator) - For handling unique validation errors in Mongoose. Mongoose only handles validation at the document level, so a unique index across a collection will throw an exception at the driver level. The `mongoose-unique-validator` plugin helps us by formatting the error like a normal mongoose `ValidationError`.
+- [v.v]
 
 ## Application Structure
 
@@ -33,3 +34,5 @@ To get the Node server running locally:
 - `config.env` - This folder contains configuration for passport as well as a central location for configuration/environment variables.
 - `routes/` - This folder contains the route definitions for our API.
 - `models/` - This folder contains the schema definitions for our Mongoose models.
+- `controllers/` - This folder contains the controller definitions for our app.
+- `utils/` - This folder contains the classes that provide the utility definitions for our app.
