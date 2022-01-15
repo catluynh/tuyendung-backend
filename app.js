@@ -8,8 +8,6 @@ const port = process.env.PORT;
 const route = require("./routes");
 const http = require('http');
 const socketIo = require('socket.io');
-const socketioJwt = require('socketio-jwt');
-const jwtAuth = require('socketio-jwt-auth');
 const initSockets = require('./sockets/index');
 const jwt = require('jsonwebtoken');
 
@@ -29,6 +27,7 @@ mongoose.connect(process.env.DATABASE_LOCAL, {
 
 route(app);
 
+//config socket
 io.use(async (socket, next) => {
     try {
         let token;
