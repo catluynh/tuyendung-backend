@@ -1,4 +1,5 @@
-const NhaTuyenDung = require('../models/nhaTuyenDungModel')
+const NhaTuyenDung = require('../models/nhaTuyenDungModel');
+const AppError = require('../utils/appError');
 
 class NhaTuyenDungController {
     async getAll(req, res, next) {

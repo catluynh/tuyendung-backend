@@ -1,4 +1,5 @@
-const NganhNghe = require('../models/nganhNgheModel')
+const NganhNghe = require('../models/nganhNgheModel');
+const AppError = require('../utils/appError');
 
 class NganhNgheController {
     async getAll(req, res, next) {

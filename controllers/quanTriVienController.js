@@ -1,3 +1,5 @@
+const AppError = require('../utils/appError');
+
 class QuanTriVienController{
 
 }

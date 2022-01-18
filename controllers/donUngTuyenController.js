@@ -1,6 +1,7 @@
 const DonUngTuyen = require('../models/donUngTuyenModel');
 const UngTuyenVien = require('../models/ungTuyenVienModel');
 const TinTuyenDung = require('../models/tinTuyenDungModel');
+const AppError = require('../utils/appError');
 
 class DonUngTuyenController {
     async getAll(req, res, next) {

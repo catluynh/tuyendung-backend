@@ -1,4 +1,5 @@
-const TinTuc = require('../models/tinTucModel')
+const TinTuc = require('../models/tinTucModel');
+const AppError = require('../utils/appError');
 
 class TinTucController {
     async getAll(req, res, next) {

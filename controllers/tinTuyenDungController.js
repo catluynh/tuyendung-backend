@@ -1,7 +1,8 @@
-const TinTuyenDung = require('../models/tinTuyenDungModel')
-const NganhNghe = require('../models/nganhNgheModel')
-const LinhVuc = require('../models/linhVucModel')
-const NhaTuyenDung = require('../models/nhaTuyenDungModel')
+const TinTuyenDung = require('../models/tinTuyenDungModel');
+const NganhNghe = require('../models/nganhNgheModel');
+const LinhVuc = require('../models/linhVucModel');
+const NhaTuyenDung = require('../models/nhaTuyenDungModel');
+const AppError = require('../utils/appError');
 
 class TinTuyenDungController {
     async getAll(req, res, next) {
@@ -86,7 +87,6 @@ class TinTuyenDungController {
             linhVuc,
             "tenNganhNghe": { $regex: new RegExp(req.query.nganhNghe, "i") },
         })
-        const Enum = require('../utils/enum')
         await TinTuyenDung.find({
             nganhNghe,
             "diaDiem.tinhThanhPho": { $regex: new RegExp(req.query.diaDiem, "i") },

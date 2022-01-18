@@ -1,4 +1,5 @@
-const UngTuyenVien = require('../models/ungTuyenVienModel')
+const UngTuyenVien = require('../models/ungTuyenVienModel');
+const AppError = require('../utils/appError');
 
 class UngTuyenVienController {
     async getAll(req, res, next) {

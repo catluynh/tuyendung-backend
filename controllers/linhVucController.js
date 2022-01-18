@@ -1,4 +1,5 @@
-const LinhVuc = require('../models/linhVucModel')
+const LinhVuc = require('../models/linhVucModel');
+const AppError = require('../utils/appError');
 
 class LinhVucController {
     async getAll(req, res, next) {
