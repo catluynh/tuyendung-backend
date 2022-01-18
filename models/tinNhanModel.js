@@ -4,7 +4,9 @@ const Schema = mongoose.Schema;
 const TinNhan = new Schema({
     idNguoiGui: String,
     idNguoiNhan: String,
-    noiDung: String,
+    noiDung: {
+        type: String
+    },
     ngayGui: {
         type: Date,
         default: Date.now()
