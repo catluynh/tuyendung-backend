@@ -10,15 +10,22 @@ const http = require('http');
 const socketIo = require('socket.io');
 const initSockets = require('./sockets/index');
 const jwt = require('jsonwebtoken');
-
 const server = http.createServer(app);
 const io = socketIo(server);
+const paypal = require('paypal-rest-sdk');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //Cho phép cors với toàn bộ route
 app.use(cors());
+
+//config paypal
+paypal.configure({
+    'mode': process.env.MODE, //sandbox or live
+    'client_id': process.env.CLIENT_ID,
+    'client_secret': process.env.CLIENT_SECRET
+  });
 
 //Kết nối database
 mongoose.connect(process.env.DATABASE_LOCAL, {

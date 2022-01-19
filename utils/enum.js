@@ -68,7 +68,7 @@ const TRANG_THAI_DON = {
 }
 
 module.exports = {
-  XEP_LOAI: XEP_LOAI,
+  XEP_LOAI,
   LOAI_TAI_KHOAN,
   SO_NAM_KINH_NGHIEM,
   LOAI_CONG_VIEC,
