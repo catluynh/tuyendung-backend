@@ -3,6 +3,7 @@ const NganhNghe = require('../models/nganhNgheModel');
 const LinhVuc = require('../models/linhVucModel');
 const NhaTuyenDung = require('../models/nhaTuyenDungModel');
 const AppError = require('../utils/appError');
+const Enum = require('../utils/enum');
 
 class TinTuyenDungController {
     async getAll(req, res, next) {
@@ -19,6 +20,7 @@ class TinTuyenDungController {
 
     async postAPI(req, res, next) {
         const tinTuyenDungMoi = new TinTuyenDung(req.body);
+        tinTuyenDungMoi.trangThai = Enum.TRANG_THAI_TIN.CHO_DUYET;
         await tinTuyenDungMoi.save()
             .then((data) => {
                 res.status(201).json({
@@ -128,6 +130,48 @@ class TinTuyenDungController {
             "loaiCongViec": { $regex: new RegExp(req.query.loaiCongViec, "i") },
         }).limit(limit).skip(skip).exec()
             .then(data => {
+                res.status(200).json({
+                    status: 'success',
+                    results: data.length,
+                    data
+                })
+            })
+            .catch(next);
+    }
+
+    async duyetTin(req, res, next) {
+        await TinTuyenDung.findById(req.params.id)
+            .then(data => {
+                data.trangThai = Enum.TRANG_THAI_TIN.DA_DUYET;
+                data.save();
+                res.status(200).json({
+                    status: 'success',
+                    results: data.length,
+                    data
+                })
+            })
+            .catch(next);
+    }
+
+    async khoaTin(req, res, next) {
+        await TinTuyenDung.findById(req.params.id)
+            .then(data => {
+                data.trangThai = Enum.TRANG_THAI_TIN.KHOA;
+                data.save();
+                res.status(200).json({
+                    status: 'success',
+                    results: data.length,
+                    data
+                })
+            })
+            .catch(next);
+    }
+
+    async dungTuyen(req, res, next) {
+        await TinTuyenDung.findById(req.params.id)
+            .then(data => {
+                data.trangThai = Enum.TRANG_THAI_TIN.DUNG_TUYEN;
+                data.save();
                 res.status(200).json({
                     status: 'success',
                     results: data.length,

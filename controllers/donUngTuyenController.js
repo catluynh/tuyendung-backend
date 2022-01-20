@@ -1,6 +1,7 @@
 const DonUngTuyen = require('../models/donUngTuyenModel');
 const UngTuyenVien = require('../models/ungTuyenVienModel');
 const TinTuyenDung = require('../models/tinTuyenDungModel');
+const Enum = require('../utils/enum');
 const AppError = require('../utils/appError');
 
 class DonUngTuyenController {
@@ -18,6 +19,7 @@ class DonUngTuyenController {
 
     async postAPI(req, res, next) {
         const donUngTuyenMoi = new DonUngTuyen(req.body);
+        donUngTuyenMoi.trangThai = Enum.TRANG_THAI_DON.DANG_UNG_TUYEN;
         await donUngTuyenMoi.save()
             .then((data) => {
                 res.status(201).json({
@@ -93,6 +95,34 @@ class DonUngTuyenController {
         await DonUngTuyen.find({ tinTuyenDung: req.params.id })
             .limit(limit).skip(skip).exec()
             .then(data => {
+                res.status(200).json({
+                    status: 'success',
+                    results: data.length,
+                    data
+                })
+            })
+            .catch(next);
+    };
+
+    async ungTuyen(req, res, next) {
+        await DonUngTuyen.findById(req.params.id)
+            .then(data => {
+                data.trangThai = Enum.TRANG_THAI_DON.DA_UNG_TUYEN;
+                data.save();
+                res.status(200).json({
+                    status: 'success',
+                    results: data.length,
+                    data
+                })
+            })
+            .catch(next);
+    };
+
+    async tuChoiUngTuyen(req, res, next) {
+        await DonUngTuyen.findById(req.params.id)
+            .then(data => {
+                data.trangThai = Enum.TRANG_THAI_DON.THAT_BAI;
+                data.save();
                 res.status(200).json({
                     status: 'success',
                     results: data.length,
