@@ -8,6 +8,7 @@ const donUngTuyenRouter = require('./donUngTuyenRoutes');
 const danhGiaRouter = require('./danhGiaRoutes');
 const tinTucRouter = require('./tinTucRoutes');
 const tinNhanRouter = require('./tinNhanRoutes');
+const quanTriVienRouter = require('./quanTriVienRoutes');
 
 function route(app) {
     app.use('/auth', authRouter);
@@ -20,6 +21,7 @@ function route(app) {
     app.use('/danhGias', danhGiaRouter);
     app.use('/tinTucs', tinTucRouter);
     app.use('/tinNhans', tinNhanRouter);
+    app.use('/quanTriViens', quanTriVienRouter);
 }
 
 module.exports = route;

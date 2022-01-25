@@ -28,6 +28,7 @@ class AuthController {
                 return next(new AppError('Tài khoản hoặc mật khẩu không đúng', 401));
             }
 
+            //Kiểm tra tài khoàn bị khóa
             if (taiKhoan.trangThai === false) {
                 return next(new AppError('Tài khoản đã bị khóa', 401));
             }
@@ -71,11 +72,13 @@ class AuthController {
             }
             // Xác minh token
             const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+
             // 3) Kiểm tra đăng nhập
             const taiKhoanHienTai = await TaiKhoan.findById(decoded.id);
             if (!taiKhoanHienTai) {
-                return next(new AppError('Hết phiên đăng nhâp. Vui lòng đăng nhập', 401));
+                return next(new AppError('Vui lòng đăng nhập 😫', 401));
             }
+
             // Kiểm tra tài khoản đã thay đổi mật khẩu sau khi token đc cấp
             // if (currentUser.changedPasswordAfter(decoded.iat)) {
             //     return next(
