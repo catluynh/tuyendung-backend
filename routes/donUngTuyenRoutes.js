@@ -9,7 +9,7 @@ router.route('/timKiemTheoUngTuyenVien')
 router.route('/timKiemTheoTinTuyenDung/:id')
     .get(authController.protect, donUngTuyenController.timKiemTheoTinTuyenDung)
 
-//nhà tuyển dụng ứng tuyển
+//nhà tuyển dụng chấp nhận ứng tuyển
 router.route('/ungTuyen/:id')
     .patch(donUngTuyenController.ungTuyen)
 

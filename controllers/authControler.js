@@ -56,29 +56,33 @@ class AuthController {
     }
 
     async protect(req, res, next) {
-        let token;
-        // Kiểm tra token và lấy token
-        if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-            token = req.headers.authorization.split(' ')[1];
+        try {
+            let token;
+            // Kiểm tra token và lấy token
+            if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+                token = req.headers.authorization.split(' ')[1];
+            }
+            if (!token) {
+                return next(new AppError('Vui lòng đăng nhập 😫', 401));
+            }
+            // Xác minh token
+            const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+            // 3) Kiểm tra đăng nhập
+            const taiKhoanHienTai = await TaiKhoan.findById(decoded.id);
+            if (!taiKhoanHienTai) {
+                return next(new AppError('Hết phiên đăng nhâp. Vui lòng đăng nhập', 401));
+            }
+            // Kiểm tra tài khoản đã thay đổi mật khẩu sau khi token đc cấp
+            // if (currentUser.changedPasswordAfter(decoded.iat)) {
+            //     return next(
+            //         new AppError(`User recently changed password! Please login again`, 401)
+            //     );
+            // }
+            req.taiKhoan = taiKhoanHienTai;
+            next();
+        } catch (error) {
+            next(new AppError('Hết phiên đăng nhâp. Vui lòng đăng nhập', 401));
         }
-        if (!token) {
-            return next(new AppError('Vui lòng đăng nhập 😫', 401));
-        }
-        // Xác minh token
-        const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-        // 3) Kiểm tra đăng nhập
-        const taiKhoanHienTai = await TaiKhoan.findById(decoded.id);
-        if (!taiKhoanHienTai) {
-            return next(new AppError('Hết phiên đăng nhâp. Vui lòng đăng nhập', 401));
-        }
-        // Kiểm tra tài khoản đã thay đổi mật khẩu sau khi token đc cấp
-        // if (currentUser.changedPasswordAfter(decoded.iat)) {
-        //     return next(
-        //         new AppError(`User recently changed password! Please login again`, 401)
-        //     );
-        // }
-        req.taiKhoan = taiKhoanHienTai;
-        next();
     }
 
     async doiMatKhau(req, res, next) {
@@ -155,7 +159,7 @@ class AuthController {
             matKhauHetHan: { $gt: Date.now() }
         });
         if (!taiKhoan) {
-            return next(new AppError('Token đã hết hạn', 400));
+            return next(new AppError('Token đã hết hạn', 401));
         }
         taiKhoan.matKhau = req.body.matKhau;
         taiKhoan.xacNhanMatKhau = req.body.xacNhanMatKhau;
@@ -172,11 +176,15 @@ class AuthController {
     }
 
     kiemTraLoaiTaiKhoan(loaiTaiKhoan) {
-        return (req, res, next) => {
-            if (!loaiTaiKhoan.includes(req.taiKhoan.loaiTaiKhoan)) {
-                return next(new AppError('Bạn không có quyền truy cập', 403));
+        try {
+            return (req, res, next) => {
+                if (!loaiTaiKhoan.includes(req.taiKhoan.loaiTaiKhoan)) {
+                    return next(new AppError('Bạn không có quyền truy cập', 403));
+                }
+                next();
             }
-            next();
+        } catch (error) {
+            next(error);
         }
     }
 }

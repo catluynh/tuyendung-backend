@@ -3,7 +3,7 @@ const router = express.Router();
 const authController = require('../controllers/authControler');
 const tinTuyenDungController = require('../controllers/tinTuyenDungController')
 
-//router.use(authController.protect);
+// router.use(authController.protect);
 // router.use(authController.kiemTraLoaiTaiKhoan('nhà tuyển dụng'));
 
 

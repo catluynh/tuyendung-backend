@@ -12,9 +12,9 @@ const sendEmail = async (options) => {
   });
   // 2. Define the email option
   const mailOptions = {
-    from: 'QTV Support <qtv.support@gmail.con>',
+    from: 'QTV Support <qtv.support@gmail.com>',
     to: options.email,
-    subject: options.subject,
+    subject: options.subject, 
     text: options.message,
     // html:
   };
