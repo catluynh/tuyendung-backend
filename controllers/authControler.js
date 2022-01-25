@@ -28,6 +28,10 @@ class AuthController {
                 return next(new AppError('Tài khoản hoặc mật khẩu không đúng', 401));
             }
 
+            if (taiKhoan.trangThai === false) {
+                return next(new AppError('Tài khoản đã bị khóa', 401));
+            }
+
             // gửi data, token cho client
             const token = createToken(taiKhoan._id);
             taiKhoan.matKhau = undefined;
