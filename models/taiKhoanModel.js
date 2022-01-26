@@ -49,24 +49,25 @@ const TaiKhoan = new Schema({
         type: Date,
         default: Date.now()
     },
-    matKhauThayDoi: Date,
-    matKhauRandomToken: String,
-    matKhauHetHan: Date,
+    ngayDoiMatKhau: Date,
+    tokenNgauNhien: String,
+    //ngày hết hạn token khi thay đổi mật khẩu (10p)
+    ngayHetHan: Date,
 })
 
 TaiKhoan.pre('save', async function (next) {
     // Chạy khi mật khẩu cập nhật 
-    if (!this.isModified('matKhau')) return next()
-    this.matKhau = await bcrypt.hash(this.matKhau, 12)
+    if (!this.isModified('matKhau')) return next();
+    this.matKhau = await bcrypt.hash(this.matKhau, 12);
     this.xacNhanMatKhau = undefined;
     next();
 })
 
 TaiKhoan.methods.randomToken = function () {
-    const randomToken = crypto.randomBytes(32).toString('hex');
-    this.matKhauRandomToken = crypto.createHash('sha256').update(randomToken).digest('hex');
-    this.matKhauHetHan = Date.now() + 10 * 60 * 1000; //10 phút 
-    return randomToken;
+    const chuoiNgauNhien = crypto.randomBytes(32).toString('hex');
+    this.tokenNgauNhien = crypto.createHash('sha256').update(chuoiNgauNhien).digest('hex');
+    this.ngayHetHan = Date.now() + 10 * 60 * 1000; //10 phút 
+    return chuoiNgauNhien;
 }
 
 TaiKhoan.methods.kiemTraMatKhau = async function (matKhauHienTai, matKhau) {

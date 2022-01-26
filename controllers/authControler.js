@@ -146,8 +146,8 @@ class AuthController {
                 message: 'Vui lòng kiểm tra email để đặt lại mật khẩu',
             });
         } catch (error) {
-            taiKhoan.matKhauRandomToken = undefined;
-            taiKhoan.matKhauHetHan = undefined;
+            taiKhoan.tokenNgauNhien = undefined;
+            taiKhoan.ngayHetHan = undefined;
             return next(new AppError('Lỗi. Vui lòng thử lại sau'), 500);
         }
     }
@@ -160,18 +160,21 @@ class AuthController {
     }
 
     async datLaiMatKhau(req, res, next) {
+        // xác thực token (băm token)
         const hashedToken = crypto.createHash('sha256').update(req.params.token).digest('hex');
+
+        //tìm tài khoản thay đổi mật khẩu theo token và ngày hết hạn token > ngày giờ hiện tại
         const taiKhoan = await TaiKhoan.findOne({
-            matKhauRandomToken: hashedToken,
-            matKhauHetHan: { $gt: Date.now() }
+            tokenNgauNhien: hashedToken,
+            ngayHetHan: { $gt: Date.now() }
         });
         if (!taiKhoan) {
             return next(new AppError('Token đã hết hạn', 401));
         }
         taiKhoan.matKhau = req.body.matKhau;
         taiKhoan.xacNhanMatKhau = req.body.xacNhanMatKhau;
-        taiKhoan.matKhauRandomToken = undefined;
-        taiKhoan.matKhauHetHan = undefined;
+        taiKhoan.tokenNgauNhien = undefined;
+        taiKhoan.ngayHetHan = undefined;
         await taiKhoan.save();
 
         const token = createToken(taiKhoan._id);
