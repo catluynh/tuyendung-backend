@@ -41,43 +41,18 @@ class ThongKeController {
     }
 
     async tinTuyenDung(req, res, next) {
+        console.log(req.query);
         await TinTuyenDung.aggregate([
             {
                 $group: {
-                    _id: '$trangThai',
+                    _id: '$' + req.query.field + '',
                     soLuong: { $sum: 1 }
                 }
-            },
-            {
-                $replaceRoot: {
-                    newRoot: { trangThai: "$_id", soLuong: '$soLuong' }
-                }
             }
-        ]).then(datas => {
-            let sLTinChoDuyet, sLTinDaDuyet, sLTinDungTuyen, sLTinKhoa;
-            datas.map(data => {
-                if (data.trangThai == Enum.TRANG_THAI_TIN.CHO_DUYET) {
-                    sLTinChoDuyet = data.soLuong;
-                }
-                else if (data.trangThai == Enum.TRANG_THAI_TIN.DA_DUYET) {
-                    sLTinDaDuyet = data.soLuong;
-                }
-                else if (data.trangThai == Enum.TRANG_THAI_TIN.DUNG_TUYEN) {
-                    sLTinDungTuyen = data.soLuong;
-                } else {
-                    sLTinKhoa = data.soLuong;
-                }
-            })
-
+        ]).then(data => {
             res.status(200).json({
                 status: 'success',
-                results: (sLTinChoDuyet || 0) + (sLTinDaDuyet || 0) + (sLTinDungTuyen || 0) + (sLTinKhoa || 0),
-                data: {
-                    sLTinChoDuyet,
-                    sLTinDaDuyet,
-                    sLTinDungTuyen,
-                    sLTinKhoa
-                }
+                data
             })
         }).catch(next);
     }
