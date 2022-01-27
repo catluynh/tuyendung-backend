@@ -1,5 +1,5 @@
 const LOAI_TAI_KHOAN = {
-  UNG_TUYEN_VIEN: 'ứng tuyển viên',
+  UNG_TUYEN_VIEN: 'Ứng tuyển viên',
   NHA_TUYEN_DUNG: 'Nhà tuyển dụng',
   QUAN_TRI_VIEN: 'Quản trị viên',
 };
