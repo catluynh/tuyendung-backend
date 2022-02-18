@@ -1,6 +1,7 @@
 const AppError = require('../utils/appError');
 const TaiKhoan = require('../models/taiKhoanModel');
 const QuanTriVien = require('../models/quanTriVienModel');
+const Enum = require('../utils/enum');
 
 class QuanTriVienController {
     async getAll(req, res, next) {
@@ -86,6 +87,7 @@ class QuanTriVienController {
     async moTaiKhoan(req, res, next) {
         await TaiKhoan.findById(req.params.id)
             .then(data => {
+                console.log(data)
                 if (!data) {
                     return next(new AppError('Không tìm thấy', 404))
                 }

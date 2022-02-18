@@ -3,7 +3,6 @@ class authSocket {
     demo(io) {
         let listUsers = {};
         io.on('connection', (socket) => {
-            console.log(socket.taiKhoanId)
             socket.emit('welcome', {
                 message: 'Connected !!!!'
             });

@@ -1,7 +1,7 @@
 const LOAI_TAI_KHOAN = {
-  UNG_TUYEN_VIEN: 'Ứng tuyển viên',
-  NHA_TUYEN_DUNG: 'Nhà tuyển dụng',
-  QUAN_TRI_VIEN: 'Quản trị viên',
+  UNG_TUYEN_VIEN: 'ứng tuyển viên',
+  NHA_TUYEN_DUNG: 'nhà tuyển dụng',
+  QUAN_TRI_VIEN: 'quản trị viên'
 };
 
 const XEP_LOAI = {
