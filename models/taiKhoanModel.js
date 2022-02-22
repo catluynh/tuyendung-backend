@@ -41,6 +41,10 @@ const TaiKhoan = new Schema({
         type: Boolean,
         default: true
     },
+    xacThucTaiKhoan: {
+        type: Boolean,
+        default: false
+    },
     loaiTaiKhoan: {
         type: String,
         enum: Enum.LOAI_TAI_KHOAN

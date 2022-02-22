@@ -33,6 +33,11 @@ class AuthController {
                 return next(new AppError('Tài khoản đã bị khóa', 401));
             }
 
+            //Kiểm tra tài khoàn bị khóa
+            if (taiKhoan.xacThucTaiKhoan === false) {
+                return next(new AppError('Tài khoản chưa xác thực. Vui lòng truy cập vào email của bạn để xác thực.', 401));
+            }
+
             // gửi data, token cho client
             const token = createToken(taiKhoan._id);
             taiKhoan.matKhau = undefined;
@@ -47,17 +52,44 @@ class AuthController {
     async dangKi(req, res, next) {
         try {
             const taiKhoanMoi = await TaiKhoan.create(req.body);
+            //Không hiện mật khẩu
             taiKhoanMoi.matKhau = undefined;
-            const token = createToken(taiKhoanMoi._id);
+
+            // Gửi email 
+            const formURL = `${req.protocol}://${req.get('host')}/auth/xacThucTaiKhoan/${taiKhoanMoi.email}`;
+            const message = `Click vào đây để xác thực tài khoản: ${formURL}`;
+
+            await sendEmail({
+                email: taiKhoanMoi.email,
+                subject: 'Xác thực tài khoản',
+                message,
+            });
+
+
             res.status(201).json({
                 status: 'success',
-                token,
+                //token,
                 taiKhoan: taiKhoanMoi
             })
         } catch (error) {
             return next(error);
         }
+    }
 
+    async xacThucTaiKhoan(req, res, next) {
+        try {
+            const taiKhoan = await TaiKhoan.findOne({ 'email': req.params.email });
+            taiKhoan.xacThucTaiKhoan = true;
+            taiKhoan.save();
+            const token = createToken(taiKhoan._id);
+            res.status(201).json({
+                status: 'success',
+                token,
+                taiKhoan: taiKhoan
+            })
+        } catch (error) {
+            return next(error);
+        }
     }
 
     async protect(req, res, next) {

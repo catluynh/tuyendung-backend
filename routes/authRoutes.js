@@ -4,6 +4,7 @@ const authController = require('../controllers/authControler')
 
 router.post('/dangNhap', authController.dangNhap);
 router.post('/dangKi', authController.dangKi);
+router.get('/xacThucTaiKhoan/:email', authController.xacThucTaiKhoan);
 router.post('/quenMatKhau', authController.quenMatKhau);
 router.get('/showFormQuenMatKhau/:token', authController.showFormQuenMatKhau);
 router.patch('/datLaiMatKhau/:token', authController.datLaiMatKhau);
