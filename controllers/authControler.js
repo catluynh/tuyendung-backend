@@ -44,7 +44,7 @@ class AuthController {
             res.status(200).json({
                 status: 'success', token, taiKhoan: taiKhoan
             });
-        } catch (error) {
+        } catch (error) {  
             return next();
         }
     }
@@ -57,7 +57,7 @@ class AuthController {
 
             // Gửi email 
             const formURL = `${req.protocol}://${req.get('host')}/auth/xacThucTaiKhoan/${taiKhoanMoi.email}`;
-            const message = `Click vào đây để xác thực tài khoản: ${formURL}`;
+            const message = `Cảm ơn đã đăng kí tài khoản. Click vào đây để xác thực tài khoản: ${formURL}`;
 
             await sendEmail({
                 email: taiKhoanMoi.email,
