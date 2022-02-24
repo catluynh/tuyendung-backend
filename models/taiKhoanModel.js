@@ -54,9 +54,11 @@ const TaiKhoan = new Schema({
         default: Date.now()
     },
     ngayDoiMatKhau: Date,
-    tokenNgauNhien: String,
-    //ngày hết hạn token khi thay đổi mật khẩu (10p)
-    ngayHetHan: Date,
+
+    yeuCauKichHoat: {
+        maKichHoat: String,
+        thoiGianMaKichHoat: Date,
+    }
 })
 
 TaiKhoan.pre('save', async function (next) {
@@ -69,8 +71,8 @@ TaiKhoan.pre('save', async function (next) {
 
 TaiKhoan.methods.randomToken = function () {
     const chuoiNgauNhien = crypto.randomBytes(32).toString('hex');
-    this.tokenNgauNhien = crypto.createHash('sha256').update(chuoiNgauNhien).digest('hex');
-    this.ngayHetHan = Date.now() + 10 * 60 * 1000; //10 phút 
+    this.yeuCauKichHoat.maKichHoat = crypto.createHash('sha256').update(chuoiNgauNhien).digest('hex');
+    this.yeuCauKichHoat.thoiGianMaKichHoat = Date.now() + 10 * 60 * 1000; //10 phút 
     return chuoiNgauNhien;
 }
 

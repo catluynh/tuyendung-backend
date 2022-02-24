@@ -44,7 +44,7 @@ class AuthController {
             res.status(200).json({
                 status: 'success', token, taiKhoan: taiKhoan
             });
-        } catch (error) {  
+        } catch (error) {
             return next();
         }
     }
@@ -52,24 +52,31 @@ class AuthController {
     async dangKi(req, res, next) {
         try {
             const taiKhoanMoi = await TaiKhoan.create(req.body);
-            //Không hiện mật khẩu
-            taiKhoanMoi.matKhau = undefined;
+
+            const taiKhoan = await TaiKhoan.findOne({ 'email': taiKhoanMoi.email });
+
+            // Tạo random token
+            const randomToken = taiKhoan.randomToken();
+            await taiKhoan.save({ validateBeforeSave: false });
 
             // Gửi email 
-            const formURL = `${req.protocol}://${req.get('host')}/auth/xacThucTaiKhoan/${taiKhoanMoi.email}`;
+            const formURL = `${req.protocol}://${req.get('host')}/auth/xacThucTaiKhoan/${randomToken}`;
             const message = `Cảm ơn đã đăng kí tài khoản. Click vào đây để xác thực tài khoản: ${formURL}`;
 
             await sendEmail({
-                email: taiKhoanMoi.email,
+                email: taiKhoan.email,
                 subject: 'Xác thực tài khoản',
                 message,
             });
 
+            //Không hiện mật khẩu
+            taiKhoan.matKhau = undefined;
+            taiKhoan.yeuCauKichHoat = undefined;
 
             res.status(201).json({
                 status: 'success',
                 //token,
-                taiKhoan: taiKhoanMoi
+                taiKhoan: taiKhoan
             })
         } catch (error) {
             return next(error);
@@ -78,9 +85,23 @@ class AuthController {
 
     async xacThucTaiKhoan(req, res, next) {
         try {
-            const taiKhoan = await TaiKhoan.findOne({ 'email': req.params.email });
+            // xác thực token (băm token)
+            const hashedToken = crypto.createHash('sha256').update(req.params.token).digest('hex');
+
+            //tìm tài khoản thay đổi mật khẩu theo token và ngày hết hạn token > ngày giờ hiện tại
+            const taiKhoan = await TaiKhoan.findOne({
+                'yeuCauKichHoat.maKichHoat': hashedToken,
+                'yeuCauKichHoat.thoiGianMaKichHoat': { $gt: Date.now() }
+            });
+
+            if (!taiKhoan) {
+                return next(new AppError('Token đã hết hạn', 401));
+            }
             taiKhoan.xacThucTaiKhoan = true;
-            taiKhoan.save();
+            taiKhoan.yeuCauKichHoat = undefined;
+
+            await taiKhoan.save();
+
             const token = createToken(taiKhoan._id);
             res.status(201).json({
                 status: 'success',
@@ -178,8 +199,8 @@ class AuthController {
                 message: 'Vui lòng kiểm tra email để đặt lại mật khẩu',
             });
         } catch (error) {
-            taiKhoan.tokenNgauNhien = undefined;
-            taiKhoan.ngayHetHan = undefined;
+            taiKhoan.yeuCauKichHoat.maKichHoat = undefined;
+            taiKhoan.yeuCauKichHoat.thoiGianMaKichHoat = undefined;
             return next(new AppError('Lỗi. Vui lòng thử lại sau'), 500);
         }
     }
@@ -197,16 +218,17 @@ class AuthController {
 
         //tìm tài khoản thay đổi mật khẩu theo token và ngày hết hạn token > ngày giờ hiện tại
         const taiKhoan = await TaiKhoan.findOne({
-            tokenNgauNhien: hashedToken,
-            ngayHetHan: { $gt: Date.now() }
+            'yeuCauKichHoat.maKichHoat': hashedToken,
+            'yeuCauKichHoat.thoiGianMaKichHoat': { $gt: Date.now() }
         });
+
         if (!taiKhoan) {
             return next(new AppError('Token đã hết hạn', 401));
         }
         taiKhoan.matKhau = req.body.matKhau;
         taiKhoan.xacNhanMatKhau = req.body.xacNhanMatKhau;
-        taiKhoan.tokenNgauNhien = undefined;
-        taiKhoan.ngayHetHan = undefined;
+        taiKhoan.yeuCauKichHoat.maKichHoat = undefined;
+        taiKhoan.yeuCauKichHoat.thoiGianMaKichHoat = undefined;
         await taiKhoan.save();
 
         const token = createToken(taiKhoan._id);
