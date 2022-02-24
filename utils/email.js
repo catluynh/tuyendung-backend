@@ -8,13 +8,17 @@ const sendEmail = async (options) => {
       user: process.env.EMAIL_USERNAME,
       pass: process.env.EMAIL_PASSWORD,
     },
+    secure: false,
+    ignoreTLS: false,
+    tls: { rejectUnauthorized: true },
+    debug: false,
     // Active in gmail "less secure app" option
   });
   // 2. Define the email option
   const mailOptions = {
     from: 'QTV Support <qtv.support@gmail.com>',
     to: options.email,
-    subject: options.subject, 
+    subject: options.subject,
     text: options.message,
     // html:
   };
