@@ -31,7 +31,9 @@ class NhaTuyenDungController {
         await NhaTuyenDung.findById(req.params.id).populate('taiKhoan')
             .then(data => {
                 if (!data) {
-                    return next(new AppError('Nhà tuyển dụng không tìm thấy', 404))
+                    return res.status(404).json({
+                        message: 'Không tìm thấy',
+                    });
                 }
                 res.status(201).json({
                     status: 'success',
@@ -57,7 +59,9 @@ class NhaTuyenDungController {
         await NhaTuyenDung.findByIdAndRemove(req.params.id)
             .then(data => {
                 if (!data) {
-                    return next(new AppError('Nhà tuyển dụng không tìm thấy', 404))
+                    return res.status(404).json({
+                        message: 'Không tìm thấy',
+                    });
                 }
                 res.status(201).json({
                     status: 'success',

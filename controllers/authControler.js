@@ -19,23 +19,31 @@ class AuthController {
 
             //Kiểm tra nếu tồn tại tên đăng nhập và mật khẩu
             if (!tenDangNhap || !matKhau) {
-                return next(new AppError('Tài khoản và mật khẩu không được để trống', 400));
+                return res.status(400).json({
+                    message: 'Tài khoản và mật khẩu không được để trống',
+                });
             }
 
             //Kiểm tra nếu tồn tại tài khoản 
             const taiKhoan = await TaiKhoan.findOne({ tenDangNhap }).select('+matKhau');
             if (!taiKhoan || !(await taiKhoan.kiemTraMatKhau(matKhau, taiKhoan.matKhau))) {
-                return next(new AppError('Tài khoản hoặc mật khẩu không đúng', 401));
+                return res.status(401).json({
+                    message: 'Tài khoản hoặc mật khẩu không đúng',
+                });
             }
 
             //Kiểm tra tài khoàn bị khóa
             if (taiKhoan.trangThai === false) {
-                return next(new AppError('Tài khoản đã bị khóa', 401));
+                return res.status(403).json({
+                    message: 'Tài khoản đã bị khóa',
+                });
             }
 
             //Kiểm tra tài khoàn bị khóa
             if (taiKhoan.xacThucTaiKhoan === false) {
-                return next(new AppError('Tài khoản chưa xác thực. Vui lòng truy cập vào email của bạn để xác thực.', 401));
+                return res.status(403).json({
+                    message: 'Tài khoản chưa xác thực. Vui lòng truy cập vào email của bạn để xác thực.',
+                });
             }
 
             // gửi data, token cho client
@@ -79,7 +87,9 @@ class AuthController {
                 taiKhoan: taiKhoan
             })
         } catch (error) {
-            return next(new AppError('Tài khoản đã tồn tại', 401));
+            return res.status(400).json({
+                message: error,
+            });
         }
     }
 
@@ -101,7 +111,9 @@ class AuthController {
                     'yeuCauKichHoat.thoiGianMaKichHoat': { $lte: Date.now() }
                 });
                 await TaiKhoan.findByIdAndDelete(taiKhoanHetHan._id);
-                return next(new AppError('Token đã hết hạn. Vui lòng tạo lại tài khoản', 401));
+                return res.status(403).json({
+                    message: 'Token đã hết hạn. Vui lòng tạo lại tài khoản',
+                });
             }
             taiKhoan.xacThucTaiKhoan = true;
             taiKhoan.yeuCauKichHoat = undefined;
@@ -116,7 +128,9 @@ class AuthController {
                 taiKhoan: taiKhoan
             })
         } catch (error) {
-            return next(error);
+            return res.status(500).json({
+                message: error,
+            });
         }
     }
 
@@ -128,7 +142,9 @@ class AuthController {
                 token = req.headers.authorization.split(' ')[1];
             }
             if (!token) {
-                return next(new AppError('Vui lòng đăng nhập 😫', 401));
+                return res.status(401).json({
+                    message: 'Vui lòng đăng nhập lại.',
+                });
             }
             // Xác minh token
             const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
@@ -136,7 +152,9 @@ class AuthController {
             // 3) Kiểm tra đăng nhập
             const taiKhoanHienTai = await TaiKhoan.findById(decoded.id);
             if (!taiKhoanHienTai) {
-                return next(new AppError('Vui lòng đăng nhập 😫', 401));
+                return res.status(401).json({
+                    message: 'Vui lòng đăng nhập.',
+                });
             }
 
             // Kiểm tra tài khoản đã thay đổi mật khẩu sau khi token đc cấp
@@ -148,7 +166,9 @@ class AuthController {
             req.taiKhoan = taiKhoanHienTai;
             next();
         } catch (error) {
-            next(new AppError('Hết phiên đăng nhâp. Vui lòng đăng nhập', 401));
+            return res.status(500).json({
+                message: error,
+            });
         }
     }
 
@@ -158,11 +178,16 @@ class AuthController {
 
             //Kiểm tra mật khẩu
             if (!(await taiKhoan.kiemTraMatKhau(req.body.matKhauHienTai, taiKhoan.matKhau))) {
-                return next(new AppError('Bạn nhập sai mật khẩu hiện tại', 401));
+                return res.status(401).json({
+                    message: 'Bạn nhập sai mật khẩu hiện tại',
+                });
             }
 
+            //kiểm tra mật khẩu đổi trùng với mật khẩu hiện tại
             if ((await taiKhoan.kiemTraMatKhau(req.body.matKhau, taiKhoan.matKhau))) {
-                return next(new AppError('Mật khẩu trùng với mật khẩu hiện tại', 401));
+                return res.status(401).json({
+                    message: 'Mật khẩu trùng với mật khẩu hiện tại',
+                });
             }
 
             taiKhoan.matKhau = req.body.matKhau;
@@ -176,7 +201,9 @@ class AuthController {
                 taiKhoan
             })
         } catch (error) {
-            next(error)
+            return res.status(500).json({
+                message: error,
+            });
         }
 
     }
@@ -185,7 +212,9 @@ class AuthController {
         const taiKhoan = await TaiKhoan.findOne({ 'email': req.body.email });
         try {
             if (!taiKhoan) {
-                return next(new AppError('Email không tồn tại'));
+                return res.status(401).json({
+                    message: 'Email không tồn tại',
+                });
             }
 
             // Tạo random token
@@ -208,7 +237,9 @@ class AuthController {
         } catch (error) {
             taiKhoan.yeuCauKichHoat.maKichHoat = undefined;
             taiKhoan.yeuCauKichHoat.thoiGianMaKichHoat = undefined;
-            return next(new AppError('Lỗi. Vui lòng thử lại sau'), 500);
+            return res.status(500).json({
+                message: error,
+            });
         }
     }
 
@@ -220,42 +251,54 @@ class AuthController {
     }
 
     async datLaiMatKhau(req, res, next) {
-        // xác thực token (băm token)
-        const hashedToken = crypto.createHash('sha256').update(req.params.token).digest('hex');
+        try {
+            // xác thực token (băm token)
+            const hashedToken = crypto.createHash('sha256').update(req.params.token).digest('hex');
 
-        //tìm tài khoản thay đổi mật khẩu theo token và ngày hết hạn token > ngày giờ hiện tại
-        const taiKhoan = await TaiKhoan.findOne({
-            'yeuCauKichHoat.maKichHoat': hashedToken,
-            'yeuCauKichHoat.thoiGianMaKichHoat': { $gt: Date.now() }
-        });
+            //tìm tài khoản thay đổi mật khẩu theo token và ngày hết hạn token > ngày giờ hiện tại
+            const taiKhoan = await TaiKhoan.findOne({
+                'yeuCauKichHoat.maKichHoat': hashedToken,
+                'yeuCauKichHoat.thoiGianMaKichHoat': { $gt: Date.now() }
+            });
 
-        if (!taiKhoan) {
-            return next(new AppError('Token đã hết hạn', 401));
+            if (!taiKhoan) {
+                return res.status(401).json({
+                    message: 'Token đã hết hạn',
+                });
+            }
+            taiKhoan.matKhau = req.body.matKhau;
+            taiKhoan.xacNhanMatKhau = req.body.xacNhanMatKhau;
+            taiKhoan.yeuCauKichHoat.maKichHoat = undefined;
+            taiKhoan.yeuCauKichHoat.thoiGianMaKichHoat = undefined;
+            await taiKhoan.save();
+
+            const token = createToken(taiKhoan._id);
+            res.status(201).json({
+                status: 'success',
+                token,
+                taiKhoan
+            })
+        } catch (error) {
+            return res.status(500).json({
+                message: error,
+            });
         }
-        taiKhoan.matKhau = req.body.matKhau;
-        taiKhoan.xacNhanMatKhau = req.body.xacNhanMatKhau;
-        taiKhoan.yeuCauKichHoat.maKichHoat = undefined;
-        taiKhoan.yeuCauKichHoat.thoiGianMaKichHoat = undefined;
-        await taiKhoan.save();
-
-        const token = createToken(taiKhoan._id);
-        res.status(201).json({
-            status: 'success',
-            token,
-            taiKhoan
-        })
     }
 
     kiemTraLoaiTaiKhoan(loaiTaiKhoan) {
         try {
             return (req, res, next) => {
                 if (!loaiTaiKhoan.includes(req.taiKhoan.loaiTaiKhoan)) {
-                    return next(new AppError('Bạn không có quyền truy cập', 403));
+                    return res.status(403).json({
+                        message: 'Bạn không có quyền truy cập',
+                    });
                 }
                 next();
             }
         } catch (error) {
-            next(error);
+            return res.status(500).json({
+                message: error,
+            });
         }
     }
 }

@@ -30,7 +30,9 @@ class NganhNgheController {
         await NganhNghe.findById(req.params.id)
             .then(data => {
                 if (!data) {
-                    return next(new AppError('Không tìm thấy', 404))
+                     return res.status(404).json({
+                        message: 'Không tìm thấy',
+                    });
                 }
                 res.status(201).json({
                     status: 'success',
@@ -56,7 +58,9 @@ class NganhNgheController {
         await NganhNghe.findByIdAndRemove(req.params.id)
             .then(data => {
                 if (!data) {
-                    return next(new AppError('Không tìm thấy', 404))
+                     return res.status(404).json({
+                        message: 'Không tìm thấy',
+                    });
                 }
                 res.status(201).json({
                     status: 'success',
