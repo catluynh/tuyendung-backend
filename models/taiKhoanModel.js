@@ -30,7 +30,6 @@ const TaiKhoan = new Schema({
     xacNhanMatKhau: {
         type: String,
         validate: {
-            //Chỉ khi tạo
             validator: function (el) {
                 return el === this.matKhau
             },

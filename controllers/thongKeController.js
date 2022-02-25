@@ -21,10 +21,10 @@ class ThongKeController {
         ]).exec().then(datas => {
             let sLNhaTuyenDung, sLUngTuyenVien;
             datas.map(data => {
-                if (data.loaiTaiKhoan == Enum.LOAI_TAI_KHOAN.NHA_TUYEN_DUNG.toLowerCase()) {
+                if (data.loaiTaiKhoan == Enum.LOAI_TAI_KHOAN.NHA_TUYEN_DUNG) {
                     sLNhaTuyenDung = data.soLuong;
                 }
-                if (data.loaiTaiKhoan == Enum.LOAI_TAI_KHOAN.UNG_TUYEN_VIEN.toLowerCase()) {
+                if (data.loaiTaiKhoan == Enum.LOAI_TAI_KHOAN.UNG_TUYEN_VIEN) {
                     sLUngTuyenVien = data.soLuong;
                 }
             })
