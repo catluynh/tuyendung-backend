@@ -94,38 +94,5 @@ class ThongKeController {
             })
         }).catch(next);
     }
-
-    // top 12 tin ứng tuyển nhiều nhất
-    async tinNoiBat(req, res, next) {
-        console.log(req.query);
-        const page = req.query.page * 1 || 1
-        const limit = 12;
-        const skip = (page - 1) * limit;
-        await DonUngTuyen.aggregate([
-            {
-                $group: {
-                    _id: '$tinTuyenDung',
-                    soLuong: { $sum: 1 }
-                }
-            },
-            {
-                $replaceRoot: {
-                    newRoot: { trangThai: "$_id", soLuong: '$soLuong' }
-                }
-            }
-        ])
-            .limit(limit)
-            .skip(skip)
-            .sort({ 'soLuong': -1 })
-            .exec()
-            .then(data => {
-                res.status(200).json({
-                    status: 'success',
-                    results: data.length,
-                    data
-                })
-            })
-            .catch(next);
-    };
 }
 module.exports = new ThongKeController;

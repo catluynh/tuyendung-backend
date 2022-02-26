@@ -137,5 +137,37 @@ class DonUngTuyenController {
             })
             .catch(next);
     };
+
+    // top 12 tin ứng tuyển nhiều nhất
+    async tinNoiBat(req, res, next) {
+        const limit = 12;
+        await DonUngTuyen.aggregate([
+            {
+                $group: {
+                    _id: '$tinTuyenDung',
+                    soLuong: { $sum: 1 }
+                }
+            },
+            {
+                $replaceRoot: {
+                    newRoot: { idTinTuyenDung: "$_id", soLuong: '$soLuong' }
+                }
+            }
+        ])
+            .limit(limit)
+            .sort({ 'soLuong': -1 })
+            .exec()
+            .then(async datas => {
+                const dsTin = datas.map(async data => {
+                    return await TinTuyenDung.findById(data.idTinTuyenDung);
+                })
+                res.status(200).json({
+                    status: 'success',
+                    results: datas.length,
+                    data: await Promise.all(dsTin)
+                })
+            })
+            .catch(next);
+    };
 }
 module.exports = new DonUngTuyenController;
