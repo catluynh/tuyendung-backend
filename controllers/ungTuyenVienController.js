@@ -31,7 +31,8 @@ class UngTuyenVienController {
         await UngTuyenVien.findById(req.params.id).populate('taiKhoan')
             .then(data => {
                 if (!data) {
-                     return res.status(404).json({
+                    return res.status(404).json({
+                        status: 'error',
                         message: 'Không tìm thấy',
                     });
                 }
@@ -59,7 +60,8 @@ class UngTuyenVienController {
         await UngTuyenVien.findByIdAndRemove(req.params.id)
             .then(data => {
                 if (!data) {
-                     return res.status(404).json({
+                    return res.status(404).json({
+                        status: 'error',
                         message: 'Không tìm thấy',
                     });
                 }

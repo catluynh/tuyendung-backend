@@ -20,6 +20,7 @@ class AuthController {
             //Kiểm tra nếu tồn tại tên đăng nhập và mật khẩu
             if (!tenDangNhap || !matKhau) {
                 return res.status(400).json({
+                    status: 'error',
                     message: 'Tài khoản và mật khẩu không được để trống',
                 });
             }
@@ -28,6 +29,7 @@ class AuthController {
             const taiKhoan = await TaiKhoan.findOne({ tenDangNhap }).select('+matKhau');
             if (!taiKhoan || !(await taiKhoan.kiemTraMatKhau(matKhau, taiKhoan.matKhau))) {
                 return res.status(401).json({
+                    status: 'error',
                     message: 'Tài khoản hoặc mật khẩu không đúng',
                 });
             }
@@ -35,6 +37,7 @@ class AuthController {
             //Kiểm tra tài khoàn bị khóa
             if (taiKhoan.trangThai === false) {
                 return res.status(403).json({
+                    status: 'error',
                     message: 'Tài khoản đã bị khóa',
                 });
             }
@@ -42,6 +45,7 @@ class AuthController {
             //Kiểm tra tài khoàn bị khóa
             if (taiKhoan.xacThucTaiKhoan === false) {
                 return res.status(403).json({
+                    status: 'error',
                     message: 'Tài khoản chưa xác thực. Vui lòng truy cập vào email của bạn để xác thực.',
                 });
             }
@@ -112,6 +116,7 @@ class AuthController {
                 });
                 await TaiKhoan.findByIdAndDelete(taiKhoanHetHan._id);
                 return res.status(403).json({
+                    status: 'error',
                     message: 'Token đã hết hạn. Vui lòng tạo lại tài khoản',
                 });
             }
@@ -143,6 +148,7 @@ class AuthController {
             }
             if (!token) {
                 return res.status(401).json({
+                    status: 'error',
                     message: 'Vui lòng đăng nhập lại.',
                 });
             }
@@ -153,6 +159,7 @@ class AuthController {
             const taiKhoanHienTai = await TaiKhoan.findById(decoded.id);
             if (!taiKhoanHienTai) {
                 return res.status(401).json({
+                    status: 'error',
                     message: 'Vui lòng đăng nhập.',
                 });
             }
@@ -179,6 +186,7 @@ class AuthController {
             //Kiểm tra mật khẩu
             if (!(await taiKhoan.kiemTraMatKhau(req.body.matKhauHienTai, taiKhoan.matKhau))) {
                 return res.status(401).json({
+                    status: 'error',
                     message: 'Bạn nhập sai mật khẩu hiện tại',
                 });
             }
@@ -186,6 +194,7 @@ class AuthController {
             //kiểm tra mật khẩu đổi trùng với mật khẩu hiện tại
             if ((await taiKhoan.kiemTraMatKhau(req.body.matKhau, taiKhoan.matKhau))) {
                 return res.status(401).json({
+                    status: 'error',
                     message: 'Mật khẩu trùng với mật khẩu hiện tại',
                 });
             }
@@ -213,6 +222,7 @@ class AuthController {
         try {
             if (!taiKhoan) {
                 return res.status(401).json({
+                    status: 'error',
                     message: 'Email không tồn tại',
                 });
             }
@@ -232,6 +242,7 @@ class AuthController {
             });
             res.status(200).json({
                 status: 'success',
+                status: 'error',
                 message: 'Vui lòng kiểm tra email để đặt lại mật khẩu',
             });
         } catch (error) {
@@ -263,6 +274,7 @@ class AuthController {
 
             if (!taiKhoan) {
                 return res.status(401).json({
+                    status: 'error',
                     message: 'Token đã hết hạn',
                 });
             }
@@ -290,6 +302,7 @@ class AuthController {
             return (req, res, next) => {
                 if (!loaiTaiKhoan.includes(req.taiKhoan.loaiTaiKhoan)) {
                     return res.status(403).json({
+                        status: 'error',
                         message: 'Bạn không có quyền truy cập',
                     });
                 }

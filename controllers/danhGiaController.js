@@ -31,6 +31,7 @@ class DanhGiaController {
             .then(data => {
                 if (!data) {
                     return res.status(404).json({
+                        status: 'error',
                         message: 'Không tìm thấy',
                     });
                 }
@@ -59,6 +60,7 @@ class DanhGiaController {
             .then(data => {
                 if (!data) {
                     return res.status(404).json({
+                        status: 'error',
                         message: 'Không tìm thấy',
                     });
                 }

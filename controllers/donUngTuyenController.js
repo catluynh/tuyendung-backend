@@ -34,7 +34,8 @@ class DonUngTuyenController {
         await DonUngTuyen.findById(req.params.id)
             .then(data => {
                 if (!data) {
-                     return res.status(404).json({
+                    return res.status(404).json({
+                        status: 'error',
                         message: 'Không tìm thấy',
                     });
                 }
@@ -63,6 +64,7 @@ class DonUngTuyenController {
             .then(data => {
                 if (!data) {
                     return res.status(404).json({
+                        status: 'error',
                         message: 'Không tìm thấy',
                     });
                 }

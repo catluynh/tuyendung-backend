@@ -32,6 +32,7 @@ class NhaTuyenDungController {
             .then(data => {
                 if (!data) {
                     return res.status(404).json({
+                        status: 'error',
                         message: 'Không tìm thấy',
                     });
                 }
@@ -60,6 +61,7 @@ class NhaTuyenDungController {
             .then(data => {
                 if (!data) {
                     return res.status(404).json({
+                        status: 'error',
                         message: 'Không tìm thấy',
                     });
                 }

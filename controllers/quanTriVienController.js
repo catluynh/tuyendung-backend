@@ -32,7 +32,8 @@ class QuanTriVienController {
         await QuanTriVien.findById(req.params.id)
             .then(data => {
                 if (!data) {
-                     return res.status(404).json({
+                    return res.status(404).json({
+                        status: 'error',
                         message: 'Không tìm thấy',
                     });
                 }
@@ -60,7 +61,8 @@ class QuanTriVienController {
         await QuanTriVien.findByIdAndRemove(req.params.id)
             .then(data => {
                 if (!data) {
-                     return res.status(404).json({
+                    return res.status(404).json({
+                        status: 'error',
                         message: 'Không tìm thấy',
                     });
                 }
@@ -76,7 +78,8 @@ class QuanTriVienController {
         await TaiKhoan.findById(req.params.id)
             .then(data => {
                 if (!data) {
-                     return res.status(404).json({
+                    return res.status(404).json({
+                        status: 'error',
                         message: 'Không tìm thấy',
                     });
                 }
@@ -95,7 +98,8 @@ class QuanTriVienController {
             .then(data => {
                 console.log(data)
                 if (!data) {
-                     return res.status(404).json({
+                    return res.status(404).json({
+                        status: 'error',
                         message: 'Không tìm thấy',
                     });
                 }
