@@ -9,5 +9,7 @@ router.route('/tinTuyenDung')
     .get(thongKeController.tinTuyenDung)
 router.route('/donUngTuyen')
     .get(thongKeController.donUngTuyen)
+router.route('/tinNoiBat')
+    .get(thongKeController.tinNoiBat)
 
 module.exports = router;
