@@ -186,5 +186,25 @@ class TinTuyenDungController {
             })
             .catch(next);
     }
+
+    async timKiemViecLamTheoNganhNghe(req, res, next) {
+        const nganhNghe = await NganhNghe.find({
+            'linhVuc': req.params.idLinhVuc
+        });
+        await TinTuyenDung.find({ nganhNghe })
+            .then(data => {
+                if (!data) {
+                    return res.status(404).json({
+                        status: 'error',
+                        message: 'Không tìm thấy',
+                    });
+                }
+                res.status(201).json({
+                    status: 'success',
+                    data
+                })
+            })
+            .catch(next);
+    };
 }
 module.exports = new TinTuyenDungController;

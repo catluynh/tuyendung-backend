@@ -10,6 +10,9 @@ const tinTuyenDungController = require('../controllers/tinTuyenDungController')
 router.route('/timKiemTheoNhieuTieuChi')
     .get(tinTuyenDungController.timKiemTheoNhieuTieuChi)
 
+router.route('/timKiemViecLamTheoNganhNghe/:idLinhVuc')
+    .get(tinTuyenDungController.timKiemViecLamTheoNganhNghe)
+
 router.route('/timKiemTheoNhaTuyenDung')
     .get(authController.protect, tinTuyenDungController.timKiemTheoNhaTuyenDung)
 
