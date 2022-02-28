@@ -82,12 +82,18 @@ class DonUngTuyenController {
         const page = req.query.page * 1 || 1
         const limit = 5;
         const skip = (page - 1) * limit;
+        const total = await DonUngTuyen.find({ ungTuyenVien: req.taiKhoan._id }).count();
         await DonUngTuyen.find({ ungTuyenVien: req.taiKhoan._id })
             .limit(limit).skip(skip).exec()
             .then(data => {
                 res.status(200).json({
                     status: 'success',
                     results: data.length,
+                    pagination: {
+                        page,
+                        limit,
+                        total,
+                    },
                     data
                 })
             })
@@ -100,29 +106,29 @@ class DonUngTuyenController {
         const limit = 5;
         const skip = (page - 1) * limit;
         const nhaTuyenDung = await NhaTuyenDung.findById(req.taiKhoan._id);
+        //tìm kiếm tin theo nhà tuyển dụng
         await TinTuyenDung.find({ nhaTuyenDung })
             .then(async datas => {
+                //mảng 2 chiều
                 const dsDon = datas.map(async data => {
-                    return await DonUngTuyen.find({ tinTuyenDung: data._id })
-
+                    //tìm kiếm đã đơn ứng tuyển theo tin tuyển dụng, array
+                    return await DonUngTuyen.find({ tinTuyenDung: data._id });
                 })
+
+                let data = [];
+                const arr = await Promise.all(dsDon);
+                //lấy phần tử trong mảng 2 chiều
+                for (var i = 0; i < arr.length; i++) {
+                    for (var j = 0; j < arr[i].length; j++) {
+                        data = data.concat([arr[i][j]])
+                    }
+                }
                 res.status(200).json({
                     status: 'success',
-                    results: datas.length,
-                    data: await Promise.all(dsDon)
+                    data: data
                 })
             })
             .catch(next);
-
-        // await DonUngTuyen.find({ tinTuyenDung: req.params.id })
-        // .limit(limit).skip(skip).exec()
-        // .then(data => {
-        //     res.status(200).json({
-        //         status: 'success',
-        //         results: data.length,
-        //         data
-        //     })
-        // })
     };
 
     async timKiemTheoTinTuyenDung(req, res, next) {
@@ -130,12 +136,18 @@ class DonUngTuyenController {
         const page = req.query.page * 1 || 1
         const limit = 5;
         const skip = (page - 1) * limit;
+        const total = await DonUngTuyen.find({ tinTuyenDung: req.params.id }).count();
         await DonUngTuyen.find({ tinTuyenDung: req.params.id })
             .limit(limit).skip(skip).exec()
             .then(data => {
                 res.status(200).json({
                     status: 'success',
                     results: data.length,
+                    pagination: {
+                        page,
+                        limit,
+                        total,
+                    },
                     data
                 })
             })
@@ -170,36 +182,5 @@ class DonUngTuyenController {
             .catch(next);
     };
 
-    // top 12 tin ứng tuyển nhiều nhất
-    async tinNoiBat(req, res, next) {
-        const limit = 12;
-        await DonUngTuyen.aggregate([
-            {
-                $group: {
-                    _id: '$tinTuyenDung',
-                    soLuong: { $sum: 1 }
-                }
-            },
-            {
-                $replaceRoot: {
-                    newRoot: { idTinTuyenDung: "$_id", soLuong: '$soLuong' }
-                }
-            }
-        ])
-            .limit(limit)
-            .sort({ 'soLuong': -1 })
-            .exec()
-            .then(async datas => {
-                const dsTin = datas.map(async data => {
-                    return await TinTuyenDung.findById(data.idTinTuyenDung);
-                })
-                res.status(200).json({
-                    status: 'success',
-                    results: datas.length,
-                    data: await Promise.all(dsTin)
-                })
-            })
-            .catch(next);
-    };
 }
 module.exports = new DonUngTuyenController;

@@ -2,6 +2,7 @@ const TinTuyenDung = require('../models/tinTuyenDungModel');
 const NganhNghe = require('../models/nganhNgheModel');
 const LinhVuc = require('../models/linhVucModel');
 const NhaTuyenDung = require('../models/nhaTuyenDungModel');
+const DonUngTuyen = require('../models/donUngTuyenModel');
 const AppError = require('../utils/appError');
 const Enum = require('../utils/enum');
 
@@ -95,6 +96,15 @@ class TinTuyenDungController {
             linhVuc,
             "tenNganhNghe": { $regex: new RegExp(req.query.nganhNghe, "i") },
         })
+
+        const total = await TinTuyenDung.find({
+            nganhNghe,
+            "diaDiem.tinhThanhPho": { $regex: new RegExp(req.query.diaDiem, "i") },
+            "viTri": { $regex: new RegExp(req.query.viTri, "i") },
+            "soNamKinhNghiem": { $regex: new RegExp(req.query.soNamKinhNghiem, "i") },
+            "loaiCongViec": { $regex: new RegExp(req.query.loaiCongViec, "i") },
+        }).count();
+
         await TinTuyenDung.find({
             nganhNghe,
             "diaDiem.tinhThanhPho": { $regex: new RegExp(req.query.diaDiem, "i") },
@@ -106,6 +116,11 @@ class TinTuyenDungController {
                 res.status(200).json({
                     status: 'success',
                     results: data.length,
+                    pagination: {
+                        page,
+                        limit,
+                        total,
+                    },
                     data
                 })
             })
@@ -127,6 +142,17 @@ class TinTuyenDungController {
         })
 
         const nhaTuyenDung = await NhaTuyenDung.findById(req.taiKhoan._id);
+
+        //đếm số lượng
+        const total = await TinTuyenDung.find({
+            nhaTuyenDung,
+            nganhNghe,
+            "diaDiem.tinhThanhPho": { $regex: new RegExp(req.query.diaDiem, "i") },
+            "viTri": { $regex: new RegExp(req.query.viTri, "i") },
+            "soNamKinhNghiem": { $regex: new RegExp(req.query.soNamKinhNghiem, "i") },
+            "loaiCongViec": { $regex: new RegExp(req.query.loaiCongViec, "i") },
+        }).count();
+
         await TinTuyenDung.find({
             nhaTuyenDung,
             nganhNghe,
@@ -139,6 +165,11 @@ class TinTuyenDungController {
                 res.status(200).json({
                     status: 'success',
                     results: data.length,
+                    pagination: {
+                        page,
+                        limit,
+                        total,
+                    },
                     data
                 })
             })
@@ -188,10 +219,16 @@ class TinTuyenDungController {
     }
 
     async timKiemViecLamTheoNganhNghe(req, res, next) {
+        console.log(req.query);
+        const page = req.query.page * 1 || 1
+        const limit = 3;
+        const skip = (page - 1) * limit;
         const nganhNghe = await NganhNghe.find({
             'linhVuc': req.params.idLinhVuc
         });
+        const total = await TinTuyenDung.find({ nganhNghe }).count();
         await TinTuyenDung.find({ nganhNghe })
+            .limit(limit).skip(skip).exec()
             .then(data => {
                 if (!data) {
                     return res.status(404).json({
@@ -201,7 +238,45 @@ class TinTuyenDungController {
                 }
                 res.status(201).json({
                     status: 'success',
+                    results: data.length,
+                    pagination: {
+                        page,
+                        limit,
+                        total,
+                    },
                     data
+                })
+            })
+            .catch(next);
+    };
+
+    // top 12 tin ứng tuyển nhiều nhất
+    async tinNoiBat(req, res, next) {
+        const limit = 12;
+        await DonUngTuyen.aggregate([
+            {
+                $group: {
+                    _id: '$tinTuyenDung',
+                    soLuong: { $sum: 1 }
+                }
+            },
+            {
+                $replaceRoot: {
+                    newRoot: { idTinTuyenDung: "$_id", soLuong: '$soLuong' }
+                }
+            }
+        ])
+            .limit(limit)
+            .sort({ 'soLuong': -1 })
+            .exec()
+            .then(async datas => {
+                const dsTin = datas.map(async data => {
+                    return await TinTuyenDung.findById(data.idTinTuyenDung);
+                })
+                res.status(200).json({
+                    status: 'success',
+                    results: datas.length,
+                    data: await Promise.all(dsTin)
                 })
             })
             .catch(next);

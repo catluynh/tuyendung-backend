@@ -10,7 +10,11 @@ const tinTuyenDungController = require('../controllers/tinTuyenDungController')
 router.route('/timKiemTheoNhieuTieuChi')
     .get(tinTuyenDungController.timKiemTheoNhieuTieuChi)
 
+// top 12 tin ứng tuyển nhiều nhất
+router.route('/tinNoiBat')
+    .get(tinTuyenDungController.tinNoiBat)
 
+//tìm kiếm việc làm theo ngành nghề
 router.route('/timKiemViecLamTheoNganhNghe/:idLinhVuc')
     .get(tinTuyenDungController.timKiemViecLamTheoNganhNghe)
 

@@ -7,6 +7,7 @@ const nganhNgheController = require('../controllers/nganhNgheController')
 router.route('/xuHuongNganhNghe')
     .get(nganhNgheController.xuHuongNganhNghe)
 
+// tìm kiếm ngành nghê theo lĩnh vực
 router.route('/timKiemNgheTheoIDLinhVuc/:idLinhVuc')
     .get(nganhNgheController.timKiemNgheTheoIDLinhVuc)
 

@@ -15,10 +15,6 @@ router.route('/timKiemTheoNhaTuyenDung')
 router.route('/timKiemTheoTinTuyenDung/:id')
     .get(authController.protect, donUngTuyenController.timKiemTheoTinTuyenDung)
 
-// top 12 tin ứng tuyển nhiều nhất
-router.route('/tinNoiBat')
-    .get(donUngTuyenController.tinNoiBat)
-
 //nhà tuyển dụng chấp nhận ứng tuyển
 router.route('/ungTuyen/:id')
     .patch(donUngTuyenController.ungTuyen)
