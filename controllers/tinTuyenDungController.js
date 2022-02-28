@@ -5,6 +5,7 @@ const NhaTuyenDung = require('../models/nhaTuyenDungModel');
 const DonUngTuyen = require('../models/donUngTuyenModel');
 const AppError = require('../utils/appError');
 const Enum = require('../utils/enum');
+const moment = require('moment');
 
 class TinTuyenDungController {
     async getAll(req, res, next) {
@@ -84,47 +85,56 @@ class TinTuyenDungController {
     };
 
     async timKiemTheoNhieuTieuChi(req, res, next) {
-        console.log(req.query);
-        const page = req.query.page * 1 || 1
-        const limit = 2;
-        const skip = (page - 1) * limit;
-        const linhVuc = await LinhVuc.find({
-            "tenLinhVuc": { $regex: new RegExp(req.query.linhVuc, "i") },
-        })
-
-        const nganhNghe = await NganhNghe.find({
-            linhVuc,
-            "tenNganhNghe": { $regex: new RegExp(req.query.nganhNghe, "i") },
-        })
-
-        const total = await TinTuyenDung.find({
-            nganhNghe,
-            "diaDiem.tinhThanhPho": { $regex: new RegExp(req.query.diaDiem, "i") },
-            "viTri": { $regex: new RegExp(req.query.viTri, "i") },
-            "soNamKinhNghiem": { $regex: new RegExp(req.query.soNamKinhNghiem, "i") },
-            "loaiCongViec": { $regex: new RegExp(req.query.loaiCongViec, "i") },
-        }).count();
-
-        await TinTuyenDung.find({
-            nganhNghe,
-            "diaDiem.tinhThanhPho": { $regex: new RegExp(req.query.diaDiem, "i") },
-            "viTri": { $regex: new RegExp(req.query.viTri, "i") },
-            "soNamKinhNghiem": { $regex: new RegExp(req.query.soNamKinhNghiem, "i") },
-            "loaiCongViec": { $regex: new RegExp(req.query.loaiCongViec, "i") },
-        }).limit(limit).skip(skip).exec()
-            .then(data => {
-                res.status(200).json({
-                    status: 'success',
-                    results: data.length,
-                    pagination: {
-                        page,
-                        limit,
-                        total,
-                    },
-                    data
-                })
+        try {
+            const tuNgay = req.query.tuNgay || 1;
+            const denNgay = (req.query.denNgay || moment(Date.now()).format('yyyy-MM-DD')) + 'T23:59:59.580';
+            const page = req.query.page * 1 || 1
+            const limit = 10;
+            const skip = (page - 1) * limit;
+            const linhVuc = await LinhVuc.find({
+                "tenLinhVuc": { $regex: new RegExp(req.query.linhVuc, "i") },
             })
-            .catch(next);
+
+            const nganhNghe = await NganhNghe.find({
+                linhVuc,
+                "tenNganhNghe": { $regex: new RegExp(req.query.nganhNghe, "i") },
+            })
+
+            const total = await TinTuyenDung.find({
+                nganhNghe,
+                "diaDiem.tinhThanhPho": { $regex: new RegExp(req.query.diaDiem, "i") },
+                "viTri": { $regex: new RegExp(req.query.viTri, "i") },
+                "soNamKinhNghiem": { $regex: new RegExp(req.query.soNamKinhNghiem, "i") },
+                "loaiCongViec": { $regex: new RegExp(req.query.loaiCongViec, "i") },
+                $and: [{ "ngayTao": { '$gte': tuNgay } }, { "ngayTao": { '$lte': denNgay } }]
+            }).count();
+
+            await TinTuyenDung.find({
+                nganhNghe,
+                "diaDiem.tinhThanhPho": { $regex: new RegExp(req.query.diaDiem, "i") },
+                "viTri": { $regex: new RegExp(req.query.viTri, "i") },
+                "soNamKinhNghiem": { $regex: new RegExp(req.query.soNamKinhNghiem, "i") },
+                "loaiCongViec": { $regex: new RegExp(req.query.loaiCongViec, "i") },
+                $and: [{ "ngayTao": { '$gte': tuNgay } }, { "ngayTao": { '$lte': denNgay } }]
+            }).limit(limit).skip(skip).exec()
+                .then(data => {
+                    res.status(200).json({
+                        status: 'success',
+                        results: data.length,
+                        pagination: {
+                            page,
+                            limit,
+                            total,
+                        },
+                        data
+                    })
+                })
+                .catch(next);
+        } catch (error) {
+            return res.status(400).json({
+                message: error,
+            });
+        }
     }
 
     async timKiemTheoNhaTuyenDung(req, res, next) {
