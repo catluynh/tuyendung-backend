@@ -10,9 +10,11 @@ const tinTuyenDungController = require('../controllers/tinTuyenDungController')
 router.route('/timKiemTheoNhieuTieuChi')
     .get(tinTuyenDungController.timKiemTheoNhieuTieuChi)
 
+
 router.route('/timKiemViecLamTheoNganhNghe/:idLinhVuc')
     .get(tinTuyenDungController.timKiemViecLamTheoNganhNghe)
 
+//nhà tuyển dung: tin tuyển dụng đã đăng
 router.route('/timKiemTheoNhaTuyenDung')
     .get(authController.protect, tinTuyenDungController.timKiemTheoNhaTuyenDung)
 

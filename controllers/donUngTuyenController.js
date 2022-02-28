@@ -1,6 +1,7 @@
 const DonUngTuyen = require('../models/donUngTuyenModel');
 const UngTuyenVien = require('../models/ungTuyenVienModel');
 const TinTuyenDung = require('../models/tinTuyenDungModel');
+const NhaTuyenDung = require('../models/nhaTuyenDungModel');
 const Enum = require('../utils/enum');
 const AppError = require('../utils/appError');
 
@@ -91,6 +92,37 @@ class DonUngTuyenController {
                 })
             })
             .catch(next);
+    };
+
+    async timKiemTheoNhaTuyenDung(req, res, next) {
+        console.log(req.query);
+        const page = req.query.page * 1 || 1
+        const limit = 5;
+        const skip = (page - 1) * limit;
+        const nhaTuyenDung = await NhaTuyenDung.findById(req.taiKhoan._id);
+        await TinTuyenDung.find({ nhaTuyenDung })
+            .then(async datas => {
+                const dsDon = datas.map(async data => {
+                    return await DonUngTuyen.find({ tinTuyenDung: data._id })
+
+                })
+                res.status(200).json({
+                    status: 'success',
+                    results: datas.length,
+                    data: await Promise.all(dsDon)
+                })
+            })
+            .catch(next);
+
+        // await DonUngTuyen.find({ tinTuyenDung: req.params.id })
+        // .limit(limit).skip(skip).exec()
+        // .then(data => {
+        //     res.status(200).json({
+        //         status: 'success',
+        //         results: data.length,
+        //         data
+        //     })
+        // })
     };
 
     async timKiemTheoTinTuyenDung(req, res, next) {

@@ -63,6 +63,21 @@ class AuthController {
 
     async dangKi(req, res, next) {
         try {
+            // kiểm tra email đã tồn tại
+            if (await TaiKhoan.findOne({ 'email': req.body.email })) {
+                return res.status(401).json({
+                    status: 'error',
+                    message: 'Email đã tồn tại',
+                });
+            }
+
+            if (await TaiKhoan.findOne({ 'tenDangNhap': req.body.tenDangNhap })){
+                return res.status(401).json({
+                    status: 'error',
+                    message: 'Tên tài khoản đã tồn tại',
+                });
+            }
+
             const taiKhoanMoi = await TaiKhoan.create(req.body);
 
             const taiKhoan = await TaiKhoan.findOne({ 'email': taiKhoanMoi.email });
