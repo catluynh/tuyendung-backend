@@ -123,9 +123,28 @@ class DonUngTuyenController {
                         data = data.concat([arr[i][j]])
                     }
                 }
+
+                //phân trang
+                let dataPage = [];
+                if (data.length - limit > skip) {
+                    for (var i = skip; i < (skip + limit); i++) {
+                        dataPage = dataPage.concat([data[i]]);
+                    }
+                } else {
+                    for (var i = skip; i < data.length; i++) {
+                        dataPage = dataPage.concat([data[i]]);
+                    }
+                }
+
                 res.status(200).json({
                     status: 'success',
-                    data: data
+                    results: dataPage.length,
+                    pagination: {
+                        page,
+                        limit,
+                        total: data.length,
+                    },
+                    data: dataPage
                 })
             })
             .catch(next);

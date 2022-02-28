@@ -71,7 +71,8 @@ class AuthController {
                 });
             }
 
-            if (await TaiKhoan.findOne({ 'tenDangNhap': req.body.tenDangNhap })){
+            //kiểm tra tên tài khoản đã tồn tại
+            if (await TaiKhoan.findOne({ 'tenDangNhap': req.body.tenDangNhap })) {
                 return res.status(401).json({
                     status: 'error',
                     message: 'Tên tài khoản đã tồn tại',
