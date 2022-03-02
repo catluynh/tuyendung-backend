@@ -121,16 +121,18 @@ class AuthController {
             //tìm tài khoản kích hoạt
             const taiKhoan = await TaiKhoan.findOne({
                 'yeuCauKichHoat.maKichHoat': hashedToken,
-                'yeuCauKichHoat.thoiGianMaKichHoat': { $gt: Date.now() }
+                'yeuCauKichHoat.thoiGianMaKichHoat': { $gt: Date.now() } // >
             });
 
-            //nếu tài khoản hết hạn => xóa => tạo lại 
             if (!taiKhoan) {
+                //nếu tài khoản hết hạn => xóa => tạo lại 
                 const taiKhoanHetHan = await TaiKhoan.findOne({
                     'yeuCauKichHoat.maKichHoat': hashedToken,
-                    'yeuCauKichHoat.thoiGianMaKichHoat': { $lte: Date.now() }
+                    'yeuCauKichHoat.thoiGianMaKichHoat': { $lte: Date.now() } //<=
                 });
-                await TaiKhoan.findByIdAndDelete(taiKhoanHetHan._id);
+                if (taiKhoanHetHan) {
+                    await TaiKhoan.findByIdAndDelete(taiKhoanHetHan._id);
+                }
                 return res.status(403).json({
                     status: 'error',
                     message: 'Token đã hết hạn. Vui lòng tạo lại tài khoản',
@@ -138,9 +140,7 @@ class AuthController {
             }
             taiKhoan.xacThucTaiKhoan = true;
             taiKhoan.yeuCauKichHoat = undefined;
-
             await taiKhoan.save();
-
 
             const token = createToken(taiKhoan._id);
             res.status(201).json({
@@ -262,8 +262,7 @@ class AuthController {
                 token: randomToken
             });
         } catch (error) {
-            taiKhoan.yeuCauKichHoat.maKichHoat = undefined;
-            taiKhoan.yeuCauKichHoat.thoiGianMaKichHoat = undefined;
+            taiKhoan.yeuCauKichHoat = undefined;
             return res.status(500).json({
                 message: error,
             });
@@ -275,19 +274,22 @@ class AuthController {
             // xác thực token (băm token)
             const hashedToken = crypto.createHash('sha256').update(req.params.token).digest('hex');
 
-            //tìm tài khoản thay đổi mật khẩu theo token và ngày hết hạn token > ngày giờ hiện tại
+            //tìm tài khoản kích hoạt >
             const taiKhoan = await TaiKhoan.findOne({
                 'yeuCauKichHoat.maKichHoat': hashedToken,
                 'yeuCauKichHoat.thoiGianMaKichHoat': { $gt: Date.now() }
-            });
+            })
 
             if (!taiKhoan) {
+                // tài khoản hết hạn
                 const taiKhoanHetHan = await TaiKhoan.findOne({
                     'yeuCauKichHoat.maKichHoat': hashedToken,
-                    'yeuCauKichHoat.thoiGianMaKichHoat': { $lte: Date.now() }
+                    'yeuCauKichHoat.thoiGianMaKichHoat': { $lte: Date.now() } // <=
                 });
-                taiKhoanHetHan.yeuCauKichHoat = undefined;
-                await taiKhoanHetHan.save();
+                if (taiKhoanHetHan) {
+                    taiKhoanHetHan.yeuCauKichHoat = undefined;
+                    await taiKhoanHetHan.save();
+                }
                 return res.status(401).json({
                     status: 'error',
                     message: 'Token đã hết hạn',
