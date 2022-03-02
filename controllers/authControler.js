@@ -260,6 +260,7 @@ class AuthController {
                 status: 'success',
                 status: 'error',
                 message: 'Vui lòng kiểm tra email để đặt lại mật khẩu',
+                token: randomToken
             });
         } catch (error) {
             taiKhoan.yeuCauKichHoat.maKichHoat = undefined;
