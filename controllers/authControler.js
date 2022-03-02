@@ -258,7 +258,6 @@ class AuthController {
             });
             res.status(200).json({
                 status: 'success',
-                status: 'error',
                 message: 'Vui lòng kiểm tra email để đặt lại mật khẩu',
                 token: randomToken
             });
@@ -271,11 +270,38 @@ class AuthController {
         }
     }
 
-    showFormQuenMatKhau(req, res, next) {
-        res.status(201).json({
-            status: 'success',
-            token: req.params.token
-        })
+    async showFormQuenMatKhau(req, res, next) {
+        try {
+            // xác thực token (băm token)
+            const hashedToken = crypto.createHash('sha256').update(req.params.token).digest('hex');
+
+            //tìm tài khoản thay đổi mật khẩu theo token và ngày hết hạn token > ngày giờ hiện tại
+            const taiKhoan = await TaiKhoan.findOne({
+                'yeuCauKichHoat.maKichHoat': hashedToken,
+                'yeuCauKichHoat.thoiGianMaKichHoat': { $gt: Date.now() }
+            });
+
+            if (!taiKhoan) {
+                const taiKhoanHetHan = await TaiKhoan.findOne({
+                    'yeuCauKichHoat.maKichHoat': hashedToken,
+                    'yeuCauKichHoat.thoiGianMaKichHoat': { $lte: Date.now() }
+                });
+                taiKhoanHetHan.yeuCauKichHoat = undefined;
+                await taiKhoanHetHan.save();
+                return res.status(401).json({
+                    status: 'error',
+                    message: 'Token đã hết hạn',
+                });
+            }
+            res.status(201).json({
+                status: 'success',
+                token: req.params.token
+            })
+        } catch (error) {
+            return res.status(500).json({
+                message: error,
+            });
+        }
     }
 
     async datLaiMatKhau(req, res, next) {
