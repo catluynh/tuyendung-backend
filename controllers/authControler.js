@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
 const TaiKhoan = require('../models/taiKhoanModel');
 const AppError = require('../utils/appError');
-const sendEmail = require('../utils/email');
+const guiEmail = require('../utils/email');
 const crypto = require('crypto');
 
 const createToken = id => {
@@ -91,7 +91,7 @@ class AuthController {
             const formURL = `${req.protocol}://${req.get('host')}/auth/xacThucTaiKhoan/${randomToken}`;
             const message = `Cảm ơn đã đăng kí tài khoản. Click vào đây để xác thực tài khoản: ${formURL}`;
 
-            await sendEmail({
+            await guiEmail({
                 email: taiKhoan.email,
                 subject: 'Xác thực tài khoản',
                 message,
@@ -251,7 +251,7 @@ class AuthController {
             const formURL = `${req.protocol}://${req.get('host')}/auth/showFormQuenMatKhau/${randomToken}`;
             const message = `Click vào đây để đặt lại mật khẩu: ${formURL}`;
 
-            await sendEmail({
+            await guiEmail({
                 email: taiKhoan.email,
                 subject: 'Tạo mới mật khẩu',
                 message,
@@ -295,10 +295,11 @@ class AuthController {
                     message: 'Token đã hết hạn',
                 });
             }
-            res.status(201).json({
-                status: 'success',
-                token: req.params.token
-            })
+            res.redirect(`http://localhost:3000/auth/verified/${req.params.token}`);
+            // res.status(201).json({
+            //     status: 'success',
+            //     token: req.params.token
+            // })
         } catch (error) {
             return res.status(500).json({
                 message: error,
@@ -325,8 +326,7 @@ class AuthController {
             }
             taiKhoan.matKhau = req.body.matKhau;
             taiKhoan.xacNhanMatKhau = req.body.xacNhanMatKhau;
-            taiKhoan.yeuCauKichHoat.maKichHoat = undefined;
-            taiKhoan.yeuCauKichHoat.thoiGianMaKichHoat = undefined;
+            taiKhoan.yeuCauKichHoat = undefined;
             await taiKhoan.save();
 
             const token = createToken(taiKhoan._id);

@@ -5,7 +5,7 @@ const tinTucController = require('../controllers/tinTucController')
 
 router.route('/')
     .get(tinTucController.getAll)
-    .post(authController.protect, tinTucController.postAPI)
+    .post(tinTucController.postAPI)
 
 router.route('/:id')
     .get(tinTucController.getAPIById)
