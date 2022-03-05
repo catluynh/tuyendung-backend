@@ -8,11 +8,13 @@ const donUngTuyenRouter = require('./donUngTuyenRoutes');
 const danhGiaRouter = require('./danhGiaRoutes');
 const tinTucRouter = require('./tinTucRoutes');
 const tinNhanRouter = require('./tinNhanRoutes');
+const taiKhoanRouter = require('./taiKhoanRoutes');
 const quanTriVienRouter = require('./quanTriVienRoutes');
 const thongKeRouter = require('./thongKeRoutes');
 
 function route(app) {
     app.use('/auth', authRouter);
+    app.use('/taiKhoans', taiKhoanRouter);
     app.use('/nhaTuyenDungs', nhaTuyenDungRouter);
     app.use('/ungTuyenViens', ungTuyenVienRouter);
     app.use('/tinTuyenDungs', tinTuyenDungRouter);

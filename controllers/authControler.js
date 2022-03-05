@@ -295,11 +295,11 @@ class AuthController {
                     message: 'Token đã hết hạn',
                 });
             }
-            res.redirect(`http://localhost:3000/auth/verified/${req.params.token}`);
-            // res.status(201).json({
-            //     status: 'success',
-            //     token: req.params.token
-            // })
+         //   res.redirect(`http://localhost:3000/auth/verified/${req.params.token}`);
+            res.status(201).json({
+                status: 'success',
+                token: req.params.token
+            })
         } catch (error) {
             return res.status(500).json({
                 message: error,
