@@ -18,7 +18,7 @@ const TaiKhoan = new Schema({
     tenDangNhap: {
         type: String,
         unique: [true, 'Tài khoản đã tồn tại'],
-        minlength: [8, 'Tài khoản phải có ít nhất 8 kí tự'],
+        minlength: [6, 'Tài khoản phải có ít nhất 6 kí tự'],
         required: [true, 'Tài khoản không được để trống']
     },
     matKhau: {

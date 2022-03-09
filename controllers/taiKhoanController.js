@@ -44,15 +44,20 @@ class TaiKhoanController {
     };
 
     async updateAPI(req, res, next) {
-        const data = req.body;
-        await TaiKhoan.findByIdAndUpdate(req.params.id, data)
+        const taiKhoan = req.body;
+        await TaiKhoan.findByIdAndUpdate(req.params.id, taiKhoan)
             .then(data => {
                 res.status(201).json({
                     status: 'success',
                     data
                 })
             })
-            .catch(next);
+            .catch((err) => {
+                res.status(500).json({
+                    status: 'err',
+                    message: err
+                })
+            });
     };
 
     async deleteAPI(req, res, next) {

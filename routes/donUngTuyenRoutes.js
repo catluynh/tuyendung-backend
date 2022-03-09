@@ -15,13 +15,13 @@ router.route('/timKiemTheoNhaTuyenDung')
 router.route('/timKiemTheoTinTuyenDung/:id')
     .get(authController.protect, donUngTuyenController.timKiemTheoTinTuyenDung)
 
-//nhà tuyển dụng chấp nhận ứng tuyển
-router.route('/ungTuyen/:id')
-    .patch(donUngTuyenController.ungTuyen)
+//nhà tuyển dụng chấp nhận hồ sơ ứng viên
+router.route('/chapNhaHoSoUngVien/:id')
+    .patch(donUngTuyenController.chapNhaHoSoUngVien)
 
-//nhà tuyển dụng từ chối ứng tuyển
-router.route('/tuChoiUngTuyen/:id')
-    .patch(donUngTuyenController.tuChoiUngTuyen)
+//nhà tuyển dụng từ chối hồ sơ ứng viên
+router.route('/tuChoiHoUngVien/:id')
+    .patch(donUngTuyenController.tuChoiHoSoUngVien)
 
 router.route('/')
     .get(donUngTuyenController.getAll)

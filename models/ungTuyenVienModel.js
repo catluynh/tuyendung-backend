@@ -87,6 +87,9 @@ const UngTuyenVien = new Schema({
         type: String,
         default: 'utv-avatar-default.png',
     },
+    ngaySinh: {
+        type: Date
+    },
     dsKyNangChuyenMon: {
         type: [KyNangChuyenMon]
     },

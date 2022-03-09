@@ -11,8 +11,7 @@ const NhaTuyenDung = new Schema({
         type: String
     },
     namThanhLap: {
-        type: Date,
-        default: Date.now()
+        type: Number
     },
     quyMo: {
         type: String,
