@@ -7,21 +7,21 @@ const donUngTuyenController = require('../controllers/donUngTuyenController')
 router.route('/timKiemTheoUngTuyenVien')
     .get(authController.protect, donUngTuyenController.timKiemTheoUngTuyenVien)
 
-//nhà tuyển dụng: hồ sơ ứng tuyển theo nhà tuyển dụng  
+//nhà tuyển dụng: đơn ứng tuyển theo nhà tuyển dụng  
 router.route('/timKiemTheoNhaTuyenDung')
     .get(authController.protect, donUngTuyenController.timKiemTheoNhaTuyenDung)
 
-//nhà tuyển dụng: hồ sơ ứng tuyển theo tin
+//nhà tuyển dụng: đơn ứng tuyển theo tin
 router.route('/timKiemTheoTinTuyenDung/:id')
     .get(authController.protect, donUngTuyenController.timKiemTheoTinTuyenDung)
 
-//nhà tuyển dụng chấp nhận hồ sơ ứng viên
-router.route('/chapNhaHoSoUngVien/:id')
-    .patch(donUngTuyenController.chapNhaHoSoUngVien)
+//nhà tuyển dụng chấp nhận đơn ứng tuyển
+router.route('/chapNhanDonUngTuyen/:id')
+    .patch(donUngTuyenController.chapNhanDonUngTuyen)
 
-//nhà tuyển dụng từ chối hồ sơ ứng viên
-router.route('/tuChoiHoUngVien/:id')
-    .patch(donUngTuyenController.tuChoiHoSoUngVien)
+//nhà tuyển dụng từ chối đơn ứng tuyển
+router.route('/tuChoiDonUngTuyen/:id')
+    .patch(donUngTuyenController.tuChoiDonUngTuyen)
 
 router.route('/')
     .get(donUngTuyenController.getAll)

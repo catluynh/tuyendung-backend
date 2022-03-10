@@ -11,6 +11,7 @@ const tinNhanRouter = require('./tinNhanRoutes');
 const taiKhoanRouter = require('./taiKhoanRoutes');
 const quanTriVienRouter = require('./quanTriVienRoutes');
 const thongKeRouter = require('./thongKeRoutes');
+const donUngTuyenTiemNangRouter = require('./donUngTuyenTiemNangRoutes');
 
 function route(app) {
     app.use('/auth', authRouter);
@@ -26,6 +27,7 @@ function route(app) {
     app.use('/tinNhans', tinNhanRouter);
     app.use('/quanTriViens', quanTriVienRouter);
     app.use('/thongKes', thongKeRouter);
+    app.use('/donUngTuyenTiemNangs', donUngTuyenTiemNangRouter);
 }
 
 module.exports = route;

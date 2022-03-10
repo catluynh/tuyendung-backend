@@ -173,7 +173,7 @@ class DonUngTuyenController {
             .catch(next);
     };
 
-    async chapNhaHoSoUngVien(req, res, next) {
+    async chapNhanDonUngTuyen(req, res, next) {
         await DonUngTuyen.findById(req.params.id)
             .then(data => {
                 data.trangThai = Enum.TRANG_THAI_DON.DA_UNG_TUYEN;
@@ -187,7 +187,7 @@ class DonUngTuyenController {
             .catch(next);
     };
 
-    async tuChoiHoSoUngVien(req, res, next) {
+    async tuChoiDonUngTuyen(req, res, next) {
         await DonUngTuyen.findById(req.params.id)
             .then(data => {
                 data.trangThai = Enum.TRANG_THAI_DON.THAT_BAI;
