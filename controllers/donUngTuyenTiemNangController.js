@@ -1,9 +1,9 @@
-const DanhGia = require('../models/danhGiaModel');
+const DonUngTuyenTiemNang = require('../models/donUngTuyenTiemNang');
 const AppError = require('../utils/appError');
 
-class DanhGiaController {
+class DonUngTuyenTiemNangController {
     async getAll(req, res, next) {
-        await DanhGia.find()
+        await DonUngTuyenTiemNang.find()
             .then(data => {
                 res.status(200).json({
                     status: 'success',
@@ -15,8 +15,8 @@ class DanhGiaController {
     }
 
     async postAPI(req, res, next) {
-        const danhGiaMoi = new DanhGia(req.body);
-        await danhGiaMoi.save()
+        const donUngTuyenTiemNangMoi = new DonUngTuyenTiemNang(req.body);
+        await donUngTuyenTiemNangMoi.save()
             .then((data) => {
                 res.status(201).json({
                     status: 'success',
@@ -27,7 +27,7 @@ class DanhGiaController {
     };
 
     async getAPIById(req, res, next) {
-        await DanhGia.findById(req.params.id)
+        await DonUngTuyenTiemNang.findById(req.params.id)
             .then(data => {
                 if (!data) {
                     return res.status(404).json({
@@ -45,7 +45,7 @@ class DanhGiaController {
 
     async updateAPI(req, res, next) {
         const data = req.body;
-        await DanhGia.findByIdAndUpdate(req.params.id, data)
+        await DonUngTuyenTiemNang.findByIdAndUpdate(req.params.id, data)
             .then(data => {
                 res.status(201).json({
                     status: 'success',
@@ -56,7 +56,7 @@ class DanhGiaController {
     };
 
     async deleteAPI(req, res, next) {
-        await DanhGia.findByIdAndRemove(req.params.id)
+        await DonUngTuyenTiemNang.findByIdAndRemove(req.params.id)
             .then(data => {
                 if (!data) {
                     return res.status(404).json({
@@ -72,4 +72,4 @@ class DanhGiaController {
             .catch(next);
     };
 }
-module.exports = new DanhGiaController;
+module.exports = new DonUngTuyenTiemNangController;
