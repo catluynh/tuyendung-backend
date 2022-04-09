@@ -1,5 +1,6 @@
 const UngTuyenVien = require('../models/ungTuyenVienModel');
 const AppError = require('../utils/appError');
+const uploadHinhAnh = require('../utils/UploadHinhAnh');
 
 class UngTuyenVienController {
     async getAll(req, res, next) {
@@ -65,6 +66,22 @@ class UngTuyenVienController {
                         message: 'Không tìm thấy',
                     });
                 }
+                res.status(201).json({
+                    status: 'success',
+                    data
+                })
+            })
+            .catch(next);
+    };
+
+    async capNhatAvatar(req, res, next) {
+        const file = req.files.file;
+        const ungTuyenVien = await UngTuyenVien.findById(req.taiKhoan.id);
+        ungTuyenVien.avatar = file.name;
+        await UngTuyenVien.findByIdAndUpdate(req.taiKhoan._id, ungTuyenVien)
+            .then(data => {
+                uploadHinhAnh.luuDSHinhAnh(file);
+                // uploadHinhAnh.xoaHinhAnh(data.avatar)
                 res.status(201).json({
                     status: 'success',
                     data

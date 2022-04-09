@@ -53,8 +53,10 @@ class AuthController {
             // gửi data, token cho client
             const token = createToken(taiKhoan._id);
             taiKhoan.matKhau = undefined;
+            // thời gian hết hạn của token
+            const exp = jwt.verify(token, process.env.JWT_SECRET).exp;
             res.status(200).json({
-                status: 'success', token, taiKhoan: taiKhoan
+                status: 'success', token, expToken: exp , taiKhoan: taiKhoan
             });
         } catch (error) {
             return next();
@@ -83,7 +85,7 @@ class AuthController {
 
             const taiKhoan = await TaiKhoan.findOne({ 'email': taiKhoanMoi.email });
 
-            // Tạo random token
+            // Tạo token ngẫu nhiên
             const randomToken = taiKhoan.randomToken();
             await taiKhoan.save({ validateBeforeSave: false });
 
@@ -199,7 +201,6 @@ class AuthController {
     async doiMatKhau(req, res, next) {
         try {
             const taiKhoan = await TaiKhoan.findById(req.taiKhoan._id).select('+matKhau');
-
             //Kiểm tra mật khẩu
             if (!(await taiKhoan.kiemTraMatKhau(req.body.matKhauHienTai, taiKhoan.matKhau))) {
                 return res.status(401).json({

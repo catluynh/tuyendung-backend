@@ -7,12 +7,14 @@ const mongoose = require('mongoose');
 const port = process.env.PORT;
 const route = require("./routes");
 const http = require('http');
+const upload = require('express-fileupload');
 const socketIo = require('socket.io');
 const initSockets = require('./sockets/index');
 const jwt = require('jsonwebtoken');
 const server = http.createServer(app);
 const io = socketIo(server);
 const paypal = require('paypal-rest-sdk');
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -32,6 +34,8 @@ mongoose.connect(process.env.DATABASE_LOCAL, {
     useNewUrlParser: true,
 }).then(() => console.log('DB connection successful'));
 
+
+app.use(upload());
 route(app);
 
 //config socket

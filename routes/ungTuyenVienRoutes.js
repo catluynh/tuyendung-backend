@@ -10,6 +10,9 @@ router.route('/')
     .get(ungTuyenVienController.getAll)
     .post(ungTuyenVienController.postAPI)
 
+router.route('/capNhatAvatar')
+    .patch(ungTuyenVienController.capNhatAvatar)
+
 router.route('/:id')
     .get(ungTuyenVienController.getAPIById)
     .patch(ungTuyenVienController.updateAPI)
