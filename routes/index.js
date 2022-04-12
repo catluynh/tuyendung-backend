@@ -12,6 +12,7 @@ const taiKhoanRouter = require('./taiKhoanRoutes');
 const quanTriVienRouter = require('./quanTriVienRoutes');
 const thongKeRouter = require('./thongKeRoutes');
 const donUngTuyenTiemNangRouter = require('./donUngTuyenTiemNangRoutes');
+const viecLamQuanTamRouter = require('./viecLamQuanTamRoutes');
 
 function route(app) {
     app.use('/auth', authRouter);
@@ -28,6 +29,7 @@ function route(app) {
     app.use('/quanTriViens', quanTriVienRouter);
     app.use('/thongKes', thongKeRouter);
     app.use('/donUngTuyenTiemNangs', donUngTuyenTiemNangRouter);
+    app.use('/viecLamQuanTam', viecLamQuanTamRouter);
 }
 
 module.exports = route;

@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const DonUngTuyenTiemNang = new Schema({
-    nhaTuyenDung: {
+const ViecLamQuanTam = new Schema({
+    tinTuyenDung: {
         type: Schema.Types.ObjectId,
-        ref: 'nhaTuyenDung'
+        ref: 'tinTuyenDung'
     },
-    donUngTuyen: {
+    ungTuyenVien: {
         type: Schema.Types.ObjectId,
-        ref: 'donUngTuyen'
+        ref: 'ungTuyenVien'
     }
 })
 
@@ -17,4 +17,4 @@ const DonUngTuyenTiemNang = new Schema({
 //     next()
 // })
 
-module.exports = mongoose.model('donUngTuyenTiemNang', DonUngTuyenTiemNang)
+module.exports = mongoose.model('viecLamQuanTam', ViecLamQuanTam)
