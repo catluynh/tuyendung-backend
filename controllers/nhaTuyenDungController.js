@@ -72,6 +72,22 @@ class NhaTuyenDungController {
             })
             .catch(next);
     };
+
+    async capNhatAvatar(req, res, next) {
+        const file = req.files.file;
+        const nhaTuyenDung = await NhaTuyenDung.findById(req.taiKhoan.id);
+        nhaTuyenDung.avatar = file.name;
+        await NhaTuyenDung.findByIdAndUpdate(req.taiKhoan._id, nhaTuyenDung)
+            .then(data => {
+                uploadHinhAnh.luuDSHinhAnh(file);
+                // uploadHinhAnh.xoaHinhAnh(data.avatar)
+                res.status(201).json({
+                    status: 'success',
+                    data
+                })
+            })
+            .catch(next);
+    };
 }
 
 module.exports = new NhaTuyenDungController;

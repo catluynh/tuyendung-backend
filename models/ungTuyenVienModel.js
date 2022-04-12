@@ -96,6 +96,12 @@ const UngTuyenVien = new Schema({
     cv: {
         type: String
     },
+    viTriMuonUngTuyen: {
+        type: String
+    },
+    mucTieuCongViec: {
+        type: String
+    },
     dsKyNangMem: {
         type: [KyNangMem]
     },
