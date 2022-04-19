@@ -71,5 +71,21 @@ class LinhVucController {
             })
             .catch(next);
     };
+
+    async capNhatHinhAnh(req, res, next) {
+        const file = req.files.file;
+        const linhVuc = await LinhVuc.findById(req.taiKhoan.id);
+        linhVuc.hinhAnh = file.name;
+        await LinhVuc.findByIdAndUpdate(req.params.id, linhVuc)
+            .then(data => {
+                uploadHinhAnh.luuDSHinhAnh(file);
+                // uploadHinhAnh.xoaHinhAnh(data.avatar)
+                res.status(201).json({
+                    status: 'success',
+                    data
+                })
+            })
+            .catch(next);
+    };
 }
 module.exports = new LinhVucController;

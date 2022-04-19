@@ -3,6 +3,9 @@ const router = express.Router();
 const authController = require('../controllers/authControler');
 const linhVucController = require('../controllers/linhVucController')
 
+router.route('/hinhAnh/:id')
+    .patch(linhVucController.capNhatHinhAnh)
+
 router.route('/')
     .get(linhVucController.getAll)
     .post(linhVucController.postAPI)
