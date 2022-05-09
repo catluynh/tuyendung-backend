@@ -5,12 +5,10 @@ const tinTuyenDungController = require('../controllers/tinTuyenDungController')
 
 // router.use(authController.protect);
 // router.use(authController.kiemTraLoaiTaiKhoan('nhà tuyển dụng'));
-
-
 router.route('/timKiemTheoNhieuTieuChi')
     .get(tinTuyenDungController.timKiemTheoNhieuTieuChi)
 
-// top 12 tin ứng tuyển nhiều nhất
+// TIN TUYỂN DỤNG, VIỆC LÀM TỐT NHẤT
 router.route('/tinNoiBat')
     .get(tinTuyenDungController.tinNoiBat)
 
@@ -21,6 +19,7 @@ router.route('/timKiemViecLamTheoNganhNghe/:idLinhVuc')
 //nhà tuyển dung: tin tuyển dụng đã đăng
 router.route('/timKiemTheoNhaTuyenDung')
     .get(authController.protect, tinTuyenDungController.timKiemTheoNhaTuyenDung)
+
 
 //quản trị viên duyệt tin tuyển dụng
 router.route('/duyetTin/:id')
@@ -34,15 +33,16 @@ router.route('/khoaTin/:id')
 router.route('/dungTuyen/:id')
     .patch(tinTuyenDungController.dungTuyen)
 
-router.route('/')
-    .get(tinTuyenDungController.getAll)
-    .post(tinTuyenDungController.postAPI)
+router.route('/timKiem/:slug')
+    .get(tinTuyenDungController.getAPIBySlug)
 
 router.route('/:id')
     .get(tinTuyenDungController.getAPIById)
     .patch(tinTuyenDungController.updateAPI)
     .delete(tinTuyenDungController.deleteAPI)
 
-
+router.route('/')
+    .get(tinTuyenDungController.getAll)
+    .post(tinTuyenDungController.postAPI)
 
 module.exports = router;

@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Enum = require('../utils/enum');
+const slugify = require('slugify');
 
 const TinTuyenDung = new Schema({
     tieuDe: String,
@@ -64,7 +65,13 @@ const TinTuyenDung = new Schema({
     nhaTuyenDung: {
         type: Schema.Types.ObjectId,
         ref: 'nhaTuyenDung'
-    }
+    },
+    slug: String
+})
+
+TinTuyenDung.pre('save', function (next) {
+    this.slug = slugify(this.tieuDe, { lower: true })
+    next()
 })
 
 TinTuyenDung.pre(/^find/, function (next) {

@@ -16,6 +16,7 @@ class DonUngTuyenTiemNangController {
 
     async postAPI(req, res, next) {
         const donUngTuyenTiemNangMoi = new DonUngTuyenTiemNang(req.body);
+        donUngTuyenTiemNangMoi.nhaTuyenDung = req.taiKhoan._id;
         await donUngTuyenTiemNangMoi.save()
             .then((data) => {
                 res.status(201).json({
@@ -57,6 +58,23 @@ class DonUngTuyenTiemNangController {
 
     async deleteAPI(req, res, next) {
         await DonUngTuyenTiemNang.findByIdAndRemove(req.params.id)
+            .then(data => {
+                if (!data) {
+                    return res.status(404).json({
+                        status: 'error',
+                        message: 'Không tìm thấy',
+                    });
+                }
+                res.status(201).json({
+                    status: 'success',
+                    data
+                })
+            })
+            .catch(next);
+    };
+
+    async timTheoNhaTuyenDung(req, res, next) {
+        await DonUngTuyenTiemNang.find({ "nhaTuyenDung": req.taiKhoan._id })
             .then(data => {
                 if (!data) {
                     return res.status(404).json({

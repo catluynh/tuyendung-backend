@@ -29,7 +29,7 @@ function route(app) {
     app.use('/quanTriViens', quanTriVienRouter);
     app.use('/thongKes', thongKeRouter);
     app.use('/donUngTuyenTiemNangs', donUngTuyenTiemNangRouter);
-    app.use('/viecLamQuanTam', viecLamQuanTamRouter);
+    app.use('/viecLamQuanTams', viecLamQuanTamRouter);
 }
 
 module.exports = route;

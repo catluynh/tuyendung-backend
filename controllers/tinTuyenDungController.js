@@ -7,6 +7,7 @@ const AppError = require('../utils/appError');
 const Enum = require('../utils/enum');
 const moment = require('moment');
 
+
 class TinTuyenDungController {
     async getAll(req, res, next) {
         await TinTuyenDung.find()
@@ -27,6 +28,30 @@ class TinTuyenDungController {
             .then((data) => {
                 res.status(201).json({
                     status: 'success',
+                    data
+                })
+            })
+            .catch(next);
+    };
+
+    async getAPIBySlug(req, res, next) {
+        console.log(req.params.slug)
+        await TinTuyenDung.find({ slug: req.params.slug })
+            .populate({
+                path: 'nganhNghe',
+                populate: { path: 'linhVuc' }
+            })
+            .populate('nhaTuyenDung')
+            .then(data => {
+                if (!data) {
+                    return res.status(404).json({
+                        status: 'error',
+                        message: 'Không tìm thấy',
+                    });
+                }
+                res.status(201).json({
+                    status: 'success',
+                    results: data.length,
                     data
                 })
             })

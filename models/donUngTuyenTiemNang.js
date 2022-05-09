@@ -12,9 +12,9 @@ const DonUngTuyenTiemNang = new Schema({
     }
 })
 
-// DonUngTuyenTiemNang.pre(/^find/, function (next) {
-//     this.populate('danhGiaBoi').populate('donUngTuyen')
-//     next()
-// })
+DonUngTuyenTiemNang.pre(/^find/, function (next) {
+    this.populate('donUngTuyen')
+    next()
+})
 
 module.exports = mongoose.model('donUngTuyenTiemNang', DonUngTuyenTiemNang)

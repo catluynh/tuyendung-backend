@@ -7,6 +7,9 @@ router.route('/')
     .get(donUngTuyenTiemNangController.getAll)
     .post(authController.protect, donUngTuyenTiemNangController.postAPI)
 
+router.route('/timTheoNhaTuyenDung')
+    .get(authController.protect, donUngTuyenTiemNangController.timTheoNhaTuyenDung)
+
 router.route('/:id')
     .get(donUngTuyenTiemNangController.getAPIById)
     .patch(donUngTuyenTiemNangController.updateAPI)

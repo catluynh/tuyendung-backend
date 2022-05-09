@@ -7,9 +7,12 @@ router.route('/')
     .get(viecLamQuanTamController.getAll)
     .post(authController.protect, viecLamQuanTamController.postAPI)
 
+router.route('/timTheoUngTuyenVien')
+    .get(authController.protect, viecLamQuanTamController.timTheoUngTuyenVien)
+
 router.route('/:id')
     .get(viecLamQuanTamController.getAPIById)
-    .patch(viecLamQuanTamController.updateAPI)
+    .patch(viecLamQuanTamController.updateAPI) 
     .delete(viecLamQuanTamController.deleteAPI)
 
 module.exports = router;
