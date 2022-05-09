@@ -17,8 +17,26 @@ class NhaTuyenDungController {
     async postAPI(req, res, next) {
         const nhaTuyenDungMoi = new NhaTuyenDung(req.body);
         nhaTuyenDungMoi._id = req.taiKhoan._id;
+        nhaTuyenDungMoi.taiKhoan = req.taiKhoan._id;
         await nhaTuyenDungMoi.save()
             .then((data) => {
+                res.status(201).json({
+                    status: 'success',
+                    data
+                })
+            })
+            .catch(next);
+    };
+
+    async getAPIBySlug(req, res, next) {
+        await NhaTuyenDung.find({ slug: req.params.slug }).populate('taiKhoan')
+            .then(data => {
+                if (!data) {
+                    return res.status(404).json({
+                        status: 'error',
+                        message: 'Không tìm thấy',
+                    });
+                }
                 res.status(201).json({
                     status: 'success',
                     data

@@ -35,7 +35,6 @@ class TinTuyenDungController {
     };
 
     async getAPIBySlug(req, res, next) {
-        console.log(req.params.slug)
         await TinTuyenDung.find({ slug: req.params.slug })
             .populate({
                 path: 'nganhNghe',
@@ -51,7 +50,6 @@ class TinTuyenDungController {
                 }
                 res.status(201).json({
                     status: 'success',
-                    results: data.length,
                     data
                 })
             })
