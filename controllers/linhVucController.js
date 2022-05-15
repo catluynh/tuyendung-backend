@@ -74,7 +74,7 @@ class LinhVucController {
 
     async capNhatHinhAnh(req, res, next) {
         const file = req.files.file;
-        const linhVuc = await LinhVuc.findById(req.taiKhoan.id);
+       // const linhVuc = await LinhVuc.findById(req.taiKhoan.id);
         linhVuc.hinhAnh = file.name;
         await LinhVuc.findByIdAndUpdate(req.params.id, linhVuc)
             .then(data => {
