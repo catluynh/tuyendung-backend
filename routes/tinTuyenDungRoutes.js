@@ -20,7 +20,6 @@ router.route('/timKiemViecLamTheoNganhNghe/:idLinhVuc')
 router.route('/timKiemTheoNhaTuyenDung')
     .get(authController.protect, tinTuyenDungController.timKiemTheoNhaTuyenDung)
 
-
 //quản trị viên duyệt tin tuyển dụng
 router.route('/duyetTin/:id')
     .patch(tinTuyenDungController.duyetTin)

@@ -18,7 +18,16 @@ const DonUngTuyen = new Schema({
     tinTuyenDung: {
         type: Schema.Types.ObjectId,
         ref: 'tinTuyenDung'
-    }
+    },
+    guiEmail: {
+        type: Boolean
+    },
+    thongTinLienHe: {
+        ten: String,
+        sdt: String,
+        email: String,
+        loiGioiThieu: String
+    },
 })
 
 DonUngTuyen.pre(/^find/, function (next) {

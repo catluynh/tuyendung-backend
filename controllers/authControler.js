@@ -4,6 +4,7 @@ const TaiKhoan = require('../models/taiKhoanModel');
 const AppError = require('../utils/appError');
 const guiEmail = require('../utils/email');
 const crypto = require('crypto');
+const UngTuyenVien = require('../models/ungTuyenVienModel');
 
 const createToken = id => {
     return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -56,7 +57,7 @@ class AuthController {
             // thời gian hết hạn của token
             const exp = jwt.verify(token, process.env.JWT_SECRET).exp;
             res.status(200).json({
-                status: 'success', token, expToken: exp , taiKhoan: taiKhoan
+                status: 'success', token, expToken: exp, taiKhoan: taiKhoan
             });
         } catch (error) {
             return next();
@@ -127,6 +128,7 @@ class AuthController {
             });
 
             if (!taiKhoan) {
+                console.log(taiKhoan)
                 //nếu tài khoản hết hạn => xóa => tạo lại 
                 const taiKhoanHetHan = await TaiKhoan.findOne({
                     'yeuCauKichHoat.maKichHoat': hashedToken,
@@ -144,7 +146,13 @@ class AuthController {
             taiKhoan.yeuCauKichHoat = undefined;
             await taiKhoan.save();
 
-            const token = createToken(taiKhoan._id);
+            //Tạo ứng tuyển viên
+            const object = {_id : ""};
+            const ungTuyenVienMoi = new UngTuyenVien(object);
+            ungTuyenVienMoi._id = taiKhoan._id;
+            await ungTuyenVienMoi.save();
+            
+           // const token = createToken(taiKhoan._id);
             res.redirect(`${process.env.HOST_CLIENT}/auth/register/verified`);
             // res.status(201).json({
             //     status: 'success',
