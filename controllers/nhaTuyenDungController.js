@@ -93,7 +93,7 @@ class NhaTuyenDungController {
 
     async capNhatAvatar(req, res, next) {
         const file = req.files.file;
-        const nhaTuyenDung = await NhaTuyenDung.findById(req.taiKhoan.id);
+        const nhaTuyenDung = await NhaTuyenDung.findById(req.taiKhoan._id);
         nhaTuyenDung.avatar = file.name;
         await NhaTuyenDung.findByIdAndUpdate(req.taiKhoan._id, nhaTuyenDung)
             .then(data => {

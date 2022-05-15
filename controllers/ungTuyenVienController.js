@@ -77,7 +77,8 @@ class UngTuyenVienController {
     async capNhatAvatar(req, res, next) {
         const file = req.files.file;
         console.log(file);
-        const ungTuyenVien = await UngTuyenVien.findById(req.taiKhoan.id);
+        const ungTuyenVien = await UngTuyenVien.findById(req.taiKhoan._id);
+        console.log(req.taiKhoan)
         ungTuyenVien.avatar = file.name;
         await UngTuyenVien.findByIdAndUpdate(req.taiKhoan._id, ungTuyenVien)
             .then(data => {
