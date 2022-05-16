@@ -92,7 +92,6 @@ class UngTuyenVienController {
 
     async capNhatKyNang(req, res, next) {
         const kyNang = req.body;
-        //cập nhật object trong ds kỹ năng
         await UngTuyenVien.updateOne(
             { _id: req.taiKhoan._id, 'dsKyNang._id': kyNang.idKyNang },
             { $set: { 'dsKyNang.$.tenKyNang': kyNang.tenKyNang } }
@@ -120,11 +119,180 @@ class UngTuyenVienController {
             .catch(next);
     }
     async xoaKyNang(req, res, next) {
-        await UngTuyenVien.update(
+        await UngTuyenVien.updateOne(
             { _id: req.taiKhoan._id },
             { $pull: { dsKyNang: { _id: req.body.idKyNang } } }
         )
-            .then(async() => {
+            .then(async () => {
+                res.status(201).json({
+                    status: 'success',
+                    data: await UngTuyenVien.findById(req.taiKhoan._id)
+                })
+            })
+            .catch(next);
+    }
+
+    async capNhatKinhNghiemLamViec(req, res, next) {
+        const kinhNghiemLamViec = req.body;
+        await UngTuyenVien.updateOne(
+            { _id: req.taiKhoan._id, 'dsKinhNghiemLamViec._id': kinhNghiemLamViec.idKinhNghiemLamViec },
+            {
+                $set: {
+                    'dsKinhNghiemLamViec.$.congTy': kinhNghiemLamViec.congTy,
+                    'dsKinhNghiemLamViec.$.viTri': kinhNghiemLamViec.viTri,
+                    'dsKinhNghiemLamViec.$.moTa': kinhNghiemLamViec.moTa,
+                    'dsKinhNghiemLamViec.$.tuNgay': kinhNghiemLamViec.tuNgay,
+                    'dsKinhNghiemLamViec.$.denNgay': kinhNghiemLamViec.denNgay,
+                }
+            }
+        )
+            .then(async () => {
+                res.status(201).json({
+                    status: 'success',
+                    data: await UngTuyenVien.findById(req.taiKhoan._id)
+                })
+            })
+            .catch(next);
+    }
+
+    async themKinhNghiemLamViec(req, res, next) {
+        const kinhNghiemLamViec = req.body;
+        const ungTuyenVien = await UngTuyenVien.findById(req.taiKhoan._id);
+        ungTuyenVien.dsKinhNghiemLamViec.push({
+            congTy: kinhNghiemLamViec.congTy,
+            viTri: kinhNghiemLamViec.viTri,
+            moTa: kinhNghiemLamViec.moTa,
+            tuNgay: kinhNghiemLamViec.tuNgay,
+            denNgay: kinhNghiemLamViec.denNgay
+        })
+        await ungTuyenVien.save()
+            .then(data => {
+                res.status(201).json({
+                    status: 'success',
+                    data
+                })
+            })
+            .catch(next);
+    }
+
+    async xoaKinhNghiemLamViec(req, res, next) {
+        await UngTuyenVien.updateOne(
+            { _id: req.taiKhoan._id },
+            { $pull: { dsKinhNghiemLamViec: { _id: req.body.idKinhNghiemLamViec } } }
+        )
+            .then(async () => {
+                res.status(201).json({
+                    status: 'success',
+                    data: await UngTuyenVien.findById(req.taiKhoan._id)
+                })
+            })
+            .catch(next);
+    }
+
+    async capNhatChungChi(req, res, next) {
+        const chungChi = req.body;
+        await UngTuyenVien.updateOne(
+            { _id: req.taiKhoan._id, 'dsChungChi._id': chungChi.idChungChi },
+            {
+                $set: {
+                    'dsChungChi.$.tenChungChi': chungChi.tenChungChi,
+                    'dsChungChi.$.donViCungCap': chungChi.donViCungCap,
+                    'dsChungChi.$.ngayCap': chungChi.ngayCap,
+                    'dsChungChi.$.ngayHetHan': chungChi.ngayHetHan,
+                }
+            }
+        )
+            .then(async () => {
+                res.status(201).json({
+                    status: 'success',
+                    data: await UngTuyenVien.findById(req.taiKhoan._id)
+                })
+            })
+            .catch(next);
+    }
+
+    async themChungChi(req, res, next) {
+        const chungChi = req.body;
+        const ungTuyenVien = await UngTuyenVien.findById(req.taiKhoan._id);
+        ungTuyenVien.dsChungChi.push({
+            "tenChungChi": chungChi.tenChungChi,
+            "donViCungCap": chungChi.donViCungCap,
+            "ngayCap": chungChi.ngayCap,
+            "ngayHetHan": chungChi.ngayHetHan,
+        })
+        await ungTuyenVien.save()
+            .then(data => {
+                res.status(201).json({
+                    status: 'success',
+                    data
+                })
+            })
+            .catch(next);
+    }
+
+    async xoaChungChi(req, res, next) {
+        await UngTuyenVien.updateOne(
+            { _id: req.taiKhoan._id },
+            { $pull: { dsChungChi: { _id: req.body.idChungChi } } }
+        )
+            .then(async () => {
+                res.status(201).json({
+                    status: 'success',
+                    data: await UngTuyenVien.findById(req.taiKhoan._id)
+                })
+            })
+            .catch(next);
+    }
+
+    async capNhatHocVan(req, res, next) {
+        const hocVan = req.body;
+        await UngTuyenVien.updateOne(
+            { _id: req.taiKhoan._id, 'dsHocVan._id': hocVan.idHocVan },
+            {
+                $set: {
+                    'dsHocVan.$.donViDaoTao': hocVan.donViDaoTao,
+                    'dsHocVan.$.bangCap': hocVan.bangCap,
+                    'dsHocVan.$.moTa': hocVan.moTa,
+                    'dsHocVan.$.tuNgay': hocVan.tuNgay,
+                    'dsHocVan.$.denNgay': hocVan.denNgay,
+                }
+            }
+        )
+            .then(async () => {
+                res.status(201).json({
+                    status: 'success',
+                    data: await UngTuyenVien.findById(req.taiKhoan._id)
+                })
+            })
+            .catch(next);
+    }
+
+    async themHocVan(req, res, next) {
+        const hocVan = req.body;
+        const ungTuyenVien = await UngTuyenVien.findById(req.taiKhoan._id);
+        ungTuyenVien.dsHocVan.push({
+            "donViDaoTao": hocVan.donViDaoTao,
+            "bangCap": hocVan.bangCap,
+            "moTa": hocVan.moTa,
+            "tuNgay": hocVan.tuNgay,
+            "denNgay": hocVan.denNgay
+        })
+        await ungTuyenVien.save()
+            .then(data => {
+                res.status(201).json({
+                    status: 'success',
+                    data
+                })
+            })
+            .catch(next);
+    }
+
+    async xoaHocVan(req, res, next) {
+        await UngTuyenVien.updateOne(
+            { _id: req.taiKhoan._id },
+            { $pull: { dsHocVan: { _id: req.body.idHocVan } } }
+        )
+            .then(async () => {
                 res.status(201).json({
                     status: 'success',
                     data: await UngTuyenVien.findById(req.taiKhoan._id)
