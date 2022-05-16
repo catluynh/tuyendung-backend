@@ -285,7 +285,7 @@ class TinTuyenDungController {
             .catch(next);
     };
 
-    // top 12 tin ứng tuyển nhiều nhất
+    // Tin đc ứng tuyển nhiều nhất
     async tinNoiBat(req, res, next) {
         const limit = 12;
         await DonUngTuyen.aggregate([
@@ -305,6 +305,7 @@ class TinTuyenDungController {
             .sort({ 'soLuong': -1 })
             .exec()
             .then(async datas => {
+                console.log(datas);
                 const dsTin = datas.map(async data => {
                     return await TinTuyenDung.findById(data.idTinTuyenDung);
                 })

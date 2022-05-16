@@ -26,6 +26,9 @@ const NhaTuyenDung = new Schema({
     sdt: {
         type: String
     },
+    diaChi: {
+        type: String
+    },
     email: {
         type: String
     },

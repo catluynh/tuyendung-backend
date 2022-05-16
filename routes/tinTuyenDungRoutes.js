@@ -8,7 +8,7 @@ const tinTuyenDungController = require('../controllers/tinTuyenDungController')
 router.route('/timKiemTheoNhieuTieuChi')
     .get(tinTuyenDungController.timKiemTheoNhieuTieuChi)
 
-// TIN TUYỂN DỤNG, VIỆC LÀM TỐT NHẤT
+// TIN TUYỂN DỤNG, VIỆC LÀM ỨNG TUYỂN NHIỀU NHẤT
 router.route('/tinNoiBat')
     .get(tinTuyenDungController.tinNoiBat)
 
