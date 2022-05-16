@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Enum = require('../utils/enum');
 
-const KyNangMem = new Schema({
+const KyNang = new Schema({
     tenKyNang: {
         type: String
     }
@@ -102,8 +102,8 @@ const UngTuyenVien = new Schema({
     mucTieuCongViec: {
         type: String
     },
-    dsKyNangMem: {
-        type: [KyNangMem]
+    dsKyNang: {
+        type: [KyNang]
     },
     dsHocVan: {
         type: [HocVan]

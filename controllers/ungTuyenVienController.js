@@ -76,9 +76,7 @@ class UngTuyenVienController {
 
     async capNhatAvatar(req, res, next) {
         const file = req.files.file;
-        console.log(file);
         const ungTuyenVien = await UngTuyenVien.findById(req.taiKhoan._id);
-        console.log(req.taiKhoan)
         ungTuyenVien.avatar = file.name;
         await UngTuyenVien.findByIdAndUpdate(req.taiKhoan._id, ungTuyenVien)
             .then(data => {
@@ -91,6 +89,49 @@ class UngTuyenVienController {
             })
             .catch(next);
     };
+
+    async capNhatKyNang(req, res, next) {
+        const kyNang = req.body;
+        //cập nhật object trong ds kỹ năng
+        await UngTuyenVien.updateOne(
+            { _id: req.taiKhoan._id, 'dsKyNang._id': kyNang.idKyNang },
+            { $set: { 'dsKyNang.$.tenKyNang': kyNang.tenKyNang } }
+        )
+            .then(async () => {
+                res.status(201).json({
+                    status: 'success',
+                    data: await UngTuyenVien.findById(req.taiKhoan._id)
+                })
+            })
+            .catch(next);
+    }
+
+    async themKyNang(req, res, next) {
+        const ungTuyenVien = await UngTuyenVien.findById(req.taiKhoan._id);
+        const kyNang = { tenKyNang: req.body.tenKyNang };
+        ungTuyenVien.dsKyNang.push(kyNang)
+        await ungTuyenVien.save()
+            .then(data => {
+                res.status(201).json({
+                    status: 'success',
+                    data
+                })
+            })
+            .catch(next);
+    }
+    async xoaKyNang(req, res, next) {
+        await UngTuyenVien.update(
+            { _id: req.taiKhoan._id },
+            { $pull: { dsKyNang: { _id: req.body.idKyNang } } }
+        )
+            .then(async() => {
+                res.status(201).json({
+                    status: 'success',
+                    data: await UngTuyenVien.findById(req.taiKhoan._id)
+                })
+            })
+            .catch(next);
+    }
 }
 
 module.exports = new UngTuyenVienController;
