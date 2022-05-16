@@ -20,15 +20,26 @@ class DonUngTuyenController {
 
     async postAPI(req, res, next) {
         const donUngTuyenMoi = new DonUngTuyen(req.body);
+        const donUngTuyenTonTai = await DonUngTuyen.findOne({
+            ungTuyenVien: req.body.ungTuyenVien,
+            tinTuyenDung: req.body.tinTuyenDung
+        })
         donUngTuyenMoi.trangThai = Enum.TRANG_THAI_DON.DANG_UNG_TUYEN;
-        await donUngTuyenMoi.save()
-            .then((data) => {
-                res.status(201).json({
-                    status: 'success',
-                    data
-                })
+        if (donUngTuyenTonTai) {
+            res.status(201).json({
+                error: "Bạn đã ứng tuyển tin tuyển dụng này!"
             })
-            .catch(next);
+        }
+        else {
+            await donUngTuyenMoi.save()
+                .then((data) => {
+                    res.status(201).json({
+                        status: 'success',
+                        data
+                    })
+                })
+                .catch(next);
+        }
     };
 
     async getAPIById(req, res, next) {
