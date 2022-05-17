@@ -5,7 +5,7 @@ const donUngTuyenTiemNangController = require('../controllers/donUngTuyenTiemNan
 
 router.route('/')
     .get(donUngTuyenTiemNangController.getAll)
-    .post(authController.protect, donUngTuyenTiemNangController.postAPI)
+    .post(authController.protect, authController.kiemTraLoaiTaiKhoan('nha_tuyen_dung'), donUngTuyenTiemNangController.postAPI)
 
 router.route('/timTheoNhaTuyenDung')
     .get(authController.protect, donUngTuyenTiemNangController.timTheoNhaTuyenDung)

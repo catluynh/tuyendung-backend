@@ -5,7 +5,7 @@ const danhGiaController = require('../controllers/danhGiaController')
 
 router.route('/')
     .get(danhGiaController.getAll)
-    .post(authController.protect, danhGiaController.postAPI)
+    .post(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien'), danhGiaController.postAPI)
 
 router.route('/:id')
     .get(danhGiaController.getAPIById)

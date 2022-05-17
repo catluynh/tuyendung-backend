@@ -7,12 +7,13 @@ router.route('/')
     .get(viecLamQuanTamController.getAll)
     .post(authController.protect, viecLamQuanTamController.postAPI)
 
+//ứng tuyển viên: việc làm đã lưu
 router.route('/timTheoUngTuyenVien')
-    .get(authController.protect, viecLamQuanTamController.timTheoUngTuyenVien)
+    .get(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien'), viecLamQuanTamController.timTheoUngTuyenVien)
 
 router.route('/:id')
     .get(viecLamQuanTamController.getAPIById)
-    .patch(viecLamQuanTamController.updateAPI) 
+    .patch(viecLamQuanTamController.updateAPI)
     .delete(viecLamQuanTamController.deleteAPI)
 
 module.exports = router;

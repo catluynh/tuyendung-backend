@@ -12,9 +12,9 @@ const ViecLamQuanTam = new Schema({
     }
 })
 
-// DonUngTuyenTiemNang.pre(/^find/, function (next) {
-//     this.populate('danhGiaBoi').populate('donUngTuyen')
-//     next()
-// })
+ViecLamQuanTam.pre(/^find/, function (next) {
+    this.populate('tinTuyenDung')
+    next()
+})
 
 module.exports = mongoose.model('viecLamQuanTam', ViecLamQuanTam)
