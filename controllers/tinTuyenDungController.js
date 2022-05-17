@@ -125,6 +125,7 @@ class TinTuyenDungController {
 
             const total = await TinTuyenDung.find({
                 nganhNghe,
+                "trangThai": { $regex: new RegExp(req.query.trangThai, "i") },
                 "tieuDe": { $regex: new RegExp(req.query.tieuDe, "i") },
                 "diaDiem.tinhThanhPho": { $regex: new RegExp(req.query.diaDiem, "i") },
                 "viTri": { $regex: new RegExp(req.query.viTri, "i") },
@@ -135,6 +136,7 @@ class TinTuyenDungController {
 
             await TinTuyenDung.find({
                 nganhNghe,
+                "trangThai": { $regex: new RegExp(req.query.trangThai, "i") },
                 "tieuDe": { $regex: new RegExp(req.query.tieuDe, "i") },
                 "diaDiem.tinhThanhPho": { $regex: new RegExp(req.query.diaDiem, "i") },
                 "viTri": { $regex: new RegExp(req.query.viTri, "i") },
