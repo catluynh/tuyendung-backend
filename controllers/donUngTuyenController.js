@@ -61,6 +61,7 @@ class DonUngTuyenController {
 
     async updateAPI(req, res, next) {
         const data = req.body;
+        console.log(data)
         await DonUngTuyen.findByIdAndUpdate(req.params.id, data)
             .then(data => {
                 res.status(201).json({
@@ -91,7 +92,7 @@ class DonUngTuyenController {
     async timKiemTheoUngTuyenVien(req, res, next) {
         console.log(req.query);
         const page = req.query.page * 1 || 1
-        const limit = req.query.limit || 5;
+        const limit = parseInt(req.query.limit) || 5;
         const skip = (page - 1) * limit;
         const total = await DonUngTuyen.find({ ungTuyenVien: req.taiKhoan._id }).count();
         await DonUngTuyen.find({ ungTuyenVien: req.taiKhoan._id })
@@ -187,7 +188,7 @@ class DonUngTuyenController {
     async timKiemTheoTinTuyenDung(req, res, next) {
         console.log(req.query);
         const page = req.query.page * 1 || 1
-        const limit = req.query.limit || 5;
+        const limit = parseInt(req.query.limit) || 5;
         const skip = (page - 1) * limit;
         const total = await DonUngTuyen.find({ tinTuyenDung: req.params.id }).count();
         await DonUngTuyen.find({ tinTuyenDung: req.params.id })

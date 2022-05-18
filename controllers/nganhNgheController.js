@@ -76,7 +76,7 @@ class NganhNgheController {
 
     // xu hướng các ngành nghề phổ biến, có sl nhiều nghành nghề nhất
     async xuHuongNganhNghe(req, res, next) {
-        const limit = req.query.limit || 8;
+        const limit = parseInt(req.query.limit) || 8;
         await NganhNghe.aggregate([
             {
                 $group: {

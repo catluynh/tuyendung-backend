@@ -89,10 +89,10 @@ class TinTuyenDungController {
     async updateAPI(req, res, next) {
         const data = req.body;
         await TinTuyenDung.findByIdAndUpdate(req.params.id, data)
-            .then(data => {
+            .then(async data => {
                 res.status(201).json({
                     status: 'success',
-                    data
+                    data:  await TinTuyenDung.findById(data._id)
                 })
             })
             .catch(next);
@@ -120,7 +120,7 @@ class TinTuyenDungController {
             const tuNgay = req.query.tuNgay || 1;
             const denNgay = (req.query.denNgay || moment(Date.now()).format('yyyy-MM-DD')) + 'T23:59:59.580';
             const page = req.query.page * 1 || 1
-            const limit = req.query.limit || 10;
+            const limit = parseInt(req.query.limit) || 10;
             const skip = (page - 1) * limit;
             var trangThai;
 
@@ -193,7 +193,7 @@ class TinTuyenDungController {
     async timKiemTheoNhaTuyenDung(req, res, next) {
         console.log(req.query);
         const page = req.query.page * 1 || 1
-        const limit = req.query.limit || 2;
+        const limit = parseInt(req.query.limit) || 2;
         const skip = (page - 1) * limit;
         const linhVuc = await LinhVuc.find({
             "tenLinhVuc": { $regex: new RegExp(req.query.linhVuc, "i") },
@@ -298,7 +298,7 @@ class TinTuyenDungController {
     async timKiemViecLamTheoNganhNghe(req, res, next) {
         console.log(req.query);
         const page = req.query.page * 1 || 1
-        const limit = req.query.limit || 3;
+        const limit = parseInt(req.query.limit) || 3;
         const skip = (page - 1) * limit;
         const nganhNghe = await NganhNghe.find({
             'linhVuc': req.params.idLinhVuc
@@ -329,7 +329,7 @@ class TinTuyenDungController {
 
     // Tin đc ứng tuyển nhiều nhất
     async tinNoiBat(req, res, next) {
-        const limit = req.query.limit || 12;
+        const limit = parseInt(req.query.limit) || 12;
         await DonUngTuyen.aggregate([
             {
                 $group: {
