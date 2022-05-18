@@ -22,6 +22,7 @@
     "mongoose": "^6.1.5",
     "nodemailer": "^6.7.2",
     "nodemon": "^2.0.15",
+    "open": "^8.4.0",
     "paypal-rest-sdk": "^1.8.1",
     "slugify": "^1.6.5",
     "socket.io": "^4.4.1",

@@ -32,6 +32,12 @@ router.route('/khoaTin/:id')
 router.route('/dungTuyen/:id')
     .patch(tinTuyenDungController.dungTuyen)
 
+router.route('/thanhToan')
+    .post(tinTuyenDungController.thanhToan)
+
+router.route('/success')
+    .get(tinTuyenDungController.success)
+
 router.route('/timKiem/:slug')
     .get(tinTuyenDungController.getAPIBySlug)
 

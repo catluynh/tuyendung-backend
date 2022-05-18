@@ -6,6 +6,14 @@ const DonUngTuyen = require('../models/donUngTuyenModel');
 const AppError = require('../utils/appError');
 const Enum = require('../utils/enum');
 const moment = require('moment');
+const paypal = require('paypal-rest-sdk');
+var open = require('open');
+
+paypal.configure({
+    'mode': process.env.MODE, //sandbox or live
+    'client_id': process.env.CLIENT_ID,
+    'client_secret': process.env.CLIENT_SECRET
+});
 
 
 class TinTuyenDungController {
@@ -307,7 +315,6 @@ class TinTuyenDungController {
             .sort({ 'soLuong': -1 })
             .exec()
             .then(async datas => {
-                console.log(datas);
                 const dsTin = datas.map(async data => {
                     return await TinTuyenDung.findById(data.idTinTuyenDung);
                 })
@@ -318,6 +325,91 @@ class TinTuyenDungController {
                 })
             })
             .catch(next);
+    };
+
+    async thanhToan(req, res, next) {
+        try {
+            const items = [{
+                "name": "Thanh toán phí đăng tin tuyển dụng",
+                "price": "1.0",
+                "currency": "USD",
+                "quantity": 2
+            }]
+
+            var total = 0;
+            for (var i = 0; i < items.length; i++) {
+                total += parseFloat(items[i].price) * items[i].quantity;
+            }
+
+            const create_payment_json = {
+                "intent": "sale",
+                "payer": {
+                    "payment_method": "paypal"
+                },
+                "redirect_urls": {
+                    "return_url": "http://localhost:3000/employer/job/create",
+                    "cancel_url": "http://localhost:3000/cancel"
+                },
+                "transactions": [{
+                    "item_list": {
+                        "items": items
+                    },
+                    "amount": {
+                        "currency": "USD",
+                        "total": total.toString()
+                    },
+                    "description": "Đăng tin tuyển dụng"
+                }]
+            };
+
+            paypal.payment.create(create_payment_json, function (error, payment) {
+                if (error) {
+                    res.render('cancle');
+                } else {
+                    payment.links.map(link => {
+                        if (link.rel === 'approval_url') {
+                            open(link.href, function (err) {
+                                if (err) throw err;
+                            });
+                        }
+                    })
+                }
+            });
+        } catch (error) {
+            res.json({
+                error
+            })
+        }
+    };
+
+
+    async success(req, res) {
+        try {
+            const payerId = req.query.PayerID;
+            const paymentId = req.query.paymentId;
+
+            const execute_payment_json = {
+                "payer_id": payerId,
+                "transactions": [{
+                    "amount": {
+                        "currency": "USD",
+                        "total": "1 USTD"
+                    }
+                }]
+            };
+
+            paypal.payment.execute(paymentId, execute_payment_json, function (error, payment) {
+                if (error) {
+                    res.render('cancle');
+                } else {
+                    res.render('success');
+                }
+            });
+        } catch (error) {
+            res.json({
+                error
+            })
+        }
     };
 }
 module.exports = new TinTuyenDungController;
