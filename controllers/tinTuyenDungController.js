@@ -120,8 +120,26 @@ class TinTuyenDungController {
             const tuNgay = req.query.tuNgay || 1;
             const denNgay = (req.query.denNgay || moment(Date.now()).format('yyyy-MM-DD')) + 'T23:59:59.580';
             const page = req.query.page * 1 || 1
-            const limit = 10;
+            const limit = req.query.limit || 10;
             const skip = (page - 1) * limit;
+            var trangThai;
+
+            if (req.query.trangThai == 0) {
+                trangThai = 'Khóa'
+            }
+            if (req.query.trangThai == 1) {
+                trangThai = 'Chờ duyệt'
+            }
+            if (req.query.trangThai == 2) {
+                trangThai = 'Đã duyệt'
+            }
+            if (req.query.trangThai == 3) {
+                trangThai = 'Dừng tuyển'
+            }
+            if (req.query.trangThai == 4) {
+                trangThai = 'Từ chối'
+            }
+
             const linhVuc = await LinhVuc.find({
                 "tenLinhVuc": { $regex: new RegExp(req.query.linhVuc, "i") },
             })
@@ -133,7 +151,7 @@ class TinTuyenDungController {
 
             const total = await TinTuyenDung.find({
                 nganhNghe,
-                "trangThai": { $regex: new RegExp(req.query.trangThai, "i") },
+                "trangThai": { $regex: new RegExp(trangThai, "i") },
                 "tieuDe": { $regex: new RegExp(req.query.tieuDe, "i") },
                 "diaDiem.tinhThanhPho": { $regex: new RegExp(req.query.diaDiem, "i") },
                 "viTri": { $regex: new RegExp(req.query.viTri, "i") },
@@ -144,7 +162,7 @@ class TinTuyenDungController {
 
             await TinTuyenDung.find({
                 nganhNghe,
-                "trangThai": { $regex: new RegExp(req.query.trangThai, "i") },
+                "trangThai": { $regex: new RegExp(trangThai, "i") },
                 "tieuDe": { $regex: new RegExp(req.query.tieuDe, "i") },
                 "diaDiem.tinhThanhPho": { $regex: new RegExp(req.query.diaDiem, "i") },
                 "viTri": { $regex: new RegExp(req.query.viTri, "i") },
@@ -175,7 +193,7 @@ class TinTuyenDungController {
     async timKiemTheoNhaTuyenDung(req, res, next) {
         console.log(req.query);
         const page = req.query.page * 1 || 1
-        const limit = 2;
+        const limit = req.query.limit || 2;
         const skip = (page - 1) * limit;
         const linhVuc = await LinhVuc.find({
             "tenLinhVuc": { $regex: new RegExp(req.query.linhVuc, "i") },
@@ -266,7 +284,7 @@ class TinTuyenDungController {
     async timKiemViecLamTheoNganhNghe(req, res, next) {
         console.log(req.query);
         const page = req.query.page * 1 || 1
-        const limit = 3;
+        const limit = req.query.limit || 3;
         const skip = (page - 1) * limit;
         const nganhNghe = await NganhNghe.find({
             'linhVuc': req.params.idLinhVuc
@@ -297,7 +315,7 @@ class TinTuyenDungController {
 
     // Tin đc ứng tuyển nhiều nhất
     async tinNoiBat(req, res, next) {
-        const limit = 12;
+        const limit = req.query.limit || 12;
         await DonUngTuyen.aggregate([
             {
                 $group: {

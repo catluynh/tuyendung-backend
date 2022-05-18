@@ -91,7 +91,7 @@ class DonUngTuyenController {
     async timKiemTheoUngTuyenVien(req, res, next) {
         console.log(req.query);
         const page = req.query.page * 1 || 1
-        const limit = 5;
+        const limit = req.query.limit || 5;
         const skip = (page - 1) * limit;
         const total = await DonUngTuyen.find({ ungTuyenVien: req.taiKhoan._id }).count();
         await DonUngTuyen.find({ ungTuyenVien: req.taiKhoan._id })
@@ -114,7 +114,7 @@ class DonUngTuyenController {
     async timKiemTheoNhaTuyenDung(req, res, next) {
         console.log(req.query);
         const page = req.query.page * 1 || 1
-        const limit = 5;
+        const limit = req.query.limit || 5;
         const skip = (page - 1) * limit;
         const nhaTuyenDung = await NhaTuyenDung.findById(req.taiKhoan._id);
         //tìm kiếm tin theo nhà tuyển dụng
@@ -164,7 +164,7 @@ class DonUngTuyenController {
     async timKiemTheoTinTuyenDung(req, res, next) {
         console.log(req.query);
         const page = req.query.page * 1 || 1
-        const limit = 5;
+        const limit = req.query.limit || 5;
         const skip = (page - 1) * limit;
         const total = await DonUngTuyen.find({ tinTuyenDung: req.params.id }).count();
         await DonUngTuyen.find({ tinTuyenDung: req.params.id })
