@@ -114,36 +114,59 @@ class DonUngTuyenController {
     async timKiemTheoNhaTuyenDung(req, res, next) {
         console.log(req.query);
         const page = req.query.page * 1 || 1
-        const limit = req.query.limit || 5;
+        const limit = parseInt(req.query.limit) || 5;
         const skip = (page - 1) * limit;
         const nhaTuyenDung = await NhaTuyenDung.findById(req.taiKhoan._id);
         //tìm kiếm tin theo nhà tuyển dụng
         await TinTuyenDung.find({ nhaTuyenDung })
-            .then(async datas => {
+            .then(async dsTinTuyenDung => {
                 //mảng 2 chiều
-                const dsDon = datas.map(async data => {
+                const dsDon = dsTinTuyenDung.map(async tinTuyenDung => {
                     //tìm kiếm đã đơn ứng tuyển theo tin tuyển dụng, array
-                    return await DonUngTuyen.find({ tinTuyenDung: data._id });
+                    return await DonUngTuyen.find({ tinTuyenDung: tinTuyenDung._id });
                 })
 
                 let data = [];
-                const arr = await Promise.all(dsDon);
+                const dsDonTuyenDung = await Promise.all(dsDon);
                 //lấy phần tử trong mảng 2 chiều
-                for (var i = 0; i < arr.length; i++) {
-                    for (var j = 0; j < arr[i].length; j++) {
-                        data = data.concat([arr[i][j]])
+                for (var i = 0; i < dsDonTuyenDung.length; i++) {
+                    for (var j = 0; j < dsDonTuyenDung[i].length; j++) {
+                        data = data.concat([dsDonTuyenDung[i][j]])
                     }
                 }
 
+                let trangThai;
+
+                if (req.query.trangThai == 0) {
+                    trangThai = 'Thất bại'
+                }
+                if (req.query.trangThai == 1) {
+                    trangThai = 'Đang ứng tuyển'
+                }
+                if (req.query.trangThai == 2) {
+                    trangThai = 'Đã ứng tuyển'
+                }
+
+
+                let allDsDonUngTuyen = data.filter(donUngTuyen => {
+                    if (donUngTuyen.trangThai == trangThai) {
+                        return donUngTuyen
+                    } if (!trangThai) {
+                        return donUngTuyen
+                    }
+                })
+
                 //phân trang
                 let dataPage = [];
-                if (data.length - limit > skip) {
+                if (allDsDonUngTuyen.length - limit > skip) {
                     for (var i = skip; i < (skip + limit); i++) {
-                        dataPage = dataPage.concat([data[i]]);
+                        if (allDsDonUngTuyen[i] != null)
+                            dataPage = dataPage.concat([allDsDonUngTuyen[i]]);
                     }
                 } else {
                     for (var i = skip; i < data.length; i++) {
-                        dataPage = dataPage.concat([data[i]]);
+                        if (allDsDonUngTuyen[i] != null)
+                            dataPage = dataPage.concat([allDsDonUngTuyen[i]]);
                     }
                 }
 
@@ -153,7 +176,7 @@ class DonUngTuyenController {
                     pagination: {
                         page,
                         limit,
-                        total: data.length,
+                        total: allDsDonUngTuyen.length,
                     },
                     data: dataPage
                 })

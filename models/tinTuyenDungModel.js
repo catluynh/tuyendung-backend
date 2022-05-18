@@ -40,9 +40,7 @@ const TinTuyenDung = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'nganhNghe'
     },
-    phucLoi: [{
-        tenPhucLoi: String
-    }],
+    phucLoi: String,
     hinhAnh: [{
         tenHinhAnh: {
             type: String,
@@ -66,7 +64,12 @@ const TinTuyenDung = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'nhaTuyenDung'
     },
-    slug: String
+    slug: String,
+    lienHe: {
+        ten: String,
+        sdt: String,
+        email: String
+    },
 })
 
 TinTuyenDung.pre('save', function (next) {

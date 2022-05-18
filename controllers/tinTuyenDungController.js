@@ -267,6 +267,20 @@ class TinTuyenDungController {
             .catch(next);
     }
 
+    async tuChoiTin(req, res, next) {
+        await TinTuyenDung.findById(req.params.id)
+            .then(data => {
+                data.trangThai = Enum.TRANG_THAI_TIN.TU_CHOI;
+                data.save();
+                res.status(200).json({
+                    status: 'success',
+                    results: data.length,
+                    data
+                })
+            })
+            .catch(next);
+    }
+
     async dungTuyen(req, res, next) {
         await TinTuyenDung.findById(req.params.id)
             .then(data => {

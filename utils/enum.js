@@ -59,7 +59,8 @@ const TRANG_THAI_TIN = {
   DA_DUYET: 'Đã duyệt',
   CHO_DUYET: 'Chờ duyệt',
   DUNG_TUYEN: 'Dừng tuyển',
-  KHOA: 'Khóa'
+  KHOA: 'Khóa',
+  TU_CHOI: 'Từ chối'
 }
 
 const TRANG_THAI_DON = {
