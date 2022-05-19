@@ -20,7 +20,8 @@ const DonUngTuyen = new Schema({
         ref: 'tinTuyenDung'
     },
     guiEmail: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
     thongTinLienHe: {
         ten: String,
@@ -29,7 +30,8 @@ const DonUngTuyen = new Schema({
         loiGioiThieu: String
     },
     tiemNang: {
-        type: Boolean
+        type: Boolean,
+        default: false
     }
 })
 

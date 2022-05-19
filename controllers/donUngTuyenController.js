@@ -260,6 +260,7 @@ class DonUngTuyenController {
                     }
                 }
 
+                //lọc những đơn tuyển dụng tiềm năng
                 let allDsDonUngTuyen = data.filter(donUngTuyen => {
                     if (donUngTuyen.tiemNang == true)
                         return donUngTuyen
@@ -295,29 +296,27 @@ class DonUngTuyenController {
     };
 
     async themDonUngTuyenTiemNang(req, res, next) {
-        const tinTuyenDung = await TinTuyenDung.findById(req.params.id);
-        tinTuyenDung.dsViecLamDaLuu.push({ ungTuyenVien: req.taiKhoan._id })
-        await tinTuyenDung.save()
+        const donUngTuyen = await DonUngTuyen.findById(req.params.id)
+        donUngTuyen.tiemNang = true;
+        donUngTuyen.save()
             .then(data => {
                 res.status(201).json({
                     status: 'success',
                     data
                 })
             })
-            .catch(next);
     };
 
     async huyDonUngTuyenTiemNang(req, res, next) {
-        await TinTuyenDung.updateOne(
-            { _id: req.params.id },
-            { $pull: { dsViecLamDaLuu: { _id: req.body.idViecLamDaLuu } } }
-        )
-            .then(async () => {
+        const donUngTuyen = await DonUngTuyen.findById(req.params.id)
+        donUngTuyen.tiemNang = false;
+        donUngTuyen.save()
+            .then(data => {
                 res.status(201).json({
-                    status: 'success'
+                    status: 'success',
+                    data
                 })
             })
-            .catch(next);
     };
 
 }
