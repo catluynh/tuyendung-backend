@@ -26,7 +26,7 @@ class DonUngTuyenController {
         })
         donUngTuyenMoi.trangThai = Enum.TRANG_THAI_DON.DANG_UNG_TUYEN;
         if (donUngTuyenTonTai) {
-            res.status(400).json({
+            res.status(404).json({
                 error: "Bạn đã ứng tuyển tin tuyển dụng này!"
             })
         }
