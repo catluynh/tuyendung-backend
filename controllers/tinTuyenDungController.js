@@ -197,6 +197,27 @@ class TinTuyenDungController {
         const page = req.query.page * 1 || 1
         const limit = parseInt(req.query.limit) || 2;
         const skip = (page - 1) * limit;
+
+        var trangThai;
+
+        if (req.query.trangThai == 0) {
+            trangThai = 'Khóa'
+        }
+        if (req.query.trangThai == 1) {
+            trangThai = 'Chờ duyệt'
+        }
+        if (req.query.trangThai == 2) {
+            trangThai = 'Đã duyệt'
+        }
+        if (req.query.trangThai == 3) {
+            trangThai = 'Dừng tuyển'
+        }
+        if (req.query.trangThai == 4) {
+            trangThai = 'Từ chối'
+        }
+
+        console.log(trangThai);
+        
         const linhVuc = await LinhVuc.find({
             "tenLinhVuc": { $regex: new RegExp(req.query.linhVuc, "i") },
         })
@@ -212,6 +233,7 @@ class TinTuyenDungController {
         const total = await TinTuyenDung.find({
             nhaTuyenDung,
             nganhNghe,
+            "trangThai": { $regex: new RegExp(trangThai, "i") },
             "diaDiem.tinhThanhPho": { $regex: new RegExp(req.query.diaDiem, "i") },
             "viTri": { $regex: new RegExp(req.query.viTri, "i") },
             "soNamKinhNghiem": { $regex: new RegExp(req.query.soNamKinhNghiem, "i") },
@@ -221,6 +243,7 @@ class TinTuyenDungController {
         await TinTuyenDung.find({
             nhaTuyenDung,
             nganhNghe,
+            "trangThai": { $regex: new RegExp(trangThai, "i") },
             "diaDiem.tinhThanhPho": { $regex: new RegExp(req.query.diaDiem, "i") },
             "viTri": { $regex: new RegExp(req.query.viTri, "i") },
             "soNamKinhNghiem": { $regex: new RegExp(req.query.soNamKinhNghiem, "i") },
