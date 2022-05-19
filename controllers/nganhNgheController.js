@@ -94,7 +94,6 @@ class NganhNgheController {
             .sort({ 'soLuong': -1 })
             .exec()
             .then(async datas => {
-                console.log(datas)
                 const dsLinhVuc = datas.map(async data => {
                     return await LinhVuc.findById(data.idLinhVuc);
                 })

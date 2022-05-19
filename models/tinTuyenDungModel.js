@@ -3,6 +3,14 @@ const Schema = mongoose.Schema;
 const Enum = require('../utils/enum');
 const slugify = require('slugify');
 
+
+const ViecLamDaLuu = new Schema({
+    ungTuyenVien: {
+        type: Schema.Types.ObjectId,
+        ref: 'ungTuyenVien'
+    }
+})
+
 const TinTuyenDung = new Schema({
     tieuDe: String,
     viTri: {
@@ -70,6 +78,9 @@ const TinTuyenDung = new Schema({
         sdt: String,
         email: String
     },
+    dsViecLamDaLuu: {
+        type: [ViecLamDaLuu]
+    }
 })
 
 TinTuyenDung.pre('save', function (next) {

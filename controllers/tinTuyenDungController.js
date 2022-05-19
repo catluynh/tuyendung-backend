@@ -3,6 +3,7 @@ const NganhNghe = require('../models/nganhNgheModel');
 const LinhVuc = require('../models/linhVucModel');
 const NhaTuyenDung = require('../models/nhaTuyenDungModel');
 const DonUngTuyen = require('../models/donUngTuyenModel');
+const ViecLamQuanTam = require('../models/viecLamQuanTam');
 const AppError = require('../utils/appError');
 const Enum = require('../utils/enum');
 const moment = require('moment');
@@ -296,6 +297,50 @@ class TinTuyenDungController {
             .catch(next);
     }
 
+    async tinTuyenDungDaLuu(req, res, next) {
+        await TinTuyenDung.find({ "dsViecLamDaLuu.ungTuyenVien": req.taiKhoan._id })
+            .then(data => {
+                if (!data) {
+                    return res.status(404).json({
+                        status: 'error',
+                        message: 'Không tìm thấy',
+                    });
+                }
+                res.status(201).json({
+                    status: 'success',
+                    result: data.length,
+                    data
+                })
+            })
+            .catch(next);
+    };
+
+    async luuTinTuyenDung(req, res, next) {
+        const tinTuyenDung = await TinTuyenDung.findById(req.params.id);
+        tinTuyenDung.dsViecLamDaLuu.push({ ungTuyenVien: req.taiKhoan._id })
+        await tinTuyenDung.save()
+            .then(data => {
+                res.status(201).json({
+                    status: 'success',
+                    data
+                })
+            })
+            .catch(next);
+    };
+
+    async huyLuuTinTuyenDung(req, res, next) {
+        await TinTuyenDung.updateOne(
+            { _id: req.params.id },
+            { $pull: { dsViecLamDaLuu: { _id: req.body.idViecLamDaLuu } } }
+        )
+            .then(async () => {
+                res.status(201).json({
+                    status: 'success'
+                })
+            })
+            .catch(next);
+    };
+
     async timKiemViecLamTheoNganhNghe(req, res, next) {
         console.log(req.query);
         const page = req.query.page * 1 || 1
@@ -351,6 +396,7 @@ class TinTuyenDungController {
                 const dsTin = datas.map(async data => {
                     return await TinTuyenDung.findById(data.idTinTuyenDung);
                 })
+
                 res.status(200).json({
                     status: 'success',
                     results: datas.length,
