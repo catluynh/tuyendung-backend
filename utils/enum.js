@@ -52,6 +52,7 @@ const BANG_CAP = {
   SAU_DAI_HOC: 'Sau đại học',
   NGHE: 'Nghề',
   CHUA_TOT_NGHIEP: 'Chưa tốt nghiệp',
+  PHO_THONG: 'Phổ thông',
   KHAC: 'Khác'
 }
 

@@ -253,6 +253,7 @@ class UngTuyenVienController {
                     'dsHocVan.$.donViDaoTao': hocVan.donViDaoTao,
                     'dsHocVan.$.bangCap': hocVan.bangCap,
                     'dsHocVan.$.moTa': hocVan.moTa,
+                    'dsHocVan.$.chuyenNganh': hocVan.chuyenNganh,
                     'dsHocVan.$.tuNgay': hocVan.tuNgay,
                     'dsHocVan.$.denNgay': hocVan.denNgay,
                 }
@@ -274,6 +275,7 @@ class UngTuyenVienController {
             "donViDaoTao": hocVan.donViDaoTao,
             "bangCap": hocVan.bangCap,
             "moTa": hocVan.moTa,
+            "chuyenNganh": hocVan.chuyenNganh,
             "tuNgay": hocVan.tuNgay,
             "denNgay": hocVan.denNgay
         })

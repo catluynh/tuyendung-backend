@@ -92,7 +92,7 @@ class TinTuyenDungController {
             .then(async data => {
                 res.status(201).json({
                     status: 'success',
-                    data:  await TinTuyenDung.findById(data._id)
+                    data: await TinTuyenDung.findById(data._id)
                 })
             })
             .catch(next);
@@ -117,6 +117,7 @@ class TinTuyenDungController {
 
     async timKiemTheoNhieuTieuChi(req, res, next) {
         try {
+            // moment(ngay).format('DD-MM-yyyy')
             const tuNgay = req.query.tuNgay || 1;
             const denNgay = (req.query.denNgay || moment(Date.now()).format('yyyy-MM-DD')) + 'T23:59:59.580';
             const page = req.query.page * 1 || 1
