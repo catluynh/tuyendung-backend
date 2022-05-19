@@ -147,9 +147,10 @@ class AuthController {
             await taiKhoan.save();
 
             //Tạo ứng tuyển viên
-            const object = {_id : ""};
+            const object = {_id : "",};
             const ungTuyenVienMoi = new UngTuyenVien(object);
             ungTuyenVienMoi._id = taiKhoan._id;
+            ungTuyenVienMoi.taiKhoan = taiKhoan._id
             await ungTuyenVienMoi.save();
             
            // const token = createToken(taiKhoan._id);

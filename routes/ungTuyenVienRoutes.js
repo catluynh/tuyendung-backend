@@ -3,7 +3,7 @@ const router = express.Router();
 const authController = require('../controllers/authControler');
 const ungTuyenVienController = require('../controllers/ungTuyenVienController')
 
-router.use(authController.protect);
+// router.use(authController.protect);
 // router.use(authController.kiemTraLoaiTaiKhoan('ứng tuyển viên', 'quản trị viên'));
 
 //thêm xóa sửa kỹ năng

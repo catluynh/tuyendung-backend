@@ -23,6 +23,18 @@ router.route('/chapNhanDonUngTuyen/:id')
 router.route('/tuChoiDonUngTuyen/:id')
     .patch(authController.protect, authController.kiemTraLoaiTaiKhoan('nha_tuyen_dung'), donUngTuyenController.tuChoiDonUngTuyen)
 
+//nhà tuyển dụng: đơn ứng tuyển tiềm năng
+router.route('/donUngTuyenTiemNang')
+    .get(authController.protect, donUngTuyenController.donUngTuyenTiemNang)
+
+//nhà tuyển dụng: thêm đơn ứng tuyển tiềm năng
+router.route('/themDonUngTuyenTiemNang/:id')
+    .patch(donUngTuyenController.themDonUngTuyenTiemNang)
+
+//nhà tuyển dụng: hủy đơn ứng tuyển tiềm năng
+router.route('/huyDonUngTuyenTiemNang/:id')
+    .patch(donUngTuyenController.huyDonUngTuyenTiemNang)
+
 router.route('/')
     .get(donUngTuyenController.getAll)
     .post(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien'), donUngTuyenController.postAPI)

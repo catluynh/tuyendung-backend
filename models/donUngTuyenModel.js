@@ -2,13 +2,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Enum = require('../utils/enum');
 
-const DonUngTuyenTiemNang = new Schema({
-    nhaTuyenDung: {
-        type: Schema.Types.ObjectId,
-        ref: 'nhaTuyenDung'
-    }
-})
-
 const DonUngTuyen = new Schema({
     trangThai: {
         type: String,
@@ -35,8 +28,8 @@ const DonUngTuyen = new Schema({
         email: String,
         loiGioiThieu: String
     },
-    dsDonUngTuyenTiemNang: {
-        type: [DonUngTuyenTiemNang]
+    tiemNang: {
+        type: Boolean
     }
 })
 

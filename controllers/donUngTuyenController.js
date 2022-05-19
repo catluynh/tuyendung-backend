@@ -26,7 +26,7 @@ class DonUngTuyenController {
         })
         donUngTuyenMoi.trangThai = Enum.TRANG_THAI_DON.DANG_UNG_TUYEN;
         if (donUngTuyenTonTai) {
-            res.status(201).json({
+            res.status(400).json({
                 error: "Bạn đã ứng tuyển tin tuyển dụng này!"
             })
         }
@@ -231,6 +231,90 @@ class DonUngTuyenController {
                     status: 'success',
                     results: data.length,
                     data
+                })
+            })
+            .catch(next);
+    };
+
+    async donUngTuyenTiemNang(req, res, next) {
+        console.log(req.query);
+        const page = req.query.page * 1 || 1
+        const limit = parseInt(req.query.limit) || 5;
+        const skip = (page - 1) * limit;
+        const nhaTuyenDung = await NhaTuyenDung.findById(req.taiKhoan._id);
+        //tìm kiếm tin theo nhà tuyển dụng
+        await TinTuyenDung.find({ nhaTuyenDung })
+            .then(async dsTinTuyenDung => {
+                //mảng 2 chiều
+                const dsDon = dsTinTuyenDung.map(async tinTuyenDung => {
+                    //tìm kiếm đã đơn ứng tuyển theo tin tuyển dụng, array
+                    return await DonUngTuyen.find({ tinTuyenDung: tinTuyenDung._id });
+                })
+
+                let data = [];
+                const dsDonTuyenDung = await Promise.all(dsDon);
+                //lấy phần tử trong mảng 2 chiều
+                for (var i = 0; i < dsDonTuyenDung.length; i++) {
+                    for (var j = 0; j < dsDonTuyenDung[i].length; j++) {
+                        data = data.concat([dsDonTuyenDung[i][j]])
+                    }
+                }
+
+                let allDsDonUngTuyen = data.filter(donUngTuyen => {
+                    if (donUngTuyen.tiemNang == true)
+                        return donUngTuyen
+                })
+
+                //phân trang
+                let dataPage = [];
+                if (allDsDonUngTuyen.length - limit > skip) {
+                    for (var i = skip; i < (skip + limit); i++) {
+                        if (allDsDonUngTuyen[i] != null)
+                            dataPage = dataPage.concat([allDsDonUngTuyen[i]]);
+                    }
+                } else {
+                    for (var i = skip; i < data.length; i++) {
+                        if (allDsDonUngTuyen[i] != null)
+                            dataPage = dataPage.concat([allDsDonUngTuyen[i]]);
+                    }
+                }
+
+                res.status(200).json({
+                    status: 'success',
+                    results: dataPage.length,
+                    pagination: {
+                        page,
+                        limit,
+                        total: allDsDonUngTuyen.length,
+                    },
+                    data: allDsDonUngTuyen
+                })
+            })
+            .catch(next);
+
+    };
+
+    async themDonUngTuyenTiemNang(req, res, next) {
+        const tinTuyenDung = await TinTuyenDung.findById(req.params.id);
+        tinTuyenDung.dsViecLamDaLuu.push({ ungTuyenVien: req.taiKhoan._id })
+        await tinTuyenDung.save()
+            .then(data => {
+                res.status(201).json({
+                    status: 'success',
+                    data
+                })
+            })
+            .catch(next);
+    };
+
+    async huyDonUngTuyenTiemNang(req, res, next) {
+        await TinTuyenDung.updateOne(
+            { _id: req.params.id },
+            { $pull: { dsViecLamDaLuu: { _id: req.body.idViecLamDaLuu } } }
+        )
+            .then(async () => {
+                res.status(201).json({
+                    status: 'success'
                 })
             })
             .catch(next);
