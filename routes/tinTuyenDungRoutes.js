@@ -63,7 +63,7 @@ router.route('/:id')
     .delete(tinTuyenDungController.deleteAPI)
 
 router.route('/')
-    .get(tinTuyenDungController.getAll)
+    .get(authController.protect, tinTuyenDungController.getAll)
     .post(tinTuyenDungController.postAPI)
 
 module.exports = router;
