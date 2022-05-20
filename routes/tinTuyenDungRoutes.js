@@ -10,7 +10,7 @@ router.route('/timKiemTheoNhieuTieuChi')
 
 // TIN TUYỂN DỤNG, VIỆC LÀM ỨNG TUYỂN NHIỀU NHẤT
 router.route('/tinNoiBat')
-    .get(tinTuyenDungController.tinNoiBat)
+    .get(tinTuyenDungController.kiemTraDungTuyen, tinTuyenDungController.tinNoiBat)
 
 //tìm kiếm việc làm theo ngành nghề
 router.route('/timKiemViecLamTheoNganhNghe/:idLinhVuc')

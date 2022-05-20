@@ -36,8 +36,8 @@ const DonUngTuyen = new Schema({
 })
 
 DonUngTuyen.pre(/^find/, function (next) {
-    this.populate({ path: 'ungTuyenVien', select: 'ten sdt email' })
-        .populate({ path: 'tinTuyenDung', select: 'tieuDe' })
+    this.populate('ungTuyenVien')
+        .populate('tinTuyenDung')
     next()
 })
 

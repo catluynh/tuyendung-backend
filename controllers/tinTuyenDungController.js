@@ -9,6 +9,7 @@ const Enum = require('../utils/enum');
 const moment = require('moment');
 const paypal = require('paypal-rest-sdk');
 var open = require('open');
+const { find } = require('../models/tinTuyenDungModel');
 
 paypal.configure({
     'mode': process.env.MODE, //sandbox or live
@@ -18,9 +19,34 @@ paypal.configure({
 
 
 class TinTuyenDungController {
+
+    async kiemTraDungTuyen(req, res, next) {
+        await TinTuyenDung.aggregate([
+            { $lookup: { from: "donungtuyens", localField: "_id", foreignField: "tinTuyenDung", as: "rs" } },
+            { $unwind: "$rs" },
+            { $match: { 'rs.trangThai': 'Đã ứng tuyển' } },
+            {
+                $group: {
+                    _id:
+                        { tinTuyenDung: '$_id', tieuDe: '$tieuDe', ngayHetHan: '$ngayHetHan', soLuongTuyen: '$soLuongTuyen' },
+                    soLuongDaTuyen: { $sum: 1 }
+                }
+            },
+        ])
+            .then(datas => {
+                datas.map(async data => {
+                    if (data._id.ngayHetHan < Date.now() || data.soLuongDaTuyen >= data._id.soLuongTuyen ) {
+                        await TinTuyenDung.findByIdAndUpdate(data._id.tinTuyenDung, {trangThai: Enum.TRANG_THAI_TIN.DUNG_TUYEN})
+                    }
+                })
+                next()
+            })
+            .catch(next);
+
+    }
     async getAll(req, res, next) {
         await TinTuyenDung.find()
-            .then(data => {
+            .then(async data => {
                 res.status(200).json({
                     status: 'success',
                     results: data.length,
@@ -217,7 +243,7 @@ class TinTuyenDungController {
         }
 
         console.log(trangThai);
-        
+
         const linhVuc = await LinhVuc.find({
             "tenLinhVuc": { $regex: new RegExp(req.query.linhVuc, "i") },
         })
