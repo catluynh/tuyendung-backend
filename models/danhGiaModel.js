@@ -7,7 +7,7 @@ const DanhGia = new Schema({
         type: String
     },
     xepLoai: {
-        type: String,
+        type: Number,
         enum: Enum.XEP_LOAI
     },
     ngay: {

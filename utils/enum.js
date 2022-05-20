@@ -5,11 +5,11 @@ const LOAI_TAI_KHOAN = {
 };
 
 const XEP_LOAI = {
-  MOT_SAO: '1',
-  HAI_SAO: '2',
-  BA_SAO: '3',
-  BON_SAO: '4',
-  NAM_SAO: '5',
+  MOT_SAO: 1,
+  HAI_SAO: 2,
+  BA_SAO: 3,
+  BON_SAO: 4,
+  NAM_SAO: 5,
 };
 
 const SO_NAM_KINH_NGHIEM = {

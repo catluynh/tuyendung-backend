@@ -35,8 +35,8 @@ class TinTuyenDungController {
         ])
             .then(datas => {
                 datas.map(async data => {
-                    if (data._id.ngayHetHan < Date.now() || data.soLuongDaTuyen >= data._id.soLuongTuyen ) {
-                        await TinTuyenDung.findByIdAndUpdate(data._id.tinTuyenDung, {trangThai: Enum.TRANG_THAI_TIN.DUNG_TUYEN})
+                    if (data._id.ngayHetHan < Date.now() || data.soLuongDaTuyen >= data._id.soLuongTuyen) {
+                        await TinTuyenDung.findByIdAndUpdate(data._id.tinTuyenDung, { trangThai: Enum.TRANG_THAI_TIN.DUNG_TUYEN })
                     }
                 })
                 next()
@@ -450,6 +450,38 @@ class TinTuyenDungController {
                     status: 'success',
                     results: datas.length,
                     data: await Promise.all(dsTin)
+                })
+            })
+            .catch(next);
+    };
+
+    async soLuongDanhGiaTheoTin(req, res, next) {
+        await TinTuyenDung.aggregate([
+            { $lookup: { from: "danhgias", localField: "_id", foreignField: "tinTuyenDung", as: "rs" } },
+            { $project: { _id: 1, tieuDe: 1, slug: 1, soLuotDanhGia: { $size: "$rs" } } },
+            //   { $match: { soLuotDanhGia: { $gt: 0 } } }
+        ])
+            .then(async data => {
+                res.status(201).json({
+                    status: 'success',
+                    total: data.length,
+                    data
+                })
+            })
+            .catch(next);
+    };
+
+    async tinTuyenDungCoNguyCoKhoa(req, res, next) {
+        await TinTuyenDung.aggregate([
+            { $lookup: { from: "danhgias", localField: "_id", foreignField: "tinTuyenDung", as: "rs" } },
+            { $unwind: "$rs" },
+            { $match: { 'rs.xepLoai': { $lt: 3 } } },
+        ])
+            .then(async data => {
+                res.status(201).json({
+                    status: 'success',
+                    total: data.length,
+                    data
                 })
             })
             .catch(next);

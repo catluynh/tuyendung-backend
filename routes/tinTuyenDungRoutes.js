@@ -48,6 +48,14 @@ router.route('/luuTinTuyenDung/:id')
 router.route('/huyLuuTinTuyenDung/:id')
     .patch(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien'), tinTuyenDungController.huyLuuTinTuyenDung)
 
+//quản trị viên: đếm số lượng đánh giá theo tin
+router.route('/soLuongDanhGiaTheoTin')
+    .get(tinTuyenDungController.soLuongDanhGiaTheoTin)
+
+//quản trị viên: tin có nguy cơ bị khóa, có lượt đánh giá < 3
+router.route('/tinTuyenDungCoNguyCoKhoa')
+    .get(tinTuyenDungController.tinTuyenDungCoNguyCoKhoa)
+
 router.route('/thanhToan')
     .post(tinTuyenDungController.thanhToan)
 

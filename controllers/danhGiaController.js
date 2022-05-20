@@ -71,5 +71,16 @@ class DanhGiaController {
             })
             .catch(next);
     };
+
+    async danhGiaTheoTin(req, res, next) {
+        await DanhGia.find({tinTuyenDung: req.params.id})
+            .then(data => {
+                res.status(201).json({
+                    status: 'success',
+                    data
+                })
+            })
+            .catch(next);
+    };
 }
 module.exports = new DanhGiaController;
