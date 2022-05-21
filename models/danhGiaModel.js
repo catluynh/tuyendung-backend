@@ -25,7 +25,7 @@ const DanhGia = new Schema({
 })
 
 DanhGia.pre(/^find/, function (next) {
-    this.populate({ path: 'danhGiaBoi', select: 'taiKhoan'})
+    this.populate('danhGiaBoi')
     //.populate({ path: 'tinTuyenDung', select: 'nganhNghe'})
     next()
 })
