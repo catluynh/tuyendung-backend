@@ -72,6 +72,6 @@ router.route('/:id')
 
 router.route('/')
     .get(authController.protect, tinTuyenDungController.getAll)
-    .post(tinTuyenDungController.postAPI)
+    .post(authController.protect, authController.kiemTraLoaiTaiKhoan('nha_tuyen_dung'), tinTuyenDungController.postAPI)
 
 module.exports = router;

@@ -58,6 +58,7 @@ class TinTuyenDungController {
 
     async postAPI(req, res, next) {
         const tinTuyenDungMoi = new TinTuyenDung(req.body);
+        tinTuyenDungMoi.nhaTuyenDung = req.taiKhoan._id
         tinTuyenDungMoi.trangThai = Enum.TRANG_THAI_TIN.CHO_DUYET;
         await tinTuyenDungMoi.save()
             .then((data) => {

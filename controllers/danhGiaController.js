@@ -73,14 +73,33 @@ class DanhGiaController {
     };
 
     async danhGiaTheoTin(req, res, next) {
-        await DanhGia.find({tinTuyenDung: req.params.id})
-            .then(data => {
-                res.status(201).json({
-                    status: 'success',
-                    data
-                })
+        const xepLoai = req.query.xepLoai * 1;
+        if (xepLoai) {
+            await DanhGia.find({
+                tinTuyenDung: req.params.id,
+                xepLoai: xepLoai
             })
-            .catch(next);
+                .then(data => {
+                    res.status(201).json({
+                        status: 'success',
+                        total: data.length,
+                        data
+                    })
+                })
+                .catch(next);
+        } else {
+            await DanhGia.find({
+                tinTuyenDung: req.params.id
+            })
+                .then(data => {
+                    res.status(201).json({
+                        status: 'success',
+                        total: data.length,
+                        data
+                    })
+                })
+                .catch(next);
+        }
     };
 }
 module.exports = new DanhGiaController;
