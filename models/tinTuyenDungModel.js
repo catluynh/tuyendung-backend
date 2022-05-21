@@ -18,6 +18,10 @@ const TinTuyenDung = new Schema({
         enum: Enum.VI_TRI
     },
     soLuongTuyen: Number,
+    soLuongDaTuyen: {
+        type: Number,
+        default: 0
+    },
     loaiCongViec: {
         type: String,
         enum: Enum.LOAI_CONG_VIEC

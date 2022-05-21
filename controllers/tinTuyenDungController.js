@@ -28,15 +28,23 @@ class TinTuyenDungController {
             {
                 $group: {
                     _id:
-                        { tinTuyenDung: '$_id', tieuDe: '$tieuDe', ngayHetHan: '$ngayHetHan', soLuongTuyen: '$soLuongTuyen' },
+                        { tinTuyenDung: '$_id', tieuDe: '$tieuDe', ngayHetHan: '$ngayHetHan', soLuongTuyen: '$soLuongDaTuyen' },
                     soLuongDaTuyen: { $sum: 1 }
                 }
             },
+            {
+                $replaceRoot: {
+                    newRoot: { tinTuyenDung: "$_id", soLuongDaTuyen: '$soLuongDaTuyen' }
+                }
+            }
         ])
             .then(datas => {
                 datas.map(async data => {
-                    if (data._id.ngayHetHan < Date.now() || data.soLuongDaTuyen >= data._id.soLuongTuyen) {
-                        await TinTuyenDung.findByIdAndUpdate(data._id.tinTuyenDung, { trangThai: Enum.TRANG_THAI_TIN.DUNG_TUYEN })
+                    if (data.tinTuyenDung.ngayHetHan < Date.now() || data.soLuongDaTuyen >= data.tinTuyenDung.soLuongTuyen) {
+                        await TinTuyenDung.findByIdAndUpdate(data.tinTuyenDung.tinTuyenDung, {
+                            trangThai: Enum.TRANG_THAI_TIN.DUNG_TUYEN,
+                            soLuongDaTuyen: data.soLuongDaTuyen
+                        })
                     }
                 })
                 next()

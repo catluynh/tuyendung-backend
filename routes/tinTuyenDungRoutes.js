@@ -74,7 +74,7 @@ router.route('/:id')
     .delete(tinTuyenDungController.deleteAPI)
 
 router.route('/')
-    .get(authController.protect, tinTuyenDungController.getAll)
+    .get( tinTuyenDungController.getAll)
     .post(authController.protect, authController.kiemTraLoaiTaiKhoan('nha_tuyen_dung'), tinTuyenDungController.postAPI)
 
 module.exports = router;
