@@ -101,5 +101,23 @@ class DanhGiaController {
                 .catch(next);
         }
     };
+
+    async demDanhGiaTheoXepLoai(req, res, next) {
+        await DanhGia.aggregate([
+            { $group: { _id: '$xepLoai', tong: { $sum: 1 } } },
+            {
+                $replaceRoot: {
+                    newRoot: { xepLoai: "$_id", tong: '$tong' }
+                }
+            }
+        ])
+            .then(data => {
+                res.status(201).json({
+                    status: 'success',
+                    data
+                })
+            })
+            .catch(next);
+    };
 }
 module.exports = new DanhGiaController;

@@ -7,6 +7,9 @@ const danhGiaController = require('../controllers/danhGiaController');
 router.route('/danhGiaTheoTin/:id')
     .get(danhGiaController.danhGiaTheoTin)
 
+router.route('/demDanhGiaTheoXepLoai')
+    .get(danhGiaController.demDanhGiaTheoXepLoai)
+
 router.route('/')
     .get(danhGiaController.getAll)
     .post(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien'), danhGiaController.postAPI)
