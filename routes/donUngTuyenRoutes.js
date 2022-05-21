@@ -35,6 +35,9 @@ router.route('/themDonUngTuyenTiemNang/:id')
 router.route('/huyDonUngTuyenTiemNang/:id')
     .patch(donUngTuyenController.huyDonUngTuyenTiemNang)
 
+router.route('/demDonUngTuyenTheoTrangThai')
+    .get(donUngTuyenController.demDonUngTuyenTheoTrangThai)
+
 router.route('/')
     .get(donUngTuyenController.getAll)
     .post(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien'), donUngTuyenController.postAPI)

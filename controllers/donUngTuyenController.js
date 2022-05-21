@@ -392,5 +392,24 @@ class DonUngTuyenController {
             })
     };
 
+    async demDonUngTuyenTheoTrangThai(req, res, next) {
+        await DonUngTuyen.aggregate([
+            { $group: { _id: '$trangThai', tong: { $sum: 1 } } },
+            {
+                $replaceRoot: {
+                    newRoot: { trangThai: "$_id", tong: '$tong' }
+                }
+            }
+        ])
+            .then(data => {
+                res.status(200).json({
+                    status: 'success',
+                    results: data.length,
+                    data
+                })
+            })
+            .catch(next);
+    }
+
 }
 module.exports = new DonUngTuyenController;
