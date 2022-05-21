@@ -36,6 +36,9 @@ router.route('/tuChoiTin/:id')
 router.route('/dungTuyen/:id')
     .patch(tinTuyenDungController.dungTuyen)
 
+router.route('/tongSoTinTheoTrangThai')
+    .get(tinTuyenDungController.tongSoTinTheoTrangThai)
+
 //ứng tuyển viên: việc làm đã lưu
 router.route('/tinTuyenDungDaLuu')
     .get(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien'), tinTuyenDungController.tinTuyenDungDaLuu)

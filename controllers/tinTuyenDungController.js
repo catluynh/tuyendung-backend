@@ -347,6 +347,25 @@ class TinTuyenDungController {
             .catch(next);
     }
 
+    async tongSoTinTheoTrangThai(req, res, next) {
+        await TinTuyenDung.aggregate([
+            { $group: { _id: '$trangThai', tong: { $sum: 1 } } },
+            {
+                $replaceRoot: {
+                    newRoot: { trangThai: "$_id", tong: '$tong' }
+                }
+            }
+        ])
+            .then(data => {
+                res.status(201).json({
+                    status: 'success',
+                    result: data.length,
+                    data
+                })
+            })
+            .catch(next);
+    };
+
     async tinTuyenDungDaLuu(req, res, next) {
         await TinTuyenDung.find({ "dsViecLamDaLuu.ungTuyenVien": req.taiKhoan._id })
             .then(data => {
