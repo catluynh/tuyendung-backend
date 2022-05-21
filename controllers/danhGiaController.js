@@ -104,10 +104,16 @@ class DanhGiaController {
 
     async demDanhGiaTheoXepLoai(req, res, next) {
         await DanhGia.aggregate([
-            { $group: { _id: '$xepLoai', tong: { $sum: 1 } } },
+            {
+                $group: {
+                    _id:
+                        { tinTuyenDung: '$tinTuyenDung', xepLoai: '$xepLoai' },
+                    tong: { $sum: 1 }
+                }
+            },
             {
                 $replaceRoot: {
-                    newRoot: { xepLoai: "$_id", tong: '$tong' }
+                    newRoot: { danhGia: "$_id", tong: '$tong' }
                 }
             }
         ])
