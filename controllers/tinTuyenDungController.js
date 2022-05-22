@@ -506,6 +506,35 @@ class TinTuyenDungController {
             trangThai = 'Từ chối'
         }
         if (req.query.trangThai == 5) {
+            trangThai = undefined;
+        }
+
+        if (trangThai) {
+            const total = await TinTuyenDung.aggregate([
+                { $match: { 'trangThai': trangThai } },
+                { $count: 'tong' }
+            ])
+
+            await TinTuyenDung.aggregate([
+                { $lookup: { from: "danhgias", localField: "_id", foreignField: "tinTuyenDung", as: "rs" } },
+                { $match: { 'trangThai': trangThai } },
+                { $project: { _id: 1, tieuDe: 1, ngayHetHan: 1, 'trangThai': 1, ngayTao: 1, diaDiem: 1, slug: 1, soLuotDanhGia: { $size: "$rs" } } },
+                { $skip: skip },
+            ]).limit(limit).exec()
+                .then(async data => {
+                    res.status(201).json({
+                        status: 'success',
+                        results: data.length,
+                        pagination: {
+                            page,
+                            limit,
+                            total: total[0].tong,
+                        },
+                        data
+                    })
+                })
+                .catch(next);
+        } else {
             const total = await TinTuyenDung.aggregate([
                 { $count: 'tong' }
             ])
@@ -528,31 +557,6 @@ class TinTuyenDungController {
                 })
                 .catch(next);
         }
-
-        const total = await TinTuyenDung.aggregate([
-            { $match: { 'trangThai': trangThai } },
-            { $count: 'tong' }
-        ])
-
-        await TinTuyenDung.aggregate([
-            { $lookup: { from: "danhgias", localField: "_id", foreignField: "tinTuyenDung", as: "rs" } },
-            { $match: { 'trangThai': trangThai } },
-            { $project: { _id: 1, tieuDe: 1, ngayHetHan: 1, 'trangThai': 1, ngayTao: 1, diaDiem: 1, slug: 1, soLuotDanhGia: { $size: "$rs" } } },
-            { $skip: skip },
-        ]).limit(limit).exec()
-            .then(async data => {
-                res.status(201).json({
-                    status: 'success',
-                    results: data.length,
-                    pagination: {
-                        page,
-                        limit,
-                        total: total[0].tong,
-                    },
-                    data
-                })
-            })
-            .catch(next);
     };
 
     async luuTheoIdUngTuyenVien(req, res, next) {
