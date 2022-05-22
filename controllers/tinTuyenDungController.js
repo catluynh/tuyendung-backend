@@ -488,11 +488,57 @@ class TinTuyenDungController {
         const page = req.query.page * 1 || 1
         const limit = parseInt(req.query.limit) || 5;
         const skip = (page - 1) * limit;
-        const total = await TinTuyenDung.find().count();
+        var trangThai;
+
+        if (req.query.trangThai == 0) {
+            trangThai = 'Khóa'
+        }
+        if (req.query.trangThai == 1) {
+            trangThai = 'Chờ duyệt'
+        }
+        if (req.query.trangThai == 2) {
+            trangThai = 'Đã duyệt'
+        }
+        if (req.query.trangThai == 3) {
+            trangThai = 'Dừng tuyển'
+        }
+        if (req.query.trangThai == 4) {
+            trangThai = 'Từ chối'
+        }
+        if (req.query.trangThai == 5) {
+            const total = await TinTuyenDung.aggregate([
+                { $count: 'tong' }
+            ])
+            await TinTuyenDung.aggregate([
+                { $lookup: { from: "danhgias", localField: "_id", foreignField: "tinTuyenDung", as: "rs" } },
+                { $project: { _id: 1, tieuDe: 1, ngayHetHan: 1, 'trangThai': 1, ngayTao: 1, diaDiem: 1, slug: 1, soLuotDanhGia: { $size: "$rs" } } },
+                { $skip: skip },
+            ]).limit(limit).exec()
+                .then(async data => {
+                    res.status(201).json({
+                        status: 'success',
+                        results: data.length,
+                        pagination: {
+                            page,
+                            limit,
+                            total,
+                        },
+                        data
+                    })
+                })
+                .catch(next);
+        }
+
+        const total = await TinTuyenDung.aggregate([
+            { $match: { 'trangThai': trangThai } },
+            { $count: 'tong' }
+        ])
+
         await TinTuyenDung.aggregate([
             { $lookup: { from: "danhgias", localField: "_id", foreignField: "tinTuyenDung", as: "rs" } },
-            { $project: { _id: 1, tieuDe: 1, ngayHetHan: 1, trangThai: 1, ngayTao: 1, diaDiem: 1, slug: 1, soLuotDanhGia: { $size: "$rs" } } },
-            { $skip: skip }
+            { $match: { 'trangThai': trangThai } },
+            { $project: { _id: 1, tieuDe: 1, ngayHetHan: 1, 'trangThai': 1, ngayTao: 1, diaDiem: 1, slug: 1, soLuotDanhGia: { $size: "$rs" } } },
+            { $skip: skip },
         ]).limit(limit).exec()
             .then(async data => {
                 res.status(201).json({
