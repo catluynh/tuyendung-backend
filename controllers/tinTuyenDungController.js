@@ -528,7 +528,7 @@ class TinTuyenDungController {
                         pagination: {
                             page,
                             limit,
-                            total: total[0].tong,
+                            total: total.length > 0 ? total[0].tong : 0,
                         },
                         data
                     })
@@ -596,13 +596,13 @@ class TinTuyenDungController {
             .then(async data => {
                 res.status(201).json({
                     status: 'success',
-                        results: data.length,
-                        pagination: {
-                            page,
-                            limit,
-                            total: total[0].tong,
-                        },
-                        data
+                    results: data.length,
+                    pagination: {
+                        page,
+                        limit,
+                        total: total[0].tong,
+                    },
+                    data
                 })
             })
             .catch(next);
