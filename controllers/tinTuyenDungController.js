@@ -576,24 +576,33 @@ class TinTuyenDungController {
     };
 
     async tinTuyenDungCoNguyCoKhoa(req, res, next) {
-
+        console.log(req.query);
+        const page = req.query.page * 1 || 1
+        const limit = parseInt(req.query.limit) || 5;
+        const skip = (page - 1) * limit;
         const total = await TinTuyenDung.aggregate([
             { $lookup: { from: "danhgias", localField: "_id", foreignField: "tinTuyenDung", as: "rs" } },
             { $unwind: "$rs" },
             { $match: { 'rs.xepLoai': { $lt: 3 } } },
-            { $count: 'tong'}
+            { $count: 'tong' }
         ])
 
         await TinTuyenDung.aggregate([
             { $lookup: { from: "danhgias", localField: "_id", foreignField: "tinTuyenDung", as: "rs" } },
             { $unwind: "$rs" },
             { $match: { 'rs.xepLoai': { $lt: 3 } } },
-        ])
+            { $skip: skip }
+        ]).limit(limit).exec()
             .then(async data => {
                 res.status(201).json({
                     status: 'success',
-                    total: total[0].tong,
-                    data
+                        results: data.length,
+                        pagination: {
+                            page,
+                            limit,
+                            total: total[0].tong,
+                        },
+                        data
                 })
             })
             .catch(next);
