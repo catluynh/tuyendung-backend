@@ -491,8 +491,8 @@ class TinTuyenDungController {
         const total = await TinTuyenDung.find().count();
         await TinTuyenDung.aggregate([
             { $lookup: { from: "danhgias", localField: "_id", foreignField: "tinTuyenDung", as: "rs" } },
-            { $project: { _id: 1, tieuDe: 1, ngayHetHan: 1, ngayTao: 1, diaDiem: 1, slug: 1, soLuotDanhGia: { $size: "$rs" } } },
-            { $skip : skip }
+            { $project: { _id: 1, tieuDe: 1, ngayHetHan: 1, trangThai: 1, ngayTao: 1, diaDiem: 1, slug: 1, soLuotDanhGia: { $size: "$rs" } } },
+            { $skip: skip }
         ]).limit(limit).exec()
             .then(async data => {
                 res.status(201).json({
