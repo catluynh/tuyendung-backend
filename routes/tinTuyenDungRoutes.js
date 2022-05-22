@@ -59,6 +59,9 @@ router.route('/soLuongDanhGiaTheoTin')
 router.route('/tinTuyenDungCoNguyCoKhoa')
     .get(tinTuyenDungController.tinTuyenDungCoNguyCoKhoa)
 
+router.route('/luuTheoIdUngTuyenVien')
+    .get(authController.protect, tinTuyenDungController.luuTheoIdUngTuyenVien)
+
 router.route('/thanhToan')
     .post(tinTuyenDungController.thanhToan)
 
@@ -74,7 +77,7 @@ router.route('/:id')
     .delete(tinTuyenDungController.deleteAPI)
 
 router.route('/')
-    .get( tinTuyenDungController.getAll)
+    .get(tinTuyenDungController.getAll)
     .post(authController.protect, authController.kiemTraLoaiTaiKhoan('nha_tuyen_dung'), tinTuyenDungController.postAPI)
 
 module.exports = router;

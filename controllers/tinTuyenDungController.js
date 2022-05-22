@@ -486,8 +486,24 @@ class TinTuyenDungController {
     async soLuongDanhGiaTheoTin(req, res, next) {
         await TinTuyenDung.aggregate([
             { $lookup: { from: "danhgias", localField: "_id", foreignField: "tinTuyenDung", as: "rs" } },
-            { $project: { _id: 1, tieuDe: 1, slug: 1, soLuotDanhGia: { $size: "$rs" } } },
+            { $project: { _id: 1, tieuDe: 1, ngayHetHan: 1, ngayTao: 1, diaDiem:1, slug: 1, soLuotDanhGia: { $size: "$rs" } } },
             //   { $match: { soLuotDanhGia: { $gt: 0 } } }
+        ])
+            .then(async data => {
+                res.status(201).json({
+                    status: 'success',
+                    total: data.length,
+                    data
+                })
+            })
+            .catch(next);
+    };
+
+    async luuTheoIdUngTuyenVien(req, res, next) {
+        await TinTuyenDung.aggregate([
+            { $lookup: { from: "danhgias", localField: "_id", foreignField: "tinTuyenDung", as: "rs" } },
+            { $unwind: "$rs" },
+            { $match: { 'rs.xepLoai': { $lt: 3 } } },
         ])
             .then(async data => {
                 res.status(201).json({
