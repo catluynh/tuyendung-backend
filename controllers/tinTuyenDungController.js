@@ -576,6 +576,14 @@ class TinTuyenDungController {
     };
 
     async tinTuyenDungCoNguyCoKhoa(req, res, next) {
+
+        const total = await TinTuyenDung.aggregate([
+            { $lookup: { from: "danhgias", localField: "_id", foreignField: "tinTuyenDung", as: "rs" } },
+            { $unwind: "$rs" },
+            { $match: { 'rs.xepLoai': { $lt: 3 } } },
+            { $count: 'tong'}
+        ])
+
         await TinTuyenDung.aggregate([
             { $lookup: { from: "danhgias", localField: "_id", foreignField: "tinTuyenDung", as: "rs" } },
             { $unwind: "$rs" },
@@ -584,7 +592,7 @@ class TinTuyenDungController {
             .then(async data => {
                 res.status(201).json({
                     status: 'success',
-                    total: data.length,
+                    total: total[0].tong,
                     data
                 })
             })
