@@ -484,15 +484,25 @@ class TinTuyenDungController {
     };
 
     async soLuongDanhGiaTheoTin(req, res, next) {
+        console.log(req.query);
+        const page = req.query.page * 1 || 1
+        const limit = parseInt(req.query.limit) || 5;
+        const skip = (page - 1) * limit;
+        const total = await TinTuyenDung.find().count();
         await TinTuyenDung.aggregate([
             { $lookup: { from: "danhgias", localField: "_id", foreignField: "tinTuyenDung", as: "rs" } },
-            { $project: { _id: 1, tieuDe: 1, ngayHetHan: 1, ngayTao: 1, diaDiem:1, slug: 1, soLuotDanhGia: { $size: "$rs" } } },
-            //   { $match: { soLuotDanhGia: { $gt: 0 } } }
-        ])
+            { $project: { _id: 1, tieuDe: 1, ngayHetHan: 1, ngayTao: 1, diaDiem: 1, slug: 1, soLuotDanhGia: { $size: "$rs" } } },
+            { $skip : skip }
+        ]).limit(limit).exec()
             .then(async data => {
                 res.status(201).json({
                     status: 'success',
-                    total: data.length,
+                    results: data.length,
+                    pagination: {
+                        page,
+                        limit,
+                        total,
+                    },
                     data
                 })
             })
