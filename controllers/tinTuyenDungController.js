@@ -521,7 +521,7 @@ class TinTuyenDungController {
                         pagination: {
                             page,
                             limit,
-                            total,
+                            total: total[0].tong,
                         },
                         data
                     })
@@ -547,7 +547,7 @@ class TinTuyenDungController {
                     pagination: {
                         page,
                         limit,
-                        total,
+                        total: total[0].tong,
                     },
                     data
                 })
