@@ -584,6 +584,18 @@ class TinTuyenDungController {
             { $lookup: { from: "danhgias", localField: "_id", foreignField: "tinTuyenDung", as: "rs" } },
             { $unwind: "$rs" },
             { $match: { 'rs.xepLoai': { $lt: 3 } } },
+            {
+                $group: {
+                    _id:
+                        { _id: '$_id', tieuDe: '$tieuDe', trangThai: '$trangThai', ngayTao: '$ngayTao', diaDiem: '$diaDiem', ngayHetHan: '$ngayHetHan' },
+                    soLuotDanhGia: { $sum: 1 }
+                }
+            },
+            {
+                $replaceRoot: {
+                    newRoot: { tinTuyenDung: "$_id", soLuotDanhGia: '$soLuotDanhGia' }
+                }
+            },
             { $count: 'tong' }
         ])
 
@@ -591,6 +603,18 @@ class TinTuyenDungController {
             { $lookup: { from: "danhgias", localField: "_id", foreignField: "tinTuyenDung", as: "rs" } },
             { $unwind: "$rs" },
             { $match: { 'rs.xepLoai': { $lt: 3 } } },
+            {
+                $group: {
+                    _id:
+                        { _id: '$_id', tieuDe: '$tieuDe', trangThai: '$trangThai', ngayTao: '$ngayTao', diaDiem: '$diaDiem', ngayHetHan: '$ngayHetHan' },
+                    soLuotDanhGia: { $sum: 1 }
+                }
+            },
+            {
+                $replaceRoot: {
+                    newRoot: { tinTuyenDung: "$_id", soLuotDanhGia: '$soLuotDanhGia' }
+                }
+            },
             { $skip: skip }
         ]).limit(limit).exec()
             .then(async data => {
