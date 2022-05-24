@@ -6,11 +6,11 @@ const quanTriVienController = require('../controllers/quanTriVienController')
 
 // quản trị viên khóa tài khoản ứng tuyển viên hoặc nhà tuyển dụng
 router.route('/khoaTaiKhoan/:id')
-    .patch(authController.protect, quanTriVienController.khoaTaiKhoan)
+    .patch(quanTriVienController.khoaTaiKhoan)
 
 // quản trị viên mở tài khoản ứng tuyển viên hoặc nhà tuyển dụng
 router.route('/moTaiKhoan/:id')
-    .patch(authController.protect, quanTriVienController.moTaiKhoan)
+    .patch(quanTriVienController.moTaiKhoan)
 
 router.route('/')
     .get(quanTriVienController.getAll)

@@ -1,9 +1,39 @@
 const NhaTuyenDung = require('../models/nhaTuyenDungModel');
+const TinTuyenDung = require('../models/tinTuyenDungModel');
 const AppError = require('../utils/appError');
 
 class NhaTuyenDungController {
     async getAll(req, res, next) {
         await NhaTuyenDung.find().populate('taiKhoan')
+            .then(data => {
+                res.status(200).json({
+                    status: 'success',
+                    results: data.length,
+                    data
+                })
+            })
+            .catch(next);
+    }
+
+    async nhaTuyenDungTheoSoLuongTin(req, res, next) {
+        await TinTuyenDung.aggregate([
+            { $lookup: { from: "nhatuyendungs", localField: "nhaTuyenDung", foreignField: "_id", as: "rs" } },
+            { $unwind: "$rs" },
+            {
+
+                $group: {
+                    _id: {
+                        _id: '$nhaTuyenDung', tenCongTy: '$rs.tenCongty', email: '$rs.email', sdt: '$rs.sdt', moTa: '$rs.moTa', quyMo: '$rs.quyMo', namThanhLap: '$rs.namThanhLap', diaChi: '$rs.diaChi'
+                    },
+                    soLuongTinDaDang: { $sum: 1 }
+                }
+            },
+            {
+                $replaceRoot: {
+                    newRoot: { nhaTuyenDung: "$_id", soLuongTinDaDang: '$soLuongTinDaDang' }
+                }
+            }
+        ])
             .then(data => {
                 res.status(200).json({
                     status: 'success',

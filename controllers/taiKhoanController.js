@@ -1,5 +1,8 @@
 const TaiKhoan = require('../models/taiKhoanModel');
+const TngTuyenVien = require('../models/ungTuyenVienModel');
+const NhaTuyenDung = require('../models/nhaTuyenDungModel');
 const AppError = require('../utils/appError');
+const Enum = require('../utils/enum')
 
 class TaiKhoanController {
     async getAll(req, res, next) {

@@ -32,6 +32,9 @@ const NhaTuyenDung = new Schema({
     email: {
         type: String
     },
+    tenLienHe: {
+        type: String
+    },
     taiKhoan: {
         type: Schema.Types.ObjectId,
         ref: 'taiKhoan'
