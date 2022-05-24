@@ -135,6 +135,7 @@ class TinTuyenDungController {
     };
 
     async deleteAPI(req, res, next) {
+        console.log(req.params.id)
         await TinTuyenDung.findByIdAndRemove(req.params.id)
             .then(data => {
                 if (!data) {
@@ -229,8 +230,10 @@ class TinTuyenDungController {
 
     async timKiemTheoNhaTuyenDung(req, res, next) {
         console.log(req.query);
+        const tuNgay = req.query.tuNgay || 1;
+        const denNgay = (req.query.denNgay || moment(Date.now()).format('yyyy-MM-DD')) + 'T23:59:59.580';
         const page = req.query.page * 1 || 1
-        const limit = parseInt(req.query.limit) || 2;
+        const limit = parseInt(req.query.limit) || 5;
         const skip = (page - 1) * limit;
 
         var trangThai;
@@ -251,8 +254,6 @@ class TinTuyenDungController {
             trangThai = 'Từ chối'
         }
 
-        console.log(trangThai);
-
         const linhVuc = await LinhVuc.find({
             "tenLinhVuc": { $regex: new RegExp(req.query.linhVuc, "i") },
         })
@@ -268,21 +269,25 @@ class TinTuyenDungController {
         const total = await TinTuyenDung.find({
             nhaTuyenDung,
             nganhNghe,
+            "tieuDe": { $regex: new RegExp(req.query.tieuDe, "i") },
             "trangThai": { $regex: new RegExp(trangThai, "i") },
             "diaDiem.tinhThanhPho": { $regex: new RegExp(req.query.diaDiem, "i") },
             "viTri": { $regex: new RegExp(req.query.viTri, "i") },
             "soNamKinhNghiem": { $regex: new RegExp(req.query.soNamKinhNghiem, "i") },
             "loaiCongViec": { $regex: new RegExp(req.query.loaiCongViec, "i") },
+            $and: [{ "ngayTao": { '$gte': tuNgay } }, { "ngayTao": { '$lte': denNgay } }]
         }).count();
 
         await TinTuyenDung.find({
             nhaTuyenDung,
             nganhNghe,
+            "tieuDe": { $regex: new RegExp(req.query.tieuDe, "i") },
             "trangThai": { $regex: new RegExp(trangThai, "i") },
             "diaDiem.tinhThanhPho": { $regex: new RegExp(req.query.diaDiem, "i") },
             "viTri": { $regex: new RegExp(req.query.viTri, "i") },
             "soNamKinhNghiem": { $regex: new RegExp(req.query.soNamKinhNghiem, "i") },
             "loaiCongViec": { $regex: new RegExp(req.query.loaiCongViec, "i") },
+            $and: [{ "ngayTao": { '$gte': tuNgay } }, { "ngayTao": { '$lte': denNgay } }]
         }).limit(limit).skip(skip).exec()
             .then(data => {
                 res.status(200).json({
@@ -316,8 +321,13 @@ class TinTuyenDungController {
     async khoaTin(req, res, next) {
         await TinTuyenDung.findById(req.params.id)
             .then(data => {
-                data.trangThai = Enum.TRANG_THAI_TIN.KHOA;
-                data.save();
+                if (data.trangThai == Enum.TRANG_THAI_TIN.DA_DUYET || data.trangThai == Enum.TRANG_THAI_TIN.DUNG_TUYEN) {
+                    data.trangThai = Enum.TRANG_THAI_TIN.KHOA;
+                    data.save();
+                } else if (data.trangThai == Enum.TRANG_THAI_TIN.KHOA) {
+                    data.trangThai = Enum.TRANG_THAI_TIN.DA_DUYET;
+                    data.save();
+                }
                 res.status(200).json({
                     status: 'success',
                     results: data.length,
@@ -357,6 +367,26 @@ class TinTuyenDungController {
 
     async tongSoTinTheoTrangThai(req, res, next) {
         await TinTuyenDung.aggregate([
+            { $group: { _id: '$trangThai', tong: { $sum: 1 } } },
+            {
+                $replaceRoot: {
+                    newRoot: { trangThai: "$_id", tong: '$tong' }
+                }
+            }
+        ])
+            .then(data => {
+                res.status(201).json({
+                    status: 'success',
+                    result: data.length,
+                    data
+                })
+            })
+            .catch(next);
+    };
+
+    async tongSoTinTheoTrangThaiNhaTuyenDung(req, res, next) {
+        await TinTuyenDung.aggregate([
+            { $match: { 'nhaTuyenDung': req.taiKhoan._id } },
             { $group: { _id: '$trangThai', tong: { $sum: 1 } } },
             {
                 $replaceRoot: {

@@ -20,6 +20,10 @@ router.route('/timKiemViecLamTheoNganhNghe/:idLinhVuc')
 router.route('/timKiemTheoNhaTuyenDung')
     .get(authController.protect, tinTuyenDungController.timKiemTheoNhaTuyenDung)
 
+//nhà tuyển dung: tổng số lượng tin nhà tuyển dụng đã đăng
+router.route('/tongSoTinTheoTrangThaiNhaTuyenDung')
+    .get(authController.protect, authController.kiemTraLoaiTaiKhoan('nha_tuyen_dung'), tinTuyenDungController.tongSoTinTheoTrangThaiNhaTuyenDung)
+
 //quản trị viên: duyệt tin tuyển dụng
 router.route('/duyetTin/:id')
     .patch(tinTuyenDungController.duyetTin)

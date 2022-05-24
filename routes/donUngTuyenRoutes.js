@@ -35,8 +35,9 @@ router.route('/themDonUngTuyenTiemNang/:id')
 router.route('/huyDonUngTuyenTiemNang/:id')
     .patch(donUngTuyenController.huyDonUngTuyenTiemNang)
 
+//nhà tuyển dụng: đếm đơn ứng tuyển theo trạng thái
 router.route('/demDonUngTuyenTheoTrangThai')
-    .get(donUngTuyenController.demDonUngTuyenTheoTrangThai)
+    .get(authController.protect, authController.kiemTraLoaiTaiKhoan('nha_tuyen_dung'), donUngTuyenController.demDonUngTuyenTheoTrangThai)
 
 router.route('/')
     .get(donUngTuyenController.getAll)
