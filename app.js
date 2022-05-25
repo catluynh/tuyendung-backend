@@ -12,7 +12,19 @@ const socketIo = require('socket.io');
 const initSockets = require('./sockets/index');
 const jwt = require('jsonwebtoken');
 const server = http.createServer(app);
-const io = socketIo(server);
+const io = socketIo(server, {
+    cors: {
+        origin: 'http://localhost:3000',
+        methods: ['GET', 'POST'],
+        allowedHeaders: [
+            "Access-Control-Allow-Origin",
+            "Access-Control-Header",
+            "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+            "Access-Control-Allow-Methods",
+        ],
+        credentials: true,
+    }
+});
 
 
 app.use(express.urlencoded({ extended: true }));

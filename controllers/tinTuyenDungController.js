@@ -669,8 +669,8 @@ class TinTuyenDungController {
                 "name": "Thanh toán phí đăng tin tuyển dụng",
                 "price": "1.0",
                 "currency": "USD",
-                "quantity": 2
-            }]
+                "quantity": 1
+            }];
 
             var total = 0;
             for (var i = 0; i < items.length; i++) {
@@ -684,7 +684,7 @@ class TinTuyenDungController {
                 },
                 "redirect_urls": {
                     "return_url": "http://localhost:3000/employer/job/create",
-                    "cancel_url": "http://localhost:3000/cancel"
+                    "cancel_url": "http://localhost:4000/tinTuyenDungs"
                 },
                 "transactions": [{
                     "item_list": {
@@ -702,13 +702,13 @@ class TinTuyenDungController {
                 if (error) {
                     res.render('cancle');
                 } else {
-                    payment.links.map(link => {
-                        if (link.rel === 'approval_url') {
-                            open(link.href, function (err) {
+                    for (let i = 0; i < payment.links.length; i++) {
+                        if (payment.links[i].rel === 'approval_url') {
+                            open(payment.links[i].href, function (err) {
                                 if (err) throw err;
                             });
                         }
-                    })
+                    }
                 }
             });
         } catch (error) {
@@ -729,18 +729,20 @@ class TinTuyenDungController {
                 "transactions": [{
                     "amount": {
                         "currency": "USD",
-                        "total": "1 USTD"
+                        "total": '1'
                     }
                 }]
             };
 
             paypal.payment.execute(paymentId, execute_payment_json, function (error, payment) {
                 if (error) {
-                    res.render('cancle');
+                    console.log(error)
+                    res.json({ error: 'error' });
                 } else {
                     res.json({
-                        status: 'success'
-                    })
+                        susscess: 'susscess',
+                        payment: true
+                    });
                 }
             });
         } catch (error) {

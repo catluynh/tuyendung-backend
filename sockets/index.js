@@ -1,10 +1,8 @@
-const authSocket = require('./authSocket');
-const tinNhanSocket = require('./tinNhanSocket');
+const quanTriVienSocket = require('./quanTriVienSocket');
 
 function initSockets(io) {
 
-    authSocket.demo(io);
-    tinNhanSocket.gui(io);
+    quanTriVienSocket.xetDuyetTin(io);
 
 }
 
