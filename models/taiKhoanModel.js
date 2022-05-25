@@ -48,6 +48,7 @@ const TaiKhoan = new Schema({
         type: String,
         enum: Enum.LOAI_TAI_KHOAN
     },
+    ngayCapNhat: Date,
     ngayTao: {
         type: Date,
         default: Date.now()

@@ -84,6 +84,7 @@ class QuanTriVienController {
                     });
                 }
                 data.trangThai = false;
+                data.ngayCapNhat = new Date();
                 data.save();
                 res.status(201).json({
                     status: 'success',
@@ -104,6 +105,7 @@ class QuanTriVienController {
                     });
                 }
                 data.trangThai = true;
+                data.ngayCapNhat = new Date();
                 data.save();
                 res.status(201).json({
                     status: 'success',

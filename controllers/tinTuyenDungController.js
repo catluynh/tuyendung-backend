@@ -39,7 +39,6 @@ class TinTuyenDungController {
             }
         ])
             .then(datas => {
-                console.log(datas)
                 datas.map(async data => {
                     if (data.tinTuyenDung.ngayHetHan < Date.now() || data.soLuongDaTuyen >= data.tinTuyenDung.soLuongTuyen) {
                         await TinTuyenDung.findByIdAndUpdate(data.tinTuyenDung.tinTuyenDung, {
@@ -69,6 +68,7 @@ class TinTuyenDungController {
         const tinTuyenDungMoi = new TinTuyenDung(req.body);
         tinTuyenDungMoi.nhaTuyenDung = req.taiKhoan._id
         tinTuyenDungMoi.trangThai = Enum.TRANG_THAI_TIN.CHO_DUYET;
+        tinTuyenDungMoi.ngayCapNhat = new Date();
         await tinTuyenDungMoi.save()
             .then((data) => {
                 res.status(201).json({
@@ -289,7 +289,7 @@ class TinTuyenDungController {
             "soNamKinhNghiem": { $regex: new RegExp(req.query.soNamKinhNghiem, "i") },
             "loaiCongViec": { $regex: new RegExp(req.query.loaiCongViec, "i") },
             $and: [{ "ngayTao": { '$gte': tuNgay } }, { "ngayTao": { '$lte': denNgay } }]
-        }).limit(limit).skip(skip).exec()
+        }).limit(limit).skip(skip).sort({ngayCapNhat: -1}).exec()
             .then(data => {
                 res.status(200).json({
                     status: 'success',
@@ -309,6 +309,7 @@ class TinTuyenDungController {
         await TinTuyenDung.findById(req.params.id)
             .then(data => {
                 data.trangThai = Enum.TRANG_THAI_TIN.DA_DUYET;
+                data.ngayCapNhat = new Date();
                 data.save();
                 res.status(200).json({
                     status: 'success',
@@ -324,9 +325,11 @@ class TinTuyenDungController {
             .then(data => {
                 if (data.trangThai == Enum.TRANG_THAI_TIN.DA_DUYET || data.trangThai == Enum.TRANG_THAI_TIN.DUNG_TUYEN) {
                     data.trangThai = Enum.TRANG_THAI_TIN.KHOA;
+                    data.ngayCapNhat = new Date();
                     data.save();
                 } else if (data.trangThai == Enum.TRANG_THAI_TIN.KHOA) {
                     data.trangThai = Enum.TRANG_THAI_TIN.DA_DUYET;
+                    data.ngayCapNhat = new Date();
                     data.save();
                 }
                 res.status(200).json({
@@ -342,6 +345,7 @@ class TinTuyenDungController {
         await TinTuyenDung.findById(req.params.id)
             .then(data => {
                 data.trangThai = Enum.TRANG_THAI_TIN.TU_CHOI;
+                data.ngayCapNhat = new Date();
                 data.save();
                 res.status(200).json({
                     status: 'success',
@@ -356,6 +360,7 @@ class TinTuyenDungController {
         await TinTuyenDung.findById(req.params.id)
             .then(data => {
                 data.trangThai = Enum.TRANG_THAI_TIN.DUNG_TUYEN;
+                data.ngayCapNhat = new Date();
                 data.save();
                 res.status(200).json({
                     status: 'success',
@@ -484,35 +489,42 @@ class TinTuyenDungController {
 
     // Tin đc ứng tuyển nhiều nhất
     async tinNoiBat(req, res, next) {
-        const limit = parseInt(req.query.limit) || 12;
-        await DonUngTuyen.aggregate([
-            {
-                $group: {
-                    _id: '$tinTuyenDung',
-                    soLuong: { $sum: 1 }
-                }
-            },
-            {
-                $replaceRoot: {
-                    newRoot: { idTinTuyenDung: "$_id", soLuong: '$soLuong' }
-                }
-            }
-        ])
-            .limit(limit)
-            .sort({ 'soLuong': -1 })
-            .exec()
-            .then(async datas => {
-                const dsTin = datas.map(async data => {
-                    return await TinTuyenDung.findById(data.idTinTuyenDung);
-                })
-
-                res.status(200).json({
+        await TinTuyenDung.find({ soLuongDaTuyen: { $gte: 0 }, trangThai: 'Đã duyệt' }).limit(12).sort({ soLuongDaTuyen: -1 })
+            .then((data) => {
+                res.status(201).json({
                     status: 'success',
-                    results: datas.length,
-                    data: await Promise.all(dsTin)
+                    results: data.length,
+                    data
                 })
             })
-            .catch(next);
+        // await DonUngTuyen.aggregate([
+        //     {
+        //         $group: {
+        //             _id: '$tinTuyenDung',
+        //             soLuong: { $sum: 1 }
+        //         }
+        //     },
+        //     {
+        //         $replaceRoot: {
+        //             newRoot: { idTinTuyenDung: "$_id", soLuong: '$soLuong' }
+        //         }
+        //     }
+        // ])
+        //     .limit(limit)
+        //     .sort({ 'soLuong': -1 })
+        //     .exec()
+        //     .then(async datas => {
+        //         const dsTin = datas.map(async data => {
+        //             return await TinTuyenDung.findById(data.idTinTuyenDung);
+        //         })
+
+        //         res.status(200).json({
+        //             status: 'success',
+        //             results: datas.length,
+        //             data: await Promise.all(dsTin)
+        //         })
+        //     })
+        //     .catch(next);
     };
 
     async soLuongDanhGiaTheoTin(req, res, next) {
@@ -550,8 +562,9 @@ class TinTuyenDungController {
             await TinTuyenDung.aggregate([
                 { $lookup: { from: "danhgias", localField: "_id", foreignField: "tinTuyenDung", as: "rs" } },
                 { $match: { 'trangThai': trangThai } },
-                { $project: { _id: 1, tieuDe: 1, ngayHetHan: 1, 'trangThai': 1, ngayTao: 1, diaDiem: 1, slug: 1, soLuotDanhGia: { $size: "$rs" } } },
+                { $project: { _id: 1, tieuDe: 1, ngayHetHan: 1, 'trangThai': 1, ngayTao: 1, diaDiem: 1, slug: 1,ngayCapNhat: 1, soLuotDanhGia: { $size: "$rs" } } },
                 { $skip: skip },
+                { $sort : { ngayCapNhat : -1 } }
             ]).limit(limit).exec()
                 .then(async data => {
                     res.status(201).json({
@@ -572,8 +585,9 @@ class TinTuyenDungController {
             ])
             await TinTuyenDung.aggregate([
                 { $lookup: { from: "danhgias", localField: "_id", foreignField: "tinTuyenDung", as: "rs" } },
-                { $project: { _id: 1, tieuDe: 1, ngayHetHan: 1, 'trangThai': 1, ngayTao: 1, diaDiem: 1, slug: 1, soLuotDanhGia: { $size: "$rs" } } },
+                { $project: { _id: 1, tieuDe: 1, ngayHetHan: 1, 'trangThai': 1, ngayTao: 1, diaDiem: 1, slug: 1, ngayCapNhat: 1, soLuotDanhGia: { $size: "$rs" } } },
                 { $skip: skip },
+                { $sort : { ngayCapNhat : -1 } }
             ]).limit(limit).exec()
                 .then(async data => {
                     res.status(201).json({

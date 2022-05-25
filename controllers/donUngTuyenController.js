@@ -26,6 +26,7 @@ class DonUngTuyenController {
             tinTuyenDung: req.body.tinTuyenDung
         })
         donUngTuyenMoi.trangThai = Enum.TRANG_THAI_DON.DANG_UNG_TUYEN;
+        donUngTuyenMoi.ngayCapNhat = new Date();
         if (donUngTuyenTonTai) {
             res.status(404).json({
                 error: "Bạn đã ứng tuyển tin tuyển dụng này!"
@@ -120,7 +121,7 @@ class DonUngTuyenController {
         const skip = (page - 1) * limit;
         const nhaTuyenDung = await NhaTuyenDung.findById(req.taiKhoan._id);
         //tìm kiếm tin theo nhà tuyển dụng
-        await TinTuyenDung.find({ nhaTuyenDung })
+        await TinTuyenDung.find({ nhaTuyenDung }).sort({ngayCapNhat: -1})
             .then(async dsTinTuyenDung => {
                 //mảng 2 chiều
                 const dsDon = dsTinTuyenDung.map(async tinTuyenDung => {
@@ -278,6 +279,7 @@ class DonUngTuyenController {
         await DonUngTuyen.findById(req.params.id)
             .then(data => {
                 data.trangThai = Enum.TRANG_THAI_DON.DA_UNG_TUYEN;
+                data.ngayCapNhat = new Date();
                 data.save();
                 res.status(200).json({
                     status: 'success',
@@ -292,6 +294,7 @@ class DonUngTuyenController {
         await DonUngTuyen.findById(req.params.id)
             .then(data => {
                 data.trangThai = Enum.TRANG_THAI_DON.THAT_BAI;
+                data.ngayCapNhat = new Date();
                 data.save();
                 res.status(200).json({
                     status: 'success',
@@ -314,7 +317,7 @@ class DonUngTuyenController {
                 //mảng 2 chiều
                 const dsDon = dsTinTuyenDung.map(async tinTuyenDung => {
                     //tìm kiếm đã đơn ứng tuyển theo tin tuyển dụng, array
-                    return await DonUngTuyen.find({ tinTuyenDung: tinTuyenDung._id });
+                    return await DonUngTuyen.find({ tinTuyenDung: tinTuyenDung._id }).sort({ngayCapNhat: -1});
                 })
 
                 let data = [];

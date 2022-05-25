@@ -8,7 +8,11 @@ class NhaTuyenDungController {
         const limit = parseInt(req.query.limit) || 15;
         const skip = (page - 1) * limit;
         const total = await NhaTuyenDung.find().count();
-        await NhaTuyenDung.find().populate('taiKhoan').limit(limit).skip(skip).exec()
+        await NhaTuyenDung.aggregate([
+            { $lookup: { from: "taikhoans", localField: "_id", foreignField: "_id", as: "taiKhoan" } },
+            { $unwind: "$taiKhoan" },
+            { $sort: { 'taiKhoan.ngayCapNhat': -1 } }
+        ])
             .then(data => {
                 res.status(200).json({
                     status: 'success',
