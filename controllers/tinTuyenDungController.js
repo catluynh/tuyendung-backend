@@ -438,11 +438,12 @@ class TinTuyenDungController {
     async huyLuuTinTuyenDung(req, res, next) {
         await TinTuyenDung.updateOne(
             { _id: req.params.id },
-            { $pull: { dsViecLamDaLuu: { _id: req.body.idViecLamDaLuu } } }
+            { $pull: { dsViecLamDaLuu: { 'ungTuyenVien': req.taiKhoan._id } } }
         )
-            .then(async () => {
+            .then(data => {
                 res.status(201).json({
-                    status: 'success'
+                    status: 'success',
+                    data
                 })
             })
             .catch(next);
@@ -737,7 +738,9 @@ class TinTuyenDungController {
                 if (error) {
                     res.render('cancle');
                 } else {
-                    res.render('success');
+                    res.json({
+                        status: 'success'
+                    })
                 }
             });
         } catch (error) {

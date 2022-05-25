@@ -39,6 +39,14 @@ router.route('/huyDonUngTuyenTiemNang/:id')
 router.route('/demDonUngTuyenTheoTrangThai')
     .get(authController.protect, authController.kiemTraLoaiTaiKhoan('nha_tuyen_dung'), donUngTuyenController.demDonUngTuyenTheoTrangThai)
 
+//nhà tuyển dụng: đếm đơn ứng tuyển tiềm năng
+router.route('/demDonUngTuyenTiemNang')
+    .get(authController.protect, authController.kiemTraLoaiTaiKhoan('nha_tuyen_dung'), donUngTuyenController.demDonUngTuyenTiemNang)
+
+//nhà tuyển dụng: đếm đơn ứng tuyển theo tin tuyển dụng
+router.route('/demDonUngTuyentheoTin/:id')
+    .get(authController.protect, authController.kiemTraLoaiTaiKhoan('nha_tuyen_dung'), donUngTuyenController.demDonUngTuyentheoTin)
+
 router.route('/')
     .get(donUngTuyenController.getAll)
     .post(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien'), donUngTuyenController.postAPI)

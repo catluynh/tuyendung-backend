@@ -4,11 +4,20 @@ const uploadHinhAnh = require('../utils/UploadHinhAnh');
 
 class UngTuyenVienController {
     async getAll(req, res, next) {
-        await UngTuyenVien.find().populate('taiKhoan')
+        const page = req.query.page * 1 || 1
+        const limit = parseInt(req.query.limit) || 15;
+        const skip = (page - 1) * limit;
+        const total =  await UngTuyenVien.find().count();
+        await UngTuyenVien.find().populate('taiKhoan').limit(limit).skip(skip).exec()
             .then(data => {
                 res.status(200).json({
                     status: 'success',
                     results: data.length,
+                    pagination: {
+                        page,
+                        limit,
+                        total,
+                    },
                     data
                 })
             })

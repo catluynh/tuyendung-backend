@@ -27,6 +27,7 @@ const TinTuyenDung = new Schema({
         enum: Enum.LOAI_CONG_VIEC
     },
     ngayHetHan: Date,
+    ngayCapNhat: Date,
     soNamKinhNghiem: {
         type: String,
         enum: Enum.SO_NAM_KINH_NGHIEM

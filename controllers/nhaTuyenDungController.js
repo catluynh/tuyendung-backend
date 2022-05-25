@@ -4,11 +4,20 @@ const AppError = require('../utils/appError');
 
 class NhaTuyenDungController {
     async getAll(req, res, next) {
-        await NhaTuyenDung.find().populate('taiKhoan')
+        const page = req.query.page * 1 || 1
+        const limit = parseInt(req.query.limit) || 15;
+        const skip = (page - 1) * limit;
+        const total = await NhaTuyenDung.find().count();
+        await NhaTuyenDung.find().populate('taiKhoan').limit(limit).skip(skip).exec()
             .then(data => {
                 res.status(200).json({
                     status: 'success',
                     results: data.length,
+                    pagination: {
+                        page,
+                        limit,
+                        total,
+                    },
                     data
                 })
             })
@@ -16,6 +25,14 @@ class NhaTuyenDungController {
     }
 
     async nhaTuyenDungTheoSoLuongTin(req, res, next) {
+        const page = req.query.page * 1 || 1
+        const limit = parseInt(req.query.limit) || 5;
+        const skip = (page - 1) * limit;
+        const total = await TinTuyenDung.aggregate([
+            { $lookup: { from: "nhatuyendungs", localField: "nhaTuyenDung", foreignField: "_id", as: "rs" } },
+            { $count: 'tong' }
+        ])
+
         await TinTuyenDung.aggregate([
             { $lookup: { from: "nhatuyendungs", localField: "nhaTuyenDung", foreignField: "_id", as: "rs" } },
             { $unwind: "$rs" },
@@ -32,12 +49,18 @@ class NhaTuyenDungController {
                 $replaceRoot: {
                     newRoot: { nhaTuyenDung: "$_id", soLuongTinDaDang: '$soLuongTinDaDang' }
                 }
-            }
-        ])
+            },
+            { $skip: skip },
+        ]).limit(limit).exec()
             .then(data => {
                 res.status(200).json({
                     status: 'success',
                     results: data.length,
+                    pagination: {
+                        page,
+                        limit,
+                        total: total[0].tong,
+                    },
                     data
                 })
             })

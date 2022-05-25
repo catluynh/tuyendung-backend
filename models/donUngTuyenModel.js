@@ -23,6 +23,7 @@ const DonUngTuyen = new Schema({
         type: Boolean,
         default: false
     },
+    ngayCapNhat: Date,
     thongTinLienHe: {
         ten: String,
         sdt: String,
