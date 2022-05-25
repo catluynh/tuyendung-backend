@@ -9,7 +9,7 @@ router.route('/')
 
 //ứng tuyển viên: việc làm đã lưu
 router.route('/timTheoUngTuyenVien')
-    .get(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien'), viecLamQuanTamController.timTheoUngTuyenVien)
+    .get(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien' , 'quan_tri_vien'), viecLamQuanTamController.timTheoUngTuyenVien)
 
 router.route('/:id')
     .get(viecLamQuanTamController.getAPIById)

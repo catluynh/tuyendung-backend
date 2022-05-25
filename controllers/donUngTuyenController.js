@@ -151,67 +151,11 @@ class DonUngTuyenController {
 
                 //lọc đơn ứng tuyển theo trạng thái
                 let allDsDonUngTuyen = data.filter(donUngTuyen => {
-                    let soNamKinhNghiemYeuCau, soNamKinhNghiem;
-                    if (donUngTuyen.tinTuyenDung.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.CHUA_CO_KINH_NGHIEM) {
-                        soNamKinhNghiemYeuCau = 0
-                    }
-                    if (donUngTuyen.tinTuyenDung.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.DUOI_MOT_NAM) {
-                        soNamKinhNghiemYeuCau = 1
-                    }
-                    if (donUngTuyen.tinTuyenDung.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.MOT_NAM) {
-                        soNamKinhNghiemYeuCau = 2
-                    }
-                    if (donUngTuyen.tinTuyenDung.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.HAI_NAM) {
-                        soNamKinhNghiemYeuCau = 3
-                    }
-                    if (donUngTuyen.tinTuyenDung.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.BA_NAM) {
-                        soNamKinhNghiemYeuCau = 4
-                    }
-                    if (donUngTuyen.tinTuyenDung.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.BON_NAM) {
-                        soNamKinhNghiemYeuCau = 5
-                    }
-                    if (donUngTuyen.tinTuyenDung.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.NAM_NAM) {
-                        soNamKinhNghiemYeuCau = 6
-                    }
-                    if (donUngTuyen.tinTuyenDung.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.TREN_NAM_NAM) {
-                        soNamKinhNghiemYeuCau = 7
-                    }
-
-                    if (donUngTuyen.ungTuyenVien.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.CHUA_CO_KINH_NGHIEM) {
-                        soNamKinhNghiem = 0
-                    }
-                    if (donUngTuyen.ungTuyenVien.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.DUOI_MOT_NAM) {
-                        soNamKinhNghiem = 1
-                    }
-                    if (donUngTuyen.ungTuyenVien.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.MOT_NAM) {
-                        soNamKinhNghiem = 2
-                    }
-                    if (donUngTuyen.ungTuyenVien.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.HAI_NAM) {
-                        soNamKinhNghiem = 3
-                    }
-                    if (donUngTuyen.ungTuyenVien.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.BA_NAM) {
-                        soNamKinhNghiem = 4
-                    }
-                    if (donUngTuyen.ungTuyenVien.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.BON_NAM) {
-                        soNamKinhNghiem = 5
-                    }
-                    if (donUngTuyen.ungTuyenVien.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.NAM_NAM) {
-                        soNamKinhNghiem = 6
-                    }
-                    if (donUngTuyen.ungTuyenVien.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.TREN_NAM_NAM) {
-                        soNamKinhNghiem = 1
-                    }
-
-                    if (soNamKinhNghiemYeuCau <= soNamKinhNghiem) {
-                        donUngTuyen.yeuCauSoNamKinhNghiem = true;
-                    } else {
-                        donUngTuyen.yeuCauSoNamKinhNghiem = false;
-                    }
-
                     let tuoi = new Date().getFullYear() - donUngTuyen.ungTuyenVien.ngaySinh.getFullYear();
                     if (donUngTuyen.tinTuyenDung.tuoiTu <= tuoi && donUngTuyen.tinTuyenDung.denTuoi >= tuoi) {
                         donUngTuyen.yeuCauDoTuoi = true;
-                    } else {
+                    }
+                    else {
                         donUngTuyen.yeuCauDoTuoi = false;
                     }
                     if (donUngTuyen.trangThai == trangThai) {
@@ -239,7 +183,7 @@ class DonUngTuyenController {
                     let don = {
                         donTuyenDung: data,
                         yeuCauDoTuoi: data.yeuCauDoTuoi,
-                        yeuCauSoNamKinhNghiem: data.yeuCauSoNamKinhNghiem
+                        yeuCauSoNamKinhNghiem: true
                     };
                     return don;
                 })
@@ -279,63 +223,6 @@ class DonUngTuyenController {
             .then(async data => {
                 //lọc đơn ứng tuyển theo trạng thái
                 let allDsDonUngTuyen = data.filter(donUngTuyen => {
-                    let soNamKinhNghiemYeuCau, soNamKinhNghiem;
-                    if (donUngTuyen.tinTuyenDung.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.CHUA_CO_KINH_NGHIEM) {
-                        soNamKinhNghiemYeuCau = 0
-                    }
-                    if (donUngTuyen.tinTuyenDung.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.DUOI_MOT_NAM) {
-                        soNamKinhNghiemYeuCau = 1
-                    }
-                    if (donUngTuyen.tinTuyenDung.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.MOT_NAM) {
-                        soNamKinhNghiemYeuCau = 2
-                    }
-                    if (donUngTuyen.tinTuyenDung.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.HAI_NAM) {
-                        soNamKinhNghiemYeuCau = 3
-                    }
-                    if (donUngTuyen.tinTuyenDung.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.BA_NAM) {
-                        soNamKinhNghiemYeuCau = 4
-                    }
-                    if (donUngTuyen.tinTuyenDung.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.BON_NAM) {
-                        soNamKinhNghiemYeuCau = 5
-                    }
-                    if (donUngTuyen.tinTuyenDung.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.NAM_NAM) {
-                        soNamKinhNghiemYeuCau = 6
-                    }
-                    if (donUngTuyen.tinTuyenDung.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.TREN_NAM_NAM) {
-                        soNamKinhNghiemYeuCau = 7
-                    }
-
-                    if (donUngTuyen.ungTuyenVien.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.CHUA_CO_KINH_NGHIEM) {
-                        soNamKinhNghiem = 0
-                    }
-                    if (donUngTuyen.ungTuyenVien.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.DUOI_MOT_NAM) {
-                        soNamKinhNghiem = 1
-                    }
-                    if (donUngTuyen.ungTuyenVien.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.MOT_NAM) {
-                        soNamKinhNghiem = 2
-                    }
-                    if (donUngTuyen.ungTuyenVien.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.HAI_NAM) {
-                        soNamKinhNghiem = 3
-                    }
-                    if (donUngTuyen.ungTuyenVien.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.BA_NAM) {
-                        soNamKinhNghiem = 4
-                    }
-                    if (donUngTuyen.ungTuyenVien.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.BON_NAM) {
-                        soNamKinhNghiem = 5
-                    }
-                    if (donUngTuyen.ungTuyenVien.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.NAM_NAM) {
-                        soNamKinhNghiem = 6
-                    }
-                    if (donUngTuyen.ungTuyenVien.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.TREN_NAM_NAM) {
-                        soNamKinhNghiem = 1
-                    }
-
-                    if (soNamKinhNghiemYeuCau <= soNamKinhNghiem) {
-                        donUngTuyen.yeuCauSoNamKinhNghiem = true;
-                    } else {
-                        donUngTuyen.yeuCauSoNamKinhNghiem = false;
-                    }
-
                     let tuoi = new Date().getFullYear() - donUngTuyen.ungTuyenVien.ngaySinh.getFullYear();
                     if (donUngTuyen.tinTuyenDung.tuoiTu <= tuoi && donUngTuyen.tinTuyenDung.denTuoi >= tuoi) {
                         donUngTuyen.yeuCauDoTuoi = true;
@@ -367,7 +254,7 @@ class DonUngTuyenController {
                     let don = {
                         donTuyenDung: data,
                         yeuCauDoTuoi: data.yeuCauDoTuoi,
-                        yeuCauSoNamKinhNghiem: data.yeuCauSoNamKinhNghiem
+                        yeuCauSoNamKinhNghiem: true
                     };
                     return don;
                 })
@@ -454,63 +341,6 @@ class DonUngTuyenController {
                 //lọc đơn ứng tuyển theo trạng thái
                 let allDsDonUngTuyen = data.filter(donUngTuyen => {
                     if (donUngTuyen.tiemNang == true) {
-                        let soNamKinhNghiemYeuCau, soNamKinhNghiem;
-                        if (donUngTuyen.tinTuyenDung.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.CHUA_CO_KINH_NGHIEM) {
-                            soNamKinhNghiemYeuCau = 0
-                        }
-                        if (donUngTuyen.tinTuyenDung.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.DUOI_MOT_NAM) {
-                            soNamKinhNghiemYeuCau = 1
-                        }
-                        if (donUngTuyen.tinTuyenDung.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.MOT_NAM) {
-                            soNamKinhNghiemYeuCau = 2
-                        }
-                        if (donUngTuyen.tinTuyenDung.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.HAI_NAM) {
-                            soNamKinhNghiemYeuCau = 3
-                        }
-                        if (donUngTuyen.tinTuyenDung.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.BA_NAM) {
-                            soNamKinhNghiemYeuCau = 4
-                        }
-                        if (donUngTuyen.tinTuyenDung.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.BON_NAM) {
-                            soNamKinhNghiemYeuCau = 5
-                        }
-                        if (donUngTuyen.tinTuyenDung.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.NAM_NAM) {
-                            soNamKinhNghiemYeuCau = 6
-                        }
-                        if (donUngTuyen.tinTuyenDung.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.TREN_NAM_NAM) {
-                            soNamKinhNghiemYeuCau = 7
-                        }
-
-                        if (donUngTuyen.ungTuyenVien.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.CHUA_CO_KINH_NGHIEM) {
-                            soNamKinhNghiem = 0
-                        }
-                        if (donUngTuyen.ungTuyenVien.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.DUOI_MOT_NAM) {
-                            soNamKinhNghiem = 1
-                        }
-                        if (donUngTuyen.ungTuyenVien.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.MOT_NAM) {
-                            soNamKinhNghiem = 2
-                        }
-                        if (donUngTuyen.ungTuyenVien.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.HAI_NAM) {
-                            soNamKinhNghiem = 3
-                        }
-                        if (donUngTuyen.ungTuyenVien.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.BA_NAM) {
-                            soNamKinhNghiem = 4
-                        }
-                        if (donUngTuyen.ungTuyenVien.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.BON_NAM) {
-                            soNamKinhNghiem = 5
-                        }
-                        if (donUngTuyen.ungTuyenVien.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.NAM_NAM) {
-                            soNamKinhNghiem = 6
-                        }
-                        if (donUngTuyen.ungTuyenVien.soNamKinhNghiem == Enum.SO_NAM_KINH_NGHIEM.TREN_NAM_NAM) {
-                            soNamKinhNghiem = 1
-                        }
-
-                        if (soNamKinhNghiemYeuCau <= soNamKinhNghiem) {
-                            donUngTuyen.yeuCauSoNamKinhNghiem = true;
-                        } else {
-                            donUngTuyen.yeuCauSoNamKinhNghiem = false;
-                        }
-
                         let tuoi = new Date().getFullYear() - donUngTuyen.ungTuyenVien.ngaySinh.getFullYear();
                         if (donUngTuyen.tinTuyenDung.tuoiTu <= tuoi && donUngTuyen.tinTuyenDung.denTuoi >= tuoi) {
                             donUngTuyen.yeuCauDoTuoi = true;
@@ -543,7 +373,7 @@ class DonUngTuyenController {
                     let don = {
                         donTuyenDung: data,
                         yeuCauDoTuoi: data.yeuCauDoTuoi,
-                        yeuCauSoNamKinhNghiem: data.yeuCauSoNamKinhNghiem
+                        yeuCauSoNamKinhNghiem: true
                     };
                     return don;
                 })

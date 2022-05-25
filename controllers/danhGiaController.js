@@ -1,5 +1,6 @@
 const DanhGia = require('../models/danhGiaModel');
 const AppError = require('../utils/appError');
+const mongoose = require('mongoose');
 
 class DanhGiaController {
     async getAll(req, res, next) {
@@ -104,6 +105,7 @@ class DanhGiaController {
 
     async demDanhGiaTheoXepLoai(req, res, next) {
         await DanhGia.aggregate([
+            { $match: { 'tinTuyenDung': mongoose.Types.ObjectId(req.params.id) } },
             {
                 $group: {
                     _id:

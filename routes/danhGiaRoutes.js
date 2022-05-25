@@ -7,12 +7,12 @@ const danhGiaController = require('../controllers/danhGiaController');
 router.route('/danhGiaTheoTin/:id')
     .get(danhGiaController.danhGiaTheoTin)
 
-router.route('/demDanhGiaTheoXepLoai')
+router.route('/demDanhGiaTheoXepLoai/:id')
     .get(danhGiaController.demDanhGiaTheoXepLoai)
 
 router.route('/')
     .get(danhGiaController.getAll)
-    .post(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien'), danhGiaController.postAPI)
+    .post(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien' , 'quan_tri_vien'), danhGiaController.postAPI)
 
 router.route('/:id')
     .get(danhGiaController.getAPIById)

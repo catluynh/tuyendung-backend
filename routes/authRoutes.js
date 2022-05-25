@@ -10,7 +10,7 @@ router.get('/showFormQuenMatKhau/:token', authController.showFormQuenMatKhau);
 router.patch('/datLaiMatKhau/:token', authController.datLaiMatKhau);
 
 router.use(authController.protect);
-router.use(authController.kiemTraLoaiTaiKhoan(['ung_tuyen_vien', 'nha_tuyen_dung']));
+router.use(authController.kiemTraLoaiTaiKhoan(['ung_tuyen_vien' , 'quan_tri_vien', 'nha_tuyen_dung']));
 router.patch('/doiMatKhau', authController.doiMatKhau);
 //test
 router.get('/hello', (req, res)=>{

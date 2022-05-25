@@ -5,7 +5,7 @@ const donUngTuyenController = require('../controllers/donUngTuyenController')
 
 // ứng tuyển viên: việc làm đã ứng tuyển
 router.route('/timKiemTheoUngTuyenVien')
-    .get(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien'), donUngTuyenController.timKiemTheoUngTuyenVien)
+    .get(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien' , 'quan_tri_vien'), donUngTuyenController.timKiemTheoUngTuyenVien)
 
 //nhà tuyển dụng: đơn ứng tuyển theo nhà tuyển dụng  
 router.route('/timKiemTheoNhaTuyenDung')
@@ -49,7 +49,7 @@ router.route('/demDonUngTuyentheoTin/:id')
 
 router.route('/')
     .get(donUngTuyenController.getAll)
-    .post(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien'), donUngTuyenController.postAPI)
+    .post(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien' , 'quan_tri_vien'), donUngTuyenController.postAPI)
 
 router.route('/:id')
     .get(donUngTuyenController.getAPIById)
