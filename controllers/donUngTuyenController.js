@@ -93,7 +93,7 @@ class DonUngTuyenController {
     async timKiemTheoUngTuyenVien(req, res, next) {
         console.log(req.query);
         const page = req.query.page * 1 || 1
-        const limit = parseInt(req.query.limit) || 5;
+        const limit = parseInt(req.query.limit) || 20;
         const skip = (page - 1) * limit;
         const total = await DonUngTuyen.find({ ungTuyenVien: req.taiKhoan._id }).count();
         await DonUngTuyen.find({ ungTuyenVien: req.taiKhoan._id })

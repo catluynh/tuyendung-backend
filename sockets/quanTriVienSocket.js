@@ -2,11 +2,8 @@
 class quanTriVienSocket {
     xetDuyetTin(io) {
         io.on('connection', (socket) => {
-            socket.on('xet-duyet-tin', (data) => {
-                console.log(data)
-            })
-            socket.emit('welcome', {
-                message: 'Connected !!!!'
+            socket.on('dung-tuyen', (data) => {
+
             });
         });
     }

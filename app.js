@@ -14,15 +14,8 @@ const jwt = require('jsonwebtoken');
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
-        origin: 'http://localhost:3000',
-        methods: ['GET', 'POST'],
-        allowedHeaders: [
-            "Access-Control-Allow-Origin",
-            "Access-Control-Header",
-            "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-            "Access-Control-Allow-Methods",
-        ],
-        credentials: true,
+        origin: '*',
+        methods: ['GET', 'POST']
     }
 });
 
@@ -43,26 +36,26 @@ app.use(upload());
 route(app);
 
 //config socket
-io.use(async (socket, next) => {
-    try {
-        let token;
-        // Kiểm tra token và lấy token
-        if (socket.handshake.headers.authorization && socket.handshake.headers.authorization.startsWith('Bearer')) {
-            token = socket.handshake.headers.authorization.split(' ')[1];
-        }
-        if (!token) {
-            return next(new AppError('Vui lòng đăng nhập 😫', 401));
-        }
+// io.use(async (socket, next) => {
+//     try {
+//         let token;
+//         // Kiểm tra token và lấy token
+//         if (socket.handshake.headers.authorization && socket.handshake.headers.authorization.startsWith('Bearer')) {
+//             token = socket.handshake.headers.authorization.split(' ')[1];
+//         }
+//         if (!token) {
+//             return next(new AppError('Vui lòng đăng nhập 😫', 401));
+//         }
 
-        // Xác minh token
-        const decoded = await jwt.verify(token, process.env.JWT_SECRET);
-        //Lưu vào socket
-        socket.taiKhoanId = decoded.id;
-        next();
-    } catch (err) {
-        next(err);
-    }
-});
+//         // Xác minh token
+//         const decoded = await jwt.verify(token, process.env.JWT_SECRET);
+//         //Lưu vào socket
+//         socket.taiKhoanId = decoded.id;
+//         next();
+//     } catch (err) {
+//         next(err);
+//     }
+// });
 
 initSockets(io);
 

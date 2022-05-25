@@ -28,7 +28,7 @@ class TinTuyenDungController {
             {
                 $group: {
                     _id:
-                        { tinTuyenDung: '$_id', tieuDe: '$tieuDe', ngayHetHan: '$ngayHetHan', soLuongTuyen: '$soLuongDaTuyen' },
+                        { tinTuyenDung: '$_id', tieuDe: '$tieuDe', ngayHetHan: '$ngayHetHan', soLuongTuyen: '$soLuongTuyen' },
                     soLuongDaTuyen: { $sum: 1 }
                 }
             },
@@ -39,6 +39,7 @@ class TinTuyenDungController {
             }
         ])
             .then(datas => {
+                console.log(datas)
                 datas.map(async data => {
                     if (data.tinTuyenDung.ngayHetHan < Date.now() || data.soLuongDaTuyen >= data.tinTuyenDung.soLuongTuyen) {
                         await TinTuyenDung.findByIdAndUpdate(data.tinTuyenDung.tinTuyenDung, {
