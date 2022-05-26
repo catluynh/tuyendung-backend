@@ -5,6 +5,7 @@ const AppError = require('../utils/appError');
 const guiEmail = require('../utils/email');
 const crypto = require('crypto');
 const UngTuyenVien = require('../models/ungTuyenVienModel');
+const NhaTuyenDung = require('../models/nhaTuyenDungModel');
 
 const createToken = id => {
     return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -142,24 +143,36 @@ class AuthController {
                     message: 'Token đã hết hạn. Vui lòng tạo lại tài khoản',
                 });
             }
-            taiKhoan.xacThucTaiKhoan = true;
-            taiKhoan.yeuCauKichHoat = undefined;
-            await taiKhoan.save();
 
-            //Tạo ứng tuyển viên
-            const object = {_id : "",};
-            const ungTuyenVienMoi = new UngTuyenVien(object);
-            ungTuyenVienMoi._id = taiKhoan._id;
-            ungTuyenVienMoi.taiKhoan = taiKhoan._id
-            await ungTuyenVienMoi.save();
-            
-           // const token = createToken(taiKhoan._id);
-            res.redirect(`${process.env.HOST_CLIENT}/auth/register/verified`);
-            // res.status(201).json({
-            //     status: 'success',
-            //     token,
-            //     taiKhoan: taiKhoan
-            // })
+            if (taiKhoan.loaiTaiKhoan == 'ung_tuyen_vien') {
+                taiKhoan.xacThucTaiKhoan = true;
+                taiKhoan.yeuCauKichHoat = undefined;
+                await taiKhoan.save();
+
+                //Tạo ứng tuyển viên
+                const object = { _id: "", };
+                const ungTuyenVienMoi = new UngTuyenVien(object);
+                ungTuyenVienMoi._id = taiKhoan._id;
+                ungTuyenVienMoi.taiKhoan = taiKhoan._id
+                await ungTuyenVienMoi.save();
+
+                res.redirect(`${process.env.HOST_CLIENT}/auth/register/verified`);
+            }
+            if (taiKhoan.loaiTaiKhoan == 'nha_tuyen_dung') {
+                taiKhoan.xacThucTaiKhoan = true;
+                taiKhoan.yeuCauKichHoat = undefined;
+                await taiKhoan.save();
+
+                //Tạo ứng tuyển viên
+                const object = { _id: "", };
+                const nhaTuyenDungMoi = new NhaTuyenDung(object);
+                nhaTuyenDungMoi._id = taiKhoan._id;
+                nhaTuyenDungMoi.taiKhoan = taiKhoan._id
+                await nhaTuyenDungMoi.save();
+
+                res.redirect(`${process.env.HOST_CLIENT}/auth/register/form`);
+            }
+
         } catch (error) {
             return res.status(500).json({
                 message: error,
