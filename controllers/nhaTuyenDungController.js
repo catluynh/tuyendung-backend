@@ -5,13 +5,15 @@ const AppError = require('../utils/appError');
 class NhaTuyenDungController {
     async getAll(req, res, next) {
         const page = req.query.page * 1 || 1
-        const limit = parseInt(req.query.limit) || 15;
+        const limit = parseInt(req.query.limit) || 5;
         const skip = (page - 1) * limit;
         const total = await NhaTuyenDung.find().count();
         await NhaTuyenDung.aggregate([
             { $lookup: { from: "taikhoans", localField: "_id", foreignField: "_id", as: "taiKhoan" } },
             { $unwind: "$taiKhoan" },
-            { $sort: { 'taiKhoan.ngayCapNhat': -1 } }
+            { $sort: { 'taiKhoan.ngayCapNhat': -1 } },
+            { $skip: skip },
+            { $limit: limit },
         ])
             .then(data => {
                 res.status(200).json({

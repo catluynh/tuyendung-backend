@@ -553,8 +553,6 @@ class TinTuyenDungController {
             trangThai = undefined;
         }
 
-        console.log(req.query.tieuDe)
-
         if (trangThai) {
             const total = await TinTuyenDung.aggregate([
                 { $match: { "$and": [{ 'trangThai': trangThai }, { 'tieuDe': { $regex: new RegExp(req.query.tieuDe, "i") } }] } },
@@ -565,9 +563,10 @@ class TinTuyenDungController {
                 { $lookup: { from: "danhgias", localField: "_id", foreignField: "tinTuyenDung", as: "rs" } },
                 { $match: { "$and": [{ 'trangThai': trangThai }, { 'tieuDe': { $regex: new RegExp(req.query.tieuDe, "i") } }] } },
                 { $project: { _id: 1, tieuDe: 1, ngayHetHan: 1, 'trangThai': 1, ngayTao: 1, diaDiem: 1, slug: 1, ngayCapNhat: 1, soLuotDanhGia: { $size: "$rs" } } },
+                { $sort: { ngayCapNhat: -1 } },
                 { $skip: skip },
-                { $sort: { ngayCapNhat: -1 } }
-            ]).limit(limit).exec()
+                { $limit: limit },
+            ]).exec()
                 .then(async data => {
                     res.status(201).json({
                         status: 'success',
@@ -590,9 +589,10 @@ class TinTuyenDungController {
                 { $lookup: { from: "danhgias", localField: "_id", foreignField: "tinTuyenDung", as: "rs" } },
                 { $match: { 'tieuDe': { $regex: new RegExp(req.query.tieuDe, "i") } } },
                 { $project: { _id: 1, tieuDe: 1, ngayHetHan: 1, 'trangThai': 1, ngayTao: 1, diaDiem: 1, slug: 1, ngayCapNhat: 1, soLuotDanhGia: { $size: "$rs" } } },
+                { $sort: { ngayCapNhat: -1 } },
                 { $skip: skip },
-                { $sort: { ngayCapNhat: -1 } }
-            ]).limit(limit).exec()
+                { $limit: limit },  
+            ]).exec()
                 .then(async data => {
                     res.status(201).json({
                         status: 'success',
