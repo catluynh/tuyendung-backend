@@ -629,7 +629,7 @@ class TinTuyenDungController {
     async getByIdTrangThai(req, res, next) {
         const don = await DonUngTuyen.find({
             ungTuyenVien: req.query.idUtv,
-            tinTuyenDung: req.query.idTinTuyenDung
+            tinTuyenDung: req.params.id
         })
         console.log(don)
         let checkUngTuyen;
