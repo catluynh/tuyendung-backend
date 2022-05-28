@@ -627,17 +627,21 @@ class TinTuyenDungController {
     };
 
     async getByIdTrangThai(req, res, next) {
-        const don = await DonUngTuyen.find({
-            ungTuyenVien: req.query.idUtv,
-            tinTuyenDung: req.params.id
-        })
-        console.log(don)
         let checkUngTuyen;
-        if(don.length > 0){
-            checkUngTuyen = true
-        }else{
+        if (req.query.idUtv) {
+            const don = await DonUngTuyen.find({
+                ungTuyenVien: req.query.idUtv,
+                tinTuyenDung: req.params.id
+            })
+            if (don.length > 0) {
+                checkUngTuyen = true
+            } else {
+                checkUngTuyen = false
+            }
+        } else {
             checkUngTuyen = false
         }
+
         await TinTuyenDung.find({
             _id: req.params.id,
             trangThai: Enum.TRANG_THAI_TIN.DA_DUYET
