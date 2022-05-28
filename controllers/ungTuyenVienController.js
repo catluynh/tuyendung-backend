@@ -7,14 +7,34 @@ class UngTuyenVienController {
         const page = req.query.page * 1 || 1
         const limit = parseInt(req.query.limit) || 5;
         const skip = (page - 1) * limit;
-        const total = await UngTuyenVien.find().count();
+        const totalAll = await UngTuyenVien.aggregate([
+            { $lookup: { from: "taikhoans", localField: "_id", foreignField: "_id", as: "taiKhoan" } },
+            { $unwind: "$taiKhoan" },
+            {
+                $match: {
+                    $and: [
+                        { ten: { $regex: new RegExp(req.query.ten, "i") } },
+                        { sdt: { $regex: new RegExp(req.query.sdt, "i") } }
+                    ]
+                }
+            },
+            { $count: 'tong' }
+        ]);
+        const total = totalAll[0];
         await UngTuyenVien.aggregate([
             { $lookup: { from: "taikhoans", localField: "_id", foreignField: "_id", as: "taiKhoan" } },
-            //   { $unwind: "$taiKhoan" },
-             { $match: { 'taiKhoan.email': 'catluynh99@gmail.com' } },
-            // { $sort: { 'taiKhoan.ngayCapNhat': -1 } },
-            // { $skip: skip },
-            // { $limit: limit },
+            { $unwind: "$taiKhoan" },
+            {
+                $match: {
+                    $and: [
+                        { ten: { $regex: new RegExp(req.query.ten, "i") } },
+                        { sdt: { $regex: new RegExp(req.query.sdt, "i") } }
+                    ]
+                }
+            },
+            { $sort: { 'taiKhoan.ngayCapNhat': -1 } },
+            { $skip: skip },
+            { $limit: limit },
         ])
             .then(data => {
                 res.status(200).json({

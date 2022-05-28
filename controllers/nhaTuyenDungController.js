@@ -7,10 +7,31 @@ class NhaTuyenDungController {
         const page = req.query.page * 1 || 1
         const limit = parseInt(req.query.limit) || 5;
         const skip = (page - 1) * limit;
-        const total = await NhaTuyenDung.find().count();
+        const totalAll = await NhaTuyenDung.aggregate([
+            { $lookup: { from: "taikhoans", localField: "_id", foreignField: "_id", as: "taiKhoan" } },
+            { $unwind: "$taiKhoan" },
+            {
+                $match: {
+                    $and: [
+                        { tenCongty: { $regex: new RegExp(req.query.tenCongty, "i") } },
+                        { sdt: { $regex: new RegExp(req.query.sdt, "i") } }
+                    ]
+                }
+            },
+            { $count: 'tong' }
+        ]);
+        const total = totalAll[0];
         await NhaTuyenDung.aggregate([
             { $lookup: { from: "taikhoans", localField: "_id", foreignField: "_id", as: "taiKhoan" } },
             { $unwind: "$taiKhoan" },
+            {
+                $match: {
+                    $and: [
+                        { tenCongty: { $regex: new RegExp(req.query.tenCongty, "i") } },
+                        { sdt: { $regex: new RegExp(req.query.sdt, "i") } }
+                    ]
+                }
+            },
             { $sort: { 'taiKhoan.ngayCapNhat': -1 } },
             { $skip: skip },
             { $limit: limit },
