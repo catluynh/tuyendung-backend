@@ -628,7 +628,9 @@ class TinTuyenDungController {
 
     async getByIdTrangThai(req, res, next) {
         let checkUngTuyen;
-        if (req.query.idUtv) {
+        if (req.query.idUtv == 'undefined') {
+            checkUngTuyen = false
+        } else {
             const don = await DonUngTuyen.find({
                 ungTuyenVien: req.query.idUtv,
                 tinTuyenDung: req.params.id
@@ -638,8 +640,6 @@ class TinTuyenDungController {
             } else {
                 checkUngTuyen = false
             }
-        } else {
-            checkUngTuyen = false
         }
 
         await TinTuyenDung.find({
