@@ -601,7 +601,7 @@ class TinTuyenDungController {
                         pagination: {
                             page,
                             limit,
-                            total: total[0].tong,
+                            total: total.length > 0 ? total[0].tong : 0,
                         },
                         data
                     })
@@ -680,7 +680,7 @@ class TinTuyenDungController {
                 }
             },
             { $count: 'tong' }
-        ])
+        ]);
 
         await TinTuyenDung.aggregate([
             { $lookup: { from: "danhgias", localField: "_id", foreignField: "tinTuyenDung", as: "rs" } },
@@ -698,8 +698,10 @@ class TinTuyenDungController {
                     newRoot: { tinTuyenDung: "$_id", soLuotDanhGia: '$soLuotDanhGia' }
                 }
             },
-            { $skip: skip }
-        ]).limit(limit).exec()
+            { $sort: { ngayCapNhat: -1 } },
+            { $skip: skip },
+            { $limit: limit },
+        ]).exec()
             .then(async data => {
                 res.status(201).json({
                     status: 'success',
@@ -707,7 +709,7 @@ class TinTuyenDungController {
                     pagination: {
                         page,
                         limit,
-                        total: total[0].tong,
+                        total: total.length > 0 ? total[0].tong : 0
                     },
                     data
                 })

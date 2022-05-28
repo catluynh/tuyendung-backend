@@ -21,6 +21,7 @@ class NhaTuyenDungController {
             { $count: 'tong' }
         ]);
         const total = totalAll[0];
+
         await NhaTuyenDung.aggregate([
             { $lookup: { from: "taikhoans", localField: "_id", foreignField: "_id", as: "taiKhoan" } },
             { $unwind: "$taiKhoan" },

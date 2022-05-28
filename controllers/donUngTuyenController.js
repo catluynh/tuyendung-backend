@@ -107,7 +107,7 @@ class DonUngTuyenController {
             { $limit: limit },
         ])
             .limit(limit).skip(skip).exec()
-            .then( async data => {
+            .then(async data => {
                 res.status(200).json({
                     status: 'success',
                     results: data.length,
@@ -119,6 +119,105 @@ class DonUngTuyenController {
                     data
                 })
             })
+            .catch(next);
+    };
+
+    async timKiemTheoNhaTuyenDung1(req, res, next) {
+        console.log(req.query);
+        const page = req.query.page * 1 || 1
+        const limit = parseInt(req.query.limit) || 5;
+        const skip = (page - 1) * limit;
+        const nhaTuyenDung = await NhaTuyenDung.findById(req.taiKhoan._id);
+        const totalAll = await DonUngTuyen.aggregate(
+            [
+                { $lookup: { from: "tintuyendungs", localField: "tinTuyenDung", foreignField: "_id", as: "tinTuyenDung" } },
+                { $unwind: "$tinTuyenDung" },
+                { $lookup: { from: "ungtuyenviens", localField: "ungTuyenVien", foreignField: "_id", as: "ungTuyenVien" } },
+                { $unwind: "$ungTuyenVien" },
+                {
+                    $match: {
+                        $and: [
+                            { 'tinTuyenDung.nhaTuyenDung': nhaTuyenDung._id },
+                            { 'tinTuyenDung.tieuDe': { $regex: new RegExp(req.query.tieuDe, "i") } }
+                        ]
+                    }
+                },
+                { $count: 'tong' },
+            ]);
+
+        let total;
+        if (totalAll.length > 0) {
+            total = totalAll[0].tong;
+        } else {
+            total = 0;
+        }
+
+        await DonUngTuyen.aggregate(
+            [
+                { $lookup: { from: "tintuyendungs", localField: "tinTuyenDung", foreignField: "_id", as: "tinTuyenDung" } },
+                { $unwind: "$tinTuyenDung" },
+                { $lookup: { from: "ungtuyenviens", localField: "ungTuyenVien", foreignField: "_id", as: "ungTuyenVien" } },
+                { $unwind: "$ungTuyenVien" },
+                {
+                    $match: {
+                        $and: [
+                            { 'tinTuyenDung.nhaTuyenDung': nhaTuyenDung._id },
+                            { 'tinTuyenDung.tieuDe': { $regex: new RegExp(req.query.tieuDe, "i") } }
+                        ]
+                    }
+                },
+                { $sort: { ngayCapNhat: -1 } },
+                { $skip: skip },
+                { $limit: limit },
+            ]
+        ).then(data => {
+            let trangThai;
+
+            if (req.query.trangThai == 0) {
+                trangThai = 'Thất bại'
+            }
+            if (req.query.trangThai == 1) {
+                trangThai = 'Đang ứng tuyển'
+            }
+            if (req.query.trangThai == 2) {
+                trangThai = 'Đã ứng tuyển'
+            }
+            //lọc đơn ứng tuyển theo trạng thái
+            let dsDonUngTuyen = data.filter(donUngTuyen => {
+                let tuoi = new Date().getFullYear() - donUngTuyen.ungTuyenVien.ngaySinh.getFullYear();
+                if (donUngTuyen.tinTuyenDung.tuoiTu <= tuoi && donUngTuyen.tinTuyenDung.denTuoi >= tuoi) {
+                    donUngTuyen.yeuCauDoTuoi = true;
+                }
+                else {
+                    donUngTuyen.yeuCauDoTuoi = false;
+                }
+                if (donUngTuyen.trangThai == trangThai) {
+                    return donUngTuyen
+                } if (!trangThai) {
+                    return donUngTuyen
+                }
+            })
+
+            const ds = dsDonUngTuyen.map(data => {
+                let don = {
+                    donTuyenDung: data,
+                    yeuCauDoTuoi: data.yeuCauDoTuoi,
+                    yeuCauSoNamKinhNghiem: true
+                };
+                return don;
+            })
+
+            res.status(200).json({
+                status: 'success',
+                results: dsDonUngTuyen.length,
+                pagination: {
+                    page,
+                    limit,
+                    total: total
+                },
+                data: ds
+            })
+        })
             .catch(next);
     };
 

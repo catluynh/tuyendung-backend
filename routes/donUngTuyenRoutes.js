@@ -51,6 +51,9 @@ router.route('/demDonUngTuyentheoTin/:id')
 router.route('/guiEmailUngVienTiemNang/:id')
     .get(authController.protect, authController.kiemTraLoaiTaiKhoan('nha_tuyen_dung'), donUngTuyenController.guiEmailUngVienTiemNang)
 
+router.route('/timKiemTheoNhaTuyenDung1')
+    .get(authController.protect, authController.kiemTraLoaiTaiKhoan('nha_tuyen_dung'), donUngTuyenController.timKiemTheoNhaTuyenDung1)
+
 router.route('/')
     .get(donUngTuyenController.getAll)
     .post(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien', 'quan_tri_vien'), donUngTuyenController.postAPI)
