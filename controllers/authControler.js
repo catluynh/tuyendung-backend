@@ -316,7 +316,7 @@ class AuthController {
                 }
                 return res.status(401).json({
                     status: 'error',
-                    message: 'Đương dẫn đã hết hạn',
+                    message: 'Đường dẫn đã hết hạn',
                 });
             }
             res.redirect(`${process.env.HOST_CLIENT}/auth/verified/${req.params.token}`);

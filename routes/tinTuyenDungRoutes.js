@@ -22,7 +22,7 @@ router.route('/timKiemTheoNhaTuyenDung')
 
 //nhà tuyển dung: tổng số lượng tin nhà tuyển dụng đã đăng
 router.route('/tongSoTinTheoTrangThaiNhaTuyenDung')
-    .get(authController.protect, authController.kiemTraLoaiTaiKhoan('nha_tuyen_dung'), tinTuyenDungController.tongSoTinTheoTrangThaiNhaTuyenDung)
+    .get(authController.protect, authController.kiemTraLoaiTaiKhoan('nha_tuyen_dung', 'quan_tri_vien'), tinTuyenDungController.tongSoTinTheoTrangThaiNhaTuyenDung)
 
 //quản trị viên: duyệt tin tuyển dụng
 router.route('/duyetTin/:id')

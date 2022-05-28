@@ -703,7 +703,7 @@ class TinTuyenDungController {
                 },
                 "redirect_urls": {
                     "return_url": "http://localhost:3000/employer/job/create",
-                    "cancel_url": "http://localhost:4000/tinTuyenDungs"
+                    "cancel_url": "http://localhost:3000/failure"
                 },
                 "transactions": [{
                     "item_list": {

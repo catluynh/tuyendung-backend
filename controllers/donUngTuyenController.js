@@ -97,9 +97,17 @@ class DonUngTuyenController {
         const limit = parseInt(req.query.limit) || 20;
         const skip = (page - 1) * limit;
         const total = await DonUngTuyen.find({ ungTuyenVien: req.taiKhoan._id }).count();
-        await DonUngTuyen.find({ ungTuyenVien: req.taiKhoan._id })
+        await DonUngTuyen.aggregate([
+            { $lookup: { from: "tintuyendungs", localField: "tinTuyenDung", foreignField: "_id", as: "tinTuyenDung" } },
+            { $match: { $and: [{ ungTuyenVien: req.taiKhoan._id }, { 'tinTuyenDung.trangThai': Enum.TRANG_THAI_TIN.DA_DUYET }] } },
+        ])
             .limit(limit).skip(skip).exec()
             .then(data => {
+                // data.map(data => {
+                //     if (data.tinTuyenDung.trangThai == Enum.TRANG_THAI_TIN.DA_DUYET) {
+                //         console.log(data.tinTuyenDung.trangThai)
+                //     }
+                // })
                 res.status(200).json({
                     status: 'success',
                     results: data.length,
@@ -121,7 +129,7 @@ class DonUngTuyenController {
         const skip = (page - 1) * limit;
         const nhaTuyenDung = await NhaTuyenDung.findById(req.taiKhoan._id);
         //tìm kiếm tin theo nhà tuyển dụng
-        await TinTuyenDung.find({ nhaTuyenDung }).sort({ngayCapNhat: -1})
+        await TinTuyenDung.find({ nhaTuyenDung }).sort({ ngayCapNhat: -1 })
             .then(async dsTinTuyenDung => {
                 //mảng 2 chiều
                 const dsDon = dsTinTuyenDung.map(async tinTuyenDung => {
@@ -317,7 +325,7 @@ class DonUngTuyenController {
                 //mảng 2 chiều
                 const dsDon = dsTinTuyenDung.map(async tinTuyenDung => {
                     //tìm kiếm đã đơn ứng tuyển theo tin tuyển dụng, array
-                    return await DonUngTuyen.find({ tinTuyenDung: tinTuyenDung._id }).sort({ngayCapNhat: -1});
+                    return await DonUngTuyen.find({ tinTuyenDung: tinTuyenDung._id }).sort({ ngayCapNhat: -1 });
                 })
 
                 let data = [];
@@ -478,6 +486,20 @@ class DonUngTuyenController {
                     newRoot: { trangThai: "$_id", tong: '$tong' }
                 }
             }
+        ])
+            .then(data => {
+                res.status(200).json({
+                    status: 'success',
+                    results: data.length,
+                    data
+                })
+            })
+            .catch(next);
+    }
+
+    async guiEmailUngVienTiemNang(req, res, next) {
+        await DonUngTuyen.aggregate([
+            { $match: { tiemNang: true } },
         ])
             .then(data => {
                 res.status(200).json({

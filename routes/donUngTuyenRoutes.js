@@ -5,7 +5,7 @@ const donUngTuyenController = require('../controllers/donUngTuyenController')
 
 // ứng tuyển viên: việc làm đã ứng tuyển
 router.route('/timKiemTheoUngTuyenVien')
-    .get(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien' , 'quan_tri_vien'), donUngTuyenController.timKiemTheoUngTuyenVien)
+    .get(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien', 'quan_tri_vien'), donUngTuyenController.timKiemTheoUngTuyenVien)
 
 //nhà tuyển dụng: đơn ứng tuyển theo nhà tuyển dụng  
 router.route('/timKiemTheoNhaTuyenDung')
@@ -47,9 +47,13 @@ router.route('/demDonUngTuyenTiemNang')
 router.route('/demDonUngTuyentheoTin/:id')
     .get(authController.protect, authController.kiemTraLoaiTaiKhoan('nha_tuyen_dung'), donUngTuyenController.demDonUngTuyentheoTin)
 
+//nhà tuyển dụng: gửi mail đến những ứng viên tiềm năng khi đăng tin phù hợp với ứng viên đó
+router.route('/guiEmailUngVienTiemNang/:id')
+    .get(authController.protect, authController.kiemTraLoaiTaiKhoan('nha_tuyen_dung'), donUngTuyenController.guiEmailUngVienTiemNang)
+
 router.route('/')
     .get(donUngTuyenController.getAll)
-    .post(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien' , 'quan_tri_vien'), donUngTuyenController.postAPI)
+    .post(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien', 'quan_tri_vien'), donUngTuyenController.postAPI)
 
 router.route('/:id')
     .get(donUngTuyenController.getAPIById)
