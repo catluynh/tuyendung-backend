@@ -10,10 +10,11 @@ class UngTuyenVienController {
         const total = await UngTuyenVien.find().count();
         await UngTuyenVien.aggregate([
             { $lookup: { from: "taikhoans", localField: "_id", foreignField: "_id", as: "taiKhoan" } },
-            { $unwind: "$taiKhoan" },
-            { $sort: { 'taiKhoan.ngayCapNhat': -1 } },
-            { $skip: skip },
-            { $limit: limit },
+            //   { $unwind: "$taiKhoan" },
+             { $match: { 'taiKhoan.email': 'catluynh99@gmail.com' } },
+            // { $sort: { 'taiKhoan.ngayCapNhat': -1 } },
+            // { $skip: skip },
+            // { $limit: limit },
         ])
             .then(data => {
                 res.status(200).json({

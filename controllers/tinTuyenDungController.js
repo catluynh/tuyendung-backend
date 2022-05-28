@@ -627,6 +627,17 @@ class TinTuyenDungController {
     };
 
     async getByIdTrangThai(req, res, next) {
+        const don = await DonUngTuyen.find({
+            ungTuyenVien: req.query.idUtv,
+            tinTuyenDung: req.query.idTinTuyenDung
+        })
+        console.log(don)
+        let checkUngTuyen;
+        if(don.length > 0){
+            checkUngTuyen = true
+        }else{
+            checkUngTuyen = false
+        }
         await TinTuyenDung.find({
             _id: req.params.id,
             trangThai: Enum.TRANG_THAI_TIN.DA_DUYET
@@ -636,7 +647,8 @@ class TinTuyenDungController {
                 res.status(201).json({
                     status: 'success',
                     total: datas.length,
-                    data
+                    data,
+                    checkUngTuyen
                 })
             })
             .catch(next);
