@@ -102,7 +102,7 @@ class DonUngTuyenController {
             { $unwind: "$tinTuyenDung" },
             { $lookup: { from: "nhatuyendungs", localField: "tinTuyenDung.nhaTuyenDung", foreignField: "_id", as: "tinTuyenDung.nhaTuyenDung" } },
             { $unwind: "$tinTuyenDung.nhaTuyenDung" },
-            { $match: { $and: [{ ungTuyenVien: req.taiKhoan._id }, { 'tinTuyenDung.trangThai': Enum.TRANG_THAI_TIN.DA_DUYET }] } },
+            { $match: { $and: [{ ungTuyenVien: req.taiKhoan._id }, { trangThai: Enum.TRANG_THAI_DON.DANG_UNG_TUYEN }] } },
             { $skip: skip },
             { $limit: limit },
         ])
