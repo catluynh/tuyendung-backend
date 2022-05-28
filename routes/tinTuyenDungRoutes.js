@@ -45,15 +45,15 @@ router.route('/tongSoTinTheoTrangThai')
 
 //ứng tuyển viên: việc làm đã lưu
 router.route('/tinTuyenDungDaLuu')
-    .get(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien' , 'quan_tri_vien'), tinTuyenDungController.tinTuyenDungDaLuu)
+    .get(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien', 'quan_tri_vien'), tinTuyenDungController.tinTuyenDungDaLuu)
 
 //ứng tuyển viên: lưu tin tuyển dụng
 router.route('/luuTinTuyenDung/:id')
-    .patch(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien' , 'quan_tri_vien'), tinTuyenDungController.luuTinTuyenDung)
+    .patch(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien', 'quan_tri_vien'), tinTuyenDungController.luuTinTuyenDung)
 
 //ứng tuyển viên: hủy lưu tin tuyển dụng
 router.route('/huyLuuTinTuyenDung/:id')
-    .patch(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien' , 'quan_tri_vien'), tinTuyenDungController.huyLuuTinTuyenDung)
+    .patch(authController.protect, authController.kiemTraLoaiTaiKhoan('ung_tuyen_vien', 'quan_tri_vien'), tinTuyenDungController.huyLuuTinTuyenDung)
 
 //quản trị viên: đếm số lượng đánh giá theo tin
 router.route('/soLuongDanhGiaTheoTin')
@@ -63,8 +63,14 @@ router.route('/soLuongDanhGiaTheoTin')
 router.route('/tinTuyenDungCoNguyCoKhoa')
     .get(tinTuyenDungController.tinTuyenDungCoNguyCoKhoa)
 
+router.route('/getByIdTrangThai/:id')
+    .get(tinTuyenDungController.getByIdTrangThai)
+
 router.route('/luuTheoIdUngTuyenVien')
     .get(authController.protect, tinTuyenDungController.luuTheoIdUngTuyenVien)
+
+router.route('/sendEmail')
+    .post(tinTuyenDungController.sendEmail)
 
 router.route('/thanhToan')
     .post(tinTuyenDungController.thanhToan)

@@ -99,15 +99,15 @@ class DonUngTuyenController {
         const total = await DonUngTuyen.find({ ungTuyenVien: req.taiKhoan._id }).count();
         await DonUngTuyen.aggregate([
             { $lookup: { from: "tintuyendungs", localField: "tinTuyenDung", foreignField: "_id", as: "tinTuyenDung" } },
+            { $unwind: "$tinTuyenDung" },
+            { $lookup: { from: "nhatuyendungs", localField: "tinTuyenDung.nhaTuyenDung", foreignField: "_id", as: "tinTuyenDung.nhaTuyenDung" } },
+            { $unwind: "$tinTuyenDung.nhaTuyenDung" },
             { $match: { $and: [{ ungTuyenVien: req.taiKhoan._id }, { 'tinTuyenDung.trangThai': Enum.TRANG_THAI_TIN.DA_DUYET }] } },
+            { $skip: skip },
+            { $limit: limit },
         ])
             .limit(limit).skip(skip).exec()
-            .then(data => {
-                // data.map(data => {
-                //     if (data.tinTuyenDung.trangThai == Enum.TRANG_THAI_TIN.DA_DUYET) {
-                //         console.log(data.tinTuyenDung.trangThai)
-                //     }
-                // })
+            .then( async data => {
                 res.status(200).json({
                     status: 'success',
                     results: data.length,

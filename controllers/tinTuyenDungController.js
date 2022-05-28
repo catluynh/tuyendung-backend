@@ -10,6 +10,7 @@ const moment = require('moment');
 const paypal = require('paypal-rest-sdk');
 var open = require('open');
 const { find } = require('../models/tinTuyenDungModel');
+const guiEmail = require('../utils/email');
 
 paypal.configure({
     'mode': process.env.MODE, //sandbox or live
@@ -591,7 +592,7 @@ class TinTuyenDungController {
                 { $project: { _id: 1, tieuDe: 1, ngayHetHan: 1, 'trangThai': 1, ngayTao: 1, diaDiem: 1, slug: 1, ngayCapNhat: 1, soLuotDanhGia: { $size: "$rs" } } },
                 { $sort: { ngayCapNhat: -1 } },
                 { $skip: skip },
-                { $limit: limit },  
+                { $limit: limit },
             ]).exec()
                 .then(async data => {
                     res.status(201).json({
@@ -619,6 +620,22 @@ class TinTuyenDungController {
                 res.status(201).json({
                     status: 'success',
                     total: data.length,
+                    data
+                })
+            })
+            .catch(next);
+    };
+
+    async getByIdTrangThai(req, res, next) {
+        await TinTuyenDung.find({
+            _id: req.params.id,
+            trangThai: Enum.TRANG_THAI_TIN.DA_DUYET
+        })
+            .then(async datas => {
+                const data = datas[0] || [];
+                res.status(201).json({
+                    status: 'success',
+                    total: datas.length,
                     data
                 })
             })
@@ -677,6 +694,22 @@ class TinTuyenDungController {
                         total: total[0].tong,
                     },
                     data
+                })
+            })
+            .catch(next);
+    };
+
+    async sendEmail(req, res, next) {
+        console.log(req.body)
+        await guiEmail({
+            email: req.body.email,
+            subject: req.body.subject,
+            message: req.body.message,
+            html: `${req.body.message}`
+        })
+            .then(async datas => {
+                res.status(201).json({
+                    status: 'success',
                 })
             })
             .catch(next);

@@ -17,7 +17,7 @@ const guiEmail = async (options) => {
     to: options.email,
     subject: options.subject,
     text: options.message,
-    // html:
+    html: options.html
   };
   // 3. Actually send the email
   await transporter.sendMail(mailOptions);
