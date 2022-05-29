@@ -1,0 +1,191 @@
+{
+  "_id": {
+    "$oid": "61e216051852bcf0096161fe"
+  },
+  "trangThai": "Đã ứng tuyển",
+  "ngayUngTuyen": {
+    "$date": "2022-01-13T00:00:00Z"
+  },
+  "ungTuyenVien": {
+    "$oid": "61dc2ef5aec39c8a584a261c"
+  },
+  "tinTuyenDung": {
+    "$oid": "61de2f1b2bc802074d0a9d08"
+  },
+  "__v": 0,
+  "tiemNang": true,
+  "guiEmail": false,
+  "ngayCapNhat": {
+    "$date": "2022-05-25T15:06:17.816Z"
+  }
+}{
+  "_id": {
+    "$oid": "6219b537709f04f4fa906e76"
+  },
+  "trangThai": "Đã ứng tuyển",
+  "ngayUngTuyen": {
+    "$date": "2022-02-13T00:00:00Z"
+  },
+  "ungTuyenVien": {
+    "$oid": "61dc36a36c9974889d6e955d"
+  },
+  "tinTuyenDung": {
+    "$oid": "61de2f1b2bc802074d0a9d08"
+  },
+  "__v": 0,
+  "tiemNang": true,
+  "guiEmail": false,
+  "ngayCapNhat": {
+    "$date": "2022-05-26T02:02:48.830Z"
+  }
+}{
+  "_id": {
+    "$oid": "6219b54c709f04f4fa906e78"
+  },
+  "trangThai": "Đã ứng tuyển",
+  "ngayUngTuyen": {
+    "$date": "2022-02-13T00:00:00Z"
+  },
+  "ungTuyenVien": {
+    "$oid": "61dc36a36c9974889d6e955d"
+  },
+  "tinTuyenDung": {
+    "$oid": "61de2ec72bc802074d0a9d01"
+  },
+  "__v": 0,
+  "tiemNang": false,
+  "guiEmail": false,
+  "ngayCapNhat": {
+    "$date": "2022-05-27T12:52:00.230Z"
+  }
+}{
+  "_id": {
+    "$oid": "628f10b2b0fc0e65a3ad21a0"
+  },
+  "ngayUngTuyen": {
+    "$date": "2022-05-26T04:15:23.674Z"
+  },
+  "ungTuyenVien": {
+    "$oid": "61dc2ef5aec39c8a584a261c"
+  },
+  "tinTuyenDung": {
+    "$oid": "61de2e082bc802074d0a9ceb"
+  },
+  "guiEmail": false,
+  "thongTinLienHe": {
+    "ten": "catluynh",
+    "sdt": "0905632556",
+    "email": "catluass@gmail.com",
+    "loiGioiThieu": "abc"
+  },
+  "tiemNang": false,
+  "trangThai": "Đang ứng tuyển",
+  "ngayCapNhat": {
+    "$date": "2022-05-26T05:31:30.225Z"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "628f8851810b282c2627d086"
+  },
+  "ngayUngTuyen": {
+    "$date": "2022-05-26T13:18:29.140Z"
+  },
+  "ungTuyenVien": {
+    "$oid": "61dc2ef5aec39c8a584a261c"
+  },
+  "tinTuyenDung": {
+    "$oid": "62820d461844d898ea7b70f5"
+  },
+  "guiEmail": false,
+  "thongTinLienHe": {
+    "ten": "Cát Luynh",
+    "sdt": "0903589164",
+    "email": "catluynh99@gmail.com",
+    "loiGioiThieu": "null"
+  },
+  "tiemNang": false,
+  "trangThai": "Đang ứng tuyển",
+  "ngayCapNhat": {
+    "$date": "2022-05-26T14:01:53.992Z"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "6291000787e26b6bb78844ee"
+  },
+  "ngayUngTuyen": {
+    "$date": "2022-05-27T15:08:39.814Z"
+  },
+  "ungTuyenVien": {
+    "$oid": "6285e39593d4178290a57541"
+  },
+  "tinTuyenDung": {
+    "$oid": "61de2ec72bc802074d0a9d01"
+  },
+  "guiEmail": false,
+  "thongTinLienHe": {
+    "ten": "Nguyễn Duy Thiện",
+    "sdt": "0123636325",
+    "email": "gaca0b0j99@gmail.com",
+    "loiGioiThieu": "abc"
+  },
+  "tiemNang": true,
+  "trangThai": "Đang ứng tuyển",
+  "ngayCapNhat": {
+    "$date": "2022-05-27T16:44:55.267Z"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "6291010987e26b6bb7884d7e"
+  },
+  "ngayUngTuyen": {
+    "$date": "2022-05-27T15:08:39.814Z"
+  },
+  "ungTuyenVien": {
+    "$oid": "628ee400bc2e24845ad1d3c0"
+  },
+  "tinTuyenDung": {
+    "$oid": "61de2ec72bc802074d0a9d01"
+  },
+  "guiEmail": false,
+  "thongTinLienHe": {
+    "ten": "Hữu trực",
+    "sdt": "0903581265",
+    "email": "nepaha2225@sceath.com",
+    "loiGioiThieu": "ko có"
+  },
+  "tiemNang": false,
+  "trangThai": "Đang ứng tuyển",
+  "ngayCapNhat": {
+    "$date": "2022-05-27T16:49:13.343Z"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "629101e087e26b6bb7885133"
+  },
+  "ngayUngTuyen": {
+    "$date": "2022-05-27T15:08:39.814Z"
+  },
+  "ungTuyenVien": {
+    "$oid": "628ee400bc2e24845ad1d3c0"
+  },
+  "tinTuyenDung": {
+    "$oid": "6291019d87e26b6bb7884e5b"
+  },
+  "guiEmail": false,
+  "thongTinLienHe": {
+    "ten": "Hữu trực",
+    "sdt": "0123630256",
+    "email": "nepaha2225@sceath.com",
+    "loiGioiThieu": "a"
+  },
+  "tiemNang": true,
+  "trangThai": "Đang ứng tuyển",
+  "ngayCapNhat": {
+    "$date": "2022-05-27T16:52:48.510Z"
+  },
+  "__v": 0
+}

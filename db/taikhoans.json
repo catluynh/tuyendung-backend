@@ -1,0 +1,266 @@
+{
+  "_id": {
+    "$oid": "61dc2ef5aec39c8a584a261c"
+  },
+  "tenDangNhap": "catluynh999",
+  "matKhau": "$2b$12$UPeCGLx/z9kYclF/ztSPhOnuX4/cIk/oV/J5sHPNIIrYnCvu/JZeW",
+  "trangThai": true,
+  "ngayTao": {
+    "$date": "2022-01-10T13:04:51.150Z"
+  },
+  "__v": 0,
+  "email": "catluynh99@gmail.com",
+  "loaiTaiKhoan": "ung_tuyen_vien",
+  "xacThucTaiKhoan": true,
+  "ngayCapNhat": {
+    "$date": "2022-05-26T14:43:05.837Z"
+  }
+}{
+  "_id": {
+    "$oid": "61dc2ef9aec39c8a584a261e"
+  },
+  "tenDangNhap": "trungvinh",
+  "matKhau": "$2b$12$1pNIR5UXpuv26JPfJCbyEumco03MQWK/9SixCjlM8Qb3RTkvePfP6",
+  "trangThai": true,
+  "loaiTaiKhoan": "nha_tuyen_dung",
+  "ngayTao": {
+    "$date": "2022-01-10T13:04:51.150Z"
+  },
+  "__v": 0,
+  "email": "trungvinhg@gmail.com",
+  "xacThucTaiKhoan": true,
+  "ngayCapNhat": {
+    "$date": "2022-05-25T15:35:37.252Z"
+  }
+}{
+  "_id": {
+    "$oid": "61dc3068e09eb7f9b5636fea"
+  },
+  "tenDangNhap": "quantrivien",
+  "matKhau": "$2a$12$Nyz9v0oCf2cKBLMfznxkCOcS7R27g4MYOnU1jUp6meXwNjRIP3x.m",
+  "trangThai": true,
+  "loaiTaiKhoan": "quan_tri_vien",
+  "ngayTao": {
+    "$date": "2022-01-10T13:07:43.610Z"
+  },
+  "__v": 0,
+  "email": "catluynh1999gmail.com",
+  "xacThucTaiKhoan": true
+}{
+  "_id": {
+    "$oid": "61dc36a36c9974889d6e955d"
+  },
+  "email": "danhhuy@gmail.com",
+  "tenDangNhap": "danhhuy11",
+  "matKhau": "$2b$12$rgU8Py1DnCmbKg2DsThcfOeAkWl.Wrl04NyuUvdhykfIlkyhQxbQq",
+  "trangThai": true,
+  "ngayTao": {
+    "$date": "2022-01-10T13:37:16.945Z"
+  },
+  "__v": 0,
+  "loaiTaiKhoan": "ung_tuyen_vien",
+  "xacThucTaiKhoan": true,
+  "ngayCapNhat": {
+    "$date": "2022-05-26T01:55:48.973Z"
+  }
+}{
+  "_id": {
+    "$oid": "61dc43c0028fd53ddaaac063"
+  },
+  "email": "huunam@gmail.com",
+  "tenDangNhap": "huunam111",
+  "matKhau": "$2b$12$vcskXFKdMTwEEvQ92ltBiOc8G.xFcdTwfTgZa2HQGOIEXbsJ59J/m",
+  "trangThai": true,
+  "loaiTaiKhoan": "nha_tuyen_dung",
+  "ngayTao": {
+    "$date": "2022-01-10T14:31:40.951Z"
+  },
+  "__v": 0,
+  "xacThucTaiKhoan": true,
+  "ngayCapNhat": {
+    "$date": "2022-05-25T15:48:13.420Z"
+  }
+}{
+  "_id": {
+    "$oid": "61dcea30e0d41b2f11b6e4bd"
+  },
+  "email": "vanhung1@gmail.com",
+  "tenDangNhap": "vanhung1",
+  "matKhau": "$2b$12$bW7dPhVSnKPHFeqqv42BuesJxJoFFjWjIIw2tCekVdluTwjtockN6",
+  "trangThai": true,
+  "loaiTaiKhoan": "nha_tuyen_dung",
+  "ngayTao": {
+    "$date": "2022-01-11T02:15:11.441Z"
+  },
+  "__v": 0,
+  "xacThucTaiKhoan": true,
+  "ngayCapNhat": {
+    "$date": "2022-05-26T14:42:57.823Z"
+  }
+}{
+  "_id": {
+    "$oid": "61f142e545790696f44cfcd8"
+  },
+  "email": "ThangAn@gmail.com",
+  "tenDangNhap": "ThangAn",
+  "matKhau": "$2b$12$bW7dPhVSnKPHFeqqv42BuesJxJoFFjWjIIw2tCekVdluTwjtockN6",
+  "trangThai": true,
+  "loaiTaiKhoan": "nha_tuyen_dung",
+  "ngayTao": {
+    "$date": "2022-01-11T02:15:11.441Z"
+  },
+  "__v": 0,
+  "xacThucTaiKhoan": true
+}{
+  "_id": {
+    "$oid": "6278e303097946a40bea8f9c"
+  },
+  "email": "minhlong@gmail.com",
+  "tenDangNhap": "minhlong",
+  "matKhau": "$2b$12$WnAt5tJwBubE80s8wTl1BuI5AevAf.0A6hYZFexGgDPy76qMPEPxy",
+  "trangThai": true,
+  "loaiTaiKhoan": "nha_tuyen_dung",
+  "ngayTao": {
+    "$date": "2022-01-11T02:15:11.441Z"
+  },
+  "__v": 0,
+  "xacThucTaiKhoan": true
+}{
+  "_id": {
+    "$oid": "628209d22a3047cf029d7241"
+  },
+  "email": "ctyapollo@gmail.com",
+  "tenDangNhap": "ctyapollo",
+  "matKhau": "$2a$12$ECzHp9025EoT2ABfWWcpz.Oxc.04TB3KByPOuIMW4pb84AVyhDybm",
+  "trangThai": true,
+  "loaiTaiKhoan": "nha_tuyen_dung",
+  "ngayTao": {
+    "$date": "2022-01-11T02:15:11.441Z"
+  },
+  "__v": 0,
+  "xacThucTaiKhoan": true
+}{
+  "_id": {
+    "$oid": "62820f172a3047cf029d724c"
+  },
+  "email": "BBOLDJSC@gmail.com",
+  "tenDangNhap": "BBOLDJSC",
+  "matKhau": "$2a$12$.oAbTrTMw2uSABu10AOIcOgwGqJE3gORgRNjvwaVbyR0ePok1aRS2",
+  "trangThai": true,
+  "loaiTaiKhoan": "nha_tuyen_dung",
+  "ngayTao": {
+    "$date": "2022-01-11T02:15:11.441Z"
+  },
+  "__v": 0,
+  "xacThucTaiKhoan": true
+}{
+  "_id": {
+    "$oid": "628210a42a3047cf029d724d"
+  },
+  "email": "ROYALREAL@gmail.com",
+  "tenDangNhap": "ROYALREAL",
+  "matKhau": "$2a$12$DRJNMnHs9VYIPm9vmwDQouICGppxgoxKTakLtsRkkuB4v.MAljR8W",
+  "trangThai": true,
+  "loaiTaiKhoan": "nha_tuyen_dung",
+  "ngayTao": {
+    "$date": "2022-01-11T02:15:11.441Z"
+  },
+  "__v": 0,
+  "xacThucTaiKhoan": true
+}{
+  "_id": {
+    "$oid": "628212b22a3047cf029d725b"
+  },
+  "email": "ctyphucvan@gmail.com",
+  "tenDangNhap": "ctyphucvan",
+  "matKhau": "$2a$12$pwMC.kYgEKE/HbLOcmDrDOOEwmgXMOQ4CXaOf40Gw7LfBRWynJ/Ay",
+  "trangThai": true,
+  "loaiTaiKhoan": "nha_tuyen_dung",
+  "ngayTao": {
+    "$date": "2022-01-11T02:15:11.441Z"
+  },
+  "__v": 0,
+  "xacThucTaiKhoan": true
+}{
+  "_id": {
+    "$oid": "628215142a3047cf029d7264"
+  },
+  "email": "ctyvietan@gmail.com",
+  "tenDangNhap": "ctyvietan",
+  "matKhau": "$2a$12$j2zp8U3BhY935yUHK5shSeM1tWJriwPLEizM5mPPDSkAzTXNN4KrS",
+  "trangThai": true,
+  "loaiTaiKhoan": "nha_tuyen_dung",
+  "ngayTao": {
+    "$date": "2022-01-11T02:15:11.441Z"
+  },
+  "__v": 0,
+  "xacThucTaiKhoan": true
+}{
+  "_id": {
+    "$oid": "628217302a3047cf029d726d"
+  },
+  "email": "ctyelmart@gmail.com",
+  "tenDangNhap": "ctyelmart",
+  "matKhau": "$2a$12$U54QEwg8PhX3QpUN0YxEbe7w.Bn4j.zD37ldBytbdP5HNpFIwpjWy",
+  "trangThai": true,
+  "loaiTaiKhoan": "nha_tuyen_dung",
+  "ngayTao": {
+    "$date": "2022-01-11T02:15:11.441Z"
+  },
+  "__v": 0,
+  "xacThucTaiKhoan": true,
+  "ngayCapNhat": {
+    "$date": "2022-05-26T01:53:57.368Z"
+  }
+}{
+  "_id": {
+    "$oid": "6285e39593d4178290a57541"
+  },
+  "tenDangNhap": "duythien123",
+  "matKhau": "$2a$12$EnKDZcIyEtyh6FAY/FRauuHlezMBfMyhsL5U0WFqGHtogoCYzG8Se",
+  "trangThai": true,
+  "ngayTao": {
+    "$date": "2022-01-10T13:04:51.150Z"
+  },
+  "__v": 0,
+  "email": "duythien123@gmail.com",
+  "loaiTaiKhoan": "ung_tuyen_vien",
+  "xacThucTaiKhoan": true,
+  "ngayCapNhat": {
+    "$date": "2022-05-26T01:55:50.579Z"
+  }
+}{
+  "_id": {
+    "$oid": "628ee400bc2e24845ad1d3c0"
+  },
+  "tenDangNhap": "huutruc97",
+  "matKhau": "$2a$12$UVJjKXi6UXxanPT9q.YN2uJzQlC8i24OGOwYGhkQTCzE2F9LrmYSC",
+  "trangThai": true,
+  "ngayTao": {
+    "$date": "2022-01-10T13:04:51.150Z"
+  },
+  "__v": 0,
+  "email": "huutruc979@gmail.com",
+  "loaiTaiKhoan": "ung_tuyen_vien",
+  "xacThucTaiKhoan": true,
+  "ngayCapNhat": {
+    "$date": "2022-05-25T15:40:56.376Z"
+  }
+}{
+  "_id": {
+    "$oid": "628ee538bc2e24845ad1d3c6"
+  },
+  "tenDangNhap": "AadasiaGroup",
+  "matKhau": "$2a$12$vwAdLwSDKLmZWWbO5BrMn.RoxAL5jo1styrIWDX5G2SEjuvakjzRa",
+  "trangThai": true,
+  "loaiTaiKhoan": "nha_tuyen_dung",
+  "ngayTao": {
+    "$date": "2022-01-10T13:04:51.150Z"
+  },
+  "__v": 0,
+  "email": "AadasiaGroup@gmail.com",
+  "xacThucTaiKhoan": true,
+  "ngayCapNhat": {
+    "$date": "2022-05-25T15:35:37.252Z"
+  }
+}

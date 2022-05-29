@@ -1,0 +1,214 @@
+{
+  "_id": {
+    "$oid": "61dc43c0028fd53ddaaac063"
+  },
+  "avatar": "ntd-avatar-default.png",
+  "tenCongty": "Công ty TNHH Lợi Phát",
+  "namThanhLap": {
+    "$date": "2022-01-10T15:50:22.107Z"
+  },
+  "quyMo": "200-300",
+  "moTa": "Quyền lợi tốt, có bảo hiểm, xe đưa đón, miễn phí ăn trưa, thoáng mát, mọi thành viên nhiệt tình, thích hợp cho người hòa đồng",
+  "website": "loiphat.vn",
+  "sdt": "0903562111",
+  "email": "loiphat@gamil.com",
+  "taiKhoan": {
+    "$oid": "61dc43c0028fd53ddaaac063"
+  },
+  "__v": 0,
+  "diaChi": "Hồ Chí Minh: số 1 CN10, phường Tây Thạnh, Tân Phú"
+}{
+  "_id": {
+    "$oid": "61dc2ef9aec39c8a584a261e"
+  },
+  "avatar": "ntd-avatar-default.png",
+  "tenCongty": "Công ty TNHH Thành Công",
+  "namThanhLap": {
+    "$date": "2022-01-11T09:30:26.910Z"
+  },
+  "quyMo": "500-550",
+  "moTa": "Quyền lợi tốt, có bảo hiểm, xe đưa đón, miễn phí ăn trưa, thoáng mát, mọi thành viên nhiệt tình, thích hợp cho người hòa đồng",
+  "website": "thanhcong.vn",
+  "sdt": "0903562123",
+  "email": "thanhcong@gamil.com",
+  "taiKhoan": {
+    "$oid": "61dc2ef9aec39c8a584a261e"
+  },
+  "__v": 0,
+  "diaChi": "Số 43, Đường Lý Thái Tổ, Phường Hoà Phú, Thành phố Thủ Dầu Một, Tỉnh Bình Dương"
+}{
+  "_id": {
+    "$oid": "61dcea30e0d41b2f11b6e4bd"
+  },
+  "avatar": "ntd-avatar-default.png",
+  "tenCongty": "Công ty TNHH Tấn Phát",
+  "namThanhLap": {
+    "$date": "2022-01-12T12:38:21.021Z"
+  },
+  "quyMo": "500-550",
+  "moTa": "Quyền lợi tốt, có bảo hiểm, xe đưa đón, miễn phí ăn trưa, thoáng mát, mọi thành viên nhiệt tình, thích hợp cho người hòa đồng",
+  "website": "tanphat.vn",
+  "sdt": "0902362199",
+  "email": "tanphat@gamil.com",
+  "taiKhoan": {
+    "$oid": "61dcea30e0d41b2f11b6e4bd"
+  },
+  "__v": 0,
+  "diaChi": "55 Lê Đức Thọ, Quận Gò Vấp, TPHCM"
+}{
+  "_id": {
+    "$oid": "61f142e545790696f44cfcd8"
+  },
+  "avatar": "ntd-avatar-default.png",
+  "tenCongty": "Công ty TNHH Tấn Phát",
+  "namThanhLap": {
+    "$date": "2022-01-26T12:45:40.954Z"
+  },
+  "quyMo": "500-550",
+  "moTa": "Quyền lợi tốt, có bảo hiểm, xe đưa đón, miễn phí ăn trưa, thoáng mát, mọi thành viên nhiệt tình, thích hợp cho người hòa đồng",
+  "website": "ThangAn.vn",
+  "sdt": "0912362100",
+  "email": "ThangAn@gamil.com",
+  "taiKhoan": {
+    "$oid": "61f142e545790696f44cfcd8"
+  },
+  "__v": 0,
+  "diaChi": "443 Nguyễn Trung Trực TPHCM"
+}{
+  "_id": {
+    "$oid": "6278e303097946a40bea8f9c"
+  },
+  "avatar": "ntd-avatar-default.png",
+  "tenCongty": "Công ty TNHH Minh Long",
+  "quyMo": "500-550",
+  "moTa": "Quyền lợi tốt, có bảo hiểm, xe đưa đón, miễn phí ăn trưa, thoáng mát, mọi thành viên nhiệt tình, thích hợp cho người hòa đồng",
+  "website": "minhlong.vn",
+  "sdt": "0902362133",
+  "email": "minhlong@gamil.com",
+  "taiKhoan": {
+    "$oid": "6278e303097946a40bea8f9c"
+  },
+  "slug": "cong-ty-tnhh-minh-long",
+  "__v": 0,
+  "diaChi": "123 Nguyễn Trãi, Q.3, TP.HCM"
+}{
+  "_id": {
+    "$oid": "628209d22a3047cf029d7241"
+  },
+  "avatar": "ctyapollo.png",
+  "tenCongty": "CÔNG TY TNHH GIẢI PHÁP CÔNG NGHỆ APOLLO",
+  "quyMo": "25-99",
+  "moTa": "Công ty TNHH Giải pháp và Công Nghệ Apollo là công ty về Công nghệ với đội ngũ nhân sự trình độ cao, chuyên cung cấp các giải pháp tích hợp, phân tích dữ liệu, hỗ trợ các giải pháp chuyển đổi số.",
+  "website": "ctyapollo.vn",
+  "sdt": "0902321125",
+  "diaChi": "261 Nguyễn Văn Trỗi, Phường 10, Quận Phú Nhuận, Thành phố Hồ Chí Minh, Việt Nam",
+  "email": "ctyapollo@gamil.com",
+  "taiKhoan": {
+    "$oid": "628209d22a3047cf029d7241"
+  },
+  "slug": "cong-ty-tnhh-giai-phap-cong-nghe-apollo",
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62820f172a3047cf029d724c"
+  },
+  "avatar": "BBOLDJSC.png",
+  "tenCongty": "BBOLD JSC",
+  "quyMo": "25-99",
+  "moTa": "We are young but BOLD. Chúng tôi là một doanh nghiệp trẻ, hoạt động trong lĩnh vực sản xuất ứng dụng và trò chơi di động.",
+  "website": "http://bbold.vn",
+  "sdt": "0902321425",
+  "diaChi": "Tầng 5, Số 78 Nguyễn Khang, Phường Yên Hoà, Quận Cầu Giấy, Thành phố Hà Nội, Việt Nam",
+  "email": "BBOLDJSC@gamil.com",
+  "taiKhoan": {
+    "$oid": "62820f172a3047cf029d724c"
+  },
+  "slug": "bbold-jsc",
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "628210a42a3047cf029d724d"
+  },
+  "avatar": "ROYALREAL.jfif",
+  "tenCongty": "CÔNG TY CỔ PHẦN ĐẦU TƯ VÀ PHÁT TRIỂN ROYAL REAL",
+  "quyMo": "100-499",
+  "moTa": "CÔNG TY CỔ PHẦN ĐẦU TƯ VÀ PHÁT TRIỂN ROYAL REAL. Công ty bất động sản, phân phối đất nền và nhà phố",
+  "website": "http://ROYALREAL.vn",
+  "sdt": "0902441433",
+  "diaChi": "Số 2K Đường Vườn Lài - Phường Tân Thành - Quận Tân phú - TP Hồ Chí Minh.",
+  "email": "ROYALREAL@gamil.com",
+  "taiKhoan": {
+    "$oid": "628210a42a3047cf029d724d"
+  },
+  "slug": "cong-ty-co-phan-djau-tu-va-phat-trien-royal-real",
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "628212b22a3047cf029d725b"
+  },
+  "avatar": "ctyphucan.png",
+  "tenCongty": "CÔNG TY CỔ PHẦN DỊCH VỤ ĐỊA ỐC PHÚC ÂN",
+  "quyMo": "100-499",
+  "moTa": "CÔNG TY CỔ PHẦN ĐẦU TƯ VÀ PHÁT TRIỂN ROYAL REAL. Công ty bất động sản, phân phối đất nền và nhà phố",
+  "website": "http://phucvan.vn",
+  "sdt": "0902441446",
+  "diaChi": "882 Lạc Long Quân , Phường 8 , Quận Tân Bình",
+  "email": "ctyphucvan@gmail.com",
+  "taiKhoan": {
+    "$oid": "628212b22a3047cf029d725b"
+  },
+  "slug": "cong-ty-co-phan-dich-vu-djia-oc-phuc-an",
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "628215142a3047cf029d7264"
+  },
+  "avatar": "ctyvietan.jpg",
+  "tenCongty": "CÔNG TY TNHH DỊCH VỤ GIAO NHẬN QUỐC TẾ VIỆT AN",
+  "quyMo": "100-200",
+  "moTa": "CÔNG TY TNHH DỊCH VỤ GIAO NHẬN QUỐC TẾ VIỆT AN",
+  "website": "http://ctyvietan.vn",
+  "sdt": "0902441446",
+  "diaChi": "Số 18 Nguyễn Cảnh Dị, Phường 4, Quận Tân Bình, Thành phố Hồ Chí Minh, Việt Nam",
+  "email": "ctyvietan@gmail.com",
+  "taiKhoan": {
+    "$oid": "628215142a3047cf029d7264"
+  },
+  "slug": "cong-ty-tnhh-dich-vu-giao-nhan-quoc-te-viet-an",
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "628217302a3047cf029d726d"
+  },
+  "avatar": "ctyelmart.png",
+  "tenCongty": "Công ty Cổ Phần Elmart",
+  "quyMo": "100-200",
+  "moTa": "Công ty Cổ phần Elmart thành lập vào tháng 10-2016 là nhà phân phối hàng đầu các sản phẩm chiếu sáng với thương hiệu nổi tiếng như: Philips, Ledvance - Orsam, Forza, Mestis, Panasonic... tại thị trường Việt Nam. Chúng tôi mang đến cho khách hàng các giải pháp chiếu sáng thông minh và tiết kiệm năng lượng với chất lượng ánh sáng ưu việt. Điều này góp phần mang lại một cuộc sống an toàn, thoải mái hơn cho người dân, năng suất cao hơn cho doanh nghiệp và môi trường sống tốt hơn cho thành phố. Elmart luôn lấy khách hàng là trung tâm, lấy uy tín và chất lượng là kim chỉ nam trọng mọi hoạt động kinh doanh của công ty. Chúng tôi mong muốn đồng hành với các chủ đầu tư, tổng thầu và các công ty cơ điện để thực hiện thành công các công trình với chi phí, chất lượng và hiệu quả tốt nhất.",
+  "website": "http://ctyelmart.vn",
+  "sdt": "0902441446",
+  "diaChi": "Số 40 Lô B tập thể 134 đường Hoàng Quốc Việt, Phường Cổ Nhuế 1, Quận Bắc Từ Liêm, Thành phố Hà Nội, Việt Nam",
+  "email": "ctyelmart@gmail.com",
+  "taiKhoan": {
+    "$oid": "628217302a3047cf029d726d"
+  },
+  "slug": "cong-ty-co-phan-elmart",
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "628ee538bc2e24845ad1d3c6"
+  },
+  "avatar": "ntd-avatar-default.png",
+  "tenCongty": "Công ty TNHH Du lịch và Thương Mại Aadasia Group",
+  "quyMo": "10-24",
+  "moTa": "* Du lịch Lữ hành quốc tế. Du lịch Lữ hành nội địa. Trợ giúp Hướng nghiệp sinh viên Du Lịch và Ngoại ngữ của các trường Đại học. Trợ giúp cộng đồng phát triển Du lịch bền vững theo Công ước Cape Town 2002",
+  "website": "https://aadasia.com",
+  "sdt": "0902441236",
+  "diaChi": "Tầng 4, CEN X Space, Sun Ancora, Số 3 Lương Yên, quận Hai Bà Trưng, Hà Nội",
+  "email": "aadasiaGroup@gmail.com",
+  "tenLienHe": "Quỳnh Thư",
+  "taiKhoan": {
+    "$oid": "628ee538bc2e24845ad1d3c6"
+  },
+  "slug": "cong-ty-tnhh-du-lich-va-thuong-mai-aadasia-group",
+  "__v": 0
+}

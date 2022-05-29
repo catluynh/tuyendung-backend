@@ -1,0 +1,15 @@
+{
+  "_id": {
+    "$oid": "62205adbf9df414f12a1d9ed"
+  },
+  "tieuDe": "Ngành cơ điện tử học gì? Ngành kỹ thuật cơ điện tử ra trường làm gì?",
+  "noiDung": "Dây chuyền tự động hóa, xe tự lái và robot… chính là những hướng phát triển của Cơ điện tử. Vậy khái niệm Cơ điện tử là gì và sinh viên học ngành này có cơ hội việc làm như thế nào? Cơ điện tử về cơ bản chính là sự kết hợp phức hợp của những ngành cơ khí, điện tử, và tin học. Tuy vậy một nét chung nhất đã được thừa nhận và cũng là bản chất trong công nghệ kỹ thuật cơ điện tử là sự “liên kết cộng năng của những lĩnh vực để tạo ra những sản phẩm mới có các tính năng vượt trội”. Sự liên kết cộng năng này còn mang lại rất nhiều cơ hội và không ít thách thức dành cho sự phát triển của cơ điện tử. I. Ngành Cơ điện tử là gì? Cơ điện tử chính là lĩnh vực có liên ngành giữa điện – điện tử, cơ khí, công nghệ thông tin và những thuật toán được điều khiển thông minh. Mỗi ứng dụng của cơ điện tử cũng đều được tích hợp với tất cả những yếu tố trên nhằm mục đích phát triển tư duy hệ thống trong thiết kế để có thể phát triển sản phẩm và công nghệ mới có nhiều tính năng vượt trội. Hiện nay, ứng dụng công nghệ cơ điện tử trong công ty điện tử như là Samsung, LG Electronics…  đã tự động hóa những dây chuyền sản xuất linh kiện và máy móc. Nhiều tập đoàn lớn trong các lĩnh vực may mặc, sản xuất sữa… cũng vận hành nhiều cánh tay robot phân loại, đóng gói…nhằm mục đích cắt giảm nhân lực làm việc ở nhà kho của công ty. II. Các môn học ngành cơ điện tử? Ngành Cơ điện tử ở nhiều trường đại học thường còn được gọi tên là Ngành Kỹ thuật cơ điện tử  hay Công nghệ Kỹ thuật cơ điện tử. Đây là ngành dành cho nhiều sinh viên có sở thích có liên quan đến thiết kế, chế tạo và tự động hóa trong những hệ thống sản xuất công nghiệp.",
+  "hinhAnh": "hinhanh.png",
+  "ngayTao": {
+    "$date": "2022-03-03T06:06:17.948Z"
+  },
+  "quanTriVien": {
+    "$oid": "61dc3068e09eb7f9b5636fea"
+  },
+  "__v": 0
+}

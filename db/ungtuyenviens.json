@@ -1,0 +1,368 @@
+{
+  "_id": {
+    "$oid": "61dc36a36c9974889d6e955d"
+  },
+  "ten": "Lê Danh Huy",
+  "sdt": "0903589234",
+  "gioiTinh": "Nam",
+  "diaChi": "123 Ngô Quyền Q1 HCM",
+  "loiGioiThieu": "Nhiệt huyết",
+  "soNamKinhNghiem": "Chưa có kinh nghiệm",
+  "avatar": "utv-avatar-default.png",
+  "dsHocVan": [
+    {
+      "donViDaoTao": "ĐH Công Nghiệp TPHCM",
+      "bangCap": "Đại học",
+      "moTa": "Được nhiều học bổng",
+      "chuyenNganh": "CNTT",
+      "tuNgay": {
+        "$date": "2018-08-10T00:00:00Z"
+      },
+      "denNgay": {
+        "$date": "2022-05-10T00:00:00Z"
+      },
+      "_id": {
+        "$oid": "61dd489e25bd1911bdf992f2"
+      }
+    }
+  ],
+  "dsKinhNghiemLamViec": [
+    {
+      "congTy": "TNHH Một thành viên Thành Công",
+      "viTri": "Nhân viên",
+      "moTa": "Nhân viên dev nodejs",
+      "tuNgay": {
+        "$date": "2021-08-10T00:00:00Z"
+      },
+      "denNgay": {
+        "$date": "2020-12-10T00:00:00Z"
+      },
+      "_id": {
+        "$oid": "61dd489e25bd1911bdf992f3"
+      }
+    },
+    {
+      "congTy": "TNHH Một thành viên Vòng Tròn Đỏ",
+      "viTri": "Nhân viên",
+      "moTa": "Nhân viên bán hàng",
+      "tuNgay": {
+        "$date": "2018-08-20T00:00:00Z"
+      },
+      "denNgay": {
+        "$date": "2018-12-15T00:00:00Z"
+      },
+      "_id": {
+        "$oid": "6281d9e9fbc75a79a98297d0"
+      }
+    }
+  ],
+  "dsChungChi": [
+    {
+      "tenChungChi": "Toeic",
+      "donViCungCap": "IGG",
+      "ngayCap": {
+        "$date": "2021-08-10T00:00:00Z"
+      },
+      "ngayHetHan": {
+        "$date": "2023-08-10T00:00:00Z"
+      },
+      "_id": {
+        "$oid": "61dd489e25bd1911bdf992f4"
+      }
+    },
+    {
+      "tenChungChi": "Chứng chỉ Tin Học",
+      "donViCungCap": "ĐH Công Nghiệp TP.HCM",
+      "ngayCap": {
+        "$date": "2022-08-10T00:00:00Z"
+      },
+      "ngayHetHan": {
+        "$date": "2024-08-10T00:00:00Z"
+      },
+      "_id": {
+        "$oid": "6281eb6de5ab03f5b59b8ef9"
+      }
+    },
+    {
+      "tenChungChi": "Chứng chỉ Tiếng Anh A1",
+      "donViCungCap": "ĐH Công Nghiệp Tp.HCM",
+      "ngayCap": {
+        "$date": "2022-05-10T00:00:00Z"
+      },
+      "ngayHetHan": {
+        "$date": "2024-05-10T00:00:00Z"
+      },
+      "_id": {
+        "$oid": "6281eb9de5ab03f5b59b8f06"
+      }
+    }
+  ],
+  "taiKhoan": {
+    "$oid": "61dc36a36c9974889d6e955d"
+  },
+  "__v": 9,
+  "dsKyNang": [
+    {
+      "tenKyNang": "Chỉnh sửa video",
+      "_id": {
+        "$oid": "61dd489e25bd1911bdf992ef"
+      }
+    },
+    {
+      "tenKyNang": "Excel",
+      "_id": {
+        "$oid": "61dd489e25bd1911bdf992f1"
+      }
+    },
+    {
+      "tenKyNang": "Word",
+      "_id": {
+        "$oid": "6281cf6b788de155af33fb81"
+      }
+    }
+  ],
+  "ngaySinh": {
+    "$date": "1995-05-05T00:00:00Z"
+  }
+}{
+  "_id": {
+    "$oid": "61dc2ef5aec39c8a584a261c"
+  },
+  "ten": "Cát Luynh",
+  "sdt": "0903589115",
+  "gioiTinh": "Nam",
+  "diaChi": "123 Nguyễn Tất Thành BMT",
+  "loiGioiThieu": "Chăm chỉ",
+  "soNamKinhNghiem": "1 năm",
+  "avatar": "Screenshot (3).png",
+  "dsHocVan": [
+    {
+      "donViDaoTao": "ĐH Công Nghiệp TPHCM",
+      "bangCap": "Đại học",
+      "chuyenNganh": "CNTT",
+      "moTa": "Được nhiều học bổng",
+      "tuNgay": {
+        "$date": "2018-08-10T00:00:00Z"
+      },
+      "denNgay": {
+        "$date": "2022-05-10T00:00:00Z"
+      },
+      "_id": {
+        "$oid": "61dd491e25bd1911bdf99306"
+      }
+    }
+  ],
+  "dsKinhNghiemLamViec": [
+    {
+      "congTy": "TNHH Một thành viên Thành Công",
+      "viTri": "Nhân viên",
+      "moTa": "Nhân viên dev nodejs",
+      "tuNgay": {
+        "$date": "2021-08-10T00:00:00Z"
+      },
+      "denNgay": {
+        "$date": "2021-12-10T00:00:00Z"
+      },
+      "_id": {
+        "$oid": "61dd491e25bd1911bdf99307"
+      }
+    }
+  ],
+  "dsChungChi": [
+    {
+      "tenChungChi": "Toeic",
+      "donViCungCap": "IGG",
+      "ngayCap": {
+        "$date": "2021-08-10T00:00:00Z"
+      },
+      "ngayHetHan": {
+        "$date": "2023-08-10T00:00:00Z"
+      },
+      "_id": {
+        "$oid": "61dd491e25bd1911bdf99308"
+      }
+    },
+    {
+      "tenChungChi": "CNTT",
+      "donViCungCap": "ádsd",
+      "ngayCap": {
+        "$date": "2022-05-19T00:00:00Z"
+      },
+      "ngayHetHan": {
+        "$date": "2022-05-25T11:51:08.547Z"
+      },
+      "_id": {
+        "$oid": "628e18410027c483bd38079d"
+      }
+    }
+  ],
+  "taiKhoan": {
+    "$oid": "61dc2ef5aec39c8a584a261c"
+  },
+  "__v": 5,
+  "dsKyNang": [
+    {
+      "tenKyNang": "Chỉnh sửa video",
+      "_id": {
+        "$oid": "61dd491e25bd1911bdf99305"
+      }
+    },
+    {
+      "tenKyNang": "Word",
+      "_id": {
+        "$oid": "628f8816810b282c2627cf92"
+      }
+    }
+  ],
+  "ngaySinh": {
+    "$date": "2002-05-05T00:00:00Z"
+  }
+}{
+  "_id": {
+    "$oid": "6285e39593d4178290a57541"
+  },
+  "ten": "Duy Thiện",
+  "sdt": "0903231245",
+  "gioiTinh": "Nam",
+  "diaChi": "85 Nguyễn Kiệm, Q. Gò Vấp, TP.HCM",
+  "loiGioiThieu": "Chăm chỉ",
+  "soNamKinhNghiem": "1 năm",
+  "avatar": "utv-avatar-default.png",
+  "ngaySinh": {
+    "$date": "2000-08-10T00:00:00Z"
+  },
+  "dsHocVan": [
+    {
+      "donViDaoTao": "ĐH Công Nghiệp TPHCM",
+      "bangCap": "Đại học",
+      "chuyenNganh": "CNTT",
+      "moTa": "Được nhiều học bổng",
+      "tuNgay": {
+        "$date": "2018-08-10T00:00:00Z"
+      },
+      "denNgay": {
+        "$date": "2022-05-10T00:00:00Z"
+      },
+      "_id": {
+        "$oid": "6285e4e451cb28280875acba"
+      }
+    }
+  ],
+  "dsKinhNghiemLamViec": [
+    {
+      "congTy": "TNHH Một thành viên Thành Công",
+      "viTri": "Nhân viên",
+      "moTa": "Nhân viên dev nodejs",
+      "tuNgay": {
+        "$date": "2021-08-10T00:00:00Z"
+      },
+      "denNgay": {
+        "$date": "2021-12-10T00:00:00Z"
+      },
+      "_id": {
+        "$oid": "6285e4e451cb28280875acbb"
+      }
+    }
+  ],
+  "dsChungChi": [
+    {
+      "tenChungChi": "Toeic",
+      "donViCungCap": "IGG",
+      "ngayCap": {
+        "$date": "2021-08-10T00:00:00Z"
+      },
+      "ngayHetHan": {
+        "$date": "2023-08-10T00:00:00Z"
+      },
+      "_id": {
+        "$oid": "6285e4e451cb28280875acbc"
+      }
+    }
+  ],
+  "taiKhoan": {
+    "$oid": "6285e39593d4178290a57541"
+  },
+  "dsKyNang": [
+    {
+      "tenKyNang": "Chỉnh sửa video",
+      "_id": {
+        "$oid": "6290ff9f87e26b6bb7884255"
+      }
+    }
+  ],
+  "__v": 1
+}{
+  "_id": {
+    "$oid": "628ee400bc2e24845ad1d3c0"
+  },
+  "ten": "Hữu trực",
+  "sdt": "0945232005",
+  "gioiTinh": "Nam",
+  "diaChi": "85 Nguyễn Kiệm, Q. Gò Vấp, TP.HCM",
+  "loiGioiThieu": "Chăm chỉ",
+  "soNamKinhNghiem": "Chưa có kinh nghiệm",
+  "avatar": "utv-avatar-default.png",
+  "ngaySinh": {
+    "$date": "1997-08-10T00:00:00Z"
+  },
+  "dsHocVan": [
+    {
+      "donViDaoTao": "ĐH Công Nghiệp TPHCM",
+      "bangCap": "Đại học",
+      "chuyenNganh": "CNTT",
+      "moTa": "Được nhiều học bổng",
+      "tuNgay": {
+        "$date": "2018-08-10T00:00:00Z"
+      },
+      "denNgay": {
+        "$date": "2022-05-10T00:00:00Z"
+      },
+      "_id": {
+        "$oid": "628ee4af4ab28ffd26d0e187"
+      }
+    }
+  ],
+  "dsKinhNghiemLamViec": [
+    {
+      "congTy": "TNHH Một thành viên Thành Công",
+      "viTri": "Nhân viên",
+      "moTa": "Nhân viên dev nodejs",
+      "tuNgay": {
+        "$date": "2021-08-10T00:00:00Z"
+      },
+      "denNgay": {
+        "$date": "2021-12-10T00:00:00Z"
+      },
+      "_id": {
+        "$oid": "628ee4af4ab28ffd26d0e188"
+      }
+    }
+  ],
+  "dsChungChi": [
+    {
+      "tenChungChi": "Toeic",
+      "donViCungCap": "IGG",
+      "ngayCap": {
+        "$date": "2021-08-10T00:00:00Z"
+      },
+      "ngayHetHan": {
+        "$date": "2023-08-10T00:00:00Z"
+      },
+      "_id": {
+        "$oid": "628ee4af4ab28ffd26d0e189"
+      }
+    }
+  ],
+  "taiKhoan": {
+    "$oid": "628ee400bc2e24845ad1d3c0"
+  },
+  "dsKyNang": [
+    {
+      "tenKyNang": "Word",
+      "_id": {
+        "$oid": "629100c287e26b6bb7884c7b"
+      }
+    }
+  ],
+  "__v": 1
+}
