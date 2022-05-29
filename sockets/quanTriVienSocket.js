@@ -2,8 +2,9 @@
 class quanTriVienSocket {
     xetDuyetTin(io) {
         io.on('connection', (socket) => {
-            socket.on('dung-tuyen', (data) => {
-
+            console.log(socket.id);
+            socket.on('duyet-tin-tuyen-dung', (data) => {
+                socket.broadcast.emit("res-duyet-tin-tuyen-dung", data)
             });
         });
     }
