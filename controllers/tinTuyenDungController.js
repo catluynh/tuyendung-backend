@@ -716,11 +716,11 @@ class TinTuyenDungController {
                 $group: {
                     _id:
                     {
-                        _id: '$_id', tieuDe: '$tieuDe', yeuCau: "$yeuCau",
+                        _id: '$_id', tieuDe: '$tieuDe', yeuCau: "$yeuCau", moTa:"$moTa",
                         trangThai: '$trangThai', ngayTao: '$ngayTao', diaDiem: '$diaDiem',
                         ngayHetHan: '$ngayHetHan', denTuoi: "$denTuoi", tuoiTu: "$tuoiTu", mucLuong: "$mucLuong",
                         gioiTinh: '$gioiTinh', loaiCongViec: "$loaiCongViec", soNamKinhNghiem: "$soNamKinhNghiem",
-                        phucLoi: "$phucLoi"
+                        phucLoi: "$phucLoi", viTri: "$viTri", bangCap: "$bangCap", soLuongDaTuyen: "$soLuongDaTuyen", soLuongTuyen:"$soLuongTuyen"
                     },
                     soLuotDanhGia: { $sum: 1 }
                 }
