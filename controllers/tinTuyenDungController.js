@@ -709,6 +709,8 @@ class TinTuyenDungController {
         await TinTuyenDung.aggregate([
             { $lookup: { from: "danhgias", localField: "_id", foreignField: "tinTuyenDung", as: "rs" } },
             { $unwind: "$rs" },
+            { $lookup: { from: "nganhnghe", localField: "_id", foreignField: "nganhNghe", as: "nganhnghe" } },
+            { $unwind: "$nganhnghe" },
             { $match: { 'rs.xepLoai': { $lt: 3 } } },
             {
                 $group: {
