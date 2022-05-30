@@ -711,16 +711,18 @@ class TinTuyenDungController {
             { $unwind: "$rs" },
             { $lookup: { from: "nganhnghes", localField: "nganhNghe", foreignField: "_id", as: "nganhNghe" } },
             { $unwind: "$nganhNghe" },
+            { $lookup: { from: "nhatuyendungs", localField: "nhaTuyenDung", foreignField: "_id", as: "nhaTuyenDung" } },
+            { $unwind: "$nhaTuyenDung" },
             { $match: { 'rs.xepLoai': { $lt: 3 } } },
             {
                 $group: {
                     _id:
                     {
-                        _id: '$_id', tieuDe: '$tieuDe', yeuCau: "$yeuCau", moTa:"$moTa",
+                        _id: '$_id', tieuDe: '$tieuDe', yeuCau: "$yeuCau", moTa: "$moTa", nganhNghe: "$nganhNghe", nhaTuyenDung: "$nhaTuyenDung",
                         trangThai: '$trangThai', ngayTao: '$ngayTao', diaDiem: '$diaDiem',
                         ngayHetHan: '$ngayHetHan', denTuoi: "$denTuoi", tuoiTu: "$tuoiTu", mucLuong: "$mucLuong",
                         gioiTinh: '$gioiTinh', loaiCongViec: "$loaiCongViec", soNamKinhNghiem: "$soNamKinhNghiem",
-                        phucLoi: "$phucLoi", viTri: "$viTri", bangCap: "$bangCap", soLuongDaTuyen: "$soLuongDaTuyen", soLuongTuyen:"$soLuongTuyen"
+                        phucLoi: "$phucLoi", viTri: "$viTri", bangCap: "$bangCap", soLuongDaTuyen: "$soLuongDaTuyen", soLuongTuyen: "$soLuongTuyen"
                     },
                     soLuotDanhGia: { $sum: 1 }
                 }
