@@ -692,8 +692,8 @@ class TinTuyenDungController {
                         _id: '$_id', tieuDe: '$tieuDe', yeuCau: "$yeuCau",
                         trangThai: '$trangThai', ngayTao: '$ngayTao', diaDiem: '$diaDiem',
                         ngayHetHan: '$ngayHetHan', denTuoi: "$denTuoi", tuoiTu: "$tuoiTu", mucLuong: "$mucLuong",
-                        gioiTinh: '$gioiTinh', loaiCongViec: "$loaiCongViec", soNamKinhNghiem: "$soNamKinhNghiem", 
-                        phucLoi: "$phucLoi",
+                        gioiTinh: '$gioiTinh', loaiCongViec: "$loaiCongViec", soNamKinhNghiem: "$soNamKinhNghiem",
+                        phucLoi: "$phucLoi"
                     },
                     soLuotDanhGia: { $sum: 1 }
                 }
@@ -713,7 +713,13 @@ class TinTuyenDungController {
             {
                 $group: {
                     _id:
-                        { _id: '$_id', tieuDe: '$tieuDe', trangThai: '$trangThai', ngayTao: '$ngayTao', diaDiem: '$diaDiem', ngayHetHan: '$ngayHetHan' },
+                    {
+                        _id: '$_id', tieuDe: '$tieuDe', yeuCau: "$yeuCau",
+                        trangThai: '$trangThai', ngayTao: '$ngayTao', diaDiem: '$diaDiem',
+                        ngayHetHan: '$ngayHetHan', denTuoi: "$denTuoi", tuoiTu: "$tuoiTu", mucLuong: "$mucLuong",
+                        gioiTinh: '$gioiTinh', loaiCongViec: "$loaiCongViec", soNamKinhNghiem: "$soNamKinhNghiem",
+                        phucLoi: "$phucLoi"
+                    },
                     soLuotDanhGia: { $sum: 1 }
                 }
             },
