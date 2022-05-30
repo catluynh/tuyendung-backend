@@ -598,7 +598,16 @@ class TinTuyenDungController {
             await TinTuyenDung.aggregate([
                 { $lookup: { from: "danhgias", localField: "_id", foreignField: "tinTuyenDung", as: "rs" } },
                 { $match: { 'tieuDe': { $regex: new RegExp(req.query.tieuDe, "i") } } },
-                { $project: { _id: 1, tieuDe: 1, ngayHetHan: 1, 'trangThai': 1, ngayTao: 1, diaDiem: 1, slug: 1, ngayCapNhat: 1, soLuotDanhGia: { $size: "$rs" } } },
+                { $lookup: { from: "nganhnghes", localField: "nganhNghe", foreignField: "_id", as: "nganhNghe" } },
+                { $unwind: "$nganhNghe" },
+                {
+                    $project: {
+                        _id: 1, tieuDe: 1, ngayHetHan: 1, 'trangThai': 1, ngayTao: 1,
+                        diaDiem: 1, slug: 1, ngayCapNhat: 1, bangCap: 1, mucLuong: 1, nganhNghe: 1,
+                        denTuoi: 1, tuoiTu: 1, phucLoi: 1, moTa: 1, yeuCau: 1, viTri: 1, soNamKinhNghiem: 1,
+                        gioiTinh: 1, loaiCongViec: 1, soLuongDaTuyen: 1, soLuongTuyen: 1, soLuotDanhGia: { $size: "$rs" }
+                    }
+                },
                 { $sort: { ngayCapNhat: -1 } },
                 { $skip: skip },
                 { $limit: limit },
@@ -679,7 +688,13 @@ class TinTuyenDungController {
             {
                 $group: {
                     _id:
-                        { _id: '$_id', tieuDe: '$tieuDe', trangThai: '$trangThai', ngayTao: '$ngayTao', diaDiem: '$diaDiem', ngayHetHan: '$ngayHetHan' },
+                    {
+                        _id: '$_id', tieuDe: '$tieuDe', yeuCau: "$yeuCau",
+                        trangThai: '$trangThai', ngayTao: '$ngayTao', diaDiem: '$diaDiem',
+                        ngayHetHan: '$ngayHetHan', denTuoi: "$denTuoi", tuoiTu: "$tuoiTu", mucLuong: "$mucLuong",
+                        gioiTinh: '$gioiTinh', loaiCongViec: "$loaiCongViec", soNamKinhNghiem: "$soNamKinhNghiem", 
+                        phucLoi: "$phucLoi",
+                    },
                     soLuotDanhGia: { $sum: 1 }
                 }
             },
