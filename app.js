@@ -61,7 +61,7 @@ initSockets(io);
 
 //Lắng nghe port
 server.listen(port, () => {
-    console.log(`App listening at http://localhost:${port}`);
+    console.log(`App listening at http://localhost:`);
 });
 
 // //Từ chối xử lý (lỗi kết nối)
