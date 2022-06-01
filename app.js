@@ -4,7 +4,6 @@ const cors = require('cors')
 const dotenv = require('dotenv');
 dotenv.config({ path: './config.env' })
 const mongoose = require('mongoose');
-const port =  4000;
 const route = require("./routes");
 const http = require('http');
 const upload = require('express-fileupload');
@@ -60,7 +59,7 @@ route(app);
 initSockets(io);
 
 //Lắng nghe port
-server.listen(port, () => {
+server.listen((process.env.PORT || 4000), () => {
     console.log(`App listening at http://localhost:`);
 });
 
