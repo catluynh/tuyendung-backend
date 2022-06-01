@@ -4,7 +4,7 @@ const cors = require('cors')
 const dotenv = require('dotenv');
 dotenv.config({ path: './config.env' })
 const mongoose = require('mongoose');
-const port = process.env.PORT;
+const port = process.env.PORT || 4000;
 const route = require("./routes");
 const http = require('http');
 const upload = require('express-fileupload');
