@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(cors());
 
 //Kết nối database
-mongoose.connect(process.env.DATABASE_LOCAL, {
+mongoose.connect(process.env.DATABASE_ATLAST, {
     useNewUrlParser: true,
 }).then(() => console.log('DB connection successful'));
 
