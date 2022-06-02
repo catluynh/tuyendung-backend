@@ -5,10 +5,9 @@ const guiEmail = async (options) => {
     service: 'gmail.com',
     secure: false,
     auth: {
-      user: process.env.EMAIL_USERNAME,
-      pass: process.env.EMAIL_PASSWORD,
+      user: process.env.EMAIL_USERNAME || 'catluynh1999@gmail.com',
+      pass: process.env.EMAIL_PASSWORD || '0903589164',
     },
-    // secure: false
   });
   // 2. Define the email option
   const mailOptions = {
