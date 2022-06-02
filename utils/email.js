@@ -2,7 +2,8 @@ const nodemailer = require('nodemailer');
 const guiEmail = async (options) => {
   // 1. Create a transporter
   let transporter = nodemailer.createTransport({
-    service: 'gmail.com',
+    host: process.env.EMAIL_HOST,
+    port: process.env.EMAIL_PORT,
     secure: false,
     auth: {
       user: process.env.EMAIL_USERNAME || 'catluynh1999@gmail.com',
