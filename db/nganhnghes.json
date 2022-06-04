@@ -1,0 +1,550 @@
+{
+  "_id": {
+    "$oid": "61dd94be11fdd9eef1fd22c3"
+  },
+  "tenNganhNghe": "Nhà hàng/Dịch vụ ăn uống",
+  "linhVuc": {
+    "$oid": "61dd8a71c53869144bf34b01"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "61dd94cb11fdd9eef1fd22c5"
+  },
+  "tenNganhNghe": "Khách sạn",
+  "linhVuc": {
+    "$oid": "61dd8a71c53869144bf34b01"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "61dd94d011fdd9eef1fd22c7"
+  },
+  "tenNganhNghe": "Du lịch",
+  "linhVuc": {
+    "$oid": "61dd8a71c53869144bf34b01"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "61dd94f111fdd9eef1fd22c9"
+  },
+  "tenNganhNghe": "CNTT - Phần cứng",
+  "linhVuc": {
+    "$oid": "61dd8a45c53869144bf34aff"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "61dd94f611fdd9eef1fd22cb"
+  },
+  "tenNganhNghe": "CNTT - Phần mềm",
+  "linhVuc": {
+    "$oid": "61dd8a45c53869144bf34aff"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "61dd94fc11fdd9eef1fd22cd"
+  },
+  "tenNganhNghe": "CNTT - Mạng",
+  "linhVuc": {
+    "$oid": "61dd8a45c53869144bf34aff"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "61dd950111fdd9eef1fd22cf"
+  },
+  "tenNganhNghe": "CNTT - Tester",
+  "linhVuc": {
+    "$oid": "61dd8a45c53869144bf34aff"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "622056d6b23b606498d49fdd"
+  },
+  "tenNganhNghe": "Tiếp thị/Marketing",
+  "linhVuc": {
+    "$oid": "62205616b23b606498d49fc3"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "622056e3b23b606498d49fdf"
+  },
+  "tenNganhNghe": "Tiếp thị trực tuyến",
+  "linhVuc": {
+    "$oid": "62205616b23b606498d49fc3"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "622056ecb23b606498d49fe1"
+  },
+  "tenNganhNghe": "Bán lẻ / Bán sỉ",
+  "linhVuc": {
+    "$oid": "62205616b23b606498d49fc3"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "622056f5b23b606498d49fe3"
+  },
+  "tenNganhNghe": "Bán hàng / Kinh doanh",
+  "linhVuc": {
+    "$oid": "62205616b23b606498d49fc3"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205704b23b606498d49fe5"
+  },
+  "tenNganhNghe": "Dệt may / Da giày / Thời trang",
+  "linhVuc": {
+    "$oid": "6220561db23b606498d49fc5"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "6220570db23b606498d49fe7"
+  },
+  "tenNganhNghe": "Quản lý chất lượng (QA/QC)",
+  "linhVuc": {
+    "$oid": "6220561db23b606498d49fc5"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205715b23b606498d49fe9"
+  },
+  "tenNganhNghe": "Thu mua / Vật tư",
+  "linhVuc": {
+    "$oid": "6220561db23b606498d49fc5"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "6220571bb23b606498d49feb"
+  },
+  "tenNganhNghe": "An toàn lao động",
+  "linhVuc": {
+    "$oid": "6220561db23b606498d49fc5"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205722b23b606498d49fed"
+  },
+  "tenNganhNghe": "Sản xuất / Vận hành sản xuất",
+  "linhVuc": {
+    "$oid": "6220561db23b606498d49fc5"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205729b23b606498d49fef"
+  },
+  "tenNganhNghe": "Xuất nhập khẩu",
+  "linhVuc": {
+    "$oid": "6220561db23b606498d49fc5"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205730b23b606498d49ff1"
+  },
+  "tenNganhNghe": "Đồ gỗ",
+  "linhVuc": {
+    "$oid": "6220561db23b606498d49fc5"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205737b23b606498d49ff3"
+  },
+  "tenNganhNghe": "In ấn / Xuất bản",
+  "linhVuc": {
+    "$oid": "6220561db23b606498d49fc5"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205746b23b606498d49ff5"
+  },
+  "tenNganhNghe": "Nhân sự",
+  "linhVuc": {
+    "$oid": "6220562bb23b606498d49fc7"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "6220574cb23b606498d49ff7"
+  },
+  "tenNganhNghe": "Hành chính / Thư ký",
+  "linhVuc": {
+    "$oid": "6220562bb23b606498d49fc7"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205753b23b606498d49ff9"
+  },
+  "tenNganhNghe": "Biên phiên dịch",
+  "linhVuc": {
+    "$oid": "6220562bb23b606498d49fc7"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205768b23b606498d49ffb"
+  },
+  "tenNganhNghe": "Bất động sản",
+  "linhVuc": {
+    "$oid": "62205633b23b606498d49fc9"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "6220576db23b606498d49ffd"
+  },
+  "tenNganhNghe": "Nội ngoại thất",
+  "linhVuc": {
+    "$oid": "62205633b23b606498d49fc9"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205773b23b606498d49fff"
+  },
+  "tenNganhNghe": "Kiến trúc",
+  "linhVuc": {
+    "$oid": "62205633b23b606498d49fc9"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "6220577bb23b606498d4a001"
+  },
+  "tenNganhNghe": "Xây dựng",
+  "linhVuc": {
+    "$oid": "62205633b23b606498d49fc9"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205818b23b606498d4a003"
+  },
+  "tenNganhNghe": "Chăn nuôi / Thú y",
+  "linhVuc": {
+    "$oid": "6220563bb23b606498d49fcb"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "6220581cb23b606498d4a005"
+  },
+  "tenNganhNghe": "Thủy lợi",
+  "linhVuc": {
+    "$oid": "6220563bb23b606498d49fcb"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205821b23b606498d4a007"
+  },
+  "tenNganhNghe": "Trắc địa / Địa Chất",
+  "linhVuc": {
+    "$oid": "6220563bb23b606498d49fcb"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205827b23b606498d4a009"
+  },
+  "tenNganhNghe": "Công nghệ sinh học",
+  "linhVuc": {
+    "$oid": "6220563bb23b606498d49fcb"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "6220582cb23b606498d4a00b"
+  },
+  "tenNganhNghe": "Hàng hải",
+  "linhVuc": {
+    "$oid": "6220563bb23b606498d49fcb"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205831b23b606498d4a00d"
+  },
+  "tenNganhNghe": "Nông nghiệp",
+  "linhVuc": {
+    "$oid": "6220563bb23b606498d49fcb"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205836b23b606498d4a00f"
+  },
+  "tenNganhNghe": "Công nghệ thực phẩm / Dinh dưỡng",
+  "linhVuc": {
+    "$oid": "6220563bb23b606498d49fcb"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "6220583bb23b606498d4a011"
+  },
+  "tenNganhNghe": "Thủy sản / Hải sản",
+  "linhVuc": {
+    "$oid": "6220563bb23b606498d49fcb"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205842b23b606498d4a013"
+  },
+  "tenNganhNghe": "Lâm Nghiệp",
+  "linhVuc": {
+    "$oid": "6220563bb23b606498d49fcb"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205864b23b606498d4a015"
+  },
+  "tenNganhNghe": "Bảo trì / Sửa chữa",
+  "linhVuc": {
+    "$oid": "62205653b23b606498d49fcd"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205868b23b606498d4a017"
+  },
+  "tenNganhNghe": "Hóa học",
+  "linhVuc": {
+    "$oid": "62205653b23b606498d49fcd"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "6220586cb23b606498d4a019"
+  },
+  "tenNganhNghe": "Điện / Điện tử / Điện lạnh",
+  "linhVuc": {
+    "$oid": "62205653b23b606498d49fcd"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205870b23b606498d4a01b"
+  },
+  "tenNganhNghe": "Cơ khí / Ô tô / Tự động hóa",
+  "linhVuc": {
+    "$oid": "62205653b23b606498d49fcd"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "6220589fb23b606498d4a01d"
+  },
+  "tenNganhNghe": "Kế toán / Kiểm toán",
+  "linhVuc": {
+    "$oid": "6220565fb23b606498d49fcf"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "622058a3b23b606498d4a01f"
+  },
+  "tenNganhNghe": "Tài chính / Đầu tư",
+  "linhVuc": {
+    "$oid": "6220565fb23b606498d49fcf"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "622058a7b23b606498d4a021"
+  },
+  "tenNganhNghe": "Bảo hiểm",
+  "linhVuc": {
+    "$oid": "6220565fb23b606498d49fcf"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "622058acb23b606498d4a023"
+  },
+  "tenNganhNghe": "Chứng khoán",
+  "linhVuc": {
+    "$oid": "6220565fb23b606498d49fcf"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "622058b1b23b606498d4a025"
+  },
+  "tenNganhNghe": "Ngân hàng",
+  "linhVuc": {
+    "$oid": "6220565fb23b606498d49fcf"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "622058c5b23b606498d4a027"
+  },
+  "tenNganhNghe": "Thực phẩm & Đồ uống",
+  "linhVuc": {
+    "$oid": "6220566bb23b606498d49fd1"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "622058ccb23b606498d4a029"
+  },
+  "tenNganhNghe": "Hàng gia dụng / Chăm sóc cá nhân",
+  "linhVuc": {
+    "$oid": "6220566bb23b606498d49fd1"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "622058e9b23b606498d4a02b"
+  },
+  "tenNganhNghe": "Vận chuyển / Giao nhận / Kho vận",
+  "linhVuc": {
+    "$oid": "6220566bb23b606498d49fd1"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "622058f1b23b606498d4a02d"
+  },
+  "tenNganhNghe": "Bưu chính viễn thông",
+  "linhVuc": {
+    "$oid": "6220566bb23b606498d49fd1"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "622058f5b23b606498d4a02f"
+  },
+  "tenNganhNghe": "Lao động phổ thông",
+  "linhVuc": {
+    "$oid": "6220566bb23b606498d49fd1"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "622058fbb23b606498d4a031"
+  },
+  "tenNganhNghe": "Luật / Pháp lý",
+  "linhVuc": {
+    "$oid": "6220566bb23b606498d49fd1"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205901b23b606498d4a033"
+  },
+  "tenNganhNghe": "An Ninh / Bảo Vệ",
+  "linhVuc": {
+    "$oid": "6220566bb23b606498d49fd1"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205907b23b606498d4a035"
+  },
+  "tenNganhNghe": "Tư vấn",
+  "linhVuc": {
+    "$oid": "6220566bb23b606498d49fd1"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "6220591eb23b606498d4a037"
+  },
+  "tenNganhNghe": "Dược phẩm",
+  "linhVuc": {
+    "$oid": "6220567eb23b606498d49fd5"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205922b23b606498d4a039"
+  },
+  "tenNganhNghe": "Y tế / Chăm sóc sức khỏe",
+  "linhVuc": {
+    "$oid": "6220567eb23b606498d49fd5"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "6220593bb23b606498d4a03b"
+  },
+  "tenNganhNghe": "Giải trí",
+  "linhVuc": {
+    "$oid": "62205689b23b606498d49fd7"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205943b23b606498d4a03d"
+  },
+  "tenNganhNghe": "Quảng cáo / Đối ngoại / Truyền Thông",
+  "linhVuc": {
+    "$oid": "62205689b23b606498d49fd7"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "6220594ab23b606498d4a03f"
+  },
+  "tenNganhNghe": "Mỹ thuật / Nghệ thuật / Thiết kế",
+  "linhVuc": {
+    "$oid": "62205689b23b606498d49fd7"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205951b23b606498d4a041"
+  },
+  "tenNganhNghe": "Truyền hình / Báo chí / Biên tập",
+  "linhVuc": {
+    "$oid": "62205689b23b606498d49fd7"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205958b23b606498d4a043"
+  },
+  "tenNganhNghe": "Tổ chức sự kiện",
+  "linhVuc": {
+    "$oid": "62205689b23b606498d49fd7"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "62205970b23b606498d4a045"
+  },
+  "tenNganhNghe": "Giáo dục / Đào tạo",
+  "linhVuc": {
+    "$oid": "62205694b23b606498d49fd9"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "6220597fb23b606498d4a047"
+  },
+  "tenNganhNghe": "Ngành khác",
+  "linhVuc": {
+    "$oid": "622056a8b23b606498d49fdb"
+  },
+  "__v": 0
+}

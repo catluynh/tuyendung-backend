@@ -1,0 +1,106 @@
+{
+  "_id": {
+    "$oid": "61dd8a45c53869144bf34aff"
+  },
+  "tenLinhVuc": "IT- CÔNG NGHỆ THÔNG TIN",
+  "__v": 0,
+  "hinhAnh": "CNTT.jpg"
+}{
+  "_id": {
+    "$oid": "61dd8a71c53869144bf34b01"
+  },
+  "tenLinhVuc": "KHÁCH SẠN/DU LỊCH",
+  "__v": 0,
+  "hinhAnh": "dulich.png"
+}{
+  "_id": {
+    "$oid": "62205616b23b606498d49fc3"
+  },
+  "tenLinhVuc": "BÁN HÀNG/TIẾP THỊ",
+  "__v": 0,
+  "hinhAnh": "banhang.jpg"
+}{
+  "_id": {
+    "$oid": "6220561db23b606498d49fc5"
+  },
+  "tenLinhVuc": "SẢN XUẤT",
+  "__v": 0,
+  "hinhAnh": "sanxuat.png"
+}{
+  "_id": {
+    "$oid": "6220562bb23b606498d49fc7"
+  },
+  "tenLinhVuc": "HÀNH CHÍNH/NHÂN SỰ",
+  "__v": 0,
+  "hinhAnh": "nhansu.png"
+}{
+  "_id": {
+    "$oid": "62205633b23b606498d49fc9"
+  },
+  "tenLinhVuc": "XÂY DỰNG",
+  "__v": 0,
+  "hinhAnh": "xaydung.jpg"
+}{
+  "_id": {
+    "$oid": "6220563bb23b606498d49fcb"
+  },
+  "tenLinhVuc": "NÔNG-LÂM-NGƯ NGHIỆP",
+  "__v": 0,
+  "hinhAnh": "nongnghiep.jpg"
+}{
+  "_id": {
+    "$oid": "62205653b23b606498d49fcd"
+  },
+  "tenLinhVuc": "KỸ THUẬT",
+  "__v": 0,
+  "hinhAnh": "kythuat.jpg"
+}{
+  "_id": {
+    "$oid": "6220565fb23b606498d49fcf"
+  },
+  "tenLinhVuc": "KẾ TOÁN/TÀI CHÍNH",
+  "__v": 0,
+  "hinhAnh": "ke-toan.jpg"
+}{
+  "_id": {
+    "$oid": "6220566bb23b606498d49fd1"
+  },
+  "tenLinhVuc": "HÀNG TIÊU DÙNG",
+  "__v": 0,
+  "hinhAnh": "hangtieudung.jpg"
+}{
+  "_id": {
+    "$oid": "62205672b23b606498d49fd3"
+  },
+  "tenLinhVuc": "DỊCH VỤ",
+  "__v": 0,
+  "hinhAnh": "dichvu.jpg"
+}{
+  "_id": {
+    "$oid": "6220567eb23b606498d49fd5"
+  },
+  "tenLinhVuc": "CHĂM SÓC SỨC KHỎE",
+  "__v": 0,
+  "hinhAnh": "suckhoe.jpg"
+}{
+  "_id": {
+    "$oid": "62205689b23b606498d49fd7"
+  },
+  "tenLinhVuc": "TRUYỀN THÔNG/MEDIA",
+  "__v": 0,
+  "hinhAnh": "truyenthong.jpg"
+}{
+  "_id": {
+    "$oid": "62205694b23b606498d49fd9"
+  },
+  "tenLinhVuc": "GIÁO DỤC/ĐÀO TẠO",
+  "__v": 0,
+  "hinhAnh": "giaoduc.jpg"
+}{
+  "_id": {
+    "$oid": "622056a8b23b606498d49fdb"
+  },
+  "tenLinhVuc": "NHÓM NGÀNH KHÁC",
+  "__v": 0,
+  "hinhAnh": "hinhAnh"
+}
