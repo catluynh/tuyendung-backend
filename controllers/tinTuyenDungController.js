@@ -769,7 +769,6 @@ class TinTuyenDungController {
 
     async thanhToan(req, res, next) {
         try {
-            console.log('aaaaaaaaaaa')
             const items = [{
                 "name": "Thanh toán phí đăng tin tuyển dụng",
                 "price": "1.0",
@@ -805,13 +804,16 @@ class TinTuyenDungController {
 
             paypal.payment.create(create_payment_json, function (error, payment) {
                 if (error) {
-                    res.render('cancle');
+                    res.json({
+                        error: error
+                    })
                 } else {
                     for (let i = 0; i < payment.links.length; i++) {
                         if (payment.links[i].rel === 'approval_url') {
-                            open(payment.links[i].href, function (err) {
-                                if (err) throw err;
-                            });
+                            res.json({
+                                status: 'success',
+                                link: payment.links[i].href
+                            })
                         }
                     }
                 }
