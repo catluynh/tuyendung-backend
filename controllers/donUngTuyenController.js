@@ -23,7 +23,7 @@ class DonUngTuyenController {
         const donUngTuyenMoi = new DonUngTuyen(req.body);
         const donUngTuyenTonTai = await DonUngTuyen.findOne({
             ungTuyenVien: req.body.ungTuyenVien,
-            tinTuyenDung: req.body.tinTuyenDung
+            tinTuyenDung: req.body.tinTuyenDung  
         })
         donUngTuyenMoi.trangThai = Enum.TRANG_THAI_DON.DANG_UNG_TUYEN;
         donUngTuyenMoi.ngayCapNhat = new Date();
