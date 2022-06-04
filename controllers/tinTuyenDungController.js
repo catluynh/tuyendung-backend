@@ -787,8 +787,8 @@ class TinTuyenDungController {
                     "payment_method": "paypal"
                 },
                 "redirect_urls": {
-                    "return_url": "http://localhost:3000/employer/job/create",
-                    "cancel_url": "http://localhost:3000/failure"
+                    "return_url": `${process.env.HOST_CLIENT}/employer/job/create`,
+                    "cancel_url": `${process.env.HOST_CLIENT}/failure`
                 },
                 "transactions": [{
                     "item_list": {
