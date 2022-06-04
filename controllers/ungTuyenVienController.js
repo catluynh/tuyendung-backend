@@ -126,6 +126,22 @@ class UngTuyenVienController {
             .catch(next);
     };
 
+    async capNhatCv(req, res, next) {
+        const file = req.files.file;
+        const ungTuyenVien = await UngTuyenVien.findById(req.taiKhoan._id);
+        ungTuyenVien.cv = file.name;
+        await UngTuyenVien.findByIdAndUpdate(req.taiKhoan._id, ungTuyenVien)
+            .then(data => {
+                uploadHinhAnh.luuDSHinhAnh(file);
+                // uploadHinhAnh.xoaHinhAnh(data.avatar)
+                res.status(201).json({
+                    status: 'success',
+                    data
+                })
+            })
+            .catch(next);
+    };
+
     async capNhatKyNang(req, res, next) {
         const kyNang = req.body;
         await UngTuyenVien.updateOne(

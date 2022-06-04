@@ -45,6 +45,9 @@ router.route('/')
 router.route('/capNhatAvatar')
     .patch(ungTuyenVienController.capNhatAvatar)
 
+router.route('/capNhatCv')
+    .patch(ungTuyenVienController.capNhatCv)
+
 router.route('/:id')
     .get(ungTuyenVienController.getAPIById)
     .patch(ungTuyenVienController.updateAPI)
