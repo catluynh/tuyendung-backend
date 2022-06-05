@@ -33,6 +33,9 @@ const DonUngTuyen = new Schema({
     tiemNang: {
         type: Boolean,
         default: false
+    },
+    phuongThuc: {
+        type: Boolean
     }
 })
 
