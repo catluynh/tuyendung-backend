@@ -129,7 +129,6 @@ class UngTuyenVienController {
     async capNhatCv(req, res, next) {
         const file = req.files.file;
         const ungTuyenVien = await UngTuyenVien.findById(req.taiKhoan._id);
-        ungTuyenVien.cv = file.name;
         await UngTuyenVien.findByIdAndUpdate(req.taiKhoan._id, ungTuyenVien)
             .then(data => {
                 uploadHinhAnh.luuDSHinhAnh(file);
