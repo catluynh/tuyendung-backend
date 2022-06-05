@@ -36,7 +36,8 @@ const DonUngTuyen = new Schema({
     },
     phuongThuc: {
         type: Boolean
-    }
+    },
+    cv: String
 })
 
 DonUngTuyen.pre(/^find/, function (next) {
