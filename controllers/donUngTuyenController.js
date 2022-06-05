@@ -27,7 +27,7 @@ class DonUngTuyenController {
         })
         donUngTuyenMoi.trangThai = Enum.TRANG_THAI_DON.DANG_UNG_TUYEN;
         donUngTuyenMoi.ngayCapNhat = new Date();
-        donUngTuyenMoi.cv = req.body.cv;
+        donUngTuyenMoi.cv = req.body.cv || null;
         if (donUngTuyenTonTai) {
             res.status(404).json({
                 error: "Bạn đã ứng tuyển tin tuyển dụng này!"
