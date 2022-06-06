@@ -4,7 +4,7 @@
   },
   "tieuDe": "Tuyển dụng nhân viên Tester",
   "viTri": "Nhân viên",
-  "soLuongTuyen": 5,
+  "soLuongTuyen": 2,
   "loaiCongViec": "Bán thời gian",
   "ngayHetHan": {
     "$date": "2022-06-11T00:00:00Z"
@@ -53,16 +53,7 @@
   },
   "slug": "tuyen-dung-nhan-vien-tester",
   "phucLoi": "Được đảm bảo các quyền lợi, chế độ theo quy định của pháp luật Lao động và các chính sách phúc lợi của Công ty. Tham gia đầy đủ BHXH, BHYT, BHTN theo qui định, ký kết Hợp đồng lao động sau thời gian thử việc. Du lịch hằng năm cùng công ty. Môi trường làm việc chuyên nghiệp, thân thiện, năng động, hòa đồng. Được đào tạo kiến thức, kỹ năng bán hàng, kỹ năng đi thị trường khi chưa có kinh nghiệm. Mức lương ,thưởng , quyền lợi sẽ xứng đáng với năng lực làm việc, có thể thỏa thuận trong quá trình phỏng vấn",
-  "dsViecLamDaLuu": [
-    {
-      "ungTuyenVien": {
-        "$oid": "61dc2ef5aec39c8a584a261c"
-      },
-      "_id": {
-        "$oid": "628f0cbcb0fc0e65a3ad08f5"
-      }
-    }
-  ],
+  "dsViecLamDaLuu": [],
   "soLuongDaTuyen": 0,
   "ngayCapNhat": {
     "$date": "2022-05-26T01:23:54.918Z"
@@ -73,7 +64,7 @@
   },
   "tieuDe": "Tuyển dụng nhân viên Nodejs",
   "viTri": "Nhân viên",
-  "soLuongTuyen": 7,
+  "soLuongTuyen": 3,
   "loaiCongViec": "Toàn thời gian",
   "ngayHetHan": {
     "$date": "2022-06-11T00:00:00Z"
@@ -116,16 +107,7 @@
     "sdt": "0911224523",
     "email": "vana@gmail.com"
   },
-  "dsViecLamDaLuu": [
-    {
-      "ungTuyenVien": {
-        "$oid": "61dc2ef5aec39c8a584a261c"
-      },
-      "_id": {
-        "$oid": "628f0c35b0fc0e65a3ad0665"
-      }
-    }
-  ],
+  "dsViecLamDaLuu": [],
   "soLuongDaTuyen": 0,
   "ngayCapNhat": {
     "$date": "2022-05-28T11:16:32.456Z"
@@ -136,7 +118,7 @@
   },
   "tieuDe": "Tuyển dụng nhân viên Java",
   "viTri": "Nhân viên",
-  "soLuongTuyen": 7,
+  "soLuongTuyen": 2,
   "loaiCongViec": "Toàn thời gian",
   "ngayHetHan": {
     "$date": "2022-06-11T00:00:00Z"
@@ -190,7 +172,7 @@
   },
   "tieuDe": "Tuyển dụng nhân viên lễ tân",
   "viTri": "Nhân viên",
-  "soLuongTuyen": 10,
+  "soLuongTuyen": 2,
   "loaiCongViec": "Toàn thời gian",
   "ngayHetHan": {
     "$date": "2022-06-11T00:00:00Z"
@@ -224,7 +206,7 @@
   },
   "moTa": "Nhiệm vụ của Tester tại VelaCorp. Phối hợp với Dev và BA trong quá trình phân tích yêu cầu và lập kế hoạch. Thực hiện viết Test case, Scenario. Phân tích, lập kế hoạch kiểm thử.Thực hiện việc kiểm thử phần mềm theo Test case, Scenario, viết Test report. Viết tài liệu hướng dẫn sử dụng nếu có yêu cầu. Hướng dẫn, hỗ trợ, giải đáp thắc mắc cho khách hàng về sản phẩm.",
   "yeuCau": "Để trở thành Tester tại VelaCorp, bạn cần. Tốt nghiệp chuyên ngành CNTT, có kinh nghiệm từ 01 năm trở lên ở vị trí Tester. Có khả năng đọc hiểu, phân tích yêu cầu. Nắm vững quy trình phát triển phần mềm, quy trình kiểm thử, mức độ kiểm thử. Nắm vững các kỹ thuật, phương pháp sinh Test case. Có kinh nghiệm xây dựng Test plan, Test case, Test data. Biết cách trình bày và viết tài liệu hướng dẫn sử dụng. Có kinh nghiệm tham gia dự án Agile. Có thể làm việc độc lập và làm việc theo nhóm. Ứng viên có kinh nghiệm trong lĩnh vực E-commerce, logistics là 1 lợi thế",
-  "trangThai": "Khóa",
+  "trangThai": "Chờ duyệt",
   "ngayTao": {
     "$date": "2022-01-11T00:00:00Z"
   },
@@ -255,25 +237,9 @@
       "_id": {
         "$oid": "628d1e22cefa252925867484"
       }
-    },
-    {
-      "ungTuyenVien": {
-        "$oid": "61dc2ef5aec39c8a584a261c"
-      },
-      "_id": {
-        "$oid": "628d20da15129c703a343854"
-      }
-    },
-    {
-      "ungTuyenVien": {
-        "$oid": "61dc2ef5aec39c8a584a261c"
-      },
-      "_id": {
-        "$oid": "628de3b785acbade99dcd557"
-      }
     }
   ],
-  "soLuongDaTuyen": 1,
+  "soLuongDaTuyen": 0,
   "ngayCapNhat": {
     "$date": "2022-05-30T04:19:21.848Z"
   }
@@ -283,7 +249,7 @@
   },
   "tieuDe": "Tuyển dụng hướng dẫn viên du lịch",
   "viTri": "Nhân viên",
-  "soLuongTuyen": 5,
+  "soLuongTuyen": 3,
   "loaiCongViec": "Toàn thời gian",
   "ngayHetHan": {
     "$date": "2022-06-11T00:00:00Z"
@@ -335,7 +301,7 @@
   "dsViecLamDaLuu": [],
   "soLuongDaTuyen": 2,
   "ngayCapNhat": {
-    "$date": "2022-05-28T11:20:22.761Z"
+    "$date": "2022-06-04T11:20:22.761Z"
   }
 }{
   "_id": {
@@ -343,7 +309,7 @@
   },
   "tieuDe": "Tuyển dụng quản lí nhà hàng",
   "viTri": "Quản lý",
-  "soLuongTuyen": 5,
+  "soLuongTuyen": 2,
   "loaiCongViec": "Toàn thời gian",
   "ngayHetHan": {
     "$date": "2022-06-11T00:00:00Z"
@@ -393,7 +359,7 @@
     "email": "vana@gmail.com"
   },
   "dsViecLamDaLuu": [],
-  "soLuongDaTuyen": 0,
+  "soLuongDaTuyen": 1,
   "ngayCapNhat": {
     "$date": "2022-05-25T15:05:22.039Z"
   }
@@ -403,10 +369,10 @@
   },
   "tieuDe": "Tuyển dụng nhân viên kỹ thuật mạng",
   "viTri": "Nhân viên",
-  "soLuongTuyen": 5,
+  "soLuongTuyen": 1,
   "loaiCongViec": "Toàn thời gian",
   "ngayHetHan": {
-    "$date": "2022-02-11T00:00:00Z"
+    "$date": "2022-06-11T00:00:00Z"
   },
   "soNamKinhNghiem": "1 năm",
   "gioiTinh": "Không phân biệt",
@@ -437,7 +403,7 @@
   },
   "moTa": "Nhiệm vụ của Tester tại VelaCorp. Phối hợp với Dev và BA trong quá trình phân tích yêu cầu và lập kế hoạch. Thực hiện viết Test case, Scenario. Phân tích, lập kế hoạch kiểm thử.Thực hiện việc kiểm thử phần mềm theo Test case, Scenario, viết Test report. Viết tài liệu hướng dẫn sử dụng nếu có yêu cầu. Hướng dẫn, hỗ trợ, giải đáp thắc mắc cho khách hàng về sản phẩm.",
   "yeuCau": "Để trở thành Tester tại VelaCorp, bạn cần. Tốt nghiệp chuyên ngành CNTT, có kinh nghiệm từ 01 năm trở lên ở vị trí Tester. Có khả năng đọc hiểu, phân tích yêu cầu. Nắm vững quy trình phát triển phần mềm, quy trình kiểm thử, mức độ kiểm thử. Nắm vững các kỹ thuật, phương pháp sinh Test case. Có kinh nghiệm xây dựng Test plan, Test case, Test data. Biết cách trình bày và viết tài liệu hướng dẫn sử dụng. Có kinh nghiệm tham gia dự án Agile. Có thể làm việc độc lập và làm việc theo nhóm. Ứng viên có kinh nghiệm trong lĩnh vực E-commerce, logistics là 1 lợi thế",
-  "trangThai": "Dừng tuyển",
+  "trangThai": "Chờ duyệt",
   "ngayTao": {
     "$date": "2022-01-11T00:00:00Z"
   },
@@ -463,10 +429,10 @@
   },
   "tieuDe": "Tuyển dụng quản trị mạng",
   "viTri": "Quản lý",
-  "soLuongTuyen": 5,
+  "soLuongTuyen": 1,
   "loaiCongViec": "Toàn thời gian",
   "ngayHetHan": {
-    "$date": "2022-02-11T00:00:00Z"
+    "$date": "2022-06-19T00:00:00Z"
   },
   "soNamKinhNghiem": "1 năm",
   "gioiTinh": "Không phân biệt",
@@ -497,7 +463,7 @@
   },
   "moTa": "Nhiệm vụ của Tester tại VelaCorp. Phối hợp với Dev và BA trong quá trình phân tích yêu cầu và lập kế hoạch. Thực hiện viết Test case, Scenario. Phân tích, lập kế hoạch kiểm thử.Thực hiện việc kiểm thử phần mềm theo Test case, Scenario, viết Test report. Viết tài liệu hướng dẫn sử dụng nếu có yêu cầu. Hướng dẫn, hỗ trợ, giải đáp thắc mắc cho khách hàng về sản phẩm.",
   "yeuCau": "Để trở thành Tester tại VelaCorp, bạn cần. Tốt nghiệp chuyên ngành CNTT, có kinh nghiệm từ 01 năm trở lên ở vị trí Tester. Có khả năng đọc hiểu, phân tích yêu cầu. Nắm vững quy trình phát triển phần mềm, quy trình kiểm thử, mức độ kiểm thử. Nắm vững các kỹ thuật, phương pháp sinh Test case. Có kinh nghiệm xây dựng Test plan, Test case, Test data. Biết cách trình bày và viết tài liệu hướng dẫn sử dụng. Có kinh nghiệm tham gia dự án Agile. Có thể làm việc độc lập và làm việc theo nhóm. Ứng viên có kinh nghiệm trong lĩnh vực E-commerce, logistics là 1 lợi thế",
-  "trangThai": "Dừng tuyển",
+  "trangThai": "Chờ duyệt",
   "ngayTao": {
     "$date": "2022-01-11T00:00:00Z"
   },
@@ -523,10 +489,10 @@
   },
   "tieuDe": "Tuyển dụng thực tập mạng",
   "viTri": "Thực tập",
-  "soLuongTuyen": 10,
+  "soLuongTuyen": 3,
   "loaiCongViec": "Toàn thời gian",
   "ngayHetHan": {
-    "$date": "2022-02-11T00:00:00Z"
+    "$date": "2022-06-10T00:00:00Z"
   },
   "soNamKinhNghiem": "1 năm",
   "gioiTinh": "Không phân biệt",
@@ -557,7 +523,7 @@
   },
   "moTa": "Nhiệm vụ của Tester tại VelaCorp. Phối hợp với Dev và BA trong quá trình phân tích yêu cầu và lập kế hoạch. Thực hiện viết Test case, Scenario. Phân tích, lập kế hoạch kiểm thử.Thực hiện việc kiểm thử phần mềm theo Test case, Scenario, viết Test report. Viết tài liệu hướng dẫn sử dụng nếu có yêu cầu. Hướng dẫn, hỗ trợ, giải đáp thắc mắc cho khách hàng về sản phẩm.",
   "yeuCau": "Để trở thành Tester tại VelaCorp, bạn cần. Tốt nghiệp chuyên ngành CNTT, có kinh nghiệm từ 01 năm trở lên ở vị trí Tester. Có khả năng đọc hiểu, phân tích yêu cầu. Nắm vững quy trình phát triển phần mềm, quy trình kiểm thử, mức độ kiểm thử. Nắm vững các kỹ thuật, phương pháp sinh Test case. Có kinh nghiệm xây dựng Test plan, Test case, Test data. Biết cách trình bày và viết tài liệu hướng dẫn sử dụng. Có kinh nghiệm tham gia dự án Agile. Có thể làm việc độc lập và làm việc theo nhóm. Ứng viên có kinh nghiệm trong lĩnh vực E-commerce, logistics là 1 lợi thế",
-  "trangThai": "Dừng tuyển",
+  "trangThai": "Chờ duyệt",
   "ngayTao": {
     "$date": "2022-01-11T00:00:00Z"
   },
@@ -633,16 +599,7 @@
     "email": "vana@gmail.com"
   },
   "soLuongDaTuyen": 0,
-  "dsViecLamDaLuu": [
-    {
-      "ungTuyenVien": {
-        "$oid": "61dc2ef5aec39c8a584a261c"
-      },
-      "_id": {
-        "$oid": "628f87ad810b282c2627ccd5"
-      }
-    }
-  ],
+  "dsViecLamDaLuu": [],
   "ngayCapNhat": {
     "$date": "2022-05-25T15:05:22.046Z"
   }
@@ -712,7 +669,7 @@
   },
   "tieuDe": "Unity Game Developer - All Level (Upto 1500$)",
   "viTri": "Nhân viên",
-  "soLuongTuyen": 5,
+  "soLuongTuyen": 2,
   "loaiCongViec": "Toàn thời gian",
   "ngayHetHan": {
     "$date": "2022-06-20T00:00:00Z"
@@ -762,16 +719,7 @@
     "email": "vana@gmail.com"
   },
   "soLuongDaTuyen": 0,
-  "dsViecLamDaLuu": [
-    {
-      "ungTuyenVien": {
-        "$oid": "61dc2ef5aec39c8a584a261c"
-      },
-      "_id": {
-        "$oid": "628ed40dc5356d35b5e5ce4c"
-      }
-    }
-  ],
+  "dsViecLamDaLuu": [],
   "ngayCapNhat": {
     "$date": "2022-05-25T15:05:22.048Z"
   }
@@ -781,7 +729,7 @@
   },
   "tieuDe": "Nhân Viên Kinh Doanh Bất Động Sản(BDS)",
   "viTri": "Nhân viên",
-  "soLuongTuyen": 20,
+  "soLuongTuyen": 2,
   "loaiCongViec": "Toàn thời gian",
   "ngayHetHan": {
     "$date": "2022-07-05T00:00:00Z"
@@ -900,16 +848,7 @@
     "email": "vana@gmail.com"
   },
   "soLuongDaTuyen": 0,
-  "dsViecLamDaLuu": [
-    {
-      "ungTuyenVien": {
-        "$oid": "61dc2ef5aec39c8a584a261c"
-      },
-      "_id": {
-        "$oid": "629446935e4293739518fe39"
-      }
-    }
-  ],
+  "dsViecLamDaLuu": [],
   "ngayCapNhat": {
     "$date": "2022-05-25T15:05:22.051Z"
   }
@@ -961,7 +900,7 @@
   },
   "trangThai": "Đã duyệt",
   "slug": "le-tan-hanh-chinh-dji-lam-ngay",
-  "__v": 2,
+  "__v": 3,
   "phucLoi": "Được đảm bảo các quyền lợi, chế độ theo quy định của pháp luật Lao động và các chính sách phúc lợi của Công ty. Tham gia đầy đủ BHXH, BHYT, BHTN theo qui định, ký kết Hợp đồng lao động sau thời gian thử việc. Du lịch hằng năm cùng công ty. Môi trường làm việc chuyên nghiệp, thân thiện, năng động, hòa đồng. Được đào tạo kiến thức, kỹ năng bán hàng, kỹ năng đi thị trường khi chưa có kinh nghiệm. Mức lương ,thưởng , quyền lợi sẽ xứng đáng với năng lực làm việc, có thể thỏa thuận trong quá trình phỏng vấn",
   "lienHe": {
     "ten": "Nguyễn Văn A",
@@ -975,7 +914,7 @@
         "$oid": "61dc2ef5aec39c8a584a261c"
       },
       "_id": {
-        "$oid": "628ed504c5356d35b5e5d22f"
+        "$oid": "629e0ffad79170076ef059e1"
       }
     }
   ],
@@ -988,7 +927,7 @@
   },
   "tieuDe": "Nhân Viên Kinh Doanh Bất Động Sản(BDS)",
   "viTri": "Nhân viên",
-  "soLuongTuyen": 10,
+  "soLuongTuyen": 3,
   "loaiCongViec": "Toàn thời gian",
   "ngayHetHan": {
     "$date": "2022-07-05T00:00:00Z"
@@ -1048,7 +987,7 @@
   },
   "tieuDe": "Nhân Viên Kinh Doanh - Chuyển Phát Nhanh",
   "viTri": "Nhân viên",
-  "soLuongTuyen": 10,
+  "soLuongTuyen": 2,
   "loaiCongViec": "Toàn thời gian",
   "ngayHetHan": {
     "$date": "2022-07-05T00:00:00Z"
@@ -1108,7 +1047,7 @@
   },
   "tieuDe": "Nhân Viên Tư Vấn (Sản Phẩm Marketing Online)",
   "viTri": "Nhân viên",
-  "soLuongTuyen": 5,
+  "soLuongTuyen": 3,
   "loaiCongViec": "Toàn thời gian",
   "ngayHetHan": {
     "$date": "2022-07-05T00:00:00Z"
@@ -1293,7 +1232,7 @@
   "nhaTuyenDung": {
     "$oid": "628217302a3047cf029d726d"
   },
-  "trangThai": "Dừng tuyển",
+  "trangThai": "Chờ duyệt",
   "slug": "truong-phong-ke-toan-chi-tuyen-nam-(dji-lam-ngay)",
   "__v": 1,
   "phucLoi": "Được đảm bảo các quyền lợi, chế độ theo quy định của pháp luật Lao động và các chính sách phúc lợi của Công ty. Tham gia đầy đủ BHXH, BHYT, BHTN theo qui định, ký kết Hợp đồng lao động sau thời gian thử việc. Du lịch hằng năm cùng công ty. Môi trường làm việc chuyên nghiệp, thân thiện, năng động, hòa đồng. Được đào tạo kiến thức, kỹ năng bán hàng, kỹ năng đi thị trường khi chưa có kinh nghiệm. Mức lương ,thưởng , quyền lợi sẽ xứng đáng với năng lực làm việc, có thể thỏa thuận trong quá trình phỏng vấn",
@@ -1316,7 +1255,7 @@
   "soLuongTuyen": 1,
   "loaiCongViec": "Toàn thời gian",
   "ngayHetHan": {
-    "$date": "2022-06-15T00:00:00Z"
+    "$date": "2022-07-15T00:00:00Z"
   },
   "soNamKinhNghiem": "2 năm",
   "gioiTinh": "Nam",
@@ -1348,17 +1287,17 @@
   "moTa": "Trách nhiệm đối với công việc của một người như thông tin tài chính, thống kê, kiểm tra, cân đối và cập nhật dữ liệu chi phí sản xuất, FG, WIP, nguyên liệu, sản phẩm bị đào thải.Trách nhiệm lập cân đối tài chính và khóa sổ kế toán hàng tháng. Lập báo cáo định kỳ như báo cáo chi phí, tài chính. Phân tích sự biến động của giá thành sản phẩm và nguyên vật liệu. Trách nhiệm phân tích các báo cáo tài chính. Quản trị viên trong việc kiểm soát chi phí. Duy trì và phát triển Chuẩn mực Thủ tục (Tài chính & Kế toán). Đổi mới phương thức làm việc hiệu quả và tiết kiệm chi phí. Chịu trách nhiệm cập nhật, kiểm soát và thống kê chi phí sản xuất. Kiểm tra và cập nhật các tiêu chuẩn quy trình của kho. Quản trị viên trong việc lưu giữ các tệp và tài liệu về công việc của một người.Phối hợp với các bộ phận khác để làm việc theo quy trình. Báo cáo hàng ngày cho Giám đốc Tài chính. Phụ trách các nhiệm vụ khác theo yêu cầu của Giám đốc Tài chính",
   "yeuCau": "Nền tảng vững chắc về Chuẩn mực thủ tục chuyên nghiệp (SOP) về kế toán chi phí và quản trị. Có kinh nghiệm chuyên sâu về quản trị và kế toán chi phí như phân tích, phân loại dữ liệu, báo cáo chi phí, báo cáo tài chính,. Sự cẩn thận với công việc của một người. Trung thực, thái độ tốt, kỷ luật và trung thực. Có khả năng làm việc độc lập, chịu áp lực cao trên tinh thần đồng đội. Động lực bản thân và khả năng thể hiện năng lực ở mức độ cao. Kỹ năng giao tiếp cá nhân / đa văn hóa tốt. Giao tiếp - đọc viết Tiếng Anh thành thạo. Có kiến thức làm việc tốt về các ứng dụng MS Office. Ưu tiên ứng viên ở khu vực Đồng Nai",
   "ngayTao": {
-    "$date": "2022-05-16T08:29:51.281Z"
+    "$date": "2022-04-16T08:29:51.281Z"
   },
   "nhaTuyenDung": {
     "$oid": "628217302a3047cf029d726d"
   },
-  "trangThai": "Dừng tuyển",
+  "trangThai": "Chờ duyệt",
   "slug": "truong-phong-ke-toan-chi-tuyen-nam-(dji-lam-ngay)",
   "__v": 3,
   "phucLoi": "Được đảm bảo các quyền lợi, chế độ theo quy định của pháp luật Lao động và các chính sách phúc lợi của Công ty. Tham gia đầy đủ BHXH, BHYT, BHTN theo qui định, ký kết Hợp đồng lao động sau thời gian thử việc. Du lịch hằng năm cùng công ty. Môi trường làm việc chuyên nghiệp, thân thiện, năng động, hòa đồng. Được đào tạo kiến thức, kỹ năng bán hàng, kỹ năng đi thị trường khi chưa có kinh nghiệm. Mức lương ,thưởng , quyền lợi sẽ xứng đáng với năng lực làm việc, có thể thỏa thuận trong quá trình phỏng vấn",
   "lienHe": {
-    "ten": "Nguyễn Văn A",
+    "ten": "Nguyễn Văn An",
     "sdt": "0911224523",
     "email": "vana@gmail.com"
   },
@@ -1375,78 +1314,6 @@
   "soLuongDaTuyen": 0,
   "ngayCapNhat": {
     "$date": "2022-05-25T15:05:22.059Z"
-  }
-}{
-  "_id": {
-    "$oid": "6285cb7aa0475d1db3ffff67"
-  },
-  "tieuDe": "Nhân viên Kế Toán - (Đi Làm Ngay)",
-  "viTri": "Nhân viên",
-  "soLuongTuyen": 5,
-  "loaiCongViec": "Bán thời gian",
-  "ngayHetHan": {
-    "$date": "2022-06-15T00:00:00Z"
-  },
-  "soNamKinhNghiem": "1 năm",
-  "gioiTinh": "Nam",
-  "mucLuong": "7-10 triệu",
-  "bangCap": "Đại học",
-  "tuoiTu": 22,
-  "denTuoi": 30,
-  "nganhNghe": {
-    "$oid": "6220589fb23b606498d4a01d"
-  },
-  "phucLoi": "Được đảm bảo các quyền lợi, chế độ theo quy định của pháp luật Lao động và các chính sách phúc lợi của Công ty. Tham gia đầy đủ BHXH, BHYT, BHTN theo qui định, ký kết Hợp đồng lao động sau thời gian thử việc. Du lịch hằng năm cùng công ty. Môi trường làm việc chuyên nghiệp, thân thiện, năng động, hòa đồng. Được đào tạo kiến thức, kỹ năng bán hàng, kỹ năng đi thị trường khi chưa có kinh nghiệm. Mức lương ,thưởng , quyền lợi sẽ xứng đáng với năng lực làm việc, có thể thỏa thuận trong quá trình phỏng vấn",
-  "hinhAnh": [
-    {
-      "tenHinhAnh": "hinh1.png",
-      "_id": {
-        "$oid": "6285cb7aa0475d1db3ffff68"
-      }
-    },
-    {
-      "tenHinhAnh": "hinh2.png",
-      "_id": {
-        "$oid": "6285cb7aa0475d1db3ffff69"
-      }
-    }
-  ],
-  "diaDiem": {
-    "tinhThanhPho": "Hà Nội",
-    "quanHuyen": "Từ Liêm"
-  },
-  "moTa": "Trách nhiệm đối với công việc của một người như thông tin tài chính, thống kê, kiểm tra, cân đối và cập nhật dữ liệu chi phí sản xuất, FG, WIP, nguyên liệu, sản phẩm bị đào thải.Trách nhiệm lập cân đối tài chính và khóa sổ kế toán hàng tháng. Lập báo cáo định kỳ như báo cáo chi phí, tài chính. Phân tích sự biến động của giá thành sản phẩm và nguyên vật liệu. Trách nhiệm phân tích các báo cáo tài chính. Quản trị viên trong việc kiểm soát chi phí. Duy trì và phát triển Chuẩn mực Thủ tục (Tài chính & Kế toán). Đổi mới phương thức làm việc hiệu quả và tiết kiệm chi phí. Chịu trách nhiệm cập nhật, kiểm soát và thống kê chi phí sản xuất. Kiểm tra và cập nhật các tiêu chuẩn quy trình của kho. Quản trị viên trong việc lưu giữ các tệp và tài liệu về công việc của một người.Phối hợp với các bộ phận khác để làm việc theo quy trình. Báo cáo hàng ngày cho Giám đốc Tài chính. Phụ trách các nhiệm vụ khác theo yêu cầu của Giám đốc Tài chính",
-  "yeuCau": "Nền tảng vững chắc về Chuẩn mực thủ tục chuyên nghiệp (SOP) về kế toán chi phí và quản trị. Có kinh nghiệm chuyên sâu về quản trị và kế toán chi phí như phân tích, phân loại dữ liệu, báo cáo chi phí, báo cáo tài chính,. Sự cẩn thận với công việc của một người. Trung thực, thái độ tốt, kỷ luật và trung thực. Có khả năng làm việc độc lập, chịu áp lực cao trên tinh thần đồng đội. Động lực bản thân và khả năng thể hiện năng lực ở mức độ cao. Kỹ năng giao tiếp cá nhân / đa văn hóa tốt. Giao tiếp - đọc viết Tiếng Anh thành thạo. Có kiến thức làm việc tốt về các ứng dụng MS Office. Ưu tiên ứng viên ở khu vực Đồng Nai",
-  "ngayTao": {
-    "$date": "2022-05-19T04:36:37.835Z"
-  },
-  "nhaTuyenDung": {
-    "$oid": "628217302a3047cf029d726d"
-  },
-  "trangThai": "Dừng tuyển",
-  "slug": "nhan-vien-ke-toan-(dji-lam-ngay)",
-  "__v": 1,
-  "dsViecLamDaLuu": [
-    {
-      "ungTuyenVien": {
-        "$oid": "61dc36a36c9974889d6e955d"
-      },
-      "_id": {
-        "$oid": "6285cb7aa0475d1db3ffff6a"
-      }
-    },
-    {
-      "ungTuyenVien": {
-        "$oid": "61dc2ef5aec39c8a584a261c"
-      },
-      "_id": {
-        "$oid": "6285cb7aa0475d1db3ffff6b"
-      }
-    }
-  ],
-  "soLuongDaTuyen": 0,
-  "ngayCapNhat": {
-    "$date": "2022-05-25T15:05:22.060Z"
   }
 }{
   "_id": {
@@ -1502,271 +1369,12 @@
     "$date": "2022-05-30T04:18:07.045Z"
   },
   "slug": "travel-consultant-(tour-consultant)",
-  "__v": 0
-}{
-  "_id": {
-    "$oid": "628ee8814ab28ffd26d0e195"
-  },
-  "tieuDe": "Nhân Viên Điều Hành Du Lịch - Phỏng Vấn Đi Làm Ngay",
-  "viTri": "Nhân viên",
-  "soLuongTuyen": 1,
-  "soLuongDaTuyen": 0,
-  "loaiCongViec": "Toàn thời gian",
-  "ngayHetHan": {
-    "$date": "2022-06-15T00:00:00Z"
-  },
-  "soNamKinhNghiem": "1 năm",
-  "gioiTinh": "Không phân biệt",
-  "mucLuong": "7-15 triệu",
-  "bangCap": "Đại học",
-  "tuoiTu": 22,
-  "denTuoi": 30,
-  "nganhNghe": {
-    "$oid": "61dd94d011fdd9eef1fd22c7"
-  },
-  "phucLoi": "Được vi vu khắp nơi thoả thích theo chính sách của công ty.Được ăn chơi cùng Sếp thoải mái. Môi trường làm việc trẻ trung năng động, thoải mái giờ giấc, không bị gò bó dập khuôn. Đội ngũ nhân viên hoà đồng, nhiệt tình, thân thiện, tháng nhậu vài lần. Lương thưởng không giới hạn tuỳ năng lực (trung bình từ 7-15tr, lương cứng + kpi) ",
-  "hinhAnh": [
-    {
-      "tenHinhAnh": "hinh1.png",
-      "_id": {
-        "$oid": "628ee8814ab28ffd26d0e196"
-      }
-    },
-    {
-      "tenHinhAnh": "hinh2.png",
-      "_id": {
-        "$oid": "628ee8814ab28ffd26d0e197"
-      }
-    }
-  ],
-  "diaDiem": {
-    "tinhThanhPho": "Hà Nội",
-    "quanHuyen": "Hai Bà Trưng"
-  },
-  "moTa": "Làm các chương trình Tour du lịch trong nước và quốc tế. Xây dựng báo giá dành cho các Tour du lịch trong nước và quốc tế. Đàm phán, xin báo giá các đơn vị cung ứng dịch vụ tại các điểm thăm quan du lịch. Cập nhật báo giá khách sạn, tuyến điểm và các dịch vụ liên quan. Đi điều hành Tour cho công ty (có lương điều hành riêng). Quản lý booking đến và đi cho công ty. Hỗ trợ phòng sale trong việc báo giá và check phòng",
-  "yeuCau": "- Tốt nghiệp đại học hoặc cao đẳng đối với vị trí nhân viên kinh doanh và điều hành. Có kinh nghiệm ít nhất 2 năm làm du lịch đối với vị trí điều hành tour. Đã từng đi dẫn Tour, có kinh nghiệm và kiến thức về các tuyến điểm. Trung thực ,Ham học hỏi, chịu được áp lực công việc. Cầu tiến trong công việc ",
-  "ngayTao": {
-    "$date": "2022-05-26T01:49:15.741Z"
-  },
-  "nhaTuyenDung": {
-    "$oid": "628ee538bc2e24845ad1d3c6"
-  },
-  "dsViecLamDaLuu": [],
-  "trangThai": "Chờ duyệt",
-  "ngayCapNhat": {
-    "$date": "2022-05-26T02:40:01.392Z"
-  },
-  "slug": "nhan-vien-djieu-hanh-du-lich-phong-van-dji-lam-ngay",
-  "__v": 0
-}{
-  "_id": {
-    "$oid": "628f01cfb0fc0e65a3ace132"
-  },
-  "tieuDe": "Tuyển nhân viên kinh doanh không yêu cầu kinh nghiệm",
-  "viTri": "Mới tốt nghiệp",
-  "soLuongTuyen": 3,
-  "soLuongDaTuyen": 0,
-  "loaiCongViec": "Bán thời gian",
-  "ngayHetHan": {
-    "$date": "2022-01-06T00:00:00Z"
-  },
-  "soNamKinhNghiem": "Dưới 1 năm",
-  "gioiTinh": "Nữ",
-  "mucLuong": "1",
-  "bangCap": "Cao Đẳng",
-  "tuoiTu": 18,
-  "denTuoi": 24,
-  "nganhNghe": {
-    "$oid": "61dd94d011fdd9eef1fd22c7"
-  },
-  "phucLoi": "Đóng BHXH, BHYT theo bộ luật lao động.\nChế độ nghỉ lễ Tết, đi du lịch hằng năm.\nĐược làm việc trong môi trường năng động, trẻ trung, đầy nhiệt huyết.\nĐược tham gia các hoạt động team building và sự kiện lớn trong năm độc đáo, hấp dẫn.\nCơ hội thăng tiến, phát triển cao",
-  "diaDiem": {
-    "tinhThanhPho": "Tỉnh Hà Giang",
-    "quanHuyen": "Huyện Mèo Vạc"
-  },
-  "moTa": "Viết tiếng việt có dấu\nMô tả công việc, nơi làm việc, giờ làm\nYêu cầu bằng cấp, kỹ năng\nPhúc lợi khác ngoài lương",
-  "yeuCau": "Kinh nghiệm vận hành, bảo trì sửa chữa nhà xưởng, tòa nhà trên 2 năm.\nKinh nghiệm chuyên ngành Cơ điện trên 5 năm.\nTận dụng kiến thức kỹ thuật, đưa ra quyết định nhanh chóng và giải quyết vấn đề. Tận dụng kinh nghiệm đã tích lũy xác định vấn đề tiềm ẩn và giải quyết mọi vấn đề càng sớm càng tố",
-  "ngayTao": {
-    "$date": "2022-05-26T04:15:22.919Z"
-  },
-  "hinhAnh": [],
-  "dsViecLamDaLuu": [],
-  "nhaTuyenDung": {
-    "$oid": "628209d22a3047cf029d7241"
-  },
-  "trangThai": "Đã duyệt",
-  "ngayCapNhat": {
-    "$date": "2022-05-30T02:42:06.663Z"
-  },
-  "slug": "tuyen-nhan-vien-kinh-doanh-khong-yeu-cau-kinh-nghiem",
-  "__v": 0
-}{
-  "_id": {
-    "$oid": "628f8ab6810b282c2627e546"
-  },
-  "tieuDe": "Tuyển dụng nhân viên hướng dẫn viên du lịch",
-  "viTri": "Nhân viên",
-  "soLuongTuyen": 5,
-  "soLuongDaTuyen": 0,
-  "loaiCongViec": "Toàn thời gian",
-  "ngayHetHan": {
-    "$date": "2022-05-06T00:00:00Z"
-  },
-  "soNamKinhNghiem": "Dưới 1 năm",
-  "gioiTinh": "Nam",
-  "mucLuong": "1",
-  "bangCap": "Đại học",
-  "tuoiTu": 20,
-  "denTuoi": 35,
-  "nganhNghe": {
-    "$oid": "61dd94d011fdd9eef1fd22c7"
-  },
-  "phucLoi": "Đóng BHXH, BHYT theo bộ luật lao động.\nChế độ nghỉ lễ Tết, đi du lịch hằng năm\nĐược làm việc trong môi trường năng động, trẻ trung, đầy nhiệt huyết.\nĐược tham gia các hoạt động team building và sự kiện lớn trong năm độc đáo, hấp dẫn.\nCơ hội thăng tiến, phát triển cao.",
-  "diaDiem": {
-    "tinhThanhPho": "Thành phố Hà Nội",
-    "quanHuyen": "Quận Cầu Giấy"
-  },
-  "moTa": "Viết tiếng việt có dấu:\nMô tả công việc, nơi làm việc, giờ làm\nYêu cầu bằng cấp, kỹ năng\nPhúc lợi khác ngoài lương",
-  "yeuCau": "Kinh nghiệm vận hành, bảo trì sửa chữa nhà xưởng, tòa nhà trên 2 năm.\nKinh nghiệm chuyên ngành Cơ điện trên 5 năm\nTận dụng kiến thức kỹ thuật, đưa ra quyết định nhanh chóng và giải quyết vấn đề. Tận dụng kinh nghiệm đã tích lũy xác định vấn đề tiềm ẩn và giải quyết mọi vấn đề càng sớm càng tốt",
-  "ngayTao": {
-    "$date": "2022-05-26T13:18:28.311Z"
-  },
-  "hinhAnh": [],
-  "dsViecLamDaLuu": [],
-  "nhaTuyenDung": {
-    "$oid": "628ee538bc2e24845ad1d3c6"
-  },
-  "trangThai": "Đã duyệt",
-  "ngayCapNhat": {
-    "$date": "2022-05-26T14:22:16.455Z"
-  },
-  "slug": "tuyen-dung-nhan-vien-huong-dan-vien-du-lich",
-  "__v": 0
-}{
-  "_id": {
-    "$oid": "6291019d87e26b6bb7884e5b"
-  },
-  "tieuDe": "Nhân viên bán hàng bán thời gian",
-  "viTri": "Sinh viên",
-  "soLuongTuyen": 3,
-  "soLuongDaTuyen": 0,
-  "loaiCongViec": "Bán thời gian",
-  "ngayHetHan": {
-    "$date": "2022-10-07T00:00:00Z"
-  },
-  "soNamKinhNghiem": "Chưa có kinh nghiệm",
-  "gioiTinh": "Nam",
-  "mucLuong": "1",
-  "bangCap": "Chưa tốt nghiệp",
-  "tuoiTu": 18,
-  "denTuoi": 22,
-  "nganhNghe": {
-    "$oid": "622056f5b23b606498d49fe3"
-  },
-  "phucLoi": "Đóng BHXH, BHYT theo bộ luật lao động.",
-  "diaDiem": {
-    "tinhThanhPho": "Thành phố Đà Nẵng",
-    "quanHuyen": "Quận Sơn Trà"
-  },
-  "moTa": "Mô tả công việc, nơi làm việc, giờ làm\nYêu cầu bằng cấp, kỹ năng\nPhúc lợi khác ngoài lương",
-  "yeuCau": "Kinh nghiệm vận hành, bảo trì sửa chữa nhà xưởng, tòa nhà trên 2 năm.",
-  "ngayTao": {
-    "$date": "2022-05-27T15:08:39.225Z"
-  },
-  "hinhAnh": [],
-  "dsViecLamDaLuu": [],
-  "nhaTuyenDung": {
-    "$oid": "61dc43c0028fd53ddaaac063"
-  },
-  "trangThai": "Đã duyệt",
-  "ngayCapNhat": {
-    "$date": "2022-05-27T16:51:58.511Z"
-  },
-  "slug": "nhan-vien-ban-hang-ban-thoi-gian",
-  "__v": 0
-}{
-  "_id": {
-    "$oid": "6291095c87e26b6bb7887076"
-  },
-  "tieuDe": "Nhân viên Khách sạn",
-  "viTri": "Mới tốt nghiệp",
-  "soLuongTuyen": 3,
-  "soLuongDaTuyen": 0,
-  "loaiCongViec": "Toàn thời gian",
-  "ngayHetHan": {
-    "$date": "2022-12-06T00:00:00Z"
-  },
-  "soNamKinhNghiem": "Chưa có kinh nghiệm",
-  "gioiTinh": "Nữ",
-  "mucLuong": "Thỏa thuận",
-  "bangCap": "Cao Đẳng",
-  "tuoiTu": 18,
-  "denTuoi": 27,
-  "nganhNghe": {
-    "$oid": "61dd94cb11fdd9eef1fd22c5"
-  },
-  "phucLoi": "Đóng BHXH, BHYT theo bộ luật lao động.",
-  "diaDiem": {
-    "tinhThanhPho": "Thành phố Hà Nội",
-    "quanHuyen": "Quận Hai Bà Trưng"
-  },
-  "moTa": "Mô tả công việc, nơi làm việc, giờ làm\nYêu cầu bằng cấp, kỹ năng\nPhúc lợi khác ngoài lương",
-  "yeuCau": "Kinh nghiệm vận hành, bảo trì sửa chữa nhà xưởng, tòa nhà trên 2 năm.",
-  "ngayTao": {
-    "$date": "2022-05-27T15:08:39.225Z"
-  },
-  "hinhAnh": [],
-  "dsViecLamDaLuu": [],
-  "nhaTuyenDung": {
-    "$oid": "61dc43c0028fd53ddaaac063"
-  },
-  "trangThai": "Đã duyệt",
-  "ngayCapNhat": {
-    "$date": "2022-05-27T17:24:57.255Z"
-  },
-  "slug": "nhan-vien-khach-san",
-  "__v": 0
-}{
-  "_id": {
-    "$oid": "62923c61df2e6fd84517ea02"
-  },
-  "tieuDe": "nhân viên abc",
-  "viTri": "Thực tập",
-  "soLuongTuyen": 3,
-  "soLuongDaTuyen": 0,
-  "loaiCongViec": "Bán thời gian",
-  "ngayHetHan": {
-    "$date": "2022-05-06T00:00:00Z"
-  },
-  "soNamKinhNghiem": "Dưới 1 năm",
-  "gioiTinh": "Nam",
-  "mucLuong": "Thỏa thuận",
-  "bangCap": "Đại học",
-  "tuoiTu": 19,
-  "nganhNghe": {
-    "$oid": "61dd94cb11fdd9eef1fd22c5"
-  },
-  "phucLoi": "Đóng BHXH, BHYT theo bộ luật lao động.\nChế độ nghỉ lễ Tết, đi du lịch hằng năm\nĐược làm việc trong môi trường năng động, trẻ trung, đầy nhiệt huyết.\nĐược tham gia các hoạt động team building và sự kiện lớn trong năm độc đáo, hấp dẫn.\nCơ hội thăng tiến, phát triển cao.",
-  "diaDiem": {
-    "tinhThanhPho": "Tỉnh Hà Giang",
-    "quanHuyen": "Huyện Đồng Văn"
-  },
-  "moTa": "Mô tả công việc, nơi làm việc, giờ làm\nYêu cầu bằng cấp, kỹ năng\nPhúc lợi khác ngoài lương",
-  "yeuCau": "Kinh nghiệm vận hành, bảo trì sửa chữa nhà xưởng, tòa nhà trên 2 năm.\nKinh nghiệm chuyên ngành Cơ điện trên 5 năm\nTận dụng kiến thức kỹ thuật, đưa ra quyết định nhanh chóng và giải quyết vấn đề. Tận dụng kinh nghiệm đã tích lũy xác định vấn đề tiềm ẩn và giải quyết mọi vấn đề càng sớm càng tốt",
-  "ngayTao": {
-    "$date": "2022-05-28T15:08:46.117Z"
-  },
-  "hinhAnh": [],
-  "dsViecLamDaLuu": [],
-  "nhaTuyenDung": {
-    "$oid": "61dc43c0028fd53ddaaac063"
-  },
-  "trangThai": "Đã duyệt",
-  "ngayCapNhat": {
-    "$date": "2022-05-28T15:51:59.377Z"
-  },
-  "slug": "nhan-vien-abc",
-  "__v": 0
+  "__v": 0,
+  "lienHe": {
+    "ten": "Văn Lợi",
+    "sdt": "0236325630",
+    "email": "vanloi09@gmail.com"
+  }
 }{
   "_id": {
     "$oid": "6294124234ec3cfd913519fc"
@@ -1816,85 +1424,38 @@
   "__v": 0
 }{
   "_id": {
-    "$oid": "629412dc34ec3cfd91351b4d"
+    "$oid": "629e0c0401118919078011ab"
   },
-  "tieuDe": "Tuyển dụng nhân viên lễ tân",
-  "viTri": "Nhân viên",
+  "tieuDe": "Tuyển dụng nhân viên thu ngân",
+  "viTri": "Mới tốt nghiệp",
   "soLuongTuyen": 2,
   "soLuongDaTuyen": 0,
   "loaiCongViec": "Toàn thời gian",
   "ngayHetHan": {
-    "$date": "2022-06-10T00:00:00Z"
+    "$date": "2022-06-30T00:00:00Z"
   },
-  "soNamKinhNghiem": "Dưới 1 năm",
-  "gioiTinh": "Không phân biệt",
+  "soNamKinhNghiem": "Chưa có kinh nghiệm",
+  "gioiTinh": "Nữ",
   "mucLuong": "Thỏa thuận",
   "bangCap": "Đại học",
   "tuoiTu": 18,
-  "denTuoi": 38,
+  "denTuoi": 30,
   "nganhNghe": {
     "$oid": "61dd94cb11fdd9eef1fd22c5"
   },
-  "phucLoi": "Đóng BHXH, BHYT theo bộ luật lao động.\nChế độ nghỉ lễ Tết, đi du lịch hằng năm.\nĐược làm việc trong môi trường năng động, trẻ trung, đầy nhiệt huyết.\nĐược tham gia các hoạt động team building và sự kiện lớn trong năm độc đáo, hấp dẫn.\nCơ hội thăng tiến, phát triển cao.",
+  "phucLoi": "Đóng BHXH, BHYT theo bộ luật lao động.\nChế độ nghỉ lễ Tết, đi du lịch hằng năm.\nĐược làm việc trong môi trường năng động, trẻ trung, đầy nhiệt huyết.\nĐược tham gia các hoạt động team building và sự kiện lớn trong năm độc đáo, hấp dẫn.\nCơ hội thăng tiến, phát triển cao",
   "diaDiem": {
-    "tinhThanhPho": "Thành phố Hà Nội",
-    "quanHuyen": "Quận Hoàn Kiếm"
+    "tinhThanhPho": "Tỉnh Đắk Lắk",
+    "quanHuyen": "Thành phố Buôn Ma Thuột"
   },
-  "moTa": "Mô tả công việc, nơi làm việc, giờ làm.\nYêu cầu bằng cấp, kỹ năng.\nPhúc lợi khác ngoài lương.",
-  "yeuCau": "Kinh nghiệm vận hành, bảo trì sửa chữa nhà xưởng, tòa nhà trên 2 năm.\nKinh nghiệm chuyên ngành Cơ điện trên 5 năm.\nTận dụng kiến thức kỹ thuật, đưa ra quyết định nhanh chóng và giải quyết vấn đề. Tận dụng kinh nghiệm đã tích lũy xác định vấn đề tiềm ẩn và giải quyết mọi vấn đề càng sớm càng tốt.",
+  "moTa": "Mô tả công việc, nơi làm việc, giờ làm.\nYêu cầu bằng cấp, kỹ năng.\nPhúc lợi khác ngoài lương",
+  "yeuCau": "Kinh nghiệm vận hành, bảo trì sửa chữa nhà xưởng, tòa nhà trên 2 năm.\nKinh nghiệm chuyên ngành Cơ điện trên 5 năm.\nTận dụng kiến thức kỹ thuật, đưa ra quyết định nhanh chóng và giải quyết vấn đề. Tận dụng kinh nghiệm đã tích lũy xác định vấn đề tiềm ẩn và giải quyết mọi vấn đề càng sớm càng tốt",
   "ngayTao": {
-    "$date": "2022-05-30T00:01:03.123Z"
-  },
-  "lienHe": {
-    "ten": "hữu Nam",
-    "sdt": "0912356325",
-    "email": "huhunam111@gmail.com"
-  },
-  "hinhAnh": [],
-  "dsViecLamDaLuu": [],
-  "nhaTuyenDung": {
-    "$oid": "61dc43c0028fd53ddaaac063"
-  },
-  "trangThai": "Đã duyệt",
-  "ngayCapNhat": {
-    "$date": "2022-05-30T02:40:14.986Z"
-  },
-  "slug": "tuyen-dung-nhan-vien-le-tan",
-  "__v": 0
-}{
-  "_id": {
-    "$oid": "6294454c5e4293739518f34d"
-  },
-  "tieuDe": "Nhân viên thực tập Nodejs",
-  "viTri": "Thực tập",
-  "soLuongTuyen": 5,
-  "soLuongDaTuyen": 0,
-  "loaiCongViec": "Thực tập sinh",
-  "ngayHetHan": {
-    "$date": "2022-06-17T00:00:00Z"
-  },
-  "soNamKinhNghiem": "Chưa có kinh nghiệm",
-  "gioiTinh": "Không phân biệt",
-  "mucLuong": "Thỏa thuận",
-  "bangCap": "Chưa tốt nghiệp",
-  "tuoiTu": 21,
-  "denTuoi": 25,
-  "nganhNghe": {
-    "$oid": "61dd94f611fdd9eef1fd22cb"
-  },
-  "phucLoi": "Đóng BHXH, BHYT theo bộ luật lao động.\nChế độ nghỉ lễ Tết, đi du lịch hằng năm\nĐược làm việc trong môi trường năng động, trẻ trung, đầy nhiệt huyết.\nĐược tham gia các hoạt động team building và sự kiện lớn trong năm độc đáo, hấp dẫn.\nCơ hội thăng tiến, phát triển cao.",
-  "diaDiem": {
-    "tinhThanhPho": "Tỉnh Tuyên Quang",
-    "quanHuyen": "Huyện Na Hang"
-  },
-  "moTa": "Mô tả công việc, nơi làm việc, giờ làm\nYêu cầu bằng cấp, kỹ năng\nPhúc lợi khác ngoài lương",
-  "yeuCau": "Kinh nghiệm vận hành, bảo trì sửa chữa nhà xưởng, tòa nhà trên 2 năm.\nKinh nghiệm chuyên ngành Cơ điện trên 5 năm\nTận dụng kiến thức kỹ thuật, đưa ra quyết định nhanh chóng và giải quyết vấn đề. Tận dụng kinh nghiệm đã tích lũy xác định vấn đề tiềm ẩn và giải quyết mọi vấn đề càng sớm càng tốt",
-  "ngayTao": {
-    "$date": "2022-05-30T02:32:50.693Z"
+    "$date": "2022-06-06T14:11:01.026Z"
   },
   "lienHe": {
     "ten": "Hữu Nam",
-    "sdt": "0925636325",
+    "sdt": "0123636325",
     "email": "huunam111@gmail.com"
   },
   "hinhAnh": [],
@@ -1902,10 +1463,10 @@
   "nhaTuyenDung": {
     "$oid": "61dc43c0028fd53ddaaac063"
   },
-  "trangThai": "Đã duyệt",
+  "trangThai": "Chờ duyệt",
   "ngayCapNhat": {
-    "$date": "2022-05-30T04:17:46.440Z"
+    "$date": "2022-06-06T14:15:32.192Z"
   },
-  "slug": "nhan-vien-thuc-tap-nodejs",
+  "slug": "tuyen-dung-nhan-vien-thu-ngan",
   "__v": 0
 }

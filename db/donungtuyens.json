@@ -1,10 +1,37 @@
 {
   "_id": {
-    "$oid": "6219b537709f04f4fa906e76"
+    "$oid": "629e0d650111891907801b1d"
   },
-  "trangThai": "Đã ứng tuyển",
   "ngayUngTuyen": {
-    "$date": "2022-02-13T00:00:00Z"
+    "$date": "2022-06-06T14:11:01.566Z"
+  },
+  "ungTuyenVien": {
+    "$oid": "61dc36a36c9974889d6e955d"
+  },
+  "tinTuyenDung": {
+    "$oid": "6294124234ec3cfd913519fc"
+  },
+  "guiEmail": false,
+  "thongTinLienHe": {
+    "ten": "Lê Danh Huy",
+    "sdt": "0903589234",
+    "email": "danhhuy@gmail.com",
+    "loiGioiThieu": "Nhiệt huyết"
+  },
+  "tiemNang": false,
+  "phuongThuc": false,
+  "cv": null,
+  "trangThai": "Đang ứng tuyển",
+  "ngayCapNhat": {
+    "$date": "2022-06-06T14:21:25.782Z"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "629e0d790111891907801c38"
+  },
+  "ngayUngTuyen": {
+    "$date": "2022-06-06T14:11:01.566Z"
   },
   "ungTuyenVien": {
     "$oid": "61dc36a36c9974889d6e955d"
@@ -12,250 +39,75 @@
   "tinTuyenDung": {
     "$oid": "61de2f1b2bc802074d0a9d08"
   },
-  "__v": 0,
-  "tiemNang": true,
   "guiEmail": false,
-  "ngayCapNhat": {
-    "$date": "2022-05-26T02:02:48.830Z"
-  },
   "thongTinLienHe": {
-    "ten": "Danh Huy",
-    "sdt": "0903562999",
+    "ten": "Lê Danh Huy",
+    "sdt": "0903589234",
     "email": "danhhuy@gmail.com",
-    "loiGioiThieu": "null"
-  }
-}{
-  "_id": {
-    "$oid": "6219b54c709f04f4fa906e78"
+    "loiGioiThieu": "Nhiệt huyết"
   },
+  "tiemNang": false,
+  "phuongThuc": false,
+  "cv": null,
   "trangThai": "Đã ứng tuyển",
-  "ngayUngTuyen": {
-    "$date": "2022-02-13T00:00:00Z"
-  },
-  "ungTuyenVien": {
-    "$oid": "61dc36a36c9974889d6e955d"
-  },
-  "tinTuyenDung": {
-    "$oid": "61de2ec72bc802074d0a9d01"
-  },
-  "__v": 0,
-  "tiemNang": true,
-  "guiEmail": false,
   "ngayCapNhat": {
-    "$date": "2022-05-27T12:52:00.230Z"
-  },
-  "thongTinLienHe": {
-    "ten": "Danh Huy",
-    "sdt": "0903562999",
-    "email": "danhhuy@gmail.com",
-    "loiGioiThieu": "null"
-  }
-}{
-  "_id": {
-    "$oid": "628f10b2b0fc0e65a3ad21a0"
-  },
-  "ngayUngTuyen": {
-    "$date": "2022-05-26T04:15:23.674Z"
-  },
-  "ungTuyenVien": {
-    "$oid": "61dc2ef5aec39c8a584a261c"
-  },
-  "tinTuyenDung": {
-    "$oid": "61de2e082bc802074d0a9ceb"
-  },
-  "guiEmail": false,
-  "thongTinLienHe": {
-    "ten": "catluynh",
-    "sdt": "0905632556",
-    "email": "catluass@gmail.com",
-    "loiGioiThieu": "abc"
-  },
-  "tiemNang": false,
-  "trangThai": "Đang ứng tuyển",
-  "ngayCapNhat": {
-    "$date": "2022-05-26T05:31:30.225Z"
+    "$date": "2022-06-06T14:29:06.749Z"
   },
   "__v": 0
 }{
   "_id": {
-    "$oid": "628f8851810b282c2627d086"
+    "$oid": "629e0ebed79170076ef04cbb"
   },
   "ngayUngTuyen": {
-    "$date": "2022-05-26T13:18:29.140Z"
+    "$date": "2022-06-06T14:26:48.553Z"
   },
   "ungTuyenVien": {
-    "$oid": "61dc2ef5aec39c8a584a261c"
+    "$oid": "628ee400bc2e24845ad1d3c0"
   },
   "tinTuyenDung": {
-    "$oid": "62820d461844d898ea7b70f5"
+    "$oid": "61de2f6a2bc802074d0a9d15"
   },
   "guiEmail": false,
   "thongTinLienHe": {
-    "ten": "Cát Luynh",
-    "sdt": "0903589164",
-    "email": "catluynh99@gmail.com",
-    "loiGioiThieu": "null"
+    "ten": "Hữu trực",
+    "sdt": "0945232005",
+    "email": "huutruc979@gmail.com",
+    "loiGioiThieu": "Chăm chỉ"
   },
   "tiemNang": false,
-  "trangThai": "Đang ứng tuyển",
+  "phuongThuc": false,
+  "cv": null,
+  "trangThai": "Đã ứng tuyển",
   "ngayCapNhat": {
-    "$date": "2022-05-26T14:01:53.992Z"
+    "$date": "2022-06-06T14:38:22.643Z"
   },
   "__v": 0
 }{
   "_id": {
-    "$oid": "6291000787e26b6bb78844ee"
+    "$oid": "629e0eeed79170076ef050da"
   },
   "ngayUngTuyen": {
-    "$date": "2022-05-27T15:08:39.814Z"
+    "$date": "2022-06-06T14:26:48.553Z"
   },
   "ungTuyenVien": {
     "$oid": "6285e39593d4178290a57541"
   },
   "tinTuyenDung": {
-    "$oid": "61de2ec72bc802074d0a9d01"
+    "$oid": "61de2f1b2bc802074d0a9d08"
   },
   "guiEmail": false,
   "thongTinLienHe": {
-    "ten": "Nguyễn Duy Thiện",
-    "sdt": "0123636325",
-    "email": "gaca0b0j99@gmail.com",
-    "loiGioiThieu": "abc"
-  },
-  "tiemNang": false,
-  "trangThai": "Đang ứng tuyển",
-  "ngayCapNhat": {
-    "$date": "2022-05-27T16:44:55.267Z"
-  },
-  "__v": 0
-}{
-  "_id": {
-    "$oid": "6291010987e26b6bb7884d7e"
-  },
-  "ngayUngTuyen": {
-    "$date": "2022-05-27T15:08:39.814Z"
-  },
-  "ungTuyenVien": {
-    "$oid": "628ee400bc2e24845ad1d3c0"
-  },
-  "tinTuyenDung": {
-    "$oid": "61de2ec72bc802074d0a9d01"
-  },
-  "guiEmail": false,
-  "thongTinLienHe": {
-    "ten": "Hữu trực",
-    "sdt": "0903581265",
-    "email": "nepaha2225@sceath.com",
-    "loiGioiThieu": "ko có"
-  },
-  "tiemNang": true,
-  "trangThai": "Đang ứng tuyển",
-  "ngayCapNhat": {
-    "$date": "2022-05-28T12:00:20.483Z"
-  },
-  "__v": 0
-}{
-  "_id": {
-    "$oid": "629101e087e26b6bb7885133"
-  },
-  "ngayUngTuyen": {
-    "$date": "2022-05-27T15:08:39.814Z"
-  },
-  "ungTuyenVien": {
-    "$oid": "628ee400bc2e24845ad1d3c0"
-  },
-  "tinTuyenDung": {
-    "$oid": "6291019d87e26b6bb7884e5b"
-  },
-  "guiEmail": false,
-  "thongTinLienHe": {
-    "ten": "Hữu trực",
-    "sdt": "0123630256",
-    "email": "nepaha2225@sceath.com",
-    "loiGioiThieu": "a"
-  },
-  "tiemNang": false,
-  "trangThai": "Đang ứng tuyển",
-  "ngayCapNhat": {
-    "$date": "2022-05-27T16:52:48.510Z"
-  },
-  "__v": 0
-}{
-  "_id": {
-    "$oid": "62940ef634ec3cfd91351166"
-  },
-  "ngayUngTuyen": {
-    "$date": "2022-05-30T00:01:03.642Z"
-  },
-  "ungTuyenVien": {
-    "$oid": "61dc2ef5aec39c8a584a261c"
-  },
-  "tinTuyenDung": {
-    "$oid": "61de2ec72bc802074d0a9d01"
-  },
-  "guiEmail": false,
-  "thongTinLienHe": {
-    "ten": "Cát Luynh",
-    "sdt": "0903589164",
-    "email": "catluynh99@gmail.com",
-    "loiGioiThieu": "nhân viên"
-  },
-  "tiemNang": false,
-  "trangThai": "Thất bại",
-  "ngayCapNhat": {
-    "$date": "2022-05-30T04:13:46.755Z"
-  },
-  "__v": 0
-}{
-  "_id": {
-    "$oid": "629438bf5e4293739518cbcb"
-  },
-  "ngayUngTuyen": {
-    "$date": "2022-05-30T02:32:51.530Z"
-  },
-  "ungTuyenVien": {
-    "$oid": "61dc2ef5aec39c8a584a261c"
-  },
-  "tinTuyenDung": {
-    "$oid": "6294124234ec3cfd913519fc"
-  },
-  "guiEmail": false,
-  "thongTinLienHe": {
-    "ten": "Cát Luynh",
-    "sdt": "0903589115",
-    "email": "catluynh99@gmail.com",
+    "ten": "Duy Thiện",
+    "sdt": "0903231245",
+    "email": "duythien123@gmail.com",
     "loiGioiThieu": "Chăm chỉ"
   },
-  "tiemNang": true,
+  "tiemNang": false,
+  "phuongThuc": false,
+  "cv": null,
   "trangThai": "Đã ứng tuyển",
   "ngayCapNhat": {
-    "$date": "2022-05-30T03:23:59.167Z"
-  },
-  "__v": 0
-}{
-  "_id": {
-    "$oid": "6294443f5e4293739518effe"
-  },
-  "ngayUngTuyen": {
-    "$date": "2022-05-30T02:32:51.530Z"
-  },
-  "ungTuyenVien": {
-    "$oid": "61dc2ef5aec39c8a584a261c"
-  },
-  "tinTuyenDung": {
-    "$oid": "628213df1844d898ea7b7147"
-  },
-  "guiEmail": false,
-  "thongTinLienHe": {
-    "ten": "Cát Luynh",
-    "sdt": "0903589115",
-    "email": "catluynh99@gmail.com",
-    "loiGioiThieu": "Chăm chỉ"
-  },
-  "tiemNang": false,
-  "trangThai": "Đang ứng tuyển",
-  "ngayCapNhat": {
-    "$date": "2022-05-30T04:12:47.199Z"
+    "$date": "2022-06-06T14:29:39.162Z"
   },
   "__v": 0
 }

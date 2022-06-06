@@ -1,126 +1,14 @@
 {
   "_id": {
-    "$oid": "61df9e49143540e15613fae0"
+    "$oid": "629e10f3d79170076ef06015"
   },
-  "noiDung": "Công việc tốt",
-  "xepLoai": 4,
-  "ngay": {
-    "$date": "2022-01-13T03:36:16.291Z"
-  },
-  "danhGiaBoi": {
-    "$oid": "61dc2ef5aec39c8a584a261c"
-  },
-  "tinTuyenDung": {
-    "$oid": "61de2e082bc802074d0a9ceb"
-  },
-  "__v": 0
-}{
-  "_id": {
-    "$oid": "625eb36a514cc25d52dbe12a"
-  },
-  "noiDung": "Công việc tốt",
-  "xepLoai": 5,
-  "ngay": {
-    "$date": "2022-04-19T13:04:19.132Z"
-  },
-  "danhGiaBoi": {
-    "$oid": "61dc2ef5aec39c8a584a261c"
-  },
-  "tinTuyenDung": {
-    "$oid": "61de2f1b2bc802074d0a9d08"
-  },
-  "__v": 0
-}{
-  "_id": {
-    "$oid": "625eb38e514cc25d52dbe12c"
-  },
-  "noiDung": "Công việc tốt",
-  "xepLoai": 4,
-  "ngay": {
-    "$date": "2022-04-19T13:04:19.132Z"
-  },
-  "danhGiaBoi": {
-    "$oid": "61dc2ef5aec39c8a584a261c"
-  },
-  "tinTuyenDung": {
-    "$oid": "61de2f1b2bc802074d0a9d08"
-  },
-  "__v": 0
-}{
-  "_id": {
-    "$oid": "625eb396514cc25d52dbe12e"
-  },
-  "noiDung": "Công việc tốt",
-  "xepLoai": 5,
-  "ngay": {
-    "$date": "2022-04-19T13:04:19.132Z"
-  },
-  "danhGiaBoi": {
-    "$oid": "61dc2ef5aec39c8a584a261c"
-  },
-  "tinTuyenDung": {
-    "$oid": "61de2f1b2bc802074d0a9d08"
-  },
-  "__v": 0
-}{
-  "_id": {
-    "$oid": "625eb3af514cc25d52dbe130"
-  },
-  "noiDung": "Việc làm tệ",
+  "noiDung": "Việc làm không có thật",
   "xepLoai": 2,
   "ngay": {
-    "$date": "2022-04-19T13:04:19.132Z"
+    "$date": "2022-06-06T14:26:48.639Z"
   },
   "danhGiaBoi": {
-    "$oid": "61dc2ef5aec39c8a584a261c"
-  },
-  "tinTuyenDung": {
-    "$oid": "61de2ec72bc802074d0a9d01"
-  },
-  "__v": 0
-}{
-  "_id": {
-    "$oid": "625eb3b3514cc25d52dbe132"
-  },
-  "noiDung": "Công việc lừa đảo, đa cấp",
-  "xepLoai": 1,
-  "ngay": {
-    "$date": "2022-04-19T13:04:19.132Z"
-  },
-  "danhGiaBoi": {
-    "$oid": "61dc2ef5aec39c8a584a261c"
-  },
-  "tinTuyenDung": {
-    "$oid": "61de2ec72bc802074d0a9d01"
-  },
-  "__v": 0
-}{
-  "_id": {
-    "$oid": "62852e102102f3392822dcf5"
-  },
-  "noiDung": "Việc làm ko có thật",
-  "xepLoai": 1,
-  "ngay": {
-    "$date": "2022-05-18T17:31:20.957Z"
-  },
-  "danhGiaBoi": {
-    "$oid": "61dc2ef5aec39c8a584a261c"
-  },
-  "tinTuyenDung": {
-    "$oid": "61de2e082bc802074d0a9ceb"
-  },
-  "__v": 0
-}{
-  "_id": {
-    "$oid": "628936a50f28ab397c691e56"
-  },
-  "noiDung": "Công việc tốt",
-  "xepLoai": 4,
-  "ngay": {
-    "$date": "2022-05-21T18:57:56.027Z"
-  },
-  "danhGiaBoi": {
-    "$oid": "61dc2ef5aec39c8a584a261c"
+    "$oid": "61dc36a36c9974889d6e955d"
   },
   "tinTuyenDung": {
     "$oid": "61de2f1b2bc802074d0a9d08"
@@ -128,15 +16,31 @@
   "__v": 0
 }{
   "_id": {
-    "$oid": "628de3a685acbade99dcd3a6"
+    "$oid": "629e112ed79170076ef063af"
   },
-  "noiDung": "ok",
-  "xepLoai": 4,
+  "noiDung": "Lừa đảo",
+  "xepLoai": 2,
   "ngay": {
-    "$date": "2022-05-25T07:52:30.391Z"
+    "$date": "2022-06-06T14:26:48.639Z"
   },
   "danhGiaBoi": {
-    "$oid": "61dc2ef5aec39c8a584a261c"
+    "$oid": "6285e39593d4178290a57541"
+  },
+  "tinTuyenDung": {
+    "$oid": "61de2f1b2bc802074d0a9d08"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "629e118ad79170076ef06650"
+  },
+  "noiDung": "Công việc tốt",
+  "xepLoai": 5,
+  "ngay": {
+    "$date": "2022-06-06T14:26:48.639Z"
+  },
+  "danhGiaBoi": {
+    "$oid": "628ee400bc2e24845ad1d3c0"
   },
   "tinTuyenDung": {
     "$oid": "61de2f6a2bc802074d0a9d15"
@@ -144,31 +48,63 @@
   "__v": 0
 }{
   "_id": {
-    "$oid": "628e0b5626cd600345c19aa1"
+    "$oid": "629e1196d79170076ef06653"
   },
-  "noiDung": "lauwf đảo",
-  "xepLoai": 1,
+  "noiDung": "Ok, nên tuyển dụng",
+  "xepLoai": 4,
   "ngay": {
-    "$date": "2022-05-25T10:55:45.683Z"
+    "$date": "2022-06-06T14:26:48.639Z"
   },
   "danhGiaBoi": {
-    "$oid": "61dc2ef5aec39c8a584a261c"
+    "$oid": "628ee400bc2e24845ad1d3c0"
   },
   "tinTuyenDung": {
-    "$oid": "628e08c033e54dbaf5f733a4"
+    "$oid": "61de2f6a2bc802074d0a9d15"
   },
   "__v": 0
 }{
   "_id": {
-    "$oid": "628f8cc01355ab9a2177673b"
+    "$oid": "629e11b4d79170076ef067bd"
   },
-  "noiDung": "Việc làm lừa đảo",
+  "noiDung": "Ko liên hệ được",
   "xepLoai": 1,
   "ngay": {
-    "$date": "2022-05-26T14:19:46.325Z"
+    "$date": "2022-06-06T14:26:48.639Z"
   },
   "danhGiaBoi": {
-    "$oid": "61dc2ef5aec39c8a584a261c"
+    "$oid": "61dc36a36c9974889d6e955d"
+  },
+  "tinTuyenDung": {
+    "$oid": "61de2f1b2bc802074d0a9d08"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "629e11bed79170076ef067c0"
+  },
+  "noiDung": "Đánh giá kém",
+  "xepLoai": 1,
+  "ngay": {
+    "$date": "2022-06-06T14:26:48.639Z"
+  },
+  "danhGiaBoi": {
+    "$oid": "61dc36a36c9974889d6e955d"
+  },
+  "tinTuyenDung": {
+    "$oid": "61de2f1b2bc802074d0a9d08"
+  },
+  "__v": 0
+}{
+  "_id": {
+    "$oid": "629e11d8d79170076ef0692a"
+  },
+  "noiDung": "Lừa đảo",
+  "xepLoai": 1,
+  "ngay": {
+    "$date": "2022-06-06T14:26:48.639Z"
+  },
+  "danhGiaBoi": {
+    "$oid": "6285e39593d4178290a57541"
   },
   "tinTuyenDung": {
     "$oid": "61de2f1b2bc802074d0a9d08"

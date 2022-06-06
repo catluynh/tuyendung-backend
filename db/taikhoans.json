@@ -2,8 +2,8 @@
   "_id": {
     "$oid": "61dc2ef5aec39c8a584a261c"
   },
-  "tenDangNhap": "catluynh999",
-  "matKhau": "$2b$12$UPeCGLx/z9kYclF/ztSPhOnuX4/cIk/oV/J5sHPNIIrYnCvu/JZeW",
+  "tenDangNhap": "catluynh99",
+  "matKhau": "$2b$12$di5e62LSNdIZctrIxPWxNOzAaW.7/iy.f6zNeapaP8.EXgMv9dOrW",
   "trangThai": true,
   "ngayTao": {
     "$date": "2022-01-10T13:04:51.150Z"
@@ -13,7 +13,7 @@
   "loaiTaiKhoan": "ung_tuyen_vien",
   "xacThucTaiKhoan": true,
   "ngayCapNhat": {
-    "$date": "2022-05-26T14:43:05.837Z"
+    "$date": "2022-06-06T10:12:22.300Z"
   }
 }{
   "_id": {
