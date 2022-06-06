@@ -23,7 +23,7 @@ class DonUngTuyenController {
         const donUngTuyenMoi = new DonUngTuyen(req.body);
         const donUngTuyenTonTai = await DonUngTuyen.findOne({
             ungTuyenVien: req.body.ungTuyenVien,
-            tinTuyenDung: req.body.tinTuyenDung  
+            tinTuyenDung: req.body.tinTuyenDung
         })
         donUngTuyenMoi.trangThai = Enum.TRANG_THAI_DON.DANG_UNG_TUYEN;
         donUngTuyenMoi.ngayCapNhat = new Date();
@@ -95,7 +95,7 @@ class DonUngTuyenController {
     async timKiemTheoUngTuyenVien(req, res, next) {
         console.log(req.query);
         const page = req.query.page * 1 || 1
-        const limit = parseInt(req.query.limit) || 20;
+        const limit = parseInt(req.query.limit) || 5;
         const skip = (page - 1) * limit;
         const total = await DonUngTuyen.find({ ungTuyenVien: req.taiKhoan._id }).count();
         await DonUngTuyen.aggregate([
@@ -385,10 +385,13 @@ class DonUngTuyenController {
 
     async chapNhanDonUngTuyen(req, res, next) {
         await DonUngTuyen.findById(req.params.id)
-            .then(data => {
+            .then(async data => {
                 data.trangThai = Enum.TRANG_THAI_DON.DA_UNG_TUYEN;
                 data.ngayCapNhat = new Date();
                 data.save();
+                const tin = await TinTuyenDung.findById(data.tinTuyenDung);
+                tin.soLuongDaTuyen = (tin.soLuongDaTuyen + 1);
+                tin.save();
                 res.status(200).json({
                     status: 'success',
                     results: data.length,

@@ -791,6 +791,7 @@ class TinTuyenDungController {
 
     async thanhToan(req, res, next) {
         try {
+            console.log(process.env.HOST_CLIENT)
             const items = [{
                 "name": "Thanh toán phí đăng tin tuyển dụng",
                 "price": "1.0",
