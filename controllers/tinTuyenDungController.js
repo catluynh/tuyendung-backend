@@ -11,6 +11,7 @@ const paypal = require('paypal-rest-sdk');
 var open = require('open');
 const { find } = require('../models/tinTuyenDungModel');
 const guiEmail = require('../utils/email');
+const mongoose = require('mongoose');
 
 paypal.configure({
     'mode': process.env.MODE, //sandbox or live
@@ -74,6 +75,27 @@ class TinTuyenDungController {
             .then((data) => {
                 res.status(201).json({
                     status: 'success',
+                    data
+                })
+            })
+            .catch(next);
+    };
+
+    async tinTheoNhaTuyenDung(req, res, next) {
+        const page = req.query.page * 1 || 1;
+        const limit = parseInt(req.query.limit) || 5;
+        const skip = (page - 1) * limit;
+        const total = await TinTuyenDung.find({ nhaTuyenDung: req.params.idNhaTuyenDung }).count();
+        await TinTuyenDung.find({ nhaTuyenDung: req.params.idNhaTuyenDung }).limit(limit).skip(skip).exec()
+            .then(data => {
+                res.status(201).json({
+                    status: 'success',
+                    results: data.length,
+                    pagination: {
+                        page,
+                        limit,
+                        total,
+                    },
                     data
                 })
             })

@@ -78,6 +78,9 @@ router.route('/thanhToan')
 router.route('/success')
     .get(tinTuyenDungController.success)
 
+router.route('/tinTheoNhaTuyenDung/:idNhaTuyenDung')
+    .get(tinTuyenDungController.tinTheoNhaTuyenDung)
+
 router.route('/timKiem/:slug')
     .get(tinTuyenDungController.getAPIBySlug)
 
