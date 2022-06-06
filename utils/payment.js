@@ -29,8 +29,8 @@ function thanhToan() {
                 "payment_method": "paypal"
             },
             "redirect_urls": {
-                "return_url": "http://localhost:3000/success",
-                "cancel_url": "http://localhost:3000/cancel"
+                "return_url": "https://web-tuyen-dung.herokuapp.com/success",
+                "cancel_url": "https://web-tuyen-dung.herokuapp.com/cancel"
             },
             "transactions": [{
                 "item_list": {
